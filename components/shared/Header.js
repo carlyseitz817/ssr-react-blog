@@ -14,6 +14,8 @@ import {
     DropdownItem
 } from 'reactstrap';
 
+import auth0 from '../../blogservices/auth0';
+
 const BsLink = (props) => {
     const { route, title } = props;
 
@@ -23,6 +25,18 @@ const BsLink = (props) => {
         </Link>
     );
 };
+
+const Login = () => {
+    return (
+        <span onClick = {auth0.login} className = "nav-link port-navbar-link">Login</span>
+    )
+}
+
+const Logout = () => {
+    return (
+        <span onClick = {auth0.logout} className = "nav-link port-navbar-link">Logout</span>
+    )
+}
 
 export default class Example extends React.Component {
     constructor(props) {
@@ -52,9 +66,23 @@ export default class Example extends React.Component {
                             <NavItem className="port-navbar-item">
                                 <BsLink route="/blog" title="BLOG" />
                             </NavItem>
-                            <NavItem className="port-navbar-item">
-                                <BsLink route="#" title="LOGIN" />
-                            </NavItem>
+
+                            {
+                                !auth0.isAuthenticated() &&
+
+                                <NavItem className="port-navbar-item">
+                                    <Login />
+                                </NavItem>
+                            }
+
+                            {
+                                auth0.isAuthenticated() &&
+
+                                <NavItem className="port-navbar-item">
+                                    <Logout />
+                                </NavItem>
+                            }
+                            
                             {/* <UncontrolledDropdown nav inNavbar>
                                 <DropdownToggle nav caret>
                                     Options
