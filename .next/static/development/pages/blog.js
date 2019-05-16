@@ -41184,7 +41184,7 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ 2:
+/***/ 3:
 /*!******************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fblog&absolutePagePath=%2FUsers%2Fcarlyseitz%2FDocuments%2FHomework%20Assignments%2Fssr-react-blog%2Fpages%2Fblog.js ***!
   \******************************************************************************************************************************************************************/
@@ -41207,5 +41207,5 @@ module.exports = dll_829b10deddf10e1653a8;
 
 /***/ })
 
-},[[2,"static/runtime/webpack.js"]]]);
+},[[3,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=blog.js.map
