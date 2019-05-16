@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -239,6 +239,18 @@ var BsLink = function BsLink(props) {
   }, title));
 };
 
+var Login = function Login() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "nav-link port-navbar-link"
+  }, "Login");
+};
+
+var Logout = function Logout() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "nav-link port-navbar-link"
+  }, "Logout");
+};
+
 var Example =
 /*#__PURE__*/
 function (_React$Component) {
@@ -295,10 +307,9 @@ function (_React$Component) {
         title: "BLOG"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["NavItem"], {
         className: "port-navbar-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BsLink, {
-        route: "#",
-        title: "LOGIN"
-      }))))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Login, null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["NavItem"], {
+        className: "port-navbar-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Logout, null))))));
     }
   }]);
 
@@ -466,7 +477,7 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ 4:
+/***/ 3:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/
