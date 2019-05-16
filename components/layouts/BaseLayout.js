@@ -1,4 +1,6 @@
+import React from 'react';
 import Header from '../shared/Header';
+import Head from 'next/head'
 
 const BaseLayout = (props) => {
     const {className, children} = props;
