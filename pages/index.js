@@ -2,6 +2,8 @@ import React from 'react';
 import BaseLayout from '../components/layouts/BaseLayout';
 import SuperComponent from '../components/SuperComponent';
 import axios from 'axios';
+import { Button, Container, Row, Col } from 'reactstrap';
+import Typed from 'react-typed'
 
 // Functional components often called dumb components
 // Get data
@@ -15,31 +17,17 @@ import axios from 'axios';
 // Class components have more functionality than functional components
 // User lifecycle function
 
-class Index extends SuperComponent {
-    static async getInitialProps() {
-        console.log("getInitialProps");
-
-        let userData = {};
-
-        try {
-            const response = await axios.get("https://jsonplaceholder.typicode.com/todos/1");
-            userData = response.data;
-        } catch (err) {
-            console.log(err);
-        }
-
-        return {
-            initialData: [1, 2, 3, 4],
-            userData
-        };
-    };
+class Index extends React.Component {
 
     constructor(props) {
         super(props);
 
-        this.state = {
-            title: "I am the home page"
-        }
+        this.features = [
+            "Server-side rendering for SEO",
+            "Rich text editor",
+            "Save blog posts",
+            "View user-specific blogs"
+        ]
 
         // If use this line, can do:
         //     <button onClick={this.updateTitle}>CHANGE TITLE</button>
@@ -70,19 +58,62 @@ class Index extends SuperComponent {
     render() {
         console.log("render")
 
-        const { title } = this.state;
-        const { initialData, userData } = this.props;
-
         return (
-            <BaseLayout>
-                <div>
-                    <h1>Home</h1>
-                    <h2>{title}</h2>
-                    <h2>{userData.title}</h2>
+            <BaseLayout className="cover">
+                <div className="main-section">
+                    <div className="background-image">
+                        <img src="/static/images/background-index.png" />
+                    </div>
 
-                    <button onClick={this.updateTitle}>CHANGE TITLE</button>
+                    <Container>
+                        <Row>
+                            <Col md="6">
+                                <div className="hero-section">
+                                    <div className={`flipper`}>
+                                        <div className="back">
+                                            <div className="hero-section-content">
+                                                <h2> Full Stack Web Developer </h2>
+                                                <div className="hero-section-content-intro">
+                                                    Have a look at my portfolio and job history.
+                  </div>
+                                            </div>
+                                            <img className="image" src="/static/images/section-1.png" />
+                                            <div className="shadow-custom">
+                                                <div className="shadow-inner"> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Col>
+                            <Col md="6" className="hero-welcome-wrapper">
+                                <div className="hero-welcome-text">
+                                    <h1>
+                                        Welcome to the portfolio website of Filip Jerga.
+                                        Get informed, collaborate and discover projects I was working on through the years!
+            </h1>
+                                </div>
+                                <Typed
+                                    loop
+                                    typeSpeed={80}
+                                    backSpeed={60}
+                                    strings={this.features}
+                                    backDelay={1000}
+                                    loopCount={0}
+                                    showCursor
+                                    className='self-typed'
+                                    cursorChar="|"
+                                />
+                                <div className="hero-welcome-bio">
+                                    <h1>
+                                        Let's take a look on my work.
+            </h1>
+                                </div>
+                            </Col>
+                        </Row>
+                    </Container>
                 </div>
             </BaseLayout>
+
         )
     }
 }

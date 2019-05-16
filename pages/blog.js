@@ -3,6 +3,9 @@ import BaseLayout from '../components/layouts/BaseLayout';
 import axios from 'axios';
 import Link from 'next/link';
 import { withRouter } from 'next/router';
+import { Container, Row, Col } from 'reactstrap';
+import BasePage from '../components/BasePage';
+import moment from 'moment';
 
 class Blog extends React.Component {
     static async getInitialProps() {
@@ -23,45 +26,27 @@ class Blog extends React.Component {
     renderPosts(posts) {
         return posts.map((post) => {
             return (
-                <li key="{post.id}">
-                    <Link href = {`/post?title=${post.title}`} as={`/blog/${post.title}`.replace(/ /g, "-")}>
-                    <a> KEY: {post.id}{post.title} </a>
-                </Link>
+                <li key={post.id}>
+                    <Link href={`/post?title=${post.title}`} as={`/blog/${post.title}`.replace(/ /g, "-")}>
+                        <a> KEY: {post.id}{post.title} </a>
+                    </Link>
                 </li>
             )
         })
     };
 
-    // renderPosts(posts) {
-    //     const PostLink = props => (
-    //         <li>
-    //             <Link href={`/post?id=${props.id}`} as={`/blog/${props.title}`.replace(/ /g, "-")}>
-    //                 <a>{props.title}</a>
-    //             </Link>
-    //         </li>
-    //     )
-
-    //     return posts.map((post) => {
-    //         return (
-    //             <li key={post.id}>
-    //                 <PostLink id={post.id} title={post.title} />
-    //             </li>
-    //         )
-    //     })
-    // };
-    
     render() {
         // debugger;
         const { posts } = this.props;
         // console.log(this.props);
         return (
             <BaseLayout>
-                <div>
+                <BasePage>
                     <h1>Blog Posts</h1>
                     <ul>
                         {this.renderPosts(posts)}
                     </ul>
-                </div>
+                </BasePage>
             </BaseLayout>
         )
     }
