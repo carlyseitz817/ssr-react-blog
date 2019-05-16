@@ -93,6 +93,57 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
+/***/ "./blogservices/auth0.js":
+/*!*******************************!*\
+  !*** ./blogservices/auth0.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var auth0_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! auth0-js */ "auth0-js");
+/* harmony import */ var auth0_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(auth0_js__WEBPACK_IMPORTED_MODULE_0__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+//auth0 goes here
+
+
+var Auth =
+/*#__PURE__*/
+function () {
+  function Auth() {
+    _classCallCheck(this, Auth);
+
+    this.auth0 = new auth0_js__WEBPACK_IMPORTED_MODULE_0___default.a.WebAuth({
+      domain: 'dev-x6yltt2s.auth0.com',
+      clientID: 'lEopvK1CVu4NTl5j5EnvgWCOlSKnMRsZ',
+      redirectUri: 'http://localhost:3000/callback',
+      responseType: 'token id_token',
+      scope: 'openid profile'
+    });
+    this.login = this.login.bind(this);
+  }
+
+  _createClass(Auth, [{
+    key: "login",
+    value: function login() {
+      this.auth0.authorize();
+    }
+  }]);
+
+  return Auth;
+}();
+
+var auth0client = new Auth();
+/* harmony default export */ __webpack_exports__["default"] = (auth0client);
+
+/***/ }),
+
 /***/ "./components/SuperComponent.js":
 /*!**************************************!*\
   !*** ./components/SuperComponent.js ***!
@@ -207,6 +258,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactstrap */ "reactstrap");
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _blogservices_auth0__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../blogservices/auth0 */ "./blogservices/auth0.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -229,6 +281,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var BsLink = function BsLink(props) {
   var route = props.route,
       title = props.title;
@@ -241,12 +294,14 @@ var BsLink = function BsLink(props) {
 
 var Login = function Login() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    onClick: _blogservices_auth0__WEBPACK_IMPORTED_MODULE_3__["default"].login,
     className: "nav-link port-navbar-link"
   }, "Login");
 };
 
 var Logout = function Logout() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    onClick: _blogservices_auth0__WEBPACK_IMPORTED_MODULE_3__["default"].login,
     className: "nav-link port-navbar-link"
   }, "Logout");
 };
@@ -486,6 +541,17 @@ function (_React$Component) {
 
 module.exports = __webpack_require__(/*! ./pages/index.js */"./pages/index.js");
 
+
+/***/ }),
+
+/***/ "auth0-js":
+/*!***************************!*\
+  !*** external "auth0-js" ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("auth0-js");
 
 /***/ }),
 

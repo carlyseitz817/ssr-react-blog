@@ -14,6 +14,8 @@ import {
     DropdownItem
 } from 'reactstrap';
 
+import auth0 from '../../blogservices/auth0';
+
 const BsLink = (props) => {
     const { route, title } = props;
 
@@ -26,13 +28,13 @@ const BsLink = (props) => {
 
 const Login = () => {
     return (
-        <span className = "nav-link port-navbar-link">Login</span>
+        <span onClick = {auth0.login} className = "nav-link port-navbar-link">Login</span>
     )
 }
 
 const Logout = () => {
     return (
-        <span className = "nav-link port-navbar-link">Logout</span>
+        <span onClick = {auth0.login} className = "nav-link port-navbar-link">Logout</span>
     )
 }
 

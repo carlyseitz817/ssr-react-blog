@@ -1,4 +1,4 @@
-webpackHotUpdate("static\\development\\pages\\blog.js",{
+webpackHotUpdate("static\\development\\pages\\index.js",{
 
 /***/ "./components/shared/Header.js":
 /*!*************************************!*\
@@ -15,6 +15,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/dist/reactstrap.es.js");
+/* harmony import */ var _blogservices_auth0__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../blogservices/auth0 */ "./blogservices/auth0.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -37,6 +38,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var BsLink = function BsLink(props) {
   var route = props.route,
       title = props.title;
@@ -49,12 +51,14 @@ var BsLink = function BsLink(props) {
 
 var Login = function Login() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    onClick: _blogservices_auth0__WEBPACK_IMPORTED_MODULE_3__["default"].login,
     className: "nav-link port-navbar-link"
   }, "Login");
 };
 
 var Logout = function Logout() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    onClick: _blogservices_auth0__WEBPACK_IMPORTED_MODULE_3__["default"].login,
     className: "nav-link port-navbar-link"
   }, "Logout");
 };
@@ -115,10 +119,9 @@ function (_React$Component) {
         title: "BLOG"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["NavItem"], {
         className: "port-navbar-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BsLink, {
-        route: "#",
-        title: "LOGIN"
-      }))))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Login, null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["NavItem"], {
+        className: "port-navbar-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Logout, null))))));
     }
   }]);
 
@@ -130,4 +133,4 @@ function (_React$Component) {
 /***/ })
 
 })
-//# sourceMappingURL=blog.js.64677e6ec7ef6f974248.hot-update.js.map
+//# sourceMappingURL=index.js.4a4b7f3b5941464ab214.hot-update.js.map
