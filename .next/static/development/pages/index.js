@@ -64,7 +64,6 @@ function () {
   }, {
     key: "setSession",
     value: function setSession(authResult) {
-      debugger;
       localStorage.setItem('isLoggedIn', 'true');
       var expiresAt = authResult.expiresIn * 1000 + new Date().getTime();
       js_cookie__WEBPACK_IMPORTED_MODULE_1___default.a.set('user', authResult.idTokenPayload);
@@ -320,9 +319,9 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BsLink, {
         route: "/blog",
         title: "BLOG"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["NavItem"], {
+      })), !_blogservices_auth0__WEBPACK_IMPORTED_MODULE_3__["default"].isAuthenticated() && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["NavItem"], {
         className: "port-navbar-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Login, null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["NavItem"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Login, null)), _blogservices_auth0__WEBPACK_IMPORTED_MODULE_3__["default"].isAuthenticated() && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["NavItem"], {
         className: "port-navbar-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Logout, null))))));
     }

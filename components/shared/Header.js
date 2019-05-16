@@ -66,12 +66,23 @@ export default class Example extends React.Component {
                             <NavItem className="port-navbar-item">
                                 <BsLink route="/blog" title="BLOG" />
                             </NavItem>
-                            <NavItem className="port-navbar-item">
-                                <Login />
-                            </NavItem>
-                            <NavItem className="port-navbar-item">
-                                <Logout />
-                            </NavItem>
+
+                            {
+                                !auth0.isAuthenticated() &&
+
+                                <NavItem className="port-navbar-item">
+                                    <Login />
+                                </NavItem>
+                            }
+
+                            {
+                                auth0.isAuthenticated() &&
+
+                                <NavItem className="port-navbar-item">
+                                    <Logout />
+                                </NavItem>
+                            }
+                            
                             {/* <UncontrolledDropdown nav inNavbar>
                                 <DropdownToggle nav caret>
                                     Options

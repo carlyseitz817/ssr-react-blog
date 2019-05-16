@@ -56,8 +56,6 @@ class Auth {
       }
 
       setSession(authResult) {
-
-        debugger;
      
         localStorage.setItem('isLoggedIn', 'true');
 
