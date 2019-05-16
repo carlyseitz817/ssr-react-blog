@@ -33,9 +33,34 @@ function () {
       scope: 'openid profile'
     });
     this.login = this.login.bind(this);
+    this.handleAuthentication = this.handleAuthentication.bind(this);
   }
 
   _createClass(Auth, [{
+    key: "handleAuthentication",
+    value: function handleAuthentication() {
+      var _this = this;
+
+      return new Promise(function (resolve, reject) {
+        _this.auth0.parseHash(function (err, authResult) {
+          if (authResult && authResult.accessToken && authResult.idToken) {
+            _this.setSession(authResult);
+
+            resolve();
+          } else if (err) {
+            reject(err); // history.replace('/home');
+
+            console.log(err);
+            alert('Whoops! Something went wrong! Error: ${err.error}. Check the console for further details.');
+          }
+        });
+      });
+    }
+  }, {
+    key: "setSession",
+    value: function setSession() {//this is where the tokens will go
+    }
+  }, {
     key: "login",
     value: function login() {
       this.auth0.authorize();
