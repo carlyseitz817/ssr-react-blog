@@ -7,8 +7,8 @@ class Auth {
     constructor() {
         this.auth0 = new auth0.WebAuth(
             {
-                domain: 'dev-x6yltt2s.auth0.com',
-                clientID: 'lEopvK1CVu4NTl5j5EnvgWCOlSKnMRsZ',
+                domain: 'dev-ofwx6q85.auth0.com',
+                clientID: '7ZE6aNVCenqc2Ghy21fA7VcWbzcgPEWz',
                 redirectUri: 'http://localhost:3000/callback',
                 responseType: 'token id_token',
                 scope: 'openid profile',
@@ -17,7 +17,7 @@ class Auth {
         this.login = this.login.bind(this);
         this.logout = this.logout.bind(this);
         this.handleAuthentication = this.handleAuthentication.bind(this);
-        this.isAuthenticated = this.isAuthenticated.bind(this);
+        // this.isAuthenticated = this.isAuthenticated.bind(this);
 
     };
 
@@ -72,10 +72,10 @@ class Auth {
         this.auth0.authorize()
     }
 
-    isAuthenticated() {
-        const expiresAt = Cookies.getJSON('expiresAt');
-        return new Date().getTime() < expiresAt;
-    }
+    // isAuthenticated() {
+    //     const expiresAt = Cookies.getJSON('expiresAt');
+    //     return new Date().getTime() < expiresAt;
+    // }
 
     verifyToken(token) {
         if (token) {
@@ -92,7 +92,7 @@ class Auth {
         var token = Cookies.getJSON("jwt");
         const verifiedToken = this.verifyToken(token);
 
-        return token;
+        return verifiedToken;
         // return this.isAuthenticated();
     }
 
@@ -107,7 +107,7 @@ class Auth {
             const token = tokenCookie.split("=")[1];
             const verifiedToken = this.verifyToken(token);
 
-            return verifiedToken;
+            return token;
         }
         return undefined;
     }

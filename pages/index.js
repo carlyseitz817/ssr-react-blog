@@ -28,37 +28,13 @@ class Index extends React.Component {
             "Save blog posts",
             "View user-specific blogs"
         ]
-
-        // If use this line, can do:
-        //     <button onClick={this.updateTitle}>CHANGE TITLE</button>
-        //         instead of...
-        //     <button onClick={() => this.updateTitle()}>CHANGE TITLE</button>
-
-        // this.updateTitle = this.updateTitle.bind(this);
-
-        console.log("constructor");
-    };
-    componentDidMount() {
-        console.log("componentDidMount");
     };
 
-    componentDidUpdate() {
-        console.log("componentDidUpdate");
-    };
-
-    componentWillUnmount() {
-        console.log("componentWillUnmount")
-    };
-
-    // arrow functions here so don't need in onClick
-    updateTitle = () => {
-        this.setState({ title: "I am the updated home page" });
-    };
 
     render() {
-        // const { isAuthenticated, user } = this.props.auth;
-        // console.log({user});
-        // console.log({isAuthenticated})
+        const { isAuthenticated, user } = this.props.auth;
+        console.log({user});
+        console.log({isAuthenticated})
         return (
             <BaseLayout {...this.props.auth} className="cover">
                 <div className="main-section">

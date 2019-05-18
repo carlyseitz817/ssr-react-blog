@@ -1462,16 +1462,15 @@ function () {
     Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, Auth);
 
     this.auth0 = new auth0_js__WEBPACK_IMPORTED_MODULE_3___default.a.WebAuth({
-      domain: 'dev-x6yltt2s.auth0.com',
-      clientID: 'lEopvK1CVu4NTl5j5EnvgWCOlSKnMRsZ',
+      domain: 'dev-ofwx6q85.auth0.com',
+      clientID: '7ZE6aNVCenqc2Ghy21fA7VcWbzcgPEWz',
       redirectUri: 'http://localhost:3000/callback',
       responseType: 'token id_token',
       scope: 'openid profile'
     });
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
-    this.handleAuthentication = this.handleAuthentication.bind(this);
-    this.isAuthenticated = this.isAuthenticated.bind(this);
+    this.handleAuthentication = this.handleAuthentication.bind(this); // this.isAuthenticated = this.isAuthenticated.bind(this);
   }
 
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(Auth, [{
@@ -1520,13 +1519,11 @@ function () {
     key: "login",
     value: function login() {
       this.auth0.authorize();
-    }
-  }, {
-    key: "isAuthenticated",
-    value: function isAuthenticated() {
-      var expiresAt = js_cookie__WEBPACK_IMPORTED_MODULE_4___default.a.getJSON('expiresAt');
-      return new Date().getTime() < expiresAt;
-    }
+    } // isAuthenticated() {
+    //     const expiresAt = Cookies.getJSON('expiresAt');
+    //     return new Date().getTime() < expiresAt;
+    // }
+
   }, {
     key: "verifyToken",
     value: function verifyToken(token) {
@@ -1543,7 +1540,7 @@ function () {
     value: function clientAuth() {
       var token = js_cookie__WEBPACK_IMPORTED_MODULE_4___default.a.getJSON("jwt");
       var verifiedToken = this.verifyToken(token);
-      return token; // return this.isAuthenticated();
+      return verifiedToken; // return this.isAuthenticated();
     }
   }, {
     key: "serverAuth",
@@ -1559,7 +1556,7 @@ function () {
 
         var token = tokenCookie.split("=")[1];
         var verifiedToken = this.verifyToken(token);
-        return verifiedToken;
+        return token;
       }
 
       return undefined;
