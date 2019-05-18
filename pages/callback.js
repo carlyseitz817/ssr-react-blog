@@ -7,7 +7,7 @@ import { Container, Row, Col } from 'reactstrap';
 import BasePage from '../components/BasePage';
 import moment from 'moment';
 
-import auth0client from '../blogservices/auth0'
+import auth0client from '../services/auth0'
 
 
 
@@ -52,7 +52,7 @@ class Callback extends React.Component {
         const { posts } = this.props;
         // console.log(this.props);
         return (
-            <BaseLayout>
+            <BaseLayout {...this.props.auth}>
                 <BasePage>
                     <h1>Logging in...</h1>
                     <ul>

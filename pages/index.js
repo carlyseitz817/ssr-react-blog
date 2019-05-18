@@ -56,16 +56,24 @@ class Index extends React.Component {
     };
 
     render() {
-        console.log("render")
-
+        // const { isAuthenticated, user } = this.props.auth;
+        // console.log({user});
+        // console.log({isAuthenticated})
         return (
-            <BaseLayout className="cover">
+            <BaseLayout {...this.props.auth} className="cover">
                 <div className="main-section">
                     <div className="background-image">
                         <img src="/static/images/background-index.png" />
                     </div>
 
                     <Container>
+                        {/* <Row>
+                            <Col md="12">
+                                <h1>
+                                    Hello, {isAuthenticated && <span>{user.name}</span>}!
+                                </h1>
+                            </Col>
+                        </Row> */}
                         <Row>
                             <Col md="6">
                                 <div className="hero-section">

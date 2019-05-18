@@ -5,7 +5,7 @@ import BasePage from '../components/BasePage';
 class About extends React.Component {
     render() {
         return (
-            <BaseLayout>
+            <BaseLayout {...this.props.auth}>
                 <BasePage>
                     <h1>About</h1>
                 </BasePage>
@@ -14,4 +14,4 @@ class About extends React.Component {
     }
 }
 
-export default About
+export default About;

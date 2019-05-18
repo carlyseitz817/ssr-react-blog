@@ -505,7 +505,6 @@ var styles = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
 module.exports = __webpack_require__(/*! next/dist/pages/_error */"./node_modules/next/dist/pages/_error.js");
 
 
@@ -583,9 +582,6 @@ module.exports = require("core-js/library/fn/symbol/iterator");
   \***********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
-=======
-module.exports = __webpack_require__(/*! C:\Users\Danielle\Desktop\Project3\ssr-react-blog\node_modules\next\dist\pages\_error.js */"./node_modules/next/dist/pages/_error.js");
->>>>>>> 27484eaabd77fc1f507495583a10930b1f642bca
 
 module.exports = require("next-server/head");
 
