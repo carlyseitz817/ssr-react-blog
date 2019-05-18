@@ -14,7 +14,7 @@ import auth0client from '../services/auth0'
 class Callback extends React.Component {
 
     async componentDidMount() {
-        auth0client.handleAuthentication();
+        await auth0client.handleAuthentication();
         this.props.router.push('/');
     
     }

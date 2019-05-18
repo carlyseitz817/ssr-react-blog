@@ -61,7 +61,7 @@ class Auth {
         Cookies.remove('expiresAt');
 
         this.auth0.logout({
-            returnTo: '',
+            returnTo: 'http://localhost:3000',
             clientID: 'lEopvK1CVu4NTl5j5EnvgWCOlSKnMRsZ'
         })
 
@@ -80,7 +80,7 @@ class Auth {
     verifyToken(token) {
         if (token) {
             const decodedToken = jwt.decode(token);
-            const expiresAt = decodedToken.exp = 1000;
+            const expiresAt = decodedToken.exp * 1000;
 
             return (decodedToken && new Date().getTime() < expiresAt) ? decodedToken : undefined;
         }

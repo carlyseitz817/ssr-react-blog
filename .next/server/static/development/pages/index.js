@@ -1664,7 +1664,7 @@ function () {
       js_cookie__WEBPACK_IMPORTED_MODULE_4___default.a.remove('jwt');
       js_cookie__WEBPACK_IMPORTED_MODULE_4___default.a.remove('expiresAt');
       this.auth0.logout({
-        returnTo: '',
+        returnTo: 'http://localhost:3000',
         clientID: 'lEopvK1CVu4NTl5j5EnvgWCOlSKnMRsZ'
       });
       console.log('Leaving so soon? :(');
@@ -1683,7 +1683,7 @@ function () {
     value: function verifyToken(token) {
       if (token) {
         var decodedToken = jsonwebtoken__WEBPACK_IMPORTED_MODULE_5___default.a.decode(token);
-        var expiresAt = decodedToken.exp = 1000;
+        var expiresAt = decodedToken.exp * 1000;
         return decodedToken && new Date().getTime() < expiresAt ? decodedToken : undefined;
       }
 
