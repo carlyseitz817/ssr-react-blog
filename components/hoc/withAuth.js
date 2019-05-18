@@ -1,13 +1,13 @@
 import React from 'react';
-import BaseLayout from '../components/layouts/BaseLayout';
-import BasePage from '../components/BasePage';
+import BaseLayout from '../layouts/BaseLayout';
+import BasePage from '../BasePage';
 
 export default function (Component) {
     return class withAuth extends React.Component {
         static async getInitialProps(args) {
             const pageProps = await Component.getInitialProps && await Component.getInitialProps(args);
 
-            return { pageProps };
+            return { ...pageProps };
         }
 
         renderProtectedPage() {
@@ -15,7 +15,7 @@ export default function (Component) {
 
             if (isAuthenticated) {
                 return (
-                    <Component{...this.props} />
+                    <Component {...this.props} />
                 )
             } else {
                 return (
