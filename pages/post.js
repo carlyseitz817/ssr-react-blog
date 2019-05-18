@@ -6,7 +6,7 @@ import {withRouter} from 'next/router';
 class Post extends React.Component {
     render() {
         return (
-            <BaseLayout>
+            <BaseLayout {...this.props.auth}>
                 <div>
                     <h1>{this.props.router.query.title.replace(/-/g, " ")}</h1>
                 </div>

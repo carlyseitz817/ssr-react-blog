@@ -10,36 +10,36 @@ class Blog extends React.Component {
     static async getInitialProps() {
         console.log("getInitialProps");
 
-        let posts = [];
+        // let posts = [];
 
-        try {
-            const response = await axios.get("https://jsonplaceholder.typicode.com/posts");
-            posts = response.data;
-        } catch (err) {
-            console.log(err);
-        }
+        // try {
+        //     const response = await axios.get("https://jsonplaceholder.typicode.com/posts");
+        //     posts = response.data;
+        // } catch (err) {
+        //     console.log(err);
+        // }
 
-        return { posts: posts.splice(0, 10) };
+        // return { posts: posts.splice(0, 10) };
     }
 
-    renderPosts(posts) {
-        return posts.map((post) => {
-            return (
-                <li key={post.id}>
-                    <Link href={`/post?title=${post.title}`} as={`/blog/${post.title}`.replace(/ /g, "-")}>
-                        <a> KEY: {post.id}{post.title} </a>
-                    </Link>
-                </li>
-            )
-        })
-    };
+    // renderPosts(posts) {
+    //     return posts.map((post) => {
+    //         return (
+    //             <li key={post.id}>
+    //                 <Link href={`/post?title=${post.title}`} as={`/blog/${post.title}`.replace(/ /g, "-")}>
+    //                     <a> KEY: {post.id}{post.title} </a>
+    //                 </Link>
+    //             </li>
+    //         )
+    //     })
+    // };
 
     render() {
         // debugger;
-        const { posts, route } = this.props;
+        // const { posts, route } = this.props;
         // console.log(this.props);
         return (
-            <BaseLayout headerType={'landing'} className="blog-listing-page">
+            <BaseLayout {...this.props.auth} headerType={'landing'} className="blog-listing-page">
                 <div className="masthead" style={{ "backgroundImage": "url('/static/images/home-bg.jpg')" }}>
                     <div className="overlay"></div>
                     <Container>
@@ -151,16 +151,6 @@ class Blog extends React.Component {
                     </footer>
                 </BasePage>
             </BaseLayout>
-
-
-            // <BaseLayout>
-            //     <BasePage>
-            //         <h1>Blog Posts</h1>
-            //         <ul>
-            //             {this.renderPosts(posts)}
-            //         </ul>
-            //     </BasePage>
-            // </BaseLayout>
         )
     }
 }

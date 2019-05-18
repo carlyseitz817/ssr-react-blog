@@ -276,7 +276,8 @@ body {
 .base-page {
   padding: 150px 0 100px 0;
   color: black;
-  min-height: 100vh; }
+  min-height: 100vh;
+  background-color: #ecedee; }
   .base-page .page-header .page-header-title {
     font-weight: 700;
     color: black;
