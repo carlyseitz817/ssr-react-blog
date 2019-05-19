@@ -8,8 +8,6 @@ import moment from 'moment';
 
 class Blog extends React.Component {
     static async getInitialProps() {
-        console.log("getInitialProps");
-
         // let posts = [];
 
         // try {
@@ -36,8 +34,8 @@ class Blog extends React.Component {
 
     render() {
         // debugger;
-        // const { posts, route } = this.props;
-        // console.log(this.props);
+        const { posts, route } = this.props;
+
         return (
             <BaseLayout {...this.props.auth} headerType={'landing'} className="blog-listing-page">
                 <div className="masthead" style={{ "backgroundImage": "url('/static/images/home-bg.jpg')" }}>
