@@ -2,12 +2,12 @@ import React from 'react';
 import BaseLayout from '../components/layouts/BaseLayout';
 import BasePage from '../components/BasePage';
 import SlateEditor from '../components/slate-editor/Editor';
+import dynamic from 'next/dynamic';
 // import ControlMenu from '../components/slate-editor/components/SaveDraft';
 // import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import dynamic from 'next/dynamic';
-// const ClassicEditor = dynamic(() => import('@ckeditor/ckeditor5-build-classic'), {
-//   ssr: false
-// });
+const ClassicEditor = dynamic(() => import('@ckeditor/ckeditor5-build-classic'), {
+  ssr: false
+});
 // const CKEditor = dynamic(() => import('@ckeditor/ckeditor5-react'), {
 //   ssr: false
 // });
@@ -18,6 +18,7 @@ import withAuth from '../components/hoc/withAuth';
 import SaveDraft from '../components/slate-editor/components/SaveDraft';
 import { createPost } from '../actions'
 
+
 class BlogEditor extends React.Component {
   constructor(props) {
     super(props);
@@ -27,7 +28,7 @@ class BlogEditor extends React.Component {
   state = {
     title: '',
     subtitle: '',
-    isSaving: false,
+    // isSaving: false,
     lockId: Math.floor(1000 + Math.random() * 9000)
   }
 
@@ -35,28 +36,28 @@ class BlogEditor extends React.Component {
   handleSubtitle = (evt) => this.setState({ subtitle: evt.target.value })
 
   saveBlog() {
+    event.preventDefault();
     const post = {};
-    console.log("saved");
 
     post.title = this.state.title;
     post.subTitle = this.state.subtitle;
     // post.story = story;
-    post.story = evt.editor.getData();
+    post.story = this.props.data;
     console.log("saved");
     console.log(post.story);
 
-    debugger;
-    createPost(post, lockId).then(createdPost => {
-      debugger;
-      // this.setState({isSaving: false});
-      toast.success('Blog Saved Succesfuly!');
-      // Router.pushRoute(`/blogs/${createdPost._id}/edit`);
-    }).catch(err => {
-      // this.setState({isSaving: false});
-      toast.error('Unexpected Error, Copy your progress and refresh browser please.');
-      const message = err.message || 'Server Error!';
-      console.error(message);
-    })
+    // debugger;
+    // createPost(post, lockId).then(createdPost => {
+    //   debugger;
+    //   // this.setState({isSaving: false});
+    //   toast.success('Blog Saved Succesfuly!');
+    //   // Router.pushRoute(`/blogs/${createdPost._id}/edit`);
+    // }).catch(err => {
+    //   // this.setState({isSaving: false});
+    //   toast.error('Unexpected Error, Copy your progress and refresh browser please.');
+    //   const message = err.message || 'Server Error!';
+    //   console.error(message);
+    // })
   };
 
   render() {
@@ -68,7 +69,6 @@ class BlogEditor extends React.Component {
           <input value={this.state.title} onChange={this.handletitle} />
           <label>Subtitle</label>
           <input value={this.state.subtitle} onChange={this.handleSubtitle} />
-          {/* <SlateEditor save={this.saveBlog} /> */}
           <div>
             <CKEditor
               // data="<p>Hello from CKEditor 5!</p>"
@@ -89,7 +89,11 @@ class BlogEditor extends React.Component {
               }}
             />
           </div>
-          <SaveDraft onClick={this.saveBlog} />
+          <SaveDraft
+            onClick={this.saveBlog}
+          >
+            Save Draft
+          </SaveDraft>
         </BasePage>
       </BaseLayout>
     )
@@ -97,3 +101,4 @@ class BlogEditor extends React.Component {
 }
 
 export default withAuth(BlogEditor);
+

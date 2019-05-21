@@ -2,144 +2,147 @@ import React from 'react';
 import Link from 'next/link';
 import ActiveLink from '../ActiveLink';
 import {
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink,
-    Dropdown,
-    DropdownItem,
-    DropdownToggle,
-    DropdownMenu
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  Dropdown,
+  DropdownItem,
+  DropdownToggle,
+  DropdownMenu
 } from 'reactstrap';
 
 import auth0 from '../../services/auth0';
 
 const BsNavLink = (props) => {
-    const { route, title } = props;
-    const className = props.className || "";
+  const { route, title } = props;
+  const className = props.className || "";
 
-    return (
-        <ActiveLink activeClassName="active" route={route}>
-            <a className={`nav-link port-navbar-link ${className}`}> {title} </a>
-        </ActiveLink>
-    )
+  return (
+    <ActiveLink activeClassName="active" route={route}>
+      <a className={`nav-link port-navbar-link ${className}`}> {title} </a>
+    </ActiveLink>
+  )
 }
 
 const Login = () => {
-    return (
-        <span onClick={auth0.login} className="nav-link port-navbar-link clickable"> Login </span>
-    )
+  return (
+    <span onClick={auth0.login} className="nav-link port-navbar-link clickable"> Login </span>
+  )
 }
 
 const Logout = () => {
-    return (
-        <span onClick={auth0.logout} className="nav-link port-navbar-link clickable"> Logout </span>
-    )
+  return (
+    <span onClick={auth0.logout} className="nav-link port-navbar-link clickable"> Logout </span>
+  )
 }
 
 export default class Header extends React.Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            isOpen: false,
-            dropdownOpen: false
-        };
+    this.state = {
+      isOpen: false,
+      dropdownOpen: false
+    };
 
-        this.toggle = this.toggle.bind(this);
-        this.toggleDropdown = this.toggleDropdown.bind(this);
-    }
+    this.toggle = this.toggle.bind(this);
+    this.toggleDropdown = this.toggleDropdown.bind(this);
+  }
 
-    toggle() {
-        this.setState({
-            isOpen: !this.state.isOpen
-        });
-    }
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
 
-    toggleDropdown() {
-        this.setState({
-            dropdownOpen: !this.state.dropdownOpen
-        });
-    }
+  toggleDropdown() {
+    this.setState({
+      dropdownOpen: !this.state.dropdownOpen
+    });
+  }
 
-    renderBlogMenu() {
-        const { isSiteOwner } = this.props;
-        const { user } = this.props;
+  renderBlogMenu() {
+    const { isSiteOwner } = this.props;
+    const { user } = this.props;
 
-        if (user) {
-            return (
-                <Dropdown className="port-navbar-link port-dropdown-menu" nav isOpen={this.state.dropdownOpen} toggle={this.toggleDropdown}>
-                    <DropdownToggle className="port-dropdown-toggle" nav caret>
-                        Blog
+    if (user) {
+      return (
+        <Dropdown className="port-navbar-link port-dropdown-menu" nav isOpen={this.state.dropdownOpen} toggle={this.toggleDropdown}>
+          <DropdownToggle className="port-dropdown-toggle" nav caret>
+            Blog
           </DropdownToggle>
-                    <DropdownMenu>
-                        <DropdownItem>
-                            <BsNavLink className="port-dropdown-item"
-                                route="/blogs"
-                                title="Blogs" />
-                        </DropdownItem>
-                        <DropdownItem>
-                            <BsNavLink className="port-dropdown-item"
-                                route="/blogs/new"
-                                title="Create a Blog" />
-                        </DropdownItem>
-                        <DropdownItem>
-                            <BsNavLink className="port-dropdown-item"
-                                route="/blogs/dashboard"
-                                title="Blogs Dashboard" />
-                        </DropdownItem>
-                    </DropdownMenu>
-                </Dropdown>
-            )
-        }
-
-        return (
-            <NavItem className="port-navbar-item">
-                <BsNavLink route="/blogs" title="Blog" />
-            </NavItem>
-        )
+          <DropdownMenu>
+            <DropdownItem>
+              <BsNavLink className="port-dropdown-item"
+                route="/blogs"
+                title="Blogs" />
+            </DropdownItem>
+            <DropdownItem>
+              <BsNavLink className="port-dropdown-item"
+                route="/blogs/new"
+                title="Create a Blog" />
+            </DropdownItem>
+            <DropdownItem>
+              <BsNavLink className="port-dropdown-item"
+                route="/blogs/dashboard"
+                title="Blogs Dashboard" />
+            </DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
+      )
     }
 
-    render() {
-        const { isAuthenticated, user, className } = this.props;
-        const { isOpen } = this.state;
+    return (
+      <NavItem className="port-navbar-item">
+        <BsNavLink route="/blogs" title="Blog" />
+      </NavItem>
+    )
+  }
 
-        const menuOpenClass = isOpen ? 'menu-open' : 'menu-close';
+  render() {
+    const { isAuthenticated, user, className } = this.props;
+    const { isOpen } = this.state;
 
-        return (
-            <div>
-                <Navbar className="port-navbar port-default absolute" color="transparent" dark expand="md">
-                    <NavbarBrand className="port-navbar-brand" href="/">SSR Next.js Blog</NavbarBrand>
-                    <NavbarToggler onClick={this.toggle} />
-                    <Collapse isOpen={this.state.isOpen} navbar>
-                        <Nav className="ml-auto" navbar>
-                            <NavItem className="port-navbar-item">
-                                <BsNavLink route="/about" title="ABOUT" />
-                            </NavItem>
-                            <NavItem className="port-navbar-item">
-                                <BsNavLink route="/blog" title="BLOG" />
-                            </NavItem>
+    const menuOpenClass = isOpen ? 'menu-open' : 'menu-close';
 
-                            {
-                                !isAuthenticated &&
+    return (
+      <div>
+        <Navbar className="port-navbar port-default absolute" color="transparent" dark expand="md">
+          <NavbarBrand className="port-navbar-brand" href="/">SSR Next.js Blog</NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className="ml-auto" navbar>
+              <NavItem className="port-navbar-item">
+                <BsNavLink route="/about" title="ABOUT" />
+              </NavItem>
+              <NavItem className="port-navbar-item">
+                <BsNavLink route="/blog" title="BLOG" />
+              </NavItem>
+              <NavItem className="port-navbar-item">
+                <BsNavLink route="/blogEditor" title="BLOG EDITOR" />
+              </NavItem>
 
-                                <NavItem className="port-navbar-item">
-                                    <Login />
-                                </NavItem>
-                            }
+              {
+                !isAuthenticated &&
 
-                            {
-                                isAuthenticated &&
+                <NavItem className="port-navbar-item">
+                  <Login />
+                </NavItem>
+              }
 
-                                <NavItem className="port-navbar-item">
-                                    <Logout />
-                                </NavItem>
-                            }
+              {
+                isAuthenticated &&
 
-                            {/* <UncontrolledDropdown nav inNavbar>
+                <NavItem className="port-navbar-item">
+                  <Logout />
+                </NavItem>
+              }
+
+              {/* <UncontrolledDropdown nav inNavbar>
                             <DropdownToggle nav caret>
                                 Options
             </DropdownToggle>
@@ -156,12 +159,12 @@ export default class Header extends React.Component {
               </DropdownItem>
                             </DropdownMenu>
                         </UncontrolledDropdown> */}
-                        </Nav>
-                    </Collapse>
-                </Navbar>
-            </div>
-        );
-    }
+            </Nav>
+          </Collapse>
+        </Navbar>
+      </div>
+    );
+  }
 }
 
 

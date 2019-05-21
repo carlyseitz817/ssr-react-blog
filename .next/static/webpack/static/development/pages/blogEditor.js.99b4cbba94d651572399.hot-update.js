@@ -25,6 +25,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(next_dynamic__WEBPACK_IMPORTED_MODULE_11__);
 /* harmony import */ var _components_hoc_withAuth__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/hoc/withAuth */ "./components/hoc/withAuth.js");
 /* harmony import */ var _components_slate_editor_components_SaveDraft__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/slate-editor/components/SaveDraft */ "./components/slate-editor/components/SaveDraft.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../actions */ "./actions/index.js");
+
 
 
 
@@ -38,10 +40,17 @@ __webpack_require__.r(__webpack_exports__);
  // import ControlMenu from '../components/slate-editor/components/SaveDraft';
 // import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
- // const ClassicEditor = dynamic(() => import('@ckeditor/ckeditor5-build-classic'), {
-//   ssr: false
-// });
-// const CKEditor = dynamic(() => import('@ckeditor/ckeditor5-react'), {
+var ClassicEditor = next_dynamic__WEBPACK_IMPORTED_MODULE_11___default()(function () {
+  return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.t.bind(null, /*! @ckeditor/ckeditor5-build-classic */ "./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js", 7));
+}, {
+  ssr: false,
+  loadableGenerated: {
+    webpack: function webpack() {
+      return [/*require.resolve*/(/*! @ckeditor/ckeditor5-build-classic */ "./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js")];
+    },
+    modules: ['@ckeditor/ckeditor5-build-classic']
+  }
+}); // const CKEditor = dynamic(() => import('@ckeditor/ckeditor5-react'), {
 //   ssr: false
 // });
 
@@ -56,6 +65,7 @@ var CKEditor = next_dynamic__WEBPACK_IMPORTED_MODULE_11___default()(function () 
     modules: ['../components/CKEditor']
   }
 });
+
 
 
 
@@ -74,7 +84,7 @@ function (_React$Component) {
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "state", {
       title: '',
       subtitle: '',
-      isSaving: false,
+      // isSaving: false,
       lockId: Math.floor(1000 + Math.random() * 9000)
     });
 
@@ -97,16 +107,16 @@ function (_React$Component) {
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(BlogEditor, [{
     key: "saveBlog",
     value: function saveBlog() {
+      event.preventDefault();
       var post = {};
-      console.log("saved");
       post.title = this.state.title;
       post.subTitle = this.state.subtitle; // post.story = story;
 
       post.story = evt.editor.getData();
       console.log("saved");
-      console.log(post.story);
-      debugger;
-      createPost(post, lockId).then(function (createdPost) {
+      console.log(post.story); // debugger;
+
+      Object(_actions__WEBPACK_IMPORTED_MODULE_14__["createPost"])(post, lockId).then(function (createdPost) {
         debugger; // this.setState({isSaving: false});
 
         toast.success('Blog Saved Succesfuly!'); // Router.pushRoute(`/blogs/${createdPost._id}/edit`);
@@ -153,7 +163,7 @@ function (_React$Component) {
         }
       })), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_slate_editor_components_SaveDraft__WEBPACK_IMPORTED_MODULE_13__["default"], {
         onClick: this.saveBlog
-      })));
+      }, "Save Draft")));
     }
   }]);
 
@@ -165,4 +175,4 @@ function (_React$Component) {
 /***/ })
 
 })
-//# sourceMappingURL=blogEditor.js.3c6fb19822fc0885dd2a.hot-update.js.map
+//# sourceMappingURL=blogEditor.js.99b4cbba94d651572399.hot-update.js.map

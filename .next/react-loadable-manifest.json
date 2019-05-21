@@ -14,5 +14,13 @@
       "file": "static/chunks/0.js",
       "publicPath": "static/chunks/0.js"
     }
+  ],
+  "@ckeditor/ckeditor5-build-classic": [
+    {
+      "id": "./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js",
+      "name": "./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js",
+      "file": "static/chunks/2.js",
+      "publicPath": "static/chunks/2.js"
+    }
   ]
 }
