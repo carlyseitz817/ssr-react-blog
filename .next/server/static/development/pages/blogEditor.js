@@ -3,6 +3,12 @@ module.exports =
 /******/ 	// The module cache
 /******/ 	var installedModules = require('../../../ssr-module-cache.js');
 /******/
+/******/ 	// object to store loaded chunks
+/******/ 	// "0" means "already loaded"
+/******/ 	var installedChunks = {
+/******/ 		"static/development/pages/blogEditor.js": 0
+/******/ 	};
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/
@@ -33,6 +39,26 @@ module.exports =
 /******/ 		return module.exports;
 /******/ 	}
 /******/
+/******/ 	// This file contains only the entry chunk.
+/******/ 	// The chunk loading function for additional chunks
+/******/ 	__webpack_require__.e = function requireEnsure(chunkId) {
+/******/ 		var promises = [];
+/******/
+/******/
+/******/ 		// require() chunk loading for javascript
+/******/
+/******/ 		// "0" is the signal for "already loaded"
+/******/ 		if(installedChunks[chunkId] !== 0) {
+/******/ 			var chunk = require("../../../" + ({}[chunkId]||chunkId) + ".js");
+/******/ 			var moreModules = chunk.modules, chunkIds = chunk.ids;
+/******/ 			for(var moduleId in moreModules) {
+/******/ 				modules[moduleId] = moreModules[moduleId];
+/******/ 			}
+/******/ 			for(var i = 0; i < chunkIds.length; i++)
+/******/ 				installedChunks[chunkIds[i]] = 0;
+/******/ 		}
+/******/ 		return Promise.all(promises);
+/******/ 	};
 /******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
@@ -85,6 +111,13 @@ module.exports =
 /******/
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// uncaught error handler for webpack runtime
+/******/ 	__webpack_require__.oe = function(err) {
+/******/ 		process.nextTick(function() {
+/******/ 			throw err; // catch this error by using import().catch()
+/******/ 		});
+/******/ 	};
 /******/
 /******/
 /******/ 	// Load entry module and return exports
@@ -882,9 +915,20 @@ function (_React$Component) {
 
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(SlateEditor, [{
     key: "save",
-    value: function save() {
+    value: function (_save) {
+      function save() {
+        return _save.apply(this, arguments);
+      }
+
+      save.toString = function () {
+        return _save.toString();
+      };
+
+      return save;
+    }(function () {
       var text = this.state.value;
-    }
+      save(text);
+    })
     /**
      * Render.
      *
@@ -2327,8 +2371,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_layouts_BaseLayout__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/layouts/BaseLayout */ "./components/layouts/BaseLayout.js");
 /* harmony import */ var _components_BasePage__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/BasePage */ "./components/BasePage.js");
 /* harmony import */ var _components_slate_editor_Editor__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/slate-editor/Editor */ "./components/slate-editor/Editor.js");
-/* harmony import */ var _components_hoc_withAuth__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/hoc/withAuth */ "./components/hoc/withAuth.js");
-/* harmony import */ var _components_slate_editor_components_SaveDraft__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/slate-editor/components/SaveDraft */ "./components/slate-editor/components/SaveDraft.js");
+/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! next/dynamic */ "next/dynamic");
+/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(next_dynamic__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _components_hoc_withAuth__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/hoc/withAuth */ "./components/hoc/withAuth.js");
+/* harmony import */ var _components_slate_editor_components_SaveDraft__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/slate-editor/components/SaveDraft */ "./components/slate-editor/components/SaveDraft.js");
 
 
 
@@ -2340,7 +2386,26 @@ __webpack_require__.r(__webpack_exports__);
 
 
  // import ControlMenu from '../components/slate-editor/components/SaveDraft';
+// import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
+ // const ClassicEditor = dynamic(() => import('@ckeditor/ckeditor5-build-classic'), {
+//   ssr: false
+// });
+// const CKEditor = dynamic(() => import('@ckeditor/ckeditor5-react'), {
+//   ssr: false
+// });
+
+var CKEditor = next_dynamic__WEBPACK_IMPORTED_MODULE_11___default()(function () {
+  return __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ../components/CKEditor */ "./components/CKEditor.js"));
+}, {
+  ssr: false,
+  loadableGenerated: {
+    webpack: function webpack() {
+      return [/*require.resolve*/(/*! ../components/CKEditor */ "./components/CKEditor.js")];
+    },
+    modules: ['../components/CKEditor']
+  }
+});
 
 
 
@@ -2381,15 +2446,31 @@ function (_React$Component) {
 
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(BlogEditor, [{
     key: "saveBlog",
-    value: function saveBlog(story) {
+    value: function saveBlog() {
+      var post = {};
+      console.log("saved");
       post.title = this.state.title;
-      post.subTitle = this.state.subtitle;
-      post.story = story;
+      post.subTitle = this.state.subtitle; // post.story = story;
+
+      post.story = evt.editor.getData();
+      console.log("saved");
+      console.log(post.story);
+      debugger;
+      createPost(post, lockId).then(function (createdPost) {
+        debugger; // this.setState({isSaving: false});
+
+        toast.success('Blog Saved Succesfuly!'); // Router.pushRoute(`/blogs/${createdPost._id}/edit`);
+      }).catch(function (err) {
+        // this.setState({isSaving: false});
+        toast.error('Unexpected Error, Copy your progress and refresh browser please.');
+        var message = err.message || 'Server Error!';
+        console.error(message);
+      });
     }
   }, {
     key: "render",
     value: function render() {
-      debugger;
+      // debugger;
       return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_layouts_BaseLayout__WEBPACK_IMPORTED_MODULE_8__["default"], this.props.auth, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_BasePage__WEBPACK_IMPORTED_MODULE_9__["default"], {
         containerClass: "editor-wrapper",
         className: "blog-editor-page"
@@ -2399,9 +2480,28 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("label", null, "Subtitle"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("input", {
         value: this.state.subtitle,
         onChange: this.handleSubtitle
-      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_slate_editor_Editor__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        save: this.saveBlog
-      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_slate_editor_components_SaveDraft__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(CKEditor // data="<p>Hello from CKEditor 5!</p>"
+      , {
+        save: this.saveBlog,
+        onInit: function onInit(editor) {
+          // You can store the "editor" and use when it is needed.
+          console.log('Editor is ready to use!', editor);
+        },
+        onChange: function onChange(event, editor) {
+          var data = editor.getData();
+          console.log({
+            event: event,
+            editor: editor,
+            data: data
+          });
+        },
+        onBlur: function onBlur(editor) {
+          console.log('Blur.', editor);
+        },
+        onFocus: function onFocus(editor) {
+          console.log('Focus.', editor);
+        }
+      })), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_slate_editor_components_SaveDraft__WEBPACK_IMPORTED_MODULE_13__["default"], {
         onClick: this.saveBlog
       })));
     }
@@ -2410,7 +2510,7 @@ function (_React$Component) {
   return BlogEditor;
 }(react__WEBPACK_IMPORTED_MODULE_7___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(_components_hoc_withAuth__WEBPACK_IMPORTED_MODULE_11__["default"])(BlogEditor));
+/* harmony default export */ __webpack_exports__["default"] = (Object(_components_hoc_withAuth__WEBPACK_IMPORTED_MODULE_12__["default"])(BlogEditor));
 
 /***/ }),
 
@@ -2585,6 +2685,28 @@ var auth0client = new Auth();
 
 module.exports = __webpack_require__(/*! /Users/carlyseitz/Documents/Homework Assignments/ssr-react-blog/pages/blogEditor.js */"./pages/blogEditor.js");
 
+
+/***/ }),
+
+/***/ "@ckeditor/ckeditor5-build-classic":
+/*!****************************************************!*\
+  !*** external "@ckeditor/ckeditor5-build-classic" ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@ckeditor/ckeditor5-build-classic");
+
+/***/ }),
+
+/***/ "@ckeditor/ckeditor5-react":
+/*!********************************************!*\
+  !*** external "@ckeditor/ckeditor5-react" ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@ckeditor/ckeditor5-react");
 
 /***/ }),
 
@@ -2816,6 +2938,17 @@ module.exports = require("next-routes");
 /***/ (function(module, exports) {
 
 module.exports = require("next-server/dist/lib/utils");
+
+/***/ }),
+
+/***/ "next/dynamic":
+/*!*******************************!*\
+  !*** external "next/dynamic" ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("next/dynamic");
 
 /***/ }),
 

@@ -77,7 +77,8 @@ class SlateEditor extends React.Component {
     }
 
     save() {
-        const text = this.state.value
+        const text = this.state.value;
+        save(text)
     }
 
     /**
