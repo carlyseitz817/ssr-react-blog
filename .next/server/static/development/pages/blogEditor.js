@@ -617,24 +617,26 @@ function (_React$Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
-/* harmony import */ var slate_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! slate-react */ "slate-react");
-/* harmony import */ var slate_react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(slate_react__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var slate__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! slate */ "slate");
-/* harmony import */ var slate__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(slate__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _value_json__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./value.json */ "./components/slate-editor/value.json");
-var _value_json__WEBPACK_IMPORTED_MODULE_10___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./value.json */ "./components/slate-editor/value.json", 1);
-/* harmony import */ var is_hotkey__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! is-hotkey */ "is-hotkey");
-/* harmony import */ var is_hotkey__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(is_hotkey__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _slate_editor_components__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../slate-editor/components */ "./components/slate-editor/components.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
+/* harmony import */ var slate_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! slate-react */ "slate-react");
+/* harmony import */ var slate_react__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(slate_react__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var slate__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! slate */ "slate");
+/* harmony import */ var slate__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(slate__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _value_json__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./value.json */ "./components/slate-editor/value.json");
+var _value_json__WEBPACK_IMPORTED_MODULE_11___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./value.json */ "./components/slate-editor/value.json", 1);
+/* harmony import */ var is_hotkey__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! is-hotkey */ "is-hotkey");
+/* harmony import */ var is_hotkey__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(is_hotkey__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _slate_editor_components__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../slate-editor/components */ "./components/slate-editor/components.js");
+
 
 
 
@@ -661,10 +663,10 @@ var DEFAULT_NODE = 'paragraph';
  * @type {Function}
  */
 
-var isBoldHotkey = Object(is_hotkey__WEBPACK_IMPORTED_MODULE_11__["isKeyHotkey"])('mod+b');
-var isItalicHotkey = Object(is_hotkey__WEBPACK_IMPORTED_MODULE_11__["isKeyHotkey"])('mod+i');
-var isUnderlinedHotkey = Object(is_hotkey__WEBPACK_IMPORTED_MODULE_11__["isKeyHotkey"])('mod+u');
-var isCodeHotkey = Object(is_hotkey__WEBPACK_IMPORTED_MODULE_11__["isKeyHotkey"])('mod+`');
+var isBoldHotkey = Object(is_hotkey__WEBPACK_IMPORTED_MODULE_12__["isKeyHotkey"])('mod+b');
+var isItalicHotkey = Object(is_hotkey__WEBPACK_IMPORTED_MODULE_12__["isKeyHotkey"])('mod+i');
+var isUnderlinedHotkey = Object(is_hotkey__WEBPACK_IMPORTED_MODULE_12__["isKeyHotkey"])('mod+u');
+var isCodeHotkey = Object(is_hotkey__WEBPACK_IMPORTED_MODULE_12__["isKeyHotkey"])('mod+`');
 /**
  * The rich text example.
  *
@@ -674,23 +676,23 @@ var isCodeHotkey = Object(is_hotkey__WEBPACK_IMPORTED_MODULE_11__["isKeyHotkey"]
 var SlateEditor =
 /*#__PURE__*/
 function (_React$Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__["default"])(SlateEditor, _React$Component);
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__["default"])(SlateEditor, _React$Component);
 
   function SlateEditor() {
     var _getPrototypeOf2;
 
     var _this;
 
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, SlateEditor);
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, SlateEditor);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, (_getPrototypeOf2 = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(SlateEditor)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__["default"])(this, (_getPrototypeOf2 = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__["default"])(SlateEditor)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "state", {
-      value: slate__WEBPACK_IMPORTED_MODULE_8__["Value"].fromJSON(_value_json__WEBPACK_IMPORTED_MODULE_10__)
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "state", {
+      value: slate__WEBPACK_IMPORTED_MODULE_9__["Value"].fromJSON(_value_json__WEBPACK_IMPORTED_MODULE_11__)
       /**
        * Check if the current selection has a mark with `type` in it.
        *
@@ -700,36 +702,36 @@ function (_React$Component) {
 
     });
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "hasMark", function (type) {
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "hasMark", function (type) {
       var value = _this.state.value;
       return value.activeMarks.some(function (mark) {
         return mark.type === type;
       });
     });
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "hasBlock", function (type) {
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "hasBlock", function (type) {
       var value = _this.state.value;
       return value.blocks.some(function (node) {
         return node.type === type;
       });
     });
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "ref", function (editor) {
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "ref", function (editor) {
       _this.editor = editor;
     });
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "renderMarkButton", function (type, icon) {
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "renderMarkButton", function (type, icon) {
       var isActive = _this.hasMark(type);
 
-      return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_slate_editor_components__WEBPACK_IMPORTED_MODULE_12__["Button"], {
+      return react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(_slate_editor_components__WEBPACK_IMPORTED_MODULE_13__["Button"], {
         active: isActive,
         onMouseDown: function onMouseDown(event) {
           return _this.onClickMark(event, type);
         }
-      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_slate_editor_components__WEBPACK_IMPORTED_MODULE_12__["Icon"], null, icon));
+      }, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(_slate_editor_components__WEBPACK_IMPORTED_MODULE_13__["Icon"], null, icon));
     });
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "renderBlockButton", function (type, icon) {
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "renderBlockButton", function (type, icon) {
       var isActive = _this.hasBlock(type);
 
       if (['numbered-list', 'bulleted-list'].includes(type)) {
@@ -743,67 +745,67 @@ function (_React$Component) {
         }
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_slate_editor_components__WEBPACK_IMPORTED_MODULE_12__["Button"], {
+      return react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(_slate_editor_components__WEBPACK_IMPORTED_MODULE_13__["Button"], {
         active: isActive,
         onMouseDown: function onMouseDown(event) {
           return _this.onClickBlock(event, type);
         }
-      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_slate_editor_components__WEBPACK_IMPORTED_MODULE_12__["Icon"], null, icon));
+      }, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(_slate_editor_components__WEBPACK_IMPORTED_MODULE_13__["Icon"], null, icon));
     });
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "renderBlock", function (props, editor, next) {
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "renderBlock", function (props, editor, next) {
       var attributes = props.attributes,
           children = props.children,
           node = props.node;
 
       switch (node.type) {
         case 'block-quote':
-          return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("blockquote", attributes, children);
+          return react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("blockquote", attributes, children);
 
         case 'bulleted-list':
-          return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("ul", attributes, children);
+          return react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("ul", attributes, children);
 
         case 'heading-one':
-          return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("h1", attributes, children);
+          return react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("h1", attributes, children);
 
         case 'heading-two':
-          return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("h2", attributes, children);
+          return react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("h2", attributes, children);
 
         case 'list-item':
-          return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("li", attributes, children);
+          return react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("li", attributes, children);
 
         case 'numbered-list':
-          return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("ol", attributes, children);
+          return react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("ol", attributes, children);
 
         default:
           return next();
       }
     });
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "renderMark", function (props, editor, next) {
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "renderMark", function (props, editor, next) {
       var children = props.children,
           mark = props.mark,
           attributes = props.attributes;
 
       switch (mark.type) {
         case 'bold':
-          return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("strong", attributes, children);
+          return react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("strong", attributes, children);
 
         case 'code':
-          return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("code", attributes, children);
+          return react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("code", attributes, children);
 
         case 'italic':
-          return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("em", attributes, children);
+          return react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("em", attributes, children);
 
         case 'underlined':
-          return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("u", attributes, children);
+          return react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("u", attributes, children);
 
         default:
           return next();
       }
     });
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "onChange", function (_ref) {
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "onChange", function (_ref) {
       var value = _ref.value;
 
       _this.setState({
@@ -811,7 +813,7 @@ function (_React$Component) {
       });
     });
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "onKeyDown", function (event, editor, next) {
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "onKeyDown", function (event, editor, next) {
       var mark;
 
       if (isBoldHotkey(event)) {
@@ -830,16 +832,16 @@ function (_React$Component) {
       editor.toggleMark(mark);
     });
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "onClickMark", function (event, type) {
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "onClickMark", function (event, type) {
       event.preventDefault();
 
       _this.editor.toggleMark(type);
     });
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "onClickBlock", function (event, type) {
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "onClickBlock", function (event, type) {
       event.preventDefault();
 
-      var _assertThisInitialize = Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this),
+      var _assertThisInitialize = Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this),
           editor = _assertThisInitialize.editor;
 
       var value = editor.value;
@@ -878,16 +880,21 @@ function (_React$Component) {
     return _this;
   }
 
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(SlateEditor, [{
-    key: "render",
-
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(SlateEditor, [{
+    key: "save",
+    value: function save() {
+      var text = this.state.value;
+    }
     /**
      * Render.
      *
      * @return {Element}
      */
+
+  }, {
+    key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_slate_editor_components__WEBPACK_IMPORTED_MODULE_12__["Toolbar"], null, this.renderMarkButton('bold', 'format_bold'), this.renderMarkButton('italic', 'format_italic'), this.renderMarkButton('underlined', 'format_underlined'), this.renderMarkButton('code', 'code'), this.renderBlockButton('heading-one', 'looks_one'), this.renderBlockButton('heading-two', 'looks_two'), this.renderBlockButton('block-quote', 'format_quote'), this.renderBlockButton('numbered-list', 'format_list_numbered'), this.renderBlockButton('bulleted-list', 'format_list_bulleted')), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(slate_react__WEBPACK_IMPORTED_MODULE_7__["Editor"], {
+      return react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(_slate_editor_components__WEBPACK_IMPORTED_MODULE_13__["Toolbar"], null, this.renderMarkButton('bold', 'format_bold'), this.renderMarkButton('italic', 'format_italic'), this.renderMarkButton('underlined', 'format_underlined'), this.renderMarkButton('code', 'code'), this.renderBlockButton('heading-one', 'looks_one'), this.renderBlockButton('heading-two', 'looks_two'), this.renderBlockButton('block-quote', 'format_quote'), this.renderBlockButton('numbered-list', 'format_list_numbered'), this.renderBlockButton('bulleted-list', 'format_list_bulleted')), react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(slate_react__WEBPACK_IMPORTED_MODULE_8__["Editor"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, this.props, {
         spellCheck: true,
         autoFocus: true,
         placeholder: "Enter some rich text...",
@@ -897,7 +904,7 @@ function (_React$Component) {
         onKeyDown: this.onKeyDown,
         renderBlock: this.renderBlock,
         renderMark: this.renderMark
-      }));
+      })));
     }
     /**
      * Render a mark-toggling toolbar button.
@@ -910,7 +917,7 @@ function (_React$Component) {
   }]);
 
   return SlateEditor;
-}(react__WEBPACK_IMPORTED_MODULE_9___default.a.Component);
+}(react__WEBPACK_IMPORTED_MODULE_10___default.a.Component);
 /**
  * Export.
  */
@@ -1096,33 +1103,86 @@ var Toolbar = react__WEBPACK_IMPORTED_MODULE_3___default.a.forwardRef(function (
 
 /***/ }),
 
-/***/ "./components/slate-editor/components/ControlMenu.js":
-/*!***********************************************************!*\
-  !*** ./components/slate-editor/components/ControlMenu.js ***!
-  \***********************************************************/
+/***/ "./components/slate-editor/components/SaveDraft.js":
+/*!*********************************************************!*\
+  !*** ./components/slate-editor/components/SaveDraft.js ***!
+  \*********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "reactstrap");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! reactstrap */ "reactstrap");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_6__);
 
 
 
-var ControlMenu = function ControlMenu(props) {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "control-menu"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "status-box"
-  }, "Saved"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-    color: "success"
-  }, "Save"));
-};
 
-/* harmony default export */ __webpack_exports__["default"] = (ControlMenu);
+
+
+
+
+var SaveDraft =
+/*#__PURE__*/
+function (_Component) {
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(SaveDraft, _Component);
+
+  function SaveDraft() {
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, SaveDraft);
+
+    return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(SaveDraft).apply(this, arguments));
+  }
+
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(SaveDraft, [{
+    key: "render",
+    // constructor(props) {
+    //     super(props)
+    //     this.savePost = this.savePost.bind(this)
+    // }
+    // savePost = event => {
+    //     event.preventDefault();
+    //     const postId = this.props.id;
+    //     const postData = {
+    //         userId: this.props.userId,
+    //         slug: this.props.slug,
+    //         title: this.props.title,
+    //         subTitle: this.props.subTitle,
+    //         story: this.props.story,
+    //         // createdAt: this.props.createdAt,
+    //         // updatedAt: this.props.updatedAt,
+    //         // status: this.props.status,
+    //         // author: user.name
+    //     }
+    //     API.savePost(postData)
+    //         .then(this.props.handleSaveReRender(postId));
+    // }
+    // render() {
+    //     return (
+    //         <button className='btn btn-primary' onClick={this.savePost}>Save Draft</button>
+    //     )
+    // }
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "control-menu"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "status-box"
+      }, "Saved"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Button"], {
+        color: "success"
+      }, "Save"));
+    }
+  }]);
+
+  return SaveDraft;
+}(react__WEBPACK_IMPORTED_MODULE_5__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (SaveDraft);
 
 /***/ }),
 
@@ -2259,14 +2319,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _components_layouts_BaseLayout__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/layouts/BaseLayout */ "./components/layouts/BaseLayout.js");
-/* harmony import */ var _components_BasePage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/BasePage */ "./components/BasePage.js");
-/* harmony import */ var _components_slate_editor_Editor__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/slate-editor/Editor */ "./components/slate-editor/Editor.js");
-/* harmony import */ var _components_slate_editor_components_ControlMenu__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/slate-editor/components/ControlMenu */ "./components/slate-editor/components/ControlMenu.js");
-/* harmony import */ var _components_hoc_withAuth__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/hoc/withAuth */ "./components/hoc/withAuth.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _components_layouts_BaseLayout__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/layouts/BaseLayout */ "./components/layouts/BaseLayout.js");
+/* harmony import */ var _components_BasePage__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/BasePage */ "./components/BasePage.js");
+/* harmony import */ var _components_slate_editor_Editor__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/slate-editor/Editor */ "./components/slate-editor/Editor.js");
+/* harmony import */ var _components_hoc_withAuth__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/hoc/withAuth */ "./components/hoc/withAuth.js");
+/* harmony import */ var _components_slate_editor_components_SaveDraft__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/slate-editor/components/SaveDraft */ "./components/slate-editor/components/SaveDraft.js");
 
 
 
@@ -2275,6 +2337,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+ // import ControlMenu from '../components/slate-editor/components/SaveDraft';
 
 
 
@@ -2282,31 +2347,70 @@ __webpack_require__.r(__webpack_exports__);
 var BlogEditor =
 /*#__PURE__*/
 function (_React$Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(BlogEditor, _React$Component);
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__["default"])(BlogEditor, _React$Component);
 
-  function BlogEditor() {
+  function BlogEditor(props) {
+    var _this;
+
     Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, BlogEditor);
 
-    return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(BlogEditor).apply(this, arguments));
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(BlogEditor).call(this, props));
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "state", {
+      title: '',
+      subtitle: '',
+      isSaving: false,
+      lockId: Math.floor(1000 + Math.random() * 9000)
+    });
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "handletitle", function (evt) {
+      return _this.setState({
+        title: evt.target.value
+      });
+    });
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "handleSubtitle", function (evt) {
+      return _this.setState({
+        subtitle: evt.target.value
+      });
+    });
+
+    _this.saveBlog = _this.saveBlog.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this));
+    return _this;
   }
 
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(BlogEditor, [{
+    key: "saveBlog",
+    value: function saveBlog(story) {
+      post.title = this.state.title;
+      post.subTitle = this.state.subtitle;
+      post.story = story;
+    }
+  }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_components_layouts_BaseLayout__WEBPACK_IMPORTED_MODULE_6__["default"], this.props.auth, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_components_BasePage__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      debugger;
+      return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_layouts_BaseLayout__WEBPACK_IMPORTED_MODULE_8__["default"], this.props.auth, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_BasePage__WEBPACK_IMPORTED_MODULE_9__["default"], {
+        containerClass: "editor-wrapper",
         className: "blog-editor-page"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h1", null, "Write a New Post"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        style: {
-          backgroundColor: "white"
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_components_slate_editor_Editor__WEBPACK_IMPORTED_MODULE_8__["default"], null)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_components_slate_editor_components_ControlMenu__WEBPACK_IMPORTED_MODULE_9__["default"], null)));
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("label", null, "Title"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("input", {
+        value: this.state.title,
+        onChange: this.handletitle
+      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("label", null, "Subtitle"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("input", {
+        value: this.state.subtitle,
+        onChange: this.handleSubtitle
+      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_slate_editor_Editor__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        save: this.saveBlog
+      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_slate_editor_components_SaveDraft__WEBPACK_IMPORTED_MODULE_12__["default"], {
+        onClick: this.saveBlog
+      })));
     }
   }]);
 
   return BlogEditor;
-}(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component);
+}(react__WEBPACK_IMPORTED_MODULE_7___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(_components_hoc_withAuth__WEBPACK_IMPORTED_MODULE_10__["default"])(BlogEditor));
+/* harmony default export */ __webpack_exports__["default"] = (Object(_components_hoc_withAuth__WEBPACK_IMPORTED_MODULE_11__["default"])(BlogEditor));
 
 /***/ }),
 
