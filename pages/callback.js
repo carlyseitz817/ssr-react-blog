@@ -21,8 +21,6 @@ class Callback extends React.Component {
 
 
     static async getInitialProps() {
-        console.log("getInitialProps");
-
         let posts = [];
 
         try {
