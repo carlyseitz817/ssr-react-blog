@@ -2,13 +2,9 @@ import { Component } from 'react'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import CKEditor from '@ckeditor/ckeditor5-react';
 class CKEditorWrapper extends Component {
-  state = {
-    data: "<p>Hello from CKEditor 5!</p>"
-  }
-
   save() {
-    const story = this.state.data;
-    save(story);
+    const data = editor.getData();
+    save(data);
   }
 
   render() {

@@ -28,6 +28,7 @@ class BlogEditor extends React.Component {
   state = {
     title: '',
     subtitle: '',
+    story: '',
     // isSaving: false,
     lockId: Math.floor(1000 + Math.random() * 9000)
   }
@@ -35,14 +36,13 @@ class BlogEditor extends React.Component {
   handletitle = (evt) => this.setState({ title: evt.target.value })
   handleSubtitle = (evt) => this.setState({ subtitle: evt.target.value })
 
-  saveBlog() {
+  saveBlog(story) {
     event.preventDefault();
     const post = {};
 
     post.title = this.state.title;
     post.subTitle = this.state.subtitle;
-    // post.story = story;
-    post.story = this.props.data;
+    post.story = this.state.story;
     console.log("saved");
     console.log(post.story);
 
@@ -79,6 +79,7 @@ class BlogEditor extends React.Component {
               }}
               onChange={(event, editor) => {
                 const data = editor.getData();
+                this.setState({ story: data });
                 console.log({ event, editor, data });
               }}
               onBlur={editor => {

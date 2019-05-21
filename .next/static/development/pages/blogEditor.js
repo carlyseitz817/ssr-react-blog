@@ -90405,6 +90405,7 @@ function (_React$Component) {
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "state", {
       title: '',
       subtitle: '',
+      story: '',
       // isSaving: false,
       lockId: Math.floor(1000 + Math.random() * 9000)
     });
@@ -90427,13 +90428,12 @@ function (_React$Component) {
 
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(BlogEditor, [{
     key: "saveBlog",
-    value: function saveBlog() {
+    value: function saveBlog(story) {
       event.preventDefault();
       var post = {};
       post.title = this.state.title;
-      post.subTitle = this.state.subtitle; // post.story = story;
-
-      post.story = this.props.data;
+      post.subTitle = this.state.subtitle;
+      post.story = this.state.story;
       console.log("saved");
       console.log(post.story); // debugger;
       // createPost(post, lockId).then(createdPost => {
@@ -90451,6 +90451,8 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       // debugger;
       return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_layouts_BaseLayout__WEBPACK_IMPORTED_MODULE_8__["default"], this.props.auth, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_BasePage__WEBPACK_IMPORTED_MODULE_9__["default"], {
         containerClass: "editor-wrapper",
@@ -90470,6 +90472,11 @@ function (_React$Component) {
         },
         onChange: function onChange(event, editor) {
           var data = editor.getData();
+
+          _this2.setState({
+            story: data
+          });
+
           console.log({
             event: event,
             editor: editor,
