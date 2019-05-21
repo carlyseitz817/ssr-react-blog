@@ -1,22 +1,19 @@
 import React from 'react';
 import BaseLayout from '../components/layouts/BaseLayout';
 import BasePage from '../components/BasePage';
-import SlateEditor from '../components/slate-editor/Editor';
 import dynamic from 'next/dynamic';
-// import ControlMenu from '../components/slate-editor/components/SaveDraft';
-// import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 const ClassicEditor = dynamic(() => import('@ckeditor/ckeditor5-build-classic'), {
   ssr: false
 });
-// const CKEditor = dynamic(() => import('@ckeditor/ckeditor5-react'), {
-//   ssr: false
-// });
+
 const CKEditor = dynamic(() => import('../components/CKEditor'), {
   ssr: false
 })
 import withAuth from '../components/hoc/withAuth';
-import SaveDraft from '../components/slate-editor/components/SaveDraft';
+import SaveDraft from '../components/SaveDraft';
 import { createPost } from '../actions'
+import { toast } from 'react-toastify';
+
 
 
 class BlogEditor extends React.Component {
@@ -38,6 +35,8 @@ class BlogEditor extends React.Component {
 
   saveBlog(story) {
     event.preventDefault();
+    const {lockId} = this.state;
+
     const post = {};
 
     post.title = this.state.title;
@@ -46,7 +45,6 @@ class BlogEditor extends React.Component {
     console.log("saved");
     console.log(post.story);
 
-    // debugger;
     // createPost(post, lockId).then(createdPost => {
     //   debugger;
     //   // this.setState({isSaving: false});
@@ -61,7 +59,6 @@ class BlogEditor extends React.Component {
   };
 
   render() {
-    // debugger;
     return (
       <BaseLayout {...this.props.auth}>
         <BasePage containerClass="editor-wrapper" className="blog-editor-page">
@@ -80,7 +77,7 @@ class BlogEditor extends React.Component {
               onChange={(event, editor) => {
                 const data = editor.getData();
                 this.setState({ story: data });
-                console.log({ event, editor, data });
+                // console.log({ event, editor, data });
               }}
               onBlur={editor => {
                 console.log('Blur.', editor);
