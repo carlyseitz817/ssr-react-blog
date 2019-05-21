@@ -72,8 +72,10 @@ class Index extends React.Component {
                             <Col md="6" className="hero-welcome-wrapper">
                                 <div className="hero-welcome-text">
                                     <h1>
-                                        Welcome to the portfolio website of Filip Jerga.
-                                        Get informed, collaborate and discover projects I was working on through the years!
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                                    sed do eiusmod tempor incididunt ut 
+                                    labore et dolore magna aliqua. Ut enim ad minim veniam, 
+                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
             </h1>
                                 </div>
                                 <Typed
@@ -89,7 +91,7 @@ class Index extends React.Component {
                                 />
                                 <div className="hero-welcome-bio">
                                     <h1>
-                                        Let's take a look on my work.
+                                        Time to make your mark.
             </h1>
                                 </div>
                             </Col>
