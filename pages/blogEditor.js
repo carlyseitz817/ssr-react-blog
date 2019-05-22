@@ -14,20 +14,19 @@ import SaveDraft from '../components/SaveDraft';
 import { createPost } from '../actions'
 import { toast } from 'react-toastify';
 
-
-
 class BlogEditor extends React.Component {
   constructor(props) {
     super(props);
     this.saveBlog = this.saveBlog.bind(this);
   };
 
+
   state = {
     title: '',
     subtitle: '',
     story: '',
     // isSaving: false,
-    lockId: Math.floor(1000 + Math.random() * 9000)
+    // lockId: Math.floor(1000 + Math.random() * 9000)
   }
 
   handletitle = (evt) => this.setState({ title: evt.target.value })
@@ -35,7 +34,8 @@ class BlogEditor extends React.Component {
 
   saveBlog(story) {
     event.preventDefault();
-    const {lockId} = this.state;
+
+    // const { lockId } = this.state;
 
     const post = {};
 
@@ -45,20 +45,27 @@ class BlogEditor extends React.Component {
     console.log("saved");
     console.log(post.story);
 
-    // createPost(post, lockId).then(createdPost => {
-    //   debugger;
-    //   // this.setState({isSaving: false});
-    //   toast.success('Blog Saved Succesfuly!');
-    //   // Router.pushRoute(`/blogs/${createdPost._id}/edit`);
-    // }).catch(err => {
-    //   // this.setState({isSaving: false});
-    //   toast.error('Unexpected Error, Copy your progress and refresh browser please.');
-    //   const message = err.message || 'Server Error!';
-    //   console.error(message);
-    // })
+    // debugger;
+
+    createPost(post).then(data => {
+      // debugger;
+      console.log(data);
+      // this.setState({isSaving: false});
+      // toast.success('Blog Saved Succesfuly!');
+      // Router.pushRoute(`/blogs/${createdPost._id}/edit`);
+    }).catch(err => {
+      // this.setState({isSaving: false});
+      // toast.error('Unexpected Error, Copy your progress and refresh browser please.');
+      const message = err.message || 'Server Error!';
+      console.error(message);
+    })
   };
 
   render() {
+    const { isAuthenticated, user } = this.props.auth;
+    console.log({ user });
+    console.log(`${user.name}`)
+    console.log({ isAuthenticated })
     return (
       <BaseLayout {...this.props.auth}>
         <BasePage containerClass="editor-wrapper" className="blog-editor-page">

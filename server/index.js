@@ -26,10 +26,11 @@ const secretData = [
 //   .then(() => console.log('Database Connected!'))
 //   .catch(err => console.error(err));
 
-const MONGODB_URI =
-  process.env.MONGODB_URI || "mongodb://localhost/blog_db_test";
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useCreateIndex: true });
-mongoose.set('useFindAndModify', false);
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/blog_db_test";
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true })
+  .then(() => console.log('Database Connected!'))
+  .catch(err => console.error(err));
+// mongoose.set('useFindAndModify', false);
 
 app
   .prepare()

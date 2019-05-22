@@ -26,13 +26,14 @@ exports.createPost = (req, res) => {
 
     return res.json(createdPost);
   });
+}
 // }, function (err, ret) {
 //   err && console.error(err)
 // });
 //   } else {
 //   return res.status(422).send({ message: 'Post is getting saved!' });
 // }
-}
+// }
 
 
 

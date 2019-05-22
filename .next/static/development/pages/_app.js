@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static\\development\\pages\\_app.js"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/_app.js"],{
 
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/array/is-array.js":
 /*!***********************************************************************!*\
@@ -30740,12 +30740,12 @@ module.exports = ReactPropTypesSecret;
 
 /***/ "./node_modules/object-assign/index.js":
 /*!***************************************************************************************************!*\
-  !*** delegated ./node_modules/object-assign/index.js from dll-reference dll_7aff549c98b978433226 ***!
+  !*** delegated ./node_modules/object-assign/index.js from dll-reference dll_829b10deddf10e1653a8 ***!
   \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_7aff549c98b978433226 */ "dll-reference dll_7aff549c98b978433226"))("./node_modules/object-assign/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_829b10deddf10e1653a8 */ "dll-reference dll_829b10deddf10e1653a8"))("./node_modules/object-assign/index.js");
 
 /***/ }),
 
@@ -32663,12 +32663,12 @@ if (false) {} else {
 
 /***/ "./node_modules/react/index.js":
 /*!*******************************************************************************************!*\
-  !*** delegated ./node_modules/react/index.js from dll-reference dll_7aff549c98b978433226 ***!
+  !*** delegated ./node_modules/react/index.js from dll-reference dll_829b10deddf10e1653a8 ***!
   \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_7aff549c98b978433226 */ "dll-reference dll_7aff549c98b978433226"))("./node_modules/react/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_829b10deddf10e1653a8 */ "dll-reference dll_829b10deddf10e1653a8"))("./node_modules/react/index.js");
 
 /***/ }),
 
@@ -39883,12 +39883,12 @@ exports.createContext = Script.createContext = function (context) {
 
 /***/ "./node_modules/webpack/buildin/global.js":
 /*!******************************************************************************************************!*\
-  !*** delegated ./node_modules/webpack/buildin/global.js from dll-reference dll_7aff549c98b978433226 ***!
+  !*** delegated ./node_modules/webpack/buildin/global.js from dll-reference dll_829b10deddf10e1653a8 ***!
   \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_7aff549c98b978433226 */ "dll-reference dll_7aff549c98b978433226"))("./node_modules/webpack/buildin/global.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_829b10deddf10e1653a8 */ "dll-reference dll_829b10deddf10e1653a8"))("./node_modules/webpack/buildin/global.js");
 
 /***/ }),
 
@@ -40305,7 +40305,95 @@ function () {
 }();
 
 var auth0client = new Auth();
-/* harmony default export */ __webpack_exports__["default"] = (auth0client);
+/* harmony default export */ __webpack_exports__["default"] = (auth0client); // //auth0 goes here
+// import auth0 from 'auth0-js';
+// import Cookies from 'js-cookie';
+// import jwt from 'jsonwebtoken';
+// class Auth {
+//     constructor() {
+//         this.auth0 = new auth0.WebAuth(
+//             {
+//                 domain: 'dev-ofwx6q85.auth0.com',
+//                 clientID: '7ZE6aNVCenqc2Ghy21fA7VcWbzcgPEWz',
+//                 redirectUri: 'http://localhost:3000/callback',
+//                 responseType: 'token id_token',
+//                 scope: 'openid profile',
+//             });
+//         this.login = this.login.bind(this);
+//         this.logout = this.logout.bind(this);
+//         this.handleAuthentication = this.handleAuthentication.bind(this);
+//         // this.isAuthenticated = this.isAuthenticated.bind(this);
+//     };
+//     handleAuthentication() {
+//         return new Promise((resolve, reject) => {
+//             this.auth0.parseHash((err, authResult) => {
+//                 if (authResult && authResult.accessToken && authResult.idToken) {
+//                     this.setSession(authResult);
+//                     resolve();
+//                 }
+//                 else if (err) {
+//                     reject(err);
+//                     // history.replace('/home');
+//                     console.log(err);
+//                     alert('Whoops! Something went wrong! Error: ${err.error}. Check the console for further details.');
+//                 }
+//             });
+//         })
+//     }
+//     setSession(authResult) {
+//         localStorage.setItem('isLoggedIn', 'true');
+//         const expiresAt = (authResult.expiresIn * 1000) + new Date().getTime();
+//         Cookies.set('user', authResult.idTokenPayload);
+//         Cookies.set('jwt', authResult.idToken);
+//         Cookies.set('expiresAt', expiresAt);
+//         console.log('You are now logged in!')
+//     }
+//     logout() {
+//         Cookies.remove('user');
+//         Cookies.remove('jwt');
+//         Cookies.remove('expiresAt');
+//         this.auth0.logout({
+//             returnTo: 'http://localhost:3000',
+//             clientID: 'lEopvK1CVu4NTl5j5EnvgWCOlSKnMRsZ'
+//         })
+//         console.log('Leaving so soon? :(')
+//     }
+//     login() {
+//         this.auth0.authorize()
+//     }
+//     // isAuthenticated() {
+//     //     const expiresAt = Cookies.getJSON('expiresAt');
+//     //     return new Date().getTime() < expiresAt;
+//     // }
+//     verifyToken(token) {
+//         if (token) {
+//             const decodedToken = jwt.decode(token);
+//             const expiresAt = decodedToken.exp * 1000;
+//             return (decodedToken && new Date().getTime() < expiresAt) ? decodedToken : undefined;
+//         }
+//         return undefined;
+//     }
+//     clientAuth() {
+//         var token = Cookies.getJSON("jwt");
+//         const verifiedToken = this.verifyToken(token);
+//         return verifiedToken;
+//         // return this.isAuthenticated();
+//     }
+//     serverAuth(req) {
+//         if (req.headers.cookie) {
+//             const tokenCookie = req.headers.cookie.split(";").find(c => c.trim().startsWith("jwt="));
+//             if (!tokenCookie) {
+//                 return undefined
+//             }
+//             const token = tokenCookie.split("=")[1];
+//             const verifiedToken = this.verifyToken(token);
+//             return token;
+//         }
+//         return undefined;
+//     }
+// }
+// const auth0client = new Auth();
+// export default auth0client;
 
 /***/ }),
 
@@ -40353,14 +40441,14 @@ var auth0client = new Auth();
 
 /***/ }),
 
-/***/ "dll-reference dll_7aff549c98b978433226":
+/***/ "dll-reference dll_829b10deddf10e1653a8":
 /*!*******************************************!*\
-  !*** external "dll_7aff549c98b978433226" ***!
+  !*** external "dll_829b10deddf10e1653a8" ***!
   \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = dll_7aff549c98b978433226;
+module.exports = dll_829b10deddf10e1653a8;
 
 /***/ })
 

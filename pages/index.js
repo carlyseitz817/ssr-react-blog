@@ -34,6 +34,7 @@ class Index extends React.Component {
     render() {
         const { isAuthenticated, user } = this.props.auth;
         console.log({user});
+        console.log(`${isAuthenticated && `${user.name}`}`)
         console.log({isAuthenticated})
         return (
             <BaseLayout {...this.props.auth} className="cover">
