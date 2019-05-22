@@ -80,13 +80,14 @@ class Auth {
 
     async getJWKS() {
 
-    const res = await axios.get('https://dev-ofwx6q85.auth0.com/.well-known/jwks.json');
-    const jwks = res.data;
-    return jwks;
+        const res = await axios.get('https://dev-ofwx6q85.auth0.com/.well-known/jwks.json');
+        const jwks = res.data;
+        return jwks;
     }
 
     async verifyToken(token) {
         if (token) {
+            
             const decodedToken = jwt.decode(token, { complete: true});
 
             
