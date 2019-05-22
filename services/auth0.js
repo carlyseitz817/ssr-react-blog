@@ -63,7 +63,7 @@ class Auth {
 
         this.auth0.logout({
             returnTo: 'http://localhost:3000',
-            clientID: 'lEopvK1CVu4NTl5j5EnvgWCOlSKnMRsZ'
+            clientID: '7ZE6aNVCenqc2Ghy21fA7VcWbzcgPEWz'
         })
 
         console.log('Leaving so soon? :(')
@@ -119,15 +119,15 @@ class Auth {
         return undefined;
     }
 
-    clientAuth() {
+    async clientAuth() {
         var token = Cookies.getJSON("jwt");
-        const verifiedToken = this.verifyToken(token);
+        const verifiedToken = await this.verifyToken(token);
 
         return verifiedToken;
         // return this.isAuthenticated();
     }
 
-    serverAuth(req) {
+    async serverAuth(req) {
         if (req.headers.cookie) {
             const tokenCookie = req.headers.cookie.split(";").find(c => c.trim().startsWith("jwt="));
 
@@ -136,9 +136,9 @@ class Auth {
             }
 
             const token = tokenCookie.split("=")[1];
-            const verifiedToken = this.verifyToken(token);
+            const verifiedToken = await this.verifyToken(token);
 
-            return token;
+            return verifiedToken;
         }
         return undefined;
     }
