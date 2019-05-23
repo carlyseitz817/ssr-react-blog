@@ -3,6 +3,8 @@ import auth0 from 'auth0-js';
 import Cookies from 'js-cookie';
 import jwt from 'jsonwebtoken';
 import axios from 'axios';
+import { getCookieFromReq } from '../helpers/utils';
+
 
 class Auth {
   constructor() {
@@ -63,7 +65,7 @@ class Auth {
 
     this.auth0.logout({
       returnTo: 'http://localhost:3000',
-      clientID: 'lEopvK1CVu4NTl5j5EnvgWCOlSKnMRsZ'
+      clientID: '7ZE6aNVCenqc2Ghy21fA7VcWbzcgPEWz'
     })
 
     console.log('Leaving so soon? :(')
@@ -87,8 +89,8 @@ class Auth {
 
   async verifyToken(token) {
     if (token) {
-      const decodedToken = jwt.decode(token, { complete: true });
 
+      const decodedToken = jwt.decode(token, { complete: true });
 
       if (!decodedToken) { return undefined; }
 
@@ -105,41 +107,44 @@ class Auth {
           const verifiedToken = jwt.verify(token, cert);
           const expiresAt = verifiedToken.exp * 1000;
           return (verifiedToken && new Date().getTime() < expiresAt) ? verifiedToken : undefined;
-
         } catch (err) {
-
           return undefined;
-
         }
-
       }
-
     }
 
     return undefined;
   }
 
-  clientAuth() {
+  async clientAuth() {
     var token = Cookies.getJSON("jwt");
-    const verifiedToken = this.verifyToken(token);
+    const verifiedToken = await this.verifyToken(token);
 
     return verifiedToken;
     // return this.isAuthenticated();
   }
+  //   async serverAuth(req) {
+  //     if (req.headers.cookie) {
+  //       const tokenCookie = req.headers.cookie.split(";").find(c => c.trim().startsWith("jwt="));
 
-  serverAuth(req) {
+  //       const token = tokenCookie.split("=")[1];
+  //       const verifiedToken = await this.verifyToken(token);
+
+  //       return verifiedToken;
+  //     }
+  //     return undefined;
+  //   }
+  // }
+
+  async serverAuth(req) {
     if (req.headers.cookie) {
-      const tokenCookie = req.headers.cookie.split(";").find(c => c.trim().startsWith("jwt="));
 
-      if (!tokenCookie) {
-        return undefined
-      }
+      const token = getCookieFromReq(req, 'jwt');
+      const verifiedToken = await this.verifyToken(token);
 
-      const token = tokenCookie.split("=")[1];
-      const verifiedToken = this.verifyToken(token);
-
-      return token;
+      return verifiedToken;
     }
+
     return undefined;
   }
 }

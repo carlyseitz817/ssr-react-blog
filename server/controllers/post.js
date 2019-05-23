@@ -12,10 +12,10 @@ exports.createPost = (req, res) => {
   console.log(postData);
   const post = new Post(postData);
 
-  // if (req.user) {
-  //   post.userId = req.user.sub;
-  //   post.author = req.user.name;
-  // }
+  if (req.user) {
+    post.userId = req.user.sub;
+    post.author = req.user.name;
+  }
 
   post.save((err, createdPost) => {
     // setTimeout(() => done(), 5000);

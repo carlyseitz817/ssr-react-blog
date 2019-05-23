@@ -4,12 +4,13 @@
 /*!**************************!*\
   !*** ./actions/index.js ***!
   \**************************/
-/*! exports provided: getSecretData, createPost */
+/*! exports provided: getSecretData, getPosts, createPost */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function(process) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSecretData", function() { return getSecretData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getPosts", function() { return getPosts; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createPost", function() { return createPost; });
 /* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
 /* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__);
@@ -91,18 +92,50 @@ function () {
     return _ref.apply(this, arguments);
   };
 }(); // ------------ BLOG ACTIONS --------------
-// export const getPosts = async (req) => {
-//   return await axiosInstance.get('/posts').then(response => response.data);
-// }
-// export const getPostBySlug = async (slug) => {
+
+var getPosts =
+/*#__PURE__*/
+function () {
+  var _ref2 = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  /*#__PURE__*/
+  _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(req) {
+    return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.next = 2;
+            return axiosInstance.get('/posts').then(function (response) {
+              return response.data;
+            });
+
+          case 2:
+            return _context2.abrupt("return", _context2.sent);
+
+          case 3:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }));
+
+  return function getPosts(_x2) {
+    return _ref2.apply(this, arguments);
+  };
+}(); // export const getPostBySlug = async (slug) => {
 //   return await axiosInstance.get(`/posts/s/${slug}`).then(response => response.data);
 // }
 // export const getUserPosts = async (req) => {
 //   return await axiosInstance.get('/posts/me', setAuthHeader(req)).then(response => response.data);
 // }
+// export const createPost = (postData) => {
+//   return axios.post('/api/v1/posts', postData)
+//           .then(response => response.data)
+//           .catch(err => rejectPromise(err))
+// }
 
 var createPost = function createPost(postData) {
-  return axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('/api/v1/posts', postData).then(function (response) {
+  return axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('/api/v1/posts', postData, setAuthHeader()).then(function (response) {
     return response.data;
   }).catch(function (err) {
     return rejectPromise(err);
@@ -56745,7 +56778,8 @@ function (_React$Component) {
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "state", {
       title: '',
       subtitle: '',
-      story: '' // isSaving: false,
+      story: '' // author: ''
+      // isSaving: false,
       // lockId: Math.floor(1000 + Math.random() * 9000)
 
     });
@@ -56769,9 +56803,9 @@ function (_React$Component) {
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(BlogEditor, [{
     key: "saveBlog",
     value: function saveBlog(story) {
-      event.preventDefault(); // const { lockId } = this.state;
+      event.preventDefault();
+      var post = {}; // post.author = this.props.user.name;
 
-      var post = {};
       post.title = this.state.title;
       post.subTitle = this.state.subtitle;
       post.story = this.state.story;
@@ -56890,12 +56924,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jsonwebtoken__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(jsonwebtoken__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _helpers_utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../helpers/utils */ "./helpers/utils.js");
 
 
 
 
 
 //auth0 goes here
+
 
 
 
@@ -56957,7 +56993,7 @@ function () {
       js_cookie__WEBPACK_IMPORTED_MODULE_6___default.a.remove('expiresAt');
       this.auth0.logout({
         returnTo: 'http://localhost:3000',
-        clientID: 'lEopvK1CVu4NTl5j5EnvgWCOlSKnMRsZ'
+        clientID: '7ZE6aNVCenqc2Ghy21fA7VcWbzcgPEWz'
       });
       console.log('Leaving so soon? :(');
     }
@@ -57075,30 +57111,88 @@ function () {
     }()
   }, {
     key: "clientAuth",
-    value: function clientAuth() {
-      var token = js_cookie__WEBPACK_IMPORTED_MODULE_6___default.a.getJSON("jwt");
-      var verifiedToken = this.verifyToken(token);
-      return verifiedToken; // return this.isAuthenticated();
-    }
-  }, {
-    key: "serverAuth",
-    value: function serverAuth(req) {
-      if (req.headers.cookie) {
-        var tokenCookie = req.headers.cookie.split(";").find(function (c) {
-          return c.trim().startsWith("jwt=");
-        });
+    value: function () {
+      var _clientAuth = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
+      /*#__PURE__*/
+      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var token, verifiedToken;
+        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                token = js_cookie__WEBPACK_IMPORTED_MODULE_6___default.a.getJSON("jwt");
+                _context3.next = 3;
+                return this.verifyToken(token);
 
-        if (!tokenCookie) {
-          return undefined;
-        }
+              case 3:
+                verifiedToken = _context3.sent;
+                return _context3.abrupt("return", verifiedToken);
 
-        var token = tokenCookie.split("=")[1];
-        var verifiedToken = this.verifyToken(token);
-        return token;
+              case 5:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this);
+      }));
+
+      function clientAuth() {
+        return _clientAuth.apply(this, arguments);
       }
 
-      return undefined;
-    }
+      return clientAuth;
+    }() //   async serverAuth(req) {
+    //     if (req.headers.cookie) {
+    //       const tokenCookie = req.headers.cookie.split(";").find(c => c.trim().startsWith("jwt="));
+    //       const token = tokenCookie.split("=")[1];
+    //       const verifiedToken = await this.verifyToken(token);
+    //       return verifiedToken;
+    //     }
+    //     return undefined;
+    //   }
+    // }
+
+  }, {
+    key: "serverAuth",
+    value: function () {
+      var _serverAuth = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
+      /*#__PURE__*/
+      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(req) {
+        var token, verifiedToken;
+        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                if (!req.headers.cookie) {
+                  _context4.next = 6;
+                  break;
+                }
+
+                token = Object(_helpers_utils__WEBPACK_IMPORTED_MODULE_9__["getCookieFromReq"])(req, 'jwt');
+                _context4.next = 4;
+                return this.verifyToken(token);
+
+              case 4:
+                verifiedToken = _context4.sent;
+                return _context4.abrupt("return", verifiedToken);
+
+              case 6:
+                return _context4.abrupt("return", undefined);
+
+              case 7:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this);
+      }));
+
+      function serverAuth(_x2) {
+        return _serverAuth.apply(this, arguments);
+      }
+
+      return serverAuth;
+    }()
   }]);
 
   return Auth;

@@ -40,7 +40,7 @@ class Index extends React.Component {
             <BaseLayout {...this.props.auth} className="cover">
                 <div className="main-section">
                     <div className="background-image">
-                        <img src="/static/images/background-index.png" />
+                        <img src="/static/images/background-indexx.png" />
                     </div>
 
                     <Container>
@@ -57,15 +57,15 @@ class Index extends React.Component {
                                     <div className={`flipper`}>
                                         <div className="back">
                                             <div className="hero-section-content">
-                                                <h2> Full Stack Web Developer </h2>
+                                                <h2> test test test</h2>
                                                 <div className="hero-section-content-intro">
-                                                    Have a look at my portfolio and job history.
+                                                    test test test
                   </div>
                                             </div>
-                                            <img className="image" src="/static/images/section-1.png" />
-                                            <div className="shadow-custom">
+                                            <img className="image" src="/static/images/section-3.png" />
+                                            {/* <div className="shadow-custom">
                                                 <div className="shadow-inner"> </div>
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </div>
                                 </div>
