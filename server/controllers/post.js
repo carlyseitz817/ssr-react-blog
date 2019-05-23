@@ -27,6 +27,18 @@ exports.createPost = (req, res) => {
     return res.json(createdPost);
   });
 }
+
+exports.getPosts = (req, res) => {
+  Post.find()
+      .sort({'createdAt': -1})
+      .exec(function(err, publishedPosts) {
+    if (err) {
+      return res.status(422).send(err);
+    }
+
+    return res.json(publishedPosts);
+  });
+}
 // }, function (err, ret) {
 //   err && console.error(err)
 // });

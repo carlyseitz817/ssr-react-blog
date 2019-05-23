@@ -21,15 +21,7 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/callback": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
     "/index": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
-    "/next/dist/pages/_error": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

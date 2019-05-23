@@ -37,7 +37,7 @@ app
   .then(() => {
     const server = express();
     server.use(bodyParser.json());
-
+    
     server.get('/api/v1/secret', (req, res) => {
       return res.json(secretData);
     })
