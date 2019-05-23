@@ -6,12 +6,12 @@ const authService = require('../services/auth');
 
 
 router.post('',
-  // authService.checkJWT,
+  authService.checkJWT,
   // authService.checkRole('siteOwner'),
   postCtrl.createPost);
 
 router.get('',
-  // authService.checkJWT,
+  authService.checkJWT,
   // authService.checkRole('siteOwner'),
   postCtrl.getPosts);
 module.exports = router;

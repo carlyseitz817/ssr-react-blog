@@ -25,6 +25,7 @@ class BlogEditor extends React.Component {
     title: '',
     subtitle: '',
     story: '',
+    // author: ''
     // isSaving: false,
     // lockId: Math.floor(1000 + Math.random() * 9000)
   }
@@ -35,10 +36,9 @@ class BlogEditor extends React.Component {
   saveBlog(story) {
     event.preventDefault();
 
-    // const { lockId } = this.state;
-
     const post = {};
 
+    // post.author = this.props.user.name;
     post.title = this.state.title;
     post.subTitle = this.state.subtitle;
     post.story = this.state.story;
@@ -64,8 +64,9 @@ class BlogEditor extends React.Component {
   render() {
     const { isAuthenticated, user } = this.props.auth;
     console.log({ user });
-    console.log(`${user.name}`)
-    console.log({ isAuthenticated })
+    console.log(`${user.name}`);
+    console.log({ isAuthenticated });
+    
     return (
       <BaseLayout {...this.props.auth}>
         <BasePage containerClass="editor-wrapper" className="blog-editor-page">

@@ -56745,7 +56745,8 @@ function (_React$Component) {
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "state", {
       title: '',
       subtitle: '',
-      story: '' // isSaving: false,
+      story: '' // author: ''
+      // isSaving: false,
       // lockId: Math.floor(1000 + Math.random() * 9000)
 
     });
@@ -56769,9 +56770,9 @@ function (_React$Component) {
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(BlogEditor, [{
     key: "saveBlog",
     value: function saveBlog(story) {
-      event.preventDefault(); // const { lockId } = this.state;
+      event.preventDefault();
+      var post = {}; // post.author = this.props.user.name;
 
-      var post = {};
       post.title = this.state.title;
       post.subTitle = this.state.subtitle;
       post.story = this.state.story;
