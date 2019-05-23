@@ -56347,7 +56347,7 @@ function () {
       js_cookie__WEBPACK_IMPORTED_MODULE_6___default.a.remove('expiresAt');
       this.auth0.logout({
         returnTo: 'http://localhost:3000',
-        clientID: 'lEopvK1CVu4NTl5j5EnvgWCOlSKnMRsZ'
+        clientID: '7ZE6aNVCenqc2Ghy21fA7VcWbzcgPEWz'
       });
       console.log('Leaving so soon? :(');
     }
@@ -56631,7 +56631,7 @@ var auth0client = new Auth();
 
 /***/ }),
 
-/***/ 8:
+/***/ 7:
 /*!***************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fcarlyseitz%2FDocuments%2FHomework%20Assignments%2Fssr-react-blog%2Fpages%2Findex.js ***!
   \***************************************************************************************************************************************************************/
@@ -56654,5 +56654,5 @@ module.exports = dll_829b10deddf10e1653a8;
 
 /***/ })
 
-},[[8,"static/runtime/webpack.js"]]]);
+},[[7,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=index.js.map

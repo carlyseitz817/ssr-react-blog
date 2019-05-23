@@ -130,12 +130,13 @@ module.exports =
 /*!**************************!*\
   !*** ./actions/index.js ***!
   \**************************/
-/*! exports provided: getSecretData, createPost */
+/*! exports provided: getSecretData, getPosts, createPost */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSecretData", function() { return getSecretData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getPosts", function() { return getPosts; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createPost", function() { return createPost; });
 /* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
 /* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__);
@@ -217,18 +218,50 @@ function () {
     return _ref.apply(this, arguments);
   };
 }(); // ------------ BLOG ACTIONS --------------
-// export const getPosts = async (req) => {
-//   return await axiosInstance.get('/posts').then(response => response.data);
-// }
-// export const getPostBySlug = async (slug) => {
+
+var getPosts =
+/*#__PURE__*/
+function () {
+  var _ref2 = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  /*#__PURE__*/
+  _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(req) {
+    return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.next = 2;
+            return axiosInstance.get('/posts').then(function (response) {
+              return response.data;
+            });
+
+          case 2:
+            return _context2.abrupt("return", _context2.sent);
+
+          case 3:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }));
+
+  return function getPosts(_x2) {
+    return _ref2.apply(this, arguments);
+  };
+}(); // export const getPostBySlug = async (slug) => {
 //   return await axiosInstance.get(`/posts/s/${slug}`).then(response => response.data);
 // }
 // export const getUserPosts = async (req) => {
 //   return await axiosInstance.get('/posts/me', setAuthHeader(req)).then(response => response.data);
 // }
+// export const createPost = (postData) => {
+//   return axios.post('/api/v1/posts', postData)
+//           .then(response => response.data)
+//           .catch(err => rejectPromise(err))
+// }
 
 var createPost = function createPost(postData) {
-  return axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('/api/v1/posts', postData).then(function (response) {
+  return axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('/api/v1/posts', postData, setAuthHeader()).then(function (response) {
     return response.data;
   }).catch(function (err) {
     return rejectPromise(err);
@@ -2211,7 +2244,7 @@ function () {
       js_cookie__WEBPACK_IMPORTED_MODULE_6___default.a.remove('expiresAt');
       this.auth0.logout({
         returnTo: 'http://localhost:3000',
-        clientID: 'lEopvK1CVu4NTl5j5EnvgWCOlSKnMRsZ'
+        clientID: '7ZE6aNVCenqc2Ghy21fA7VcWbzcgPEWz'
       });
       console.log('Leaving so soon? :(');
     }

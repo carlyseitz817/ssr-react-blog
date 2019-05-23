@@ -42,9 +42,9 @@ export const getSecretData = async (req) => {
 
 // ------------ BLOG ACTIONS --------------
 
-// export const getPosts = async (req) => {
-//   return await axiosInstance.get('/posts').then(response => response.data);
-// }
+export const getPosts = async (req) => {
+  return await axiosInstance.get('/posts').then(response => response.data);
+}
 
 // export const getPostBySlug = async (slug) => {
 //   return await axiosInstance.get(`/posts/s/${slug}`).then(response => response.data);
@@ -54,8 +54,14 @@ export const getSecretData = async (req) => {
 //   return await axiosInstance.get('/posts/me', setAuthHeader(req)).then(response => response.data);
 // }
 
+// export const createPost = (postData) => {
+//   return axios.post('/api/v1/posts', postData)
+//           .then(response => response.data)
+//           .catch(err => rejectPromise(err))
+// }
+
 export const createPost = (postData) => {
-  return axios.post('/api/v1/posts', postData)
+  return axios.post('/api/v1/posts', postData, setAuthHeader())
           .then(response => response.data)
           .catch(err => rejectPromise(err))
 }
