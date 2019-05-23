@@ -2177,12 +2177,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jsonwebtoken__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(jsonwebtoken__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! axios */ "axios");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _helpers_utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../helpers/utils */ "./helpers/utils.js");
 
 
 
 
 
 //auth0 goes here
+
 
 
 
@@ -2362,30 +2364,88 @@ function () {
     }()
   }, {
     key: "clientAuth",
-    value: function clientAuth() {
-      var token = js_cookie__WEBPACK_IMPORTED_MODULE_6___default.a.getJSON("jwt");
-      var verifiedToken = this.verifyToken(token);
-      return verifiedToken; // return this.isAuthenticated();
-    }
-  }, {
-    key: "serverAuth",
-    value: function serverAuth(req) {
-      if (req.headers.cookie) {
-        var tokenCookie = req.headers.cookie.split(";").find(function (c) {
-          return c.trim().startsWith("jwt=");
-        });
+    value: function () {
+      var _clientAuth = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
+      /*#__PURE__*/
+      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var token, verifiedToken;
+        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                token = js_cookie__WEBPACK_IMPORTED_MODULE_6___default.a.getJSON("jwt");
+                _context3.next = 3;
+                return this.verifyToken(token);
 
-        if (!tokenCookie) {
-          return undefined;
-        }
+              case 3:
+                verifiedToken = _context3.sent;
+                return _context3.abrupt("return", verifiedToken);
 
-        var token = tokenCookie.split("=")[1];
-        var verifiedToken = this.verifyToken(token);
-        return token;
+              case 5:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this);
+      }));
+
+      function clientAuth() {
+        return _clientAuth.apply(this, arguments);
       }
 
-      return undefined;
-    }
+      return clientAuth;
+    }() //   async serverAuth(req) {
+    //     if (req.headers.cookie) {
+    //       const tokenCookie = req.headers.cookie.split(";").find(c => c.trim().startsWith("jwt="));
+    //       const token = tokenCookie.split("=")[1];
+    //       const verifiedToken = await this.verifyToken(token);
+    //       return verifiedToken;
+    //     }
+    //     return undefined;
+    //   }
+    // }
+
+  }, {
+    key: "serverAuth",
+    value: function () {
+      var _serverAuth = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
+      /*#__PURE__*/
+      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(req) {
+        var token, verifiedToken;
+        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                if (!req.headers.cookie) {
+                  _context4.next = 6;
+                  break;
+                }
+
+                token = Object(_helpers_utils__WEBPACK_IMPORTED_MODULE_9__["getCookieFromReq"])(req, 'jwt');
+                _context4.next = 4;
+                return this.verifyToken(token);
+
+              case 4:
+                verifiedToken = _context4.sent;
+                return _context4.abrupt("return", verifiedToken);
+
+              case 6:
+                return _context4.abrupt("return", undefined);
+
+              case 7:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this);
+      }));
+
+      function serverAuth(_x2) {
+        return _serverAuth.apply(this, arguments);
+      }
+
+      return serverAuth;
+    }()
   }]);
 
   return Auth;
