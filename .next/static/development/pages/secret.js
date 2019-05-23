@@ -53977,7 +53977,7 @@ var auth0client = new Auth();
 
 /***/ }),
 
-/***/ 8:
+/***/ 6:
 /*!********************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fsecret&absolutePagePath=C%3A%5CUsers%5CDanielle%5CDesktop%5CProject3%5Cssr-react-blog%5Cpages%5Csecret.js ***!
   \********************************************************************************************************************************************************/
@@ -54000,5 +54000,5 @@ module.exports = dll_7aff549c98b978433226;
 
 /***/ })
 
-},[[8,"static/runtime/webpack.js"]]]);
+},[[6,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=secret.js.map

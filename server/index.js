@@ -37,9 +37,11 @@ app
     const server = express();
     server.use(bodyParser.json());
 
-    server.get('/api/v1/secret', (req, res) => {
+    server.get('/api/v1/secret', authService.checkJWT, (req, res) => {
       return res.json(secretData);
     })
+
+    ////
 
     const postRoutes = require('./routes/post');
 
@@ -52,13 +54,23 @@ app
       app.render(req, res, actualPage, queryParams)
     })
 
+    ////
+
     server.get('*', (req, res) => {
       return handle(req, res)
     })
 
-    server.listen(3000, err => {
+    server.use(function (err, req, res, next) {
+      if (err.name === 'UnauthorizedError') {
+        res.status(401).send({title: 'Unauthorized', detail: 'Unauthorized Access!'});
+      }
+    });
+
+    const PORT = process.env.PORT || 3000;
+
+    server.use(handle).listen(PORT, (err) => {
       if (err) throw err
-      console.log('> Ready on http://localhost:3000')
+      console.log('> Ready on port ' + PORT)
     })
   })
   .catch(ex => {
