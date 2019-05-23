@@ -17,11 +17,11 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/callback": [
+    "/index": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/index": [
+    "/secret": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]
