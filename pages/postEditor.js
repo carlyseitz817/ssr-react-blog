@@ -10,6 +10,7 @@ const CKEditor = dynamic(() => import('../components/CKEditor'), {
   ssr: false
 })
 import withAuth from '../components/hoc/withAuth';
+import {Router} from '../routes';
 import SaveDraft from '../components/SaveDraft';
 import { createPost } from '../actions'
 import { toast } from 'react-toastify';
@@ -25,7 +26,6 @@ class BlogEditor extends React.Component {
     title: '',
     subtitle: '',
     story: '',
-    // author: ''
     // isSaving: false,
     // lockId: Math.floor(1000 + Math.random() * 9000)
   }
@@ -51,7 +51,7 @@ class BlogEditor extends React.Component {
       console.log(data);
       // this.setState({isSaving: false});
       // toast.success('Blog Saved Succesfuly!');
-      // Router.pushRoute(`/blogs/${createdPost._id}/edit`);
+      Router.pushRoute(`/posts/${createdPost._id}/edit`);
     }).catch(err => {
       // this.setState({isSaving: false});
       // toast.error('Unexpected Error, Copy your progress and refresh browser please.');
@@ -75,7 +75,7 @@ class BlogEditor extends React.Component {
           <input value={this.state.subtitle} onChange={this.handleSubtitle} />
           <div>
             <CKEditor
-              // data="<p>Hello from CKEditor 5!</p>"
+              // data="<strong>Hello from CKEditor 5!</strong>"
               save={this.saveBlog}
               onInit={editor => {
                 // You can store the "editor" and use when it is needed.
@@ -87,10 +87,10 @@ class BlogEditor extends React.Component {
                 // console.log({ event, editor, data });
               }}
               onBlur={editor => {
-                console.log('Blur.', editor);
+                // console.log('Blur.', editor);
               }}
               onFocus={editor => {
-                console.log('Focus.', editor);
+                // console.log('Focus.', editor);
               }}
             />
           </div>

@@ -11,18 +11,6 @@ import { getUserPosts, updatePost, deletePost } from '../actions';
 
 class UserPosts extends React.Component {
 
-  // state = {
-  //   posts: []
-  // }
-
-  // componentDidMount() {
-  //   getUserPosts.then(res => {
-  //     this.setState({
-  //         posts: res.data
-  //     });
-  // });
-  // }
-
   static async getInitialProps({ req }) {
     let posts = [];
 
@@ -35,83 +23,83 @@ class UserPosts extends React.Component {
     return { posts };
   }
 
-  // changePostStatus(status, postId) {
-  //   updatePost({ status }, postId)
-  //     .then(() => {
-  //       Router.pushRoute('/userPosts');
-  //     })
-  //     .catch(err => {
-  //       console.error(err.message);
-  //     })
-  // }
+  changePostStatus(status, postId) {
+    updatePost({ status }, postId)
+      .then(() => {
+        Router.pushRoute('/userPosts');
+      })
+      .catch(err => {
+        console.error(err.message);
+      })
+  }
 
-  // deletePostWarning(postId) {
-  //   const res = confirm('Are you sure you want to delete this blog post?');
+  deletePostWarning(postId) {
+    const res = confirm('Are you sure you want to delete this blog post?');
 
-  //   if (res) {
-  //     this.deletePost(postId);
-  //   }
-  // }
+    if (res) {
+      this.deletePost(postId);
+    }
+  }
 
-  // deletePost(postId) {
-  //   deletePost(postId)
-  //     .then(status => {
-  //       Router.pushRoute('/userPosts');
-  //     })
-  //     .catch(err => console.error(err.message)
-  //     )
-  // }
+  deletePost(postId) {
+    deletePost(postId)
+      .then(status => {
+        Router.pushRoute('/userPosts');
+      })
+      .catch(err => console.error(err.message)
+      )
+  }
 
-  // separatePosts(posts) {
-  //   const published = [];
-  //   const drafts = [];
+  separatePosts(posts) {
+    const published = [];
+    const drafts = [];
 
-  //   posts.forEach((post) => {
-  //     post.status === 'draft' ? drafts.push(post) : published.push(post);
-  //   });
+    posts.forEach((post) => {
+      post.status === 'draft' ? drafts.push(post) : published.push(post);
+    });
 
-  //   return { published, drafts };
-  // }
+    return { published, drafts };
+  }
 
-  // createStatus(status) {
-  //   return status === 'draft' ? { view: 'Publish Story', value: 'published' }
-  //     : { view: 'Make a Draft', value: 'draft' };
-  // }
+  createStatus(status) {
+    return status === 'draft' ? { view: 'Publish Story', value: 'published' }
+      : { view: 'Make a Draft', value: 'draft' };
+  }
 
-  // dropdownOptions = (post) => {
-  //   const status = this.createStatus(post.status);
+  dropdownOptions = (post) => {
+    const status = this.createStatus(post.status);
 
-  //   return [
-  //     { text: status.view, handlers: { onClick: () => this.changePostStatus(status.value, post._id) } },
-  //     { text: 'Delete', handlers: { onClick: () => this.deletePostWarning(post._id) } }
-  //   ]
-  // }
+    return [
+      { text: status.view, handlers: { onClick: () => this.changePostStatus(status.value, post._id) } },
+      { text: 'Delete', handlers: { onClick: () => this.deletePostWarning(post._id) } }
+    ]
+  }
 
 
 
-  // renderPosts(posts) {
-  //   console.log(posts)
-  //   return (
-  //     <ul className="user-blogs-list">
-  //       {
-  //         posts.map((post, index) => (
-  //           <li key={index}>
-  //             <Link route={`/posts/${post._id}/edit`}>
-  //               <a>{post.title}</a>
-  //             </Link>
-  //             <PortButtonDropdown items={this.dropdownOptions(post)} />
-  //           </li>
-  //         )
-  //         )
-  //       }
-  //     </ul>
-  //   )
-  // }
+  renderPosts(posts) {
+    console.log(posts)
+    return (
+      <ul className="user-blogs-list">
+        {
+          posts.map((post, index) => (
+            <li key={index}>
+              <Link route={`/posts/${post._id}/edit`}>
+                <a>{post.title}</a>
+              </Link>
+              <PortButtonDropdown items={this.dropdownOptions(post)} />
+            </li>
+          )
+          )
+        }
+      </ul>
+    )
+  }
 
   render() {
     const { posts } = this.props;
     console.log(posts);
-    // const {published, drafts} = this.separatePosts(posts);
+    const {published, drafts} = this.separatePosts(posts);
 
     return (
       <BaseLayout {...this.props.auth} headerType={'landing'}>
@@ -136,11 +124,11 @@ class UserPosts extends React.Component {
           <Row>
             <Col md="12" className="mx-auto text-center">
               <h2 className="blog-status-title">Posts</h2>
-              {/* {this.renderPosts(posts)} */}
+              {this.renderPosts(posts)}
             </Col>
 
           </Row>
-          {/* <Row>
+          <Row>
             <Col md="6" className="mx-auto text-center">
               <h2 className="blog-status-title"> Published Posts </h2>
               {this.renderPosts(published)}
@@ -149,7 +137,7 @@ class UserPosts extends React.Component {
               <h2 className="blog-status-title"> Draft Posts </h2>
               {this.renderPosts(drafts)}
             </Col>
-          </Row> */}
+          </Row>
         </BasePage>
       </BaseLayout>
     )
