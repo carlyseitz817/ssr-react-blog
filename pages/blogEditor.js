@@ -70,10 +70,11 @@ class BlogEditor extends React.Component {
     return (
       <BaseLayout {...this.props.auth}>
         <BasePage containerClass="editor-wrapper" className="blog-editor-page">
-          <label>Title</label>
+          <label>Title</label> 
           <input value={this.state.title} className="titlez" onChange={this.handletitle} />
-          <label>Subtitle</label>
+          <label>Subtitle</label> 
           <input value={this.state.subtitle} className="titlez" onChange={this.handleSubtitle} />
+          <br></br><br></br>
           <div>
             <CKEditor
               // data="<p>Hello from CKEditor 5!</p>"
@@ -95,6 +96,8 @@ class BlogEditor extends React.Component {
               }}
             />
           </div>
+
+          <br></br>
           <SaveDraft
             onClick={this.saveBlog}
           >
