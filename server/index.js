@@ -21,15 +21,11 @@ const secretData = [
   }
 ]
 
-// mongoose.connect(config.DB_URI, { useNewUrlParser: true})
-//   .then(() => console.log('Database Connected!'))
-//   .catch(err => console.error(err));
 
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/blog_db_test";
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true })
   .then(() => console.log('Database Connected!'))
   .catch(err => console.error(err));
-// mongoose.set('useFindAndModify', false);
 
 app
   .prepare()
@@ -38,6 +34,8 @@ app
     server.use(bodyParser.json());
 
     server.get('/api/v1/secret', authService.checkJWT, (req, res) => {
+      console.log(token);
+      console.log(req);
       return res.json(secretData);
     })
 
@@ -61,6 +59,8 @@ app
     server.use(function (err, req, res, next) {
       if (err.name === 'UnauthorizedError') {
         res.status(401).send({title: 'Unauthorized', detail: 'Unauthorized Access!'});
+      } else {
+        next(err)
       }
     });
 

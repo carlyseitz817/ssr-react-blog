@@ -1,16 +1,17 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/blogEditor.js"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/userPosts.js"],{
 
 /***/ "./actions/index.js":
 /*!**************************!*\
   !*** ./actions/index.js ***!
   \**************************/
-/*! exports provided: getSecretData, getPosts, createPost */
+/*! exports provided: getSecretData, getPosts, getUserPosts, createPost */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function(process) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSecretData", function() { return getSecretData; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getPosts", function() { return getPosts; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getUserPosts", function() { return getUserPosts; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createPost", function() { return createPost; });
 /* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
 /* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__);
@@ -104,7 +105,7 @@ function () {
         switch (_context2.prev = _context2.next) {
           case 0:
             _context2.next = 2;
-            return axiosInstance.get('/posts').then(function (response) {
+            return axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/api/v1/posts').then(function (response) {
               return response.data;
             });
 
@@ -125,17 +126,44 @@ function () {
 }(); // export const getPostBySlug = async (slug) => {
 //   return await axiosInstance.get(`/posts/s/${slug}`).then(response => response.data);
 // }
-// export const getUserPosts = async (req) => {
-//   return await axiosInstance.get('/posts/me', setAuthHeader(req)).then(response => response.data);
-// }
-// export const createPost = (postData) => {
+
+var getUserPosts =
+/*#__PURE__*/
+function () {
+  var _ref3 = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  /*#__PURE__*/
+  _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(req) {
+    return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('http://localhost:3000/api/v1/posts/me', setAuthHeader(req)).then(function (response) {
+              return response.data;
+            });
+
+          case 2:
+            return _context3.abrupt("return", _context3.sent);
+
+          case 3:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3);
+  }));
+
+  return function getUserPosts(_x3) {
+    return _ref3.apply(this, arguments);
+  };
+}(); // export const createPost = (postData) => {
 //   return axios.post('/api/v1/posts', postData)
 //           .then(response => response.data)
 //           .catch(err => rejectPromise(err))
 // }
 
 var createPost = function createPost(postData) {
-  return axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('/api/v1/posts', postData, setAuthHeader()).then(function (response) {
+  return axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('/api/v1/posts', postData, setAuthHeader(req)).then(function (response) {
     return response.data;
   }).catch(function (err) {
     return rejectPromise(err);
@@ -225,59 +253,89 @@ var BasePage = function BasePage(props) {
 
 /***/ }),
 
-/***/ "./components/SaveDraft.js":
-/*!*********************************!*\
-  !*** ./components/SaveDraft.js ***!
-  \*********************************/
+/***/ "./components/ButtonDropdown.js":
+/*!**************************************!*\
+  !*** ./components/ButtonDropdown.js ***!
+  \**************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return PortButtonDropdown; });
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-
- // import { Button } from 'reactstrap';
-
-function SaveDraft(props) {
-  return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
-    style: {
-      float: "right",
-      marginBottom: 10
-    },
-    className: "btn btn-success"
-  }), props.children);
-} // class SaveDraft extends Component {
-// constructor(props) {
-//     super(props)
-//     this.savePost = this.savePost.bind(this)
-// }
-// savePost = event => {
-//     event.preventDefault();
-//     const postId = this.props.id;
-//     const postData = {
-//         userId: this.props.userId,
-//         slug: this.props.slug,
-//         title: this.props.title,
-//         subTitle: this.props.subTitle,
-//         story: this.props.story,
-//         // createdAt: this.props.createdAt,
-//         // updatedAt: this.props.updatedAt,
-//         // status: this.props.status,
-//         // author: user.name
-//     }
-//     API.savePost(postData)
-//         .then(this.props.handleSaveReRender(postId));
-// }
-// render() {
-//     return (
-//         <button className='btn btn-primary' onClick={this.savePost}>Save Draft</button>
-//     )
-// }
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/dist/reactstrap.es.js");
 
 
-/* harmony default export */ __webpack_exports__["default"] = (SaveDraft);
+
+
+
+
+
+
+
+
+var PortButtonDropdown =
+/*#__PURE__*/
+function (_React$Component) {
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__["default"])(PortButtonDropdown, _React$Component);
+
+  function PortButtonDropdown(props) {
+    var _this;
+
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, PortButtonDropdown);
+
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__["default"])(PortButtonDropdown).call(this, props));
+    _this.toggle = _this.toggle.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this));
+    _this.state = {
+      dropdownOpen: false
+    };
+    return _this;
+  }
+
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(PortButtonDropdown, [{
+    key: "toggle",
+    value: function toggle() {
+      this.setState({
+        dropdownOpen: !this.state.dropdownOpen
+      });
+    }
+  }, {
+    key: "renderMenu",
+    value: function renderMenu(items) {
+      return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["DropdownMenu"], null, items.map(function (item, index) {
+        return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["DropdownItem"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+          key: index
+        }, item.handlers), item.text);
+      }));
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var items = this.props.items;
+      return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ButtonDropdown"], {
+        className: "port-dropdown",
+        isOpen: this.state.dropdownOpen,
+        toggle: this.toggle
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["DropdownToggle"], {
+        caret: true,
+        size: "sm"
+      }), this.renderMenu(items));
+    }
+  }]);
+
+  return PortButtonDropdown;
+}(react__WEBPACK_IMPORTED_MODULE_7___default.a.Component);
+
+
 
 /***/ }),
 
@@ -30661,157 +30719,6 @@ exports.AmpModeContext = React.createContext({});
 
 /***/ }),
 
-/***/ "./node_modules/next-server/dist/lib/dynamic.js":
-/*!******************************************************!*\
-  !*** ./node_modules/next-server/dist/lib/dynamic.js ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime-corejs2/helpers/interopRequireDefault */ "./node_modules/@babel/runtime-corejs2/helpers/interopRequireDefault.js");
-
-var _keys = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/core-js/object/keys */ "./node_modules/@babel/runtime-corejs2/core-js/object/keys.js"));
-
-var _assign = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/core-js/object/assign */ "./node_modules/@babel/runtime-corejs2/core-js/object/assign.js"));
-
-var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
-};
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var loadable_1 = __importDefault(__webpack_require__(/*! ./loadable */ "./node_modules/next-server/dist/lib/loadable.js"));
-
-var isServerSide = typeof window === 'undefined';
-
-function noSSR(LoadableInitializer, loadableOptions) {
-  // Removing webpack and modules means react-loadable won't try preloading
-  delete loadableOptions.webpack;
-  delete loadableOptions.modules; // This check is neccesary to prevent react-loadable from initializing on the server
-
-  if (!isServerSide) {
-    return LoadableInitializer(loadableOptions);
-  } // This will only be rendered on the server side
-
-
-  return function () {
-    return react_1.default.createElement(loadableOptions.loading, {
-      error: null,
-      isLoading: true,
-      pastDelay: false,
-      timedOut: false
-    });
-  };
-}
-
-exports.noSSR = noSSR;
-
-function DefaultLoading() {
-  return react_1.default.createElement("p", null, "loading...");
-}
-
-function dynamic(dynamicOptions, options) {
-  var loadableFn = loadable_1.default;
-  var loadableOptions = {
-    // A loading component is not required, so we default it
-    loading: function loading(_ref) {
-      var error = _ref.error,
-          isLoading = _ref.isLoading,
-          pastDelay = _ref.pastDelay;
-      if (!pastDelay) return null;
-
-      if (true) {
-        if (isLoading) {
-          return react_1.default.createElement(DefaultLoading, null);
-        }
-
-        if (error) {
-          return react_1.default.createElement("p", null, error.message, react_1.default.createElement("br", null), error.stack);
-        }
-      }
-
-      return react_1.default.createElement(DefaultLoading, null);
-    }
-  }; // Support for direct import(), eg: dynamic(import('../hello-world'))
-  // Note that this is only kept for the edge case where someone is passing in a promise as first argument
-  // The react-loadable babel plugin will turn dynamic(import('../hello-world')) into dynamic(() => import('../hello-world'))
-  // To make sure we don't execute the import without rendering first
-
-  if (typeof dynamicOptions.then === 'function') {
-    loadableOptions.loader = function () {
-      return dynamicOptions;
-    }; // Support for having import as a function, eg: dynamic(() => import('../hello-world'))
-
-  } else if (typeof dynamicOptions === 'function') {
-    loadableOptions.loader = dynamicOptions; // Support for having first argument being options, eg: dynamic({loader: import('../hello-world')})
-  } else if (typeof dynamicOptions === 'object') {
-    loadableOptions = (0, _assign.default)({}, loadableOptions, dynamicOptions);
-  } // Support for passing options, eg: dynamic(import('../hello-world'), {loading: () => <p>Loading something</p>})
-
-
-  loadableOptions = (0, _assign.default)({}, loadableOptions, options); // Support for `render` when using a mapping, eg: `dynamic({ modules: () => {return {HelloWorld: import('../hello-world')}, render(props, loaded) {} } })
-
-  if (dynamicOptions.render) {
-    loadableOptions.render = function (loaded, props) {
-      return dynamicOptions.render(props, loaded);
-    };
-  } // Support for `modules` when using a mapping, eg: `dynamic({ modules: () => {return {HelloWorld: import('../hello-world')}, render(props, loaded) {} } })
-
-
-  if (dynamicOptions.modules) {
-    loadableFn = loadable_1.default.Map;
-    var loadModules = {};
-    var modules = dynamicOptions.modules();
-    (0, _keys.default)(modules).forEach(function (key) {
-      var value = modules[key];
-
-      if (typeof value.then === 'function') {
-        loadModules[key] = function () {
-          return value.then(function (mod) {
-            return mod.default || mod;
-          });
-        };
-
-        return;
-      }
-
-      loadModules[key] = value;
-    });
-    loadableOptions.loader = loadModules;
-  } // coming from build/babel/plugins/react-loadable-plugin.js
-
-
-  if (loadableOptions.loadableGenerated) {
-    loadableOptions = (0, _assign.default)({}, loadableOptions, loadableOptions.loadableGenerated);
-    delete loadableOptions.loadableGenerated;
-  } // support for disabling server side rendering, eg: dynamic(import('../hello-world'), {ssr: false})
-
-
-  if (typeof loadableOptions.ssr === 'boolean') {
-    if (!loadableOptions.ssr) {
-      delete loadableOptions.ssr;
-      return noSSR(loadableFn, loadableOptions);
-    }
-
-    delete loadableOptions.ssr;
-  }
-
-  return loadableFn(loadableOptions);
-}
-
-exports.default = dynamic;
-
-/***/ }),
-
 /***/ "./node_modules/next-server/dist/lib/head-manager-context.js":
 /*!*******************************************************************!*\
   !*** ./node_modules/next-server/dist/lib/head-manager-context.js ***!
@@ -31005,426 +30912,6 @@ function Head(_ref) {
 
 Head.rewind = Effect.rewind;
 exports.default = Head;
-
-/***/ }),
-
-/***/ "./node_modules/next-server/dist/lib/loadable-context.js":
-/*!***************************************************************!*\
-  !*** ./node_modules/next-server/dist/lib/loadable-context.js ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var __importStar = void 0 && (void 0).__importStar || function (mod) {
-  if (mod && mod.__esModule) return mod;
-  var result = {};
-  if (mod != null) for (var k in mod) {
-    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-  }
-  result["default"] = mod;
-  return result;
-};
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var React = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js")); // @ts-ignore for some reason the React types don't like this, but it's correct.
-
-
-exports.LoadableContext = React.createContext(null);
-
-/***/ }),
-
-/***/ "./node_modules/next-server/dist/lib/loadable.js":
-/*!*******************************************************!*\
-  !*** ./node_modules/next-server/dist/lib/loadable.js ***!
-  \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-/**
-@copyright (c) 2017-present James Kyle <me@thejameskyle.com>
- MIT License
- Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
- The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE
-*/
-// https://github.com/jamiebuilds/react-loadable/blob/v5.5.0/src/index.js
-// Modified to be compatible with webpack 4 / Next.js
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime-corejs2/helpers/interopRequireDefault */ "./node_modules/@babel/runtime-corejs2/helpers/interopRequireDefault.js");
-
-var _isArray = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/core-js/array/is-array */ "./node_modules/@babel/runtime-corejs2/core-js/array/is-array.js"));
-
-var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js"));
-
-var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js"));
-
-var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js"));
-
-var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js"));
-
-var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js"));
-
-var _getIterator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/core-js/get-iterator */ "./node_modules/@babel/runtime-corejs2/core-js/get-iterator.js"));
-
-var _assign = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/core-js/object/assign */ "./node_modules/@babel/runtime-corejs2/core-js/object/assign.js"));
-
-var _promise = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/core-js/promise */ "./node_modules/@babel/runtime-corejs2/core-js/promise.js"));
-
-var _keys = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/core-js/object/keys */ "./node_modules/@babel/runtime-corejs2/core-js/object/keys.js"));
-
-var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
-};
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var loadable_context_1 = __webpack_require__(/*! ./loadable-context */ "./node_modules/next-server/dist/lib/loadable-context.js");
-
-var ALL_INITIALIZERS = [];
-var READY_INITIALIZERS = [];
-var initialized = false;
-
-function load(loader) {
-  var promise = loader();
-  var state = {
-    loading: true,
-    loaded: null,
-    error: null
-  };
-  state.promise = promise.then(function (loaded) {
-    state.loading = false;
-    state.loaded = loaded;
-    return loaded;
-  }).catch(function (err) {
-    state.loading = false;
-    state.error = err;
-    throw err;
-  });
-  return state;
-}
-
-function loadMap(obj) {
-  var state = {
-    loading: false,
-    loaded: {},
-    error: null
-  };
-  var promises = [];
-
-  try {
-    (0, _keys.default)(obj).forEach(function (key) {
-      var result = load(obj[key]);
-
-      if (!result.loading) {
-        state.loaded[key] = result.loaded;
-        state.error = result.error;
-      } else {
-        state.loading = true;
-      }
-
-      promises.push(result.promise);
-      result.promise.then(function (res) {
-        state.loaded[key] = res;
-      }).catch(function (err) {
-        state.error = err;
-      });
-    });
-  } catch (err) {
-    state.error = err;
-  }
-
-  state.promise = _promise.default.all(promises).then(function (res) {
-    state.loading = false;
-    return res;
-  }).catch(function (err) {
-    state.loading = false;
-    throw err;
-  });
-  return state;
-}
-
-function resolve(obj) {
-  return obj && obj.__esModule ? obj.default : obj;
-}
-
-function render(loaded, props) {
-  return react_1.default.createElement(resolve(loaded), props);
-}
-
-function createLoadableComponent(loadFn, options) {
-  var _a;
-
-  var opts = (0, _assign.default)({
-    loader: null,
-    loading: null,
-    delay: 200,
-    timeout: null,
-    render: render,
-    webpack: null,
-    modules: null
-  }, options);
-  var res = null;
-
-  function init() {
-    if (!res) {
-      res = loadFn(opts.loader);
-    }
-
-    return res.promise;
-  } // Server only
-
-
-  if (typeof window === 'undefined') {
-    ALL_INITIALIZERS.push(init);
-  } // Client only
-
-
-  if (!initialized && typeof window !== 'undefined' && typeof opts.webpack === 'function') {
-    var moduleIds = opts.webpack();
-    READY_INITIALIZERS.push(function (ids) {
-      var _iteratorNormalCompletion = true;
-      var _didIteratorError = false;
-      var _iteratorError = undefined;
-
-      try {
-        for (var _iterator = (0, _getIterator2.default)(moduleIds), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-          var moduleId = _step.value;
-
-          if (ids.indexOf(moduleId) !== -1) {
-            return init();
-          }
-        }
-      } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion && _iterator.return != null) {
-            _iterator.return();
-          }
-        } finally {
-          if (_didIteratorError) {
-            throw _iteratorError;
-          }
-        }
-      }
-    });
-  }
-
-  return _a =
-  /*#__PURE__*/
-  function (_react_1$default$Comp) {
-    (0, _inherits2.default)(LoadableComponent, _react_1$default$Comp);
-
-    function LoadableComponent(props) {
-      var _this;
-
-      (0, _classCallCheck2.default)(this, LoadableComponent);
-      _this = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(LoadableComponent).call(this, props));
-
-      _this.retry = function () {
-        _this.setState({
-          error: null,
-          loading: true,
-          timedOut: false
-        });
-
-        res = loadFn(opts.loader);
-
-        _this._loadModule();
-      };
-
-      init();
-      _this.state = {
-        error: res.error,
-        pastDelay: false,
-        timedOut: false,
-        loading: res.loading,
-        loaded: res.loaded
-      };
-      return _this;
-    }
-
-    (0, _createClass2.default)(LoadableComponent, [{
-      key: "componentWillMount",
-      value: function componentWillMount() {
-        this._mounted = true;
-
-        this._loadModule();
-      }
-    }, {
-      key: "_loadModule",
-      value: function _loadModule() {
-        var _this2 = this;
-
-        if (this.context && (0, _isArray.default)(opts.modules)) {
-          opts.modules.forEach(function (moduleName) {
-            _this2.context(moduleName);
-          });
-        }
-
-        if (!res.loading) {
-          return;
-        }
-
-        if (typeof opts.delay === 'number') {
-          if (opts.delay === 0) {
-            this.setState({
-              pastDelay: true
-            });
-          } else {
-            this._delay = setTimeout(function () {
-              _this2.setState({
-                pastDelay: true
-              });
-            }, opts.delay);
-          }
-        }
-
-        if (typeof opts.timeout === 'number') {
-          this._timeout = setTimeout(function () {
-            _this2.setState({
-              timedOut: true
-            });
-          }, opts.timeout);
-        }
-
-        var update = function update() {
-          if (!_this2._mounted) {
-            return;
-          }
-
-          _this2.setState({
-            error: res.error,
-            loaded: res.loaded,
-            loading: res.loading
-          });
-
-          _this2._clearTimeouts();
-        };
-
-        res.promise.then(function () {
-          update();
-        }) // eslint-disable-next-line handle-callback-err
-        .catch(function (err) {
-          update();
-        });
-      }
-    }, {
-      key: "componentWillUnmount",
-      value: function componentWillUnmount() {
-        this._mounted = false;
-
-        this._clearTimeouts();
-      }
-    }, {
-      key: "_clearTimeouts",
-      value: function _clearTimeouts() {
-        clearTimeout(this._delay);
-        clearTimeout(this._timeout);
-      }
-    }, {
-      key: "render",
-      value: function render() {
-        if (this.state.loading || this.state.error) {
-          return react_1.default.createElement(opts.loading, {
-            isLoading: this.state.loading,
-            pastDelay: this.state.pastDelay,
-            timedOut: this.state.timedOut,
-            error: this.state.error,
-            retry: this.retry
-          });
-        } else if (this.state.loaded) {
-          return opts.render(this.state.loaded, this.props);
-        } else {
-          return null;
-        }
-      }
-    }], [{
-      key: "preload",
-      value: function preload() {
-        return init();
-      }
-    }]);
-    return LoadableComponent;
-  }(react_1.default.Component), _a.contextType = loadable_context_1.LoadableContext, _a;
-}
-
-function Loadable(opts) {
-  return createLoadableComponent(load, opts);
-}
-
-function LoadableMap(opts) {
-  if (typeof opts.render !== 'function') {
-    throw new Error('LoadableMap requires a `render(loaded, props)` function');
-  }
-
-  return createLoadableComponent(loadMap, opts);
-}
-
-Loadable.Map = LoadableMap;
-
-function flushInitializers(initializers, ids) {
-  var promises = [];
-
-  while (initializers.length) {
-    var init = initializers.pop();
-    promises.push(init(ids));
-  }
-
-  return _promise.default.all(promises).then(function () {
-    if (initializers.length) {
-      return flushInitializers(initializers, ids);
-    }
-  });
-}
-
-Loadable.preloadAll = function () {
-  return new _promise.default(function (resolve, reject) {
-    flushInitializers(ALL_INITIALIZERS).then(resolve, reject);
-  });
-};
-
-Loadable.preloadReady = function (ids) {
-  return new _promise.default(function (resolve) {
-    var res = function res() {
-      initialized = true;
-      return resolve();
-    }; // We always will resolve, errors should be handled within loading UIs.
-
-
-    flushInitializers(READY_INITIALIZERS, ids).then(res, res);
-  });
-};
-
-exports.default = Loadable;
 
 /***/ }),
 
@@ -32536,21 +32023,21 @@ exports.formatWithValidation = formatWithValidation;
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2FblogEditor&absolutePagePath=%2FUsers%2Fcarlyseitz%2FDocuments%2FHomework%20Assignments%2Fssr-react-blog%2Fpages%2FblogEditor.js!./":
-/*!**************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2FblogEditor&absolutePagePath=%2FUsers%2Fcarlyseitz%2FDocuments%2FHomework%20Assignments%2Fssr-react-blog%2Fpages%2FblogEditor.js ***!
-  \**************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2FuserPosts&absolutePagePath=%2FUsers%2Fcarlyseitz%2FDocuments%2FHomework%20Assignments%2Fssr-react-blog%2Fpages%2FuserPosts.js!./":
+/*!************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2FuserPosts&absolutePagePath=%2FUsers%2Fcarlyseitz%2FDocuments%2FHomework%20Assignments%2Fssr-react-blog%2Fpages%2FuserPosts.js ***!
+  \************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-    (window.__NEXT_P=window.__NEXT_P||[]).push(["/blogEditor", function() {
-      var page = __webpack_require__(/*! ./pages/blogEditor.js */ "./pages/blogEditor.js")
+    (window.__NEXT_P=window.__NEXT_P||[]).push(["/userPosts", function() {
+      var page = __webpack_require__(/*! ./pages/userPosts.js */ "./pages/userPosts.js")
       if(true) {
-        module.hot.accept(/*! ./pages/blogEditor.js */ "./pages/blogEditor.js", function() {
-          if(!next.router.components["/blogEditor"]) return
-          var updatedPage = __webpack_require__(/*! ./pages/blogEditor.js */ "./pages/blogEditor.js")
-          next.router.update("/blogEditor", updatedPage.default || updatedPage)
+        module.hot.accept(/*! ./pages/userPosts.js */ "./pages/userPosts.js", function() {
+          if(!next.router.components["/userPosts"]) return
+          var updatedPage = __webpack_require__(/*! ./pages/userPosts.js */ "./pages/userPosts.js")
+          next.router.update("/userPosts", updatedPage.default || updatedPage)
         })
       }
       return { page: page.default || page }
@@ -40189,2412 +39676,6 @@ function polyfill(Component) {
 
 
 
-
-/***/ }),
-
-/***/ "./node_modules/react-toastify/lib/components/CloseButton.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/react-toastify/lib/components/CloseButton.js ***!
-  \*******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function CloseButton(_ref) {
-  var closeToast = _ref.closeToast,
-      type = _ref.type,
-      ariaLabel = _ref.ariaLabel;
-  return _react.default.createElement("button", {
-    className: "Toastify__close-button Toastify__close-button--" + type,
-    type: "button",
-    onClick: closeToast,
-    "aria-label": ariaLabel
-  }, "\u2716");
-}
-
-CloseButton.propTypes = {
-  closeToast: _propTypes.default.func,
-  arialLabel: _propTypes.default.string
-};
-CloseButton.defaultProps = {
-  ariaLabel: 'close'
-};
-var _default = CloseButton;
-exports.default = _default;
-
-/***/ }),
-
-/***/ "./node_modules/react-toastify/lib/components/ProgressBar.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/react-toastify/lib/components/ProgressBar.js ***!
-  \*******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
-
-var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
-
-var _constant = __webpack_require__(/*! ./../utils/constant */ "./node_modules/react-toastify/lib/utils/constant.js");
-
-var _propValidator = __webpack_require__(/*! ../utils/propValidator */ "./node_modules/react-toastify/lib/utils/propValidator.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function ProgressBar(_ref) {
-  var _animationEvent;
-
-  var delay = _ref.delay,
-      isRunning = _ref.isRunning,
-      closeToast = _ref.closeToast,
-      type = _ref.type,
-      hide = _ref.hide,
-      className = _ref.className,
-      userStyle = _ref.style,
-      controlledProgress = _ref.controlledProgress,
-      progress = _ref.progress,
-      isProgressDone = _ref.isProgressDone,
-      rtl = _ref.rtl;
-
-  var style = _extends({}, userStyle, {
-    animationDuration: delay + "ms",
-    animationPlayState: isRunning ? 'running' : 'paused',
-    opacity: hide ? 0 : 1,
-    transform: controlledProgress ? "scaleX(" + progress + ")" : null
-  });
-
-  var classNames = (0, _classnames.default)('Toastify__progress-bar', controlledProgress ? 'Toastify__progress-bar--controlled' : 'Toastify__progress-bar--animated', "Toastify__progress-bar--" + type, {
-    'Toastify__progress-bar--rtl': rtl
-  }, className);
-  var animationEvent = (_animationEvent = {}, _animationEvent[controlledProgress && isProgressDone ? 'onTransitionEnd' : 'onAnimationEnd'] = controlledProgress && !isProgressDone ? null : closeToast, _animationEvent);
-  return _react.default.createElement("div", _extends({
-    className: classNames,
-    style: style
-  }, animationEvent));
-}
-
-ProgressBar.propTypes = {
-  /**
-   * The animation delay which determine when to close the toast
-   */
-  delay: _propValidator.falseOrDelay.isRequired,
-
-  /**
-   * Whether or not the animation is running or paused
-   */
-  isRunning: _propTypes.default.bool.isRequired,
-
-  /**
-   * Func to close the current toast
-   */
-  closeToast: _propTypes.default.func.isRequired,
-
-  /**
-   * Support rtl content
-   */
-  rtl: _propTypes.default.bool.isRequired,
-
-  /**
-   * Optional type : info, success ...
-   */
-  type: _propTypes.default.string,
-
-  /**
-   * Hide or not the progress bar
-   */
-  hide: _propTypes.default.bool,
-
-  /**
-   * Optionnal className
-   */
-  className: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.object]),
-
-  /**
-   * Controlled progress value
-   */
-  progress: _propTypes.default.number,
-
-  /**
-   * Tell wether or not controlled progress bar is used
-   */
-  controlledProgress: _propTypes.default.bool,
-
-  /**
-   * Helper to close the toast when using controlled progress value
-   */
-  isProgressDone: _propTypes.default.bool
-};
-ProgressBar.defaultProps = {
-  type: _constant.TYPE.DEFAULT,
-  hide: false
-};
-var _default = ProgressBar;
-exports.default = _default;
-
-/***/ }),
-
-/***/ "./node_modules/react-toastify/lib/components/Toast.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/react-toastify/lib/components/Toast.js ***!
-  \*************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
-
-var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
-
-var _ProgressBar = _interopRequireDefault(__webpack_require__(/*! ./ProgressBar */ "./node_modules/react-toastify/lib/components/ProgressBar.js"));
-
-var _constant = __webpack_require__(/*! ./../utils/constant */ "./node_modules/react-toastify/lib/utils/constant.js");
-
-var _propValidator = __webpack_require__(/*! ./../utils/propValidator */ "./node_modules/react-toastify/lib/utils/propValidator.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
-
-function getX(e) {
-  return e.targetTouches && e.targetTouches.length >= 1 ? e.targetTouches[0].clientX : e.clientX;
-}
-
-function getY(e) {
-  return e.targetTouches && e.targetTouches.length >= 1 ? e.targetTouches[0].clientY : e.clientY;
-}
-
-var noop = function noop() {};
-
-var Toast =
-/*#__PURE__*/
-function (_Component) {
-  _inheritsLoose(Toast, _Component);
-
-  function Toast() {
-    var _this;
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
-    _this.state = {
-      isRunning: true,
-      preventExitTransition: false
-    };
-    _this.flag = {
-      canCloseOnClick: true,
-      canDrag: false
-    };
-    _this.drag = {
-      start: 0,
-      x: 0,
-      y: 0,
-      deltaX: 0,
-      removalDistance: 0
-    };
-    _this.ref = null;
-
-    _this.pauseToast = function () {
-      if (_this.props.autoClose) {
-        _this.setState({
-          isRunning: false
-        });
-      }
-    };
-
-    _this.playToast = function () {
-      if (_this.props.autoClose) {
-        _this.setState({
-          isRunning: true
-        });
-      }
-    };
-
-    _this.onDragStart = function (e) {
-      _this.flag.canCloseOnClick = true;
-      _this.flag.canDrag = true;
-      _this.ref.style.transition = '';
-      _this.drag.start = _this.drag.x = getX(e.nativeEvent);
-      _this.drag.removalDistance = _this.ref.offsetWidth * (_this.props.draggablePercent / 100);
-    };
-
-    _this.onDragMove = function (e) {
-      if (_this.flag.canDrag) {
-        if (_this.state.isRunning) {
-          _this.pauseToast();
-        }
-
-        _this.drag.x = getX(e);
-        _this.drag.deltaX = _this.drag.x - _this.drag.start; // prevent false positif during a toast click
-
-        _this.drag.start !== _this.drag.x && (_this.flag.canCloseOnClick = false);
-        _this.ref.style.transform = "translateX(" + _this.drag.deltaX + "px)";
-        _this.ref.style.opacity = 1 - Math.abs(_this.drag.deltaX / _this.drag.removalDistance);
-      }
-    };
-
-    _this.onDragEnd = function (e) {
-      if (_this.flag.canDrag) {
-        _this.flag.canDrag = false;
-
-        if (Math.abs(_this.drag.deltaX) > _this.drag.removalDistance) {
-          _this.setState({
-            preventExitTransition: true
-          }, _this.props.closeToast);
-
-          return;
-        }
-
-        _this.drag.y = getY(e);
-        _this.ref.style.transition = 'transform 0.2s, opacity 0.2s';
-        _this.ref.style.transform = 'translateX(0)';
-        _this.ref.style.opacity = 1;
-      }
-    };
-
-    _this.onDragTransitionEnd = function () {
-      var _this$ref$getBounding = _this.ref.getBoundingClientRect(),
-          top = _this$ref$getBounding.top,
-          bottom = _this$ref$getBounding.bottom,
-          left = _this$ref$getBounding.left,
-          right = _this$ref$getBounding.right;
-
-      if (_this.props.pauseOnHover && _this.drag.x >= left && _this.drag.x <= right && _this.drag.y >= top && _this.drag.y <= bottom) {
-        _this.pauseToast();
-      } else {
-        _this.playToast();
-      }
-    };
-
-    return _this;
-  }
-
-  var _proto = Toast.prototype;
-
-  _proto.componentDidMount = function componentDidMount() {
-    this.props.onOpen(this.props.children.props);
-
-    if (this.props.draggable) {
-      this.bindDragEvents();
-    } // Maybe I could bind the event in the ToastContainer and rely on delegation
-
-
-    if (this.props.pauseOnFocusLoss) {
-      this.bindFocusEvents();
-    }
-  };
-
-  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
-    if (prevProps.draggable !== this.props.draggable) {
-      if (this.props.draggable) {
-        this.bindDragEvents();
-      } else {
-        this.unbindDragEvents();
-      }
-    }
-
-    if (prevProps.pauseOnFocusLoss !== this.props.pauseOnFocusLoss) {
-      if (this.props.pauseOnFocusLoss) {
-        this.bindFocusEvents();
-      } else {
-        this.unbindFocusEvents();
-      }
-    }
-  };
-
-  _proto.componentWillUnmount = function componentWillUnmount() {
-    this.props.onClose(this.props.children.props);
-
-    if (this.props.draggable) {
-      this.unbindDragEvents();
-    }
-
-    if (this.props.pauseOnFocusLoss) {
-      this.unbindFocusEvents();
-    }
-  };
-
-  _proto.bindFocusEvents = function bindFocusEvents() {
-    window.addEventListener('focus', this.playToast);
-    window.addEventListener('blur', this.pauseToast);
-  };
-
-  _proto.unbindFocusEvents = function unbindFocusEvents() {
-    window.removeEventListener('focus', this.playToast);
-    window.removeEventListener('blur', this.pauseToast);
-  };
-
-  _proto.bindDragEvents = function bindDragEvents() {
-    document.addEventListener('mousemove', this.onDragMove);
-    document.addEventListener('mouseup', this.onDragEnd);
-    document.addEventListener('touchmove', this.onDragMove);
-    document.addEventListener('touchend', this.onDragEnd);
-  };
-
-  _proto.unbindDragEvents = function unbindDragEvents() {
-    document.removeEventListener('mousemove', this.onDragMove);
-    document.removeEventListener('mouseup', this.onDragEnd);
-    document.removeEventListener('touchmove', this.onDragMove);
-    document.removeEventListener('touchend', this.onDragEnd);
-  };
-
-  _proto.render = function render() {
-    var _this2 = this;
-
-    var _this$props = this.props,
-        closeButton = _this$props.closeButton,
-        children = _this$props.children,
-        autoClose = _this$props.autoClose,
-        pauseOnHover = _this$props.pauseOnHover,
-        closeOnClick = _this$props.closeOnClick,
-        type = _this$props.type,
-        hideProgressBar = _this$props.hideProgressBar,
-        closeToast = _this$props.closeToast,
-        Transition = _this$props.transition,
-        position = _this$props.position,
-        onExited = _this$props.onExited,
-        className = _this$props.className,
-        bodyClassName = _this$props.bodyClassName,
-        progressClassName = _this$props.progressClassName,
-        progressStyle = _this$props.progressStyle,
-        updateId = _this$props.updateId,
-        role = _this$props.role,
-        progress = _this$props.progress,
-        isProgressDone = _this$props.isProgressDone,
-        rtl = _this$props.rtl;
-    var toastProps = {
-      className: (0, _classnames.default)('Toastify__toast', "Toastify__toast--" + type, {
-        'Toastify__toast--rtl': rtl
-      }, className)
-    };
-
-    if (autoClose && pauseOnHover) {
-      toastProps.onMouseEnter = this.pauseToast;
-      toastProps.onMouseLeave = this.playToast;
-    } // prevent toast from closing when user drags the toast
-
-
-    if (closeOnClick) {
-      toastProps.onClick = function () {
-        return _this2.flag.canCloseOnClick && closeToast();
-      };
-    }
-
-    var controlledProgress = parseFloat(progress) === progress;
-    return _react.default.createElement(Transition, {
-      in: this.props.in,
-      appear: true,
-      unmountOnExit: true,
-      onExited: onExited,
-      position: position,
-      preventExitTransition: this.state.preventExitTransition
-    }, _react.default.createElement("div", _extends({}, toastProps, {
-      ref: function ref(_ref) {
-        return _this2.ref = _ref;
-      },
-      onMouseDown: this.onDragStart,
-      onTouchStart: this.onDragStart,
-      onTransitionEnd: this.onDragTransitionEnd
-    }), _react.default.createElement("div", _extends({}, this.props.in && {
-      role: role
-    }, {
-      className: (0, _classnames.default)('Toastify__toast-body', bodyClassName)
-    }), children), closeButton && closeButton, (autoClose || controlledProgress) && _react.default.createElement(_ProgressBar.default, _extends({}, updateId && !controlledProgress ? {
-      key: "pb-" + updateId
-    } : {}, {
-      rtl: rtl,
-      delay: autoClose,
-      isRunning: this.state.isRunning,
-      closeToast: closeToast,
-      hide: hideProgressBar,
-      type: type,
-      style: progressStyle,
-      className: progressClassName,
-      controlledProgress: controlledProgress,
-      isProgressDone: isProgressDone,
-      progress: progress
-    }))));
-  };
-
-  return Toast;
-}(_react.Component);
-
-Toast.propTypes = {
-  closeButton: _propValidator.falseOrElement.isRequired,
-  autoClose: _propValidator.falseOrDelay.isRequired,
-  children: _propTypes.default.node.isRequired,
-  closeToast: _propTypes.default.func.isRequired,
-  position: _propTypes.default.oneOf((0, _propValidator.objectValues)(_constant.POSITION)).isRequired,
-  pauseOnHover: _propTypes.default.bool.isRequired,
-  pauseOnFocusLoss: _propTypes.default.bool.isRequired,
-  closeOnClick: _propTypes.default.bool.isRequired,
-  transition: _propTypes.default.func.isRequired,
-  rtl: _propTypes.default.bool.isRequired,
-  hideProgressBar: _propTypes.default.bool.isRequired,
-  draggable: _propTypes.default.bool.isRequired,
-  draggablePercent: _propTypes.default.number.isRequired,
-  in: _propTypes.default.bool,
-  onExited: _propTypes.default.func,
-  onOpen: _propTypes.default.func,
-  onClose: _propTypes.default.func,
-  type: _propTypes.default.oneOf((0, _propValidator.objectValues)(_constant.TYPE)),
-  className: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.object]),
-  bodyClassName: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.object]),
-  progressClassName: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.object]),
-  progressStyle: _propTypes.default.object,
-  progress: _propTypes.default.number,
-  isProgressDone: _propTypes.default.bool,
-  updateId: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),
-  ariaLabel: _propTypes.default.string
-};
-Toast.defaultProps = {
-  type: _constant.TYPE.DEFAULT,
-  in: true,
-  onOpen: noop,
-  onClose: noop,
-  className: null,
-  bodyClassName: null,
-  progressClassName: null,
-  updateId: null,
-  role: 'alert'
-};
-var _default = Toast;
-exports.default = _default;
-
-/***/ }),
-
-/***/ "./node_modules/react-toastify/lib/components/ToastContainer.js":
-/*!**********************************************************************!*\
-  !*** ./node_modules/react-toastify/lib/components/ToastContainer.js ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
-
-var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
-
-var _TransitionGroup = _interopRequireDefault(__webpack_require__(/*! react-transition-group/TransitionGroup */ "./node_modules/react-transition-group/TransitionGroup.js"));
-
-var _Toast = _interopRequireDefault(__webpack_require__(/*! ./Toast */ "./node_modules/react-toastify/lib/components/Toast.js"));
-
-var _CloseButton = _interopRequireDefault(__webpack_require__(/*! ./CloseButton */ "./node_modules/react-toastify/lib/components/CloseButton.js"));
-
-var _Transitions = __webpack_require__(/*! ./Transitions */ "./node_modules/react-toastify/lib/components/Transitions.js");
-
-var _constant = __webpack_require__(/*! ./../utils/constant */ "./node_modules/react-toastify/lib/utils/constant.js");
-
-var _eventManager = _interopRequireDefault(__webpack_require__(/*! ./../utils/eventManager */ "./node_modules/react-toastify/lib/utils/eventManager.js"));
-
-var _propValidator = __webpack_require__(/*! ./../utils/propValidator */ "./node_modules/react-toastify/lib/utils/propValidator.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
-
-var ToastContainer =
-/*#__PURE__*/
-function (_Component) {
-  _inheritsLoose(ToastContainer, _Component);
-
-  function ToastContainer() {
-    var _this;
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
-    _this.state = {
-      toast: []
-    };
-    _this.toastKey = 1;
-    _this.collection = {};
-
-    _this.isToastActive = function (id) {
-      return _this.state.toast.indexOf(id) !== -1;
-    };
-
-    return _this;
-  }
-
-  var _proto = ToastContainer.prototype;
-
-  _proto.componentDidMount = function componentDidMount() {
-    var _this2 = this;
-
-    _eventManager.default.on(_constant.ACTION.SHOW, function (content, options) {
-      return _this2.show(content, options);
-    }).on(_constant.ACTION.CLEAR, function (id) {
-      return !id ? _this2.clear() : _this2.removeToast(id);
-    }).emit(_constant.ACTION.DID_MOUNT, this);
-  };
-
-  _proto.componentWillUnmount = function componentWillUnmount() {
-    _eventManager.default.off(_constant.ACTION.SHOW).off(_constant.ACTION.CLEAR).emit(_constant.ACTION.WILL_UNMOUNT);
-  };
-
-  _proto.removeToast = function removeToast(id) {
-    this.setState({
-      toast: this.state.toast.filter(function (v) {
-        return v !== id;
-      })
-    }, this.dispatchChange);
-  };
-
-  _proto.dispatchChange = function dispatchChange() {
-    _eventManager.default.emit(_constant.ACTION.ON_CHANGE, this.state.toast.length);
-  };
-
-  _proto.makeCloseButton = function makeCloseButton(toastClose, toastId, type) {
-    var _this3 = this;
-
-    var closeButton = this.props.closeButton;
-
-    if ((0, _react.isValidElement)(toastClose) || toastClose === false) {
-      closeButton = toastClose;
-    }
-
-    return closeButton === false ? false : (0, _react.cloneElement)(closeButton, {
-      closeToast: function closeToast() {
-        return _this3.removeToast(toastId);
-      },
-      type: type
-    });
-  };
-
-  _proto.getAutoCloseDelay = function getAutoCloseDelay(toastAutoClose) {
-    return toastAutoClose === false || (0, _propValidator.isValidDelay)(toastAutoClose) ? toastAutoClose : this.props.autoClose;
-  };
-
-  _proto.canBeRendered = function canBeRendered(content) {
-    return (0, _react.isValidElement)(content) || typeof content === 'string' || typeof content === 'number' || typeof content === 'function';
-  };
-
-  _proto.parseClassName = function parseClassName(prop) {
-    if (typeof prop === 'string') {
-      return prop;
-    } else if (prop !== null && typeof prop === 'object' && 'toString' in prop) {
-      return prop.toString();
-    }
-
-    return null;
-  };
-
-  _proto.show = function show(content, options) {
-    var _this4 = this,
-        _extends2;
-
-    if (!this.canBeRendered(content)) {
-      throw new Error("The element you provided cannot be rendered. You provided an element of type " + typeof content);
-    }
-
-    var toastId = options.toastId;
-
-    var closeToast = function closeToast() {
-      return _this4.removeToast(toastId);
-    };
-
-    var toastOptions = {
-      id: toastId,
-      // ⚠️ if no options.key, this.toastKey - 1 is assigned
-      key: options.key || this.toastKey++,
-      type: options.type,
-      closeToast: closeToast,
-      updateId: options.updateId,
-      rtl: this.props.rtl,
-      position: options.position || this.props.position,
-      transition: options.transition || this.props.transition,
-      className: this.parseClassName(options.className || this.props.toastClassName),
-      bodyClassName: this.parseClassName(options.bodyClassName || this.props.bodyClassName),
-      closeButton: this.makeCloseButton(options.closeButton, toastId, options.type),
-      pauseOnHover: typeof options.pauseOnHover === 'boolean' ? options.pauseOnHover : this.props.pauseOnHover,
-      pauseOnFocusLoss: typeof options.pauseOnFocusLoss === 'boolean' ? options.pauseOnFocusLoss : this.props.pauseOnFocusLoss,
-      draggable: typeof options.draggable === 'boolean' ? options.draggable : this.props.draggable,
-      draggablePercent: typeof options.draggablePercent === 'number' && !isNaN(options.draggablePercent) ? options.draggablePercent : this.props.draggablePercent,
-      closeOnClick: typeof options.closeOnClick === 'boolean' ? options.closeOnClick : this.props.closeOnClick,
-      progressClassName: this.parseClassName(options.progressClassName || this.props.progressClassName),
-      progressStyle: this.props.progressStyle,
-      autoClose: this.getAutoCloseDelay(options.autoClose),
-      hideProgressBar: typeof options.hideProgressBar === 'boolean' ? options.hideProgressBar : this.props.hideProgressBar,
-      progress: parseFloat(options.progress),
-      isProgressDone: options.isProgressDone
-    };
-    typeof options.onOpen === 'function' && (toastOptions.onOpen = options.onOpen);
-    typeof options.onClose === 'function' && (toastOptions.onClose = options.onClose); // add closeToast function to react component only
-
-    if ((0, _react.isValidElement)(content) && typeof content.type !== 'string' && typeof content.type !== 'number') {
-      content = (0, _react.cloneElement)(content, {
-        closeToast: closeToast
-      });
-    } else if (typeof content === 'function') {
-      content = content({
-        closeToast: closeToast
-      });
-    }
-
-    this.collection = _extends({}, this.collection, (_extends2 = {}, _extends2[toastId] = {
-      position: toastOptions.position,
-      options: toastOptions,
-      content: content
-    }, _extends2));
-    this.setState({
-      toast: (toastOptions.updateId ? _toConsumableArray(this.state.toast) : _toConsumableArray(this.state.toast).concat([toastId])).filter(function (id) {
-        return id !== options.staleToastId;
-      })
-    }, this.dispatchChange);
-  };
-
-  _proto.makeToast = function makeToast(content, options) {
-    return _react.default.createElement(_Toast.default, _extends({}, options, {
-      isDocumentHidden: this.state.isDocumentHidden,
-      key: "toast-" + options.key
-    }), content);
-  };
-
-  _proto.clear = function clear() {
-    this.setState({
-      toast: []
-    });
-  };
-
-  _proto.renderToast = function renderToast() {
-    var _this5 = this;
-
-    var toastToRender = {};
-    var _this$props = this.props,
-        className = _this$props.className,
-        style = _this$props.style,
-        newestOnTop = _this$props.newestOnTop;
-    var collection = newestOnTop ? Object.keys(this.collection).reverse() : Object.keys(this.collection); // group toast by position
-
-    collection.forEach(function (toastId) {
-      var _this5$collection$toa = _this5.collection[toastId],
-          position = _this5$collection$toa.position,
-          options = _this5$collection$toa.options,
-          content = _this5$collection$toa.content;
-      toastToRender[position] || (toastToRender[position] = []);
-
-      if (_this5.state.toast.indexOf(options.id) !== -1) {
-        toastToRender[position].push(_this5.makeToast(content, options));
-      } else {
-        toastToRender[position].push(null);
-        delete _this5.collection[toastId];
-      }
-    });
-    return Object.keys(toastToRender).map(function (position) {
-      var disablePointer = toastToRender[position].length === 1 && toastToRender[position][0] === null;
-      var props = {
-        className: (0, _classnames.default)('Toastify__toast-container', "Toastify__toast-container--" + position, {
-          'Toastify__toast-container--rtl': _this5.props.rtl
-        }, _this5.parseClassName(className)),
-        style: disablePointer ? _extends({}, style, {
-          pointerEvents: 'none'
-        }) : _extends({}, style)
-      };
-      return _react.default.createElement(_TransitionGroup.default, _extends({}, props, {
-        key: "container-" + position
-      }), toastToRender[position]);
-    });
-  };
-
-  _proto.render = function render() {
-    return _react.default.createElement("div", {
-      className: "Toastify"
-    }, this.renderToast());
-  };
-
-  return ToastContainer;
-}(_react.Component);
-
-ToastContainer.propTypes = {
-  /**
-   * Set toast position
-   */
-  position: _propTypes.default.oneOf((0, _propValidator.objectValues)(_constant.POSITION)),
-
-  /**
-   * Disable or set autoClose delay
-   */
-  autoClose: _propValidator.falseOrDelay,
-
-  /**
-   * Disable or set a custom react element for the close button
-   */
-  closeButton: _propValidator.falseOrElement,
-
-  /**
-   * Hide or not progress bar when autoClose is enabled
-   */
-  hideProgressBar: _propTypes.default.bool,
-
-  /**
-   * Pause toast duration on hover
-   */
-  pauseOnHover: _propTypes.default.bool,
-
-  /**
-   * Dismiss toast on click
-   */
-  closeOnClick: _propTypes.default.bool,
-
-  /**
-   * Newest on top
-   */
-  newestOnTop: _propTypes.default.bool,
-
-  /**
-   * An optional className
-   */
-  className: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.object]),
-
-  /**
-   * An optional style
-   */
-  style: _propTypes.default.object,
-
-  /**
-   * An optional className for the toast
-   */
-  toastClassName: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.object]),
-
-  /**
-   * An optional className for the toast body
-   */
-  bodyClassName: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.object]),
-
-  /**
-   * An optional className for the toast progress bar
-   */
-  progressClassName: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.object]),
-
-  /**
-   * An optional style for the toast progress bar
-   */
-  progressStyle: _propTypes.default.object,
-
-  /**
-   * Define enter and exit transition using react-transition-group
-   */
-  transition: _propTypes.default.func,
-
-  /**
-   * Support rtl display
-   */
-  rtl: _propTypes.default.bool,
-
-  /**
-   * Allow toast to be draggable
-   */
-  draggable: _propTypes.default.bool,
-
-  /**
-   * The percentage of the toast's width it takes for a drag to dismiss a toast
-   */
-  draggablePercent: _propTypes.default.number,
-
-  /**
-   * Pause the toast on focus loss
-   */
-  pauseOnFocusLoss: _propTypes.default.bool
-};
-ToastContainer.defaultProps = {
-  position: _constant.POSITION.TOP_RIGHT,
-  transition: _Transitions.Bounce,
-  rtl: false,
-  autoClose: 5000,
-  hideProgressBar: false,
-  closeButton: _react.default.createElement(_CloseButton.default, null),
-  pauseOnHover: true,
-  pauseOnFocusLoss: true,
-  closeOnClick: true,
-  newestOnTop: false,
-  draggable: true,
-  draggablePercent: 80,
-  className: null,
-  style: null,
-  toastClassName: null,
-  bodyClassName: null,
-  progressClassName: null,
-  progressStyle: null
-};
-var _default = ToastContainer;
-exports.default = _default;
-
-/***/ }),
-
-/***/ "./node_modules/react-toastify/lib/components/Transitions.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/react-toastify/lib/components/Transitions.js ***!
-  \*******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-exports.Flip = exports.Zoom = exports.Slide = exports.Bounce = void 0;
-
-var _cssTransition = _interopRequireDefault(__webpack_require__(/*! ./../utils/cssTransition */ "./node_modules/react-toastify/lib/utils/cssTransition.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Bounce = (0, _cssTransition.default)({
-  enter: 'Toastify__bounce-enter',
-  exit: 'Toastify__bounce-exit',
-  appendPosition: true
-});
-exports.Bounce = Bounce;
-var Slide = (0, _cssTransition.default)({
-  enter: 'Toastify__slide-enter',
-  exit: 'Toastify__slide-exit',
-  duration: [450, 750],
-  appendPosition: true
-});
-exports.Slide = Slide;
-var Zoom = (0, _cssTransition.default)({
-  enter: 'Toastify__zoom-enter',
-  exit: 'Toastify__zoom-exit'
-});
-exports.Zoom = Zoom;
-var Flip = (0, _cssTransition.default)({
-  enter: 'Toastify__flip-enter',
-  exit: 'Toastify__flip-exit'
-});
-exports.Flip = Flip;
-
-/***/ }),
-
-/***/ "./node_modules/react-toastify/lib/index.js":
-/*!**************************************************!*\
-  !*** ./node_modules/react-toastify/lib/index.js ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-
-var _ToastContainer = _interopRequireDefault(__webpack_require__(/*! ./components/ToastContainer */ "./node_modules/react-toastify/lib/components/ToastContainer.js"));
-
-exports.ToastContainer = _ToastContainer.default;
-
-var _Transitions = __webpack_require__(/*! ./components/Transitions */ "./node_modules/react-toastify/lib/components/Transitions.js");
-
-exports.Bounce = _Transitions.Bounce;
-exports.Slide = _Transitions.Slide;
-exports.Zoom = _Transitions.Zoom;
-exports.Flip = _Transitions.Flip;
-
-var _constant = __webpack_require__(/*! ./utils/constant */ "./node_modules/react-toastify/lib/utils/constant.js");
-
-exports.ToastPosition = _constant.POSITION;
-exports.ToastType = _constant.TYPE;
-
-var _toast = _interopRequireDefault(__webpack_require__(/*! ./toast */ "./node_modules/react-toastify/lib/toast.js"));
-
-exports.toast = _toast.default;
-
-var _cssTransition = _interopRequireDefault(__webpack_require__(/*! ./utils/cssTransition */ "./node_modules/react-toastify/lib/utils/cssTransition.js"));
-
-exports.cssTransition = _cssTransition.default;
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ }),
-
-/***/ "./node_modules/react-toastify/lib/toast.js":
-/*!**************************************************!*\
-  !*** ./node_modules/react-toastify/lib/toast.js ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _eventManager = _interopRequireDefault(__webpack_require__(/*! ./utils/eventManager */ "./node_modules/react-toastify/lib/utils/eventManager.js"));
-
-var _constant = __webpack_require__(/*! ./utils/constant */ "./node_modules/react-toastify/lib/utils/constant.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-var container = null;
-var queue = [];
-
-var noop = function noop() {
-  return false;
-};
-/**
- * Merge provided options with the defaults settings and generate the toastId
- */
-
-
-function mergeOptions(options, type) {
-  return _extends({}, options, {
-    type: type,
-    toastId: getToastId(options)
-  });
-}
-/**
- * Generate a random toastId
- */
-
-
-function generateToastId() {
-  return (Math.random().toString(36) + Date.now().toString(36)).substr(2, 10);
-}
-/**
- * Generate the toastId either automatically or by provided toastId
- */
-
-
-function getToastId(options) {
-  if (options && (typeof options.toastId === 'string' || typeof options.toastId === 'number' && !isNaN(options.toastId))) {
-    return options.toastId;
-  }
-
-  return generateToastId();
-}
-/**
- * Dispatch toast. If the container is not mounted, the toast is enqueued
- */
-
-
-function emitEvent(content, options) {
-  if (container !== null) {
-    _eventManager.default.emit(_constant.ACTION.SHOW, content, options);
-  } else {
-    queue.push({
-      action: _constant.ACTION.SHOW,
-      content: content,
-      options: options
-    });
-  }
-
-  return options.toastId;
-}
-
-var toast = _extends(function (content, options) {
-  return emitEvent(content, mergeOptions(options, options && options.type || _constant.TYPE.DEFAULT));
-}, {
-  success: function success(content, options) {
-    return emitEvent(content, mergeOptions(options, _constant.TYPE.SUCCESS));
-  },
-  info: function info(content, options) {
-    return emitEvent(content, mergeOptions(options, _constant.TYPE.INFO));
-  },
-  warn: function warn(content, options) {
-    return emitEvent(content, mergeOptions(options, _constant.TYPE.WARNING));
-  },
-  warning: function warning(content, options) {
-    return emitEvent(content, mergeOptions(options, _constant.TYPE.WARNING));
-  },
-  error: function error(content, options) {
-    return emitEvent(content, mergeOptions(options, _constant.TYPE.ERROR));
-  },
-  dismiss: function dismiss(id) {
-    if (id === void 0) {
-      id = null;
-    }
-
-    return container && _eventManager.default.emit(_constant.ACTION.CLEAR, id);
-  },
-  isActive: noop,
-  update: function update(toastId, options) {
-    setTimeout(function () {
-      if (container && typeof container.collection[toastId] !== 'undefined') {
-        var _container$collection = container.collection[toastId],
-            oldOptions = _container$collection.options,
-            oldContent = _container$collection.content;
-
-        var nextOptions = _extends({}, oldOptions, options, {
-          toastId: options.toastId || toastId
-        });
-
-        if (!options.toastId || options.toastId === toastId) {
-          nextOptions.updateId = generateToastId();
-        } else {
-          nextOptions.staleToastId = toastId;
-        }
-
-        var content = typeof nextOptions.render !== 'undefined' ? nextOptions.render : oldContent;
-        delete nextOptions.render;
-        emitEvent(content, nextOptions);
-      }
-    }, 0);
-  },
-  done: function done(id, progress) {
-    if (progress === void 0) {
-      progress = 1;
-    }
-
-    toast.update(id, {
-      progress: progress,
-      isProgressDone: true
-    });
-  },
-  onChange: function onChange(callback) {
-    if (typeof callback === 'function') {
-      _eventManager.default.on(_constant.ACTION.ON_CHANGE, callback);
-    }
-  },
-  POSITION: _constant.POSITION,
-  TYPE: _constant.TYPE
-});
-/**
- * Wait until the ToastContainer is mounted to dispatch the toast
- * and attach isActive method
- */
-
-
-_eventManager.default.on(_constant.ACTION.DID_MOUNT, function (containerInstance) {
-  container = containerInstance;
-
-  toast.isActive = function (id) {
-    return container.isToastActive(id);
-  };
-
-  queue.forEach(function (item) {
-    _eventManager.default.emit(item.action, item.content, item.options);
-  });
-  queue = [];
-}).on(_constant.ACTION.WILL_UNMOUNT, function () {
-  container = null;
-  toast.isActive = noop;
-});
-
-var _default = toast;
-exports.default = _default;
-
-/***/ }),
-
-/***/ "./node_modules/react-toastify/lib/utils/constant.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/react-toastify/lib/utils/constant.js ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-exports.ACTION = exports.TYPE = exports.POSITION = void 0;
-var POSITION = {
-  TOP_LEFT: 'top-left',
-  TOP_RIGHT: 'top-right',
-  TOP_CENTER: 'top-center',
-  BOTTOM_LEFT: 'bottom-left',
-  BOTTOM_RIGHT: 'bottom-right',
-  BOTTOM_CENTER: 'bottom-center'
-};
-exports.POSITION = POSITION;
-var TYPE = {
-  INFO: 'info',
-  SUCCESS: 'success',
-  WARNING: 'warning',
-  ERROR: 'error',
-  DEFAULT: 'default'
-};
-exports.TYPE = TYPE;
-var ACTION = {
-  SHOW: 0,
-  CLEAR: 1,
-  DID_MOUNT: 2,
-  WILL_UNMOUNT: 3,
-  ON_CHANGE: 4
-};
-exports.ACTION = ACTION;
-
-/***/ }),
-
-/***/ "./node_modules/react-toastify/lib/utils/cssTransition.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/react-toastify/lib/utils/cssTransition.js ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-exports.default = _default;
-
-var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var _Transition = _interopRequireDefault(__webpack_require__(/*! react-transition-group/Transition */ "./node_modules/react-transition-group/Transition.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-var noop = function noop() {};
-
-function _default(_ref) {
-  var enter = _ref.enter,
-      exit = _ref.exit,
-      _ref$duration = _ref.duration,
-      duration = _ref$duration === void 0 ? 750 : _ref$duration,
-      _ref$appendPosition = _ref.appendPosition,
-      appendPosition = _ref$appendPosition === void 0 ? false : _ref$appendPosition;
-  return function Animation(_ref2) {
-    var children = _ref2.children,
-        position = _ref2.position,
-        preventExitTransition = _ref2.preventExitTransition,
-        props = _objectWithoutPropertiesLoose(_ref2, ["children", "position", "preventExitTransition"]);
-
-    var enterClassName = appendPosition ? enter + "--" + position : enter;
-    var exitClassName = appendPosition ? exit + "--" + position : exit;
-    var enterDuration, exitDuration;
-
-    if (Array.isArray(duration) && duration.length === 2) {
-      enterDuration = duration[0];
-      exitDuration = duration[1];
-    } else {
-      enterDuration = exitDuration = duration;
-    }
-
-    var onEnter = function onEnter(node) {
-      node.classList.add(enterClassName);
-      node.style.animationFillMode = 'forwards';
-      node.style.animationDuration = enterDuration * 0.001 + "s";
-    };
-
-    var onEntered = function onEntered(node) {
-      node.classList.remove(enterClassName);
-      node.style.cssText = '';
-    };
-
-    var onExit = function onExit(node) {
-      node.classList.add(exitClassName);
-      node.style.animationFillMode = 'forwards';
-      node.style.animationDuration = exitDuration * 0.001 + "s";
-    };
-
-    return _react.default.createElement(_Transition.default, _extends({}, props, {
-      timeout: preventExitTransition ? 0 : {
-        enter: enterDuration,
-        exit: exitDuration
-      },
-      onEnter: onEnter,
-      onEntered: onEntered,
-      onExit: preventExitTransition ? noop : onExit
-    }), children);
-  };
-}
-
-/***/ }),
-
-/***/ "./node_modules/react-toastify/lib/utils/eventManager.js":
-/*!***************************************************************!*\
-  !*** ./node_modules/react-toastify/lib/utils/eventManager.js ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-exports.default = void 0;
-var eventManager = {
-  list: new Map(),
-  on: function on(event, callback) {
-    this.list.has(event) || this.list.set(event, []);
-    this.list.get(event).push(callback);
-    return this;
-  },
-  off: function off(event) {
-    this.list.delete(event);
-    return this;
-  },
-  emit: function emit(event) {
-    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-      args[_key - 1] = arguments[_key];
-    }
-
-    if (!this.list.has(event)) {
-      return false;
-    }
-
-    this.list.get(event).forEach(function (callback) {
-      return setTimeout(function () {
-        return callback.call.apply(callback, [null].concat(args));
-      }, 0);
-    });
-    return true;
-  }
-};
-var _default = eventManager;
-exports.default = _default;
-
-/***/ }),
-
-/***/ "./node_modules/react-toastify/lib/utils/propValidator.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/react-toastify/lib/utils/propValidator.js ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-exports.isValidDelay = isValidDelay;
-exports.objectValues = objectValues;
-exports.falseOrElement = exports.falseOrDelay = void 0;
-
-var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-function isValidDelay(val) {
-  return typeof val === 'number' && !isNaN(val) && val > 0;
-}
-
-function objectValues(obj) {
-  return Object.keys(obj).map(function (key) {
-    return obj[key];
-  });
-}
-
-function withRequired(fn) {
-  fn.isRequired = function (props, propName, componentName) {
-    var prop = props[propName];
-
-    if (typeof prop === 'undefined') {
-      return new Error("The prop " + propName + " is marked as required in \n      " + componentName + ", but its value is undefined.");
-    }
-
-    fn(props, propName, componentName);
-  };
-
-  return fn;
-}
-
-var falseOrDelay = withRequired(function (props, propName, componentName) {
-  var prop = props[propName];
-
-  if (prop !== false && !isValidDelay(prop)) {
-    return new Error(componentName + " expect " + propName + " \n      to be a valid Number > 0 or equal to false. " + prop + " given.");
-  }
-
-  return null;
-});
-exports.falseOrDelay = falseOrDelay;
-var falseOrElement = withRequired(function (props, propName, componentName) {
-  var prop = props[propName];
-
-  if (prop !== false && !(0, _react.isValidElement)(prop)) {
-    return new Error(componentName + " expect " + propName + " \n      to be a valid react element or equal to false. " + prop + " given.");
-  }
-
-  return null;
-});
-exports.falseOrElement = falseOrElement;
-
-/***/ }),
-
-/***/ "./node_modules/react-transition-group/Transition.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/react-transition-group/Transition.js ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-exports.default = exports.EXITING = exports.ENTERED = exports.ENTERING = exports.EXITED = exports.UNMOUNTED = void 0;
-
-var PropTypes = _interopRequireWildcard(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
-
-var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var _reactDom = _interopRequireDefault(__webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js"));
-
-var _reactLifecyclesCompat = __webpack_require__(/*! react-lifecycles-compat */ "./node_modules/react-lifecycles-compat/react-lifecycles-compat.es.js");
-
-var _PropTypes = __webpack_require__(/*! ./utils/PropTypes */ "./node_modules/react-transition-group/utils/PropTypes.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
-
-var UNMOUNTED = 'unmounted';
-exports.UNMOUNTED = UNMOUNTED;
-var EXITED = 'exited';
-exports.EXITED = EXITED;
-var ENTERING = 'entering';
-exports.ENTERING = ENTERING;
-var ENTERED = 'entered';
-exports.ENTERED = ENTERED;
-var EXITING = 'exiting';
-/**
- * The Transition component lets you describe a transition from one component
- * state to another _over time_ with a simple declarative API. Most commonly
- * it's used to animate the mounting and unmounting of a component, but can also
- * be used to describe in-place transition states as well.
- *
- * ---
- *
- * **Note**: `Transition` is a platform-agnostic base component. If you're using
- * transitions in CSS, you'll probably want to use
- * [`CSSTransition`](https://reactcommunity.org/react-transition-group/css-transition)
- * instead. It inherits all the features of `Transition`, but contains
- * additional features necessary to play nice with CSS transitions (hence the
- * name of the component).
- *
- * ---
- *
- * By default the `Transition` component does not alter the behavior of the
- * component it renders, it only tracks "enter" and "exit" states for the
- * components. It's up to you to give meaning and effect to those states. For
- * example we can add styles to a component when it enters or exits:
- *
- * ```jsx
- * import { Transition } from 'react-transition-group';
- *
- * const duration = 300;
- *
- * const defaultStyle = {
- *   transition: `opacity ${duration}ms ease-in-out`,
- *   opacity: 0,
- * }
- *
- * const transitionStyles = {
- *   entering: { opacity: 0 },
- *   entered:  { opacity: 1 },
- * };
- *
- * const Fade = ({ in: inProp }) => (
- *   <Transition in={inProp} timeout={duration}>
- *     {state => (
- *       <div style={{
- *         ...defaultStyle,
- *         ...transitionStyles[state]
- *       }}>
- *         I'm a fade Transition!
- *       </div>
- *     )}
- *   </Transition>
- * );
- * ```
- *
- * There are 4 main states a Transition can be in:
- *  - `'entering'`
- *  - `'entered'`
- *  - `'exiting'`
- *  - `'exited'`
- *
- * Transition state is toggled via the `in` prop. When `true` the component
- * begins the "Enter" stage. During this stage, the component will shift from
- * its current transition state, to `'entering'` for the duration of the
- * transition and then to the `'entered'` stage once it's complete. Let's take
- * the following example (we'll use the
- * [useState](https://reactjs.org/docs/hooks-reference.html#usestate) hook):
- *
- * ```jsx
- * function App() {
- *   const [inProp, setInProp] = useState(false);
- *   return (
- *     <div>
- *       <Transition in={inProp} timeout={500}>
- *         {state => (
- *           // ...
- *         )}
- *       </Transition>
- *       <button onClick={() => setInProp(true)}>
- *         Click to Enter
- *       </button>
- *     </div>
- *   );
- * }
- * ```
- *
- * When the button is clicked the component will shift to the `'entering'` state
- * and stay there for 500ms (the value of `timeout`) before it finally switches
- * to `'entered'`.
- *
- * When `in` is `false` the same thing happens except the state moves from
- * `'exiting'` to `'exited'`.
- */
-
-exports.EXITING = EXITING;
-
-var Transition =
-/*#__PURE__*/
-function (_React$Component) {
-  _inheritsLoose(Transition, _React$Component);
-
-  function Transition(props, context) {
-    var _this;
-
-    _this = _React$Component.call(this, props, context) || this;
-    var parentGroup = context.transitionGroup; // In the context of a TransitionGroup all enters are really appears
-
-    var appear = parentGroup && !parentGroup.isMounting ? props.enter : props.appear;
-    var initialStatus;
-    _this.appearStatus = null;
-
-    if (props.in) {
-      if (appear) {
-        initialStatus = EXITED;
-        _this.appearStatus = ENTERING;
-      } else {
-        initialStatus = ENTERED;
-      }
-    } else {
-      if (props.unmountOnExit || props.mountOnEnter) {
-        initialStatus = UNMOUNTED;
-      } else {
-        initialStatus = EXITED;
-      }
-    }
-
-    _this.state = {
-      status: initialStatus
-    };
-    _this.nextCallback = null;
-    return _this;
-  }
-
-  var _proto = Transition.prototype;
-
-  _proto.getChildContext = function getChildContext() {
-    return {
-      transitionGroup: null // allows for nested Transitions
-
-    };
-  };
-
-  Transition.getDerivedStateFromProps = function getDerivedStateFromProps(_ref, prevState) {
-    var nextIn = _ref.in;
-
-    if (nextIn && prevState.status === UNMOUNTED) {
-      return {
-        status: EXITED
-      };
-    }
-
-    return null;
-  }; // getSnapshotBeforeUpdate(prevProps) {
-  //   let nextStatus = null
-  //   if (prevProps !== this.props) {
-  //     const { status } = this.state
-  //     if (this.props.in) {
-  //       if (status !== ENTERING && status !== ENTERED) {
-  //         nextStatus = ENTERING
-  //       }
-  //     } else {
-  //       if (status === ENTERING || status === ENTERED) {
-  //         nextStatus = EXITING
-  //       }
-  //     }
-  //   }
-  //   return { nextStatus }
-  // }
-
-
-  _proto.componentDidMount = function componentDidMount() {
-    this.updateStatus(true, this.appearStatus);
-  };
-
-  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
-    var nextStatus = null;
-
-    if (prevProps !== this.props) {
-      var status = this.state.status;
-
-      if (this.props.in) {
-        if (status !== ENTERING && status !== ENTERED) {
-          nextStatus = ENTERING;
-        }
-      } else {
-        if (status === ENTERING || status === ENTERED) {
-          nextStatus = EXITING;
-        }
-      }
-    }
-
-    this.updateStatus(false, nextStatus);
-  };
-
-  _proto.componentWillUnmount = function componentWillUnmount() {
-    this.cancelNextCallback();
-  };
-
-  _proto.getTimeouts = function getTimeouts() {
-    var timeout = this.props.timeout;
-    var exit, enter, appear;
-    exit = enter = appear = timeout;
-
-    if (timeout != null && typeof timeout !== 'number') {
-      exit = timeout.exit;
-      enter = timeout.enter; // TODO: remove fallback for next major
-
-      appear = timeout.appear !== undefined ? timeout.appear : enter;
-    }
-
-    return {
-      exit: exit,
-      enter: enter,
-      appear: appear
-    };
-  };
-
-  _proto.updateStatus = function updateStatus(mounting, nextStatus) {
-    if (mounting === void 0) {
-      mounting = false;
-    }
-
-    if (nextStatus !== null) {
-      // nextStatus will always be ENTERING or EXITING.
-      this.cancelNextCallback();
-
-      var node = _reactDom.default.findDOMNode(this);
-
-      if (nextStatus === ENTERING) {
-        this.performEnter(node, mounting);
-      } else {
-        this.performExit(node);
-      }
-    } else if (this.props.unmountOnExit && this.state.status === EXITED) {
-      this.setState({
-        status: UNMOUNTED
-      });
-    }
-  };
-
-  _proto.performEnter = function performEnter(node, mounting) {
-    var _this2 = this;
-
-    var enter = this.props.enter;
-    var appearing = this.context.transitionGroup ? this.context.transitionGroup.isMounting : mounting;
-    var timeouts = this.getTimeouts();
-    var enterTimeout = appearing ? timeouts.appear : timeouts.enter; // no enter animation skip right to ENTERED
-    // if we are mounting and running this it means appear _must_ be set
-
-    if (!mounting && !enter) {
-      this.safeSetState({
-        status: ENTERED
-      }, function () {
-        _this2.props.onEntered(node);
-      });
-      return;
-    }
-
-    this.props.onEnter(node, appearing);
-    this.safeSetState({
-      status: ENTERING
-    }, function () {
-      _this2.props.onEntering(node, appearing);
-
-      _this2.onTransitionEnd(node, enterTimeout, function () {
-        _this2.safeSetState({
-          status: ENTERED
-        }, function () {
-          _this2.props.onEntered(node, appearing);
-        });
-      });
-    });
-  };
-
-  _proto.performExit = function performExit(node) {
-    var _this3 = this;
-
-    var exit = this.props.exit;
-    var timeouts = this.getTimeouts(); // no exit animation skip right to EXITED
-
-    if (!exit) {
-      this.safeSetState({
-        status: EXITED
-      }, function () {
-        _this3.props.onExited(node);
-      });
-      return;
-    }
-
-    this.props.onExit(node);
-    this.safeSetState({
-      status: EXITING
-    }, function () {
-      _this3.props.onExiting(node);
-
-      _this3.onTransitionEnd(node, timeouts.exit, function () {
-        _this3.safeSetState({
-          status: EXITED
-        }, function () {
-          _this3.props.onExited(node);
-        });
-      });
-    });
-  };
-
-  _proto.cancelNextCallback = function cancelNextCallback() {
-    if (this.nextCallback !== null) {
-      this.nextCallback.cancel();
-      this.nextCallback = null;
-    }
-  };
-
-  _proto.safeSetState = function safeSetState(nextState, callback) {
-    // This shouldn't be necessary, but there are weird race conditions with
-    // setState callbacks and unmounting in testing, so always make sure that
-    // we can cancel any pending setState callbacks after we unmount.
-    callback = this.setNextCallback(callback);
-    this.setState(nextState, callback);
-  };
-
-  _proto.setNextCallback = function setNextCallback(callback) {
-    var _this4 = this;
-
-    var active = true;
-
-    this.nextCallback = function (event) {
-      if (active) {
-        active = false;
-        _this4.nextCallback = null;
-        callback(event);
-      }
-    };
-
-    this.nextCallback.cancel = function () {
-      active = false;
-    };
-
-    return this.nextCallback;
-  };
-
-  _proto.onTransitionEnd = function onTransitionEnd(node, timeout, handler) {
-    this.setNextCallback(handler);
-    var doesNotHaveTimeoutOrListener = timeout == null && !this.props.addEndListener;
-
-    if (!node || doesNotHaveTimeoutOrListener) {
-      setTimeout(this.nextCallback, 0);
-      return;
-    }
-
-    if (this.props.addEndListener) {
-      this.props.addEndListener(node, this.nextCallback);
-    }
-
-    if (timeout != null) {
-      setTimeout(this.nextCallback, timeout);
-    }
-  };
-
-  _proto.render = function render() {
-    var status = this.state.status;
-
-    if (status === UNMOUNTED) {
-      return null;
-    }
-
-    var _this$props = this.props,
-        children = _this$props.children,
-        childProps = _objectWithoutPropertiesLoose(_this$props, ["children"]); // filter props for Transtition
-
-
-    delete childProps.in;
-    delete childProps.mountOnEnter;
-    delete childProps.unmountOnExit;
-    delete childProps.appear;
-    delete childProps.enter;
-    delete childProps.exit;
-    delete childProps.timeout;
-    delete childProps.addEndListener;
-    delete childProps.onEnter;
-    delete childProps.onEntering;
-    delete childProps.onEntered;
-    delete childProps.onExit;
-    delete childProps.onExiting;
-    delete childProps.onExited;
-
-    if (typeof children === 'function') {
-      return children(status, childProps);
-    }
-
-    var child = _react.default.Children.only(children);
-
-    return _react.default.cloneElement(child, childProps);
-  };
-
-  return Transition;
-}(_react.default.Component);
-
-Transition.contextTypes = {
-  transitionGroup: PropTypes.object
-};
-Transition.childContextTypes = {
-  transitionGroup: function transitionGroup() {}
-};
-Transition.propTypes =  true ? {
-  /**
-   * A `function` child can be used instead of a React element. This function is
-   * called with the current transition status (`'entering'`, `'entered'`,
-   * `'exiting'`, `'exited'`, `'unmounted'`), which can be used to apply context
-   * specific props to a component.
-   *
-   * ```jsx
-   * <Transition in={this.state.in} timeout={150}>
-   *   {state => (
-   *     <MyComponent className={`fade fade-${state}`} />
-   *   )}
-   * </Transition>
-   * ```
-   */
-  children: PropTypes.oneOfType([PropTypes.func.isRequired, PropTypes.element.isRequired]).isRequired,
-
-  /**
-   * Show the component; triggers the enter or exit states
-   */
-  in: PropTypes.bool,
-
-  /**
-   * By default the child component is mounted immediately along with
-   * the parent `Transition` component. If you want to "lazy mount" the component on the
-   * first `in={true}` you can set `mountOnEnter`. After the first enter transition the component will stay
-   * mounted, even on "exited", unless you also specify `unmountOnExit`.
-   */
-  mountOnEnter: PropTypes.bool,
-
-  /**
-   * By default the child component stays mounted after it reaches the `'exited'` state.
-   * Set `unmountOnExit` if you'd prefer to unmount the component after it finishes exiting.
-   */
-  unmountOnExit: PropTypes.bool,
-
-  /**
-   * Normally a component is not transitioned if it is shown when the `<Transition>` component mounts.
-   * If you want to transition on the first mount set `appear` to `true`, and the
-   * component will transition in as soon as the `<Transition>` mounts.
-   *
-   * > Note: there are no specific "appear" states. `appear` only adds an additional `enter` transition.
-   */
-  appear: PropTypes.bool,
-
-  /**
-   * Enable or disable enter transitions.
-   */
-  enter: PropTypes.bool,
-
-  /**
-   * Enable or disable exit transitions.
-   */
-  exit: PropTypes.bool,
-
-  /**
-   * The duration of the transition, in milliseconds.
-   * Required unless `addEndListener` is provided.
-   *
-   * You may specify a single timeout for all transitions:
-   *
-   * ```jsx
-   * timeout={500}
-   * ```
-   *
-   * or individually:
-   *
-   * ```jsx
-   * timeout={{
-   *  appear: 500,
-   *  enter: 300,
-   *  exit: 500,
-   * }}
-   * ```
-   *
-   * - `appear` defaults to the value of `enter`
-   * - `enter` defaults to `0`
-   * - `exit` defaults to `0`
-   *
-   * @type {number | { enter?: number, exit?: number, appear?: number }}
-   */
-  timeout: function timeout(props) {
-    var pt = _PropTypes.timeoutsShape;
-    if (!props.addEndListener) pt = pt.isRequired;
-
-    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-      args[_key - 1] = arguments[_key];
-    }
-
-    return pt.apply(void 0, [props].concat(args));
-  },
-
-  /**
-   * Add a custom transition end trigger. Called with the transitioning
-   * DOM node and a `done` callback. Allows for more fine grained transition end
-   * logic. **Note:** Timeouts are still used as a fallback if provided.
-   *
-   * ```jsx
-   * addEndListener={(node, done) => {
-   *   // use the css transitionend event to mark the finish of a transition
-   *   node.addEventListener('transitionend', done, false);
-   * }}
-   * ```
-   */
-  addEndListener: PropTypes.func,
-
-  /**
-   * Callback fired before the "entering" status is applied. An extra parameter
-   * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
-   *
-   * @type Function(node: HtmlElement, isAppearing: bool) -> void
-   */
-  onEnter: PropTypes.func,
-
-  /**
-   * Callback fired after the "entering" status is applied. An extra parameter
-   * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
-   *
-   * @type Function(node: HtmlElement, isAppearing: bool)
-   */
-  onEntering: PropTypes.func,
-
-  /**
-   * Callback fired after the "entered" status is applied. An extra parameter
-   * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
-   *
-   * @type Function(node: HtmlElement, isAppearing: bool) -> void
-   */
-  onEntered: PropTypes.func,
-
-  /**
-   * Callback fired before the "exiting" status is applied.
-   *
-   * @type Function(node: HtmlElement) -> void
-   */
-  onExit: PropTypes.func,
-
-  /**
-   * Callback fired after the "exiting" status is applied.
-   *
-   * @type Function(node: HtmlElement) -> void
-   */
-  onExiting: PropTypes.func,
-
-  /**
-   * Callback fired after the "exited" status is applied.
-   *
-   * @type Function(node: HtmlElement) -> void
-   */
-  onExited: PropTypes.func // Name the function so it is clearer in the documentation
-
-} : undefined;
-
-function noop() {}
-
-Transition.defaultProps = {
-  in: false,
-  mountOnEnter: false,
-  unmountOnExit: false,
-  appear: false,
-  enter: true,
-  exit: true,
-  onEnter: noop,
-  onEntering: noop,
-  onEntered: noop,
-  onExit: noop,
-  onExiting: noop,
-  onExited: noop
-};
-Transition.UNMOUNTED = 0;
-Transition.EXITED = 1;
-Transition.ENTERING = 2;
-Transition.ENTERED = 3;
-Transition.EXITING = 4;
-
-var _default = (0, _reactLifecyclesCompat.polyfill)(Transition);
-
-exports.default = _default;
-
-/***/ }),
-
-/***/ "./node_modules/react-transition-group/TransitionGroup.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/react-transition-group/TransitionGroup.js ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
-
-var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var _reactLifecyclesCompat = __webpack_require__(/*! react-lifecycles-compat */ "./node_modules/react-lifecycles-compat/react-lifecycles-compat.es.js");
-
-var _ChildMapping = __webpack_require__(/*! ./utils/ChildMapping */ "./node_modules/react-transition-group/utils/ChildMapping.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-var values = Object.values || function (obj) {
-  return Object.keys(obj).map(function (k) {
-    return obj[k];
-  });
-};
-
-var defaultProps = {
-  component: 'div',
-  childFactory: function childFactory(child) {
-    return child;
-  }
-  /**
-   * The `<TransitionGroup>` component manages a set of transition components
-   * (`<Transition>` and `<CSSTransition>`) in a list. Like with the transition
-   * components, `<TransitionGroup>` is a state machine for managing the mounting
-   * and unmounting of components over time.
-   *
-   * Consider the example below. As items are removed or added to the TodoList the
-   * `in` prop is toggled automatically by the `<TransitionGroup>`.
-   *
-   * Note that `<TransitionGroup>`  does not define any animation behavior!
-   * Exactly _how_ a list item animates is up to the individual transition
-   * component. This means you can mix and match animations across different list
-   * items.
-   */
-
-};
-
-var TransitionGroup =
-/*#__PURE__*/
-function (_React$Component) {
-  _inheritsLoose(TransitionGroup, _React$Component);
-
-  function TransitionGroup(props, context) {
-    var _this;
-
-    _this = _React$Component.call(this, props, context) || this;
-
-    var handleExited = _this.handleExited.bind(_assertThisInitialized(_assertThisInitialized(_this))); // Initial children should all be entering, dependent on appear
-
-
-    _this.state = {
-      handleExited: handleExited,
-      firstRender: true
-    };
-    return _this;
-  }
-
-  var _proto = TransitionGroup.prototype;
-
-  _proto.getChildContext = function getChildContext() {
-    return {
-      transitionGroup: {
-        isMounting: !this.appeared
-      }
-    };
-  };
-
-  _proto.componentDidMount = function componentDidMount() {
-    this.appeared = true;
-    this.mounted = true;
-  };
-
-  _proto.componentWillUnmount = function componentWillUnmount() {
-    this.mounted = false;
-  };
-
-  TransitionGroup.getDerivedStateFromProps = function getDerivedStateFromProps(nextProps, _ref) {
-    var prevChildMapping = _ref.children,
-        handleExited = _ref.handleExited,
-        firstRender = _ref.firstRender;
-    return {
-      children: firstRender ? (0, _ChildMapping.getInitialChildMapping)(nextProps, handleExited) : (0, _ChildMapping.getNextChildMapping)(nextProps, prevChildMapping, handleExited),
-      firstRender: false
-    };
-  };
-
-  _proto.handleExited = function handleExited(child, node) {
-    var currentChildMapping = (0, _ChildMapping.getChildMapping)(this.props.children);
-    if (child.key in currentChildMapping) return;
-
-    if (child.props.onExited) {
-      child.props.onExited(node);
-    }
-
-    if (this.mounted) {
-      this.setState(function (state) {
-        var children = _extends({}, state.children);
-
-        delete children[child.key];
-        return {
-          children: children
-        };
-      });
-    }
-  };
-
-  _proto.render = function render() {
-    var _this$props = this.props,
-        Component = _this$props.component,
-        childFactory = _this$props.childFactory,
-        props = _objectWithoutPropertiesLoose(_this$props, ["component", "childFactory"]);
-
-    var children = values(this.state.children).map(childFactory);
-    delete props.appear;
-    delete props.enter;
-    delete props.exit;
-
-    if (Component === null) {
-      return children;
-    }
-
-    return _react.default.createElement(Component, props, children);
-  };
-
-  return TransitionGroup;
-}(_react.default.Component);
-
-TransitionGroup.childContextTypes = {
-  transitionGroup: _propTypes.default.object.isRequired
-};
-TransitionGroup.propTypes =  true ? {
-  /**
-   * `<TransitionGroup>` renders a `<div>` by default. You can change this
-   * behavior by providing a `component` prop.
-   * If you use React v16+ and would like to avoid a wrapping `<div>` element
-   * you can pass in `component={null}`. This is useful if the wrapping div
-   * borks your css styles.
-   */
-  component: _propTypes.default.any,
-
-  /**
-   * A set of `<Transition>` components, that are toggled `in` and out as they
-   * leave. the `<TransitionGroup>` will inject specific transition props, so
-   * remember to spread them through if you are wrapping the `<Transition>` as
-   * with our `<Fade>` example.
-   *
-   * While this component is meant for multiple `Transition` or `CSSTransition`
-   * children, sometimes you may want to have a single transition child with
-   * content that you want to be transitioned out and in when you change it
-   * (e.g. routes, images etc.) In that case you can change the `key` prop of
-   * the transition child as you change its content, this will cause
-   * `TransitionGroup` to transition the child out and back in.
-   */
-  children: _propTypes.default.node,
-
-  /**
-   * A convenience prop that enables or disables appear animations
-   * for all children. Note that specifying this will override any defaults set
-   * on individual children Transitions.
-   */
-  appear: _propTypes.default.bool,
-
-  /**
-   * A convenience prop that enables or disables enter animations
-   * for all children. Note that specifying this will override any defaults set
-   * on individual children Transitions.
-   */
-  enter: _propTypes.default.bool,
-
-  /**
-   * A convenience prop that enables or disables exit animations
-   * for all children. Note that specifying this will override any defaults set
-   * on individual children Transitions.
-   */
-  exit: _propTypes.default.bool,
-
-  /**
-   * You may need to apply reactive updates to a child as it is exiting.
-   * This is generally done by using `cloneElement` however in the case of an exiting
-   * child the element has already been removed and not accessible to the consumer.
-   *
-   * If you do need to update a child as it leaves you can provide a `childFactory`
-   * to wrap every child, even the ones that are leaving.
-   *
-   * @type Function(child: ReactElement) -> ReactElement
-   */
-  childFactory: _propTypes.default.func
-} : undefined;
-TransitionGroup.defaultProps = defaultProps;
-
-var _default = (0, _reactLifecyclesCompat.polyfill)(TransitionGroup);
-
-exports.default = _default;
-module.exports = exports["default"];
-
-/***/ }),
-
-/***/ "./node_modules/react-transition-group/utils/ChildMapping.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/react-transition-group/utils/ChildMapping.js ***!
-  \*******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-exports.getChildMapping = getChildMapping;
-exports.mergeChildMappings = mergeChildMappings;
-exports.getInitialChildMapping = getInitialChildMapping;
-exports.getNextChildMapping = getNextChildMapping;
-
-var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-/**
- * Given `this.props.children`, return an object mapping key to child.
- *
- * @param {*} children `this.props.children`
- * @return {object} Mapping of key to child
- */
-function getChildMapping(children, mapFn) {
-  var mapper = function mapper(child) {
-    return mapFn && (0, _react.isValidElement)(child) ? mapFn(child) : child;
-  };
-
-  var result = Object.create(null);
-  if (children) _react.Children.map(children, function (c) {
-    return c;
-  }).forEach(function (child) {
-    // run the map function here instead so that the key is the computed one
-    result[child.key] = mapper(child);
-  });
-  return result;
-}
-/**
- * When you're adding or removing children some may be added or removed in the
- * same render pass. We want to show *both* since we want to simultaneously
- * animate elements in and out. This function takes a previous set of keys
- * and a new set of keys and merges them with its best guess of the correct
- * ordering. In the future we may expose some of the utilities in
- * ReactMultiChild to make this easy, but for now React itself does not
- * directly have this concept of the union of prevChildren and nextChildren
- * so we implement it here.
- *
- * @param {object} prev prev children as returned from
- * `ReactTransitionChildMapping.getChildMapping()`.
- * @param {object} next next children as returned from
- * `ReactTransitionChildMapping.getChildMapping()`.
- * @return {object} a key set that contains all keys in `prev` and all keys
- * in `next` in a reasonable order.
- */
-
-
-function mergeChildMappings(prev, next) {
-  prev = prev || {};
-  next = next || {};
-
-  function getValueForKey(key) {
-    return key in next ? next[key] : prev[key];
-  } // For each key of `next`, the list of keys to insert before that key in
-  // the combined list
-
-
-  var nextKeysPending = Object.create(null);
-  var pendingKeys = [];
-
-  for (var prevKey in prev) {
-    if (prevKey in next) {
-      if (pendingKeys.length) {
-        nextKeysPending[prevKey] = pendingKeys;
-        pendingKeys = [];
-      }
-    } else {
-      pendingKeys.push(prevKey);
-    }
-  }
-
-  var i;
-  var childMapping = {};
-
-  for (var nextKey in next) {
-    if (nextKeysPending[nextKey]) {
-      for (i = 0; i < nextKeysPending[nextKey].length; i++) {
-        var pendingNextKey = nextKeysPending[nextKey][i];
-        childMapping[nextKeysPending[nextKey][i]] = getValueForKey(pendingNextKey);
-      }
-    }
-
-    childMapping[nextKey] = getValueForKey(nextKey);
-  } // Finally, add the keys which didn't appear before any key in `next`
-
-
-  for (i = 0; i < pendingKeys.length; i++) {
-    childMapping[pendingKeys[i]] = getValueForKey(pendingKeys[i]);
-  }
-
-  return childMapping;
-}
-
-function getProp(child, prop, props) {
-  return props[prop] != null ? props[prop] : child.props[prop];
-}
-
-function getInitialChildMapping(props, onExited) {
-  return getChildMapping(props.children, function (child) {
-    return (0, _react.cloneElement)(child, {
-      onExited: onExited.bind(null, child),
-      in: true,
-      appear: getProp(child, 'appear', props),
-      enter: getProp(child, 'enter', props),
-      exit: getProp(child, 'exit', props)
-    });
-  });
-}
-
-function getNextChildMapping(nextProps, prevChildMapping, onExited) {
-  var nextChildMapping = getChildMapping(nextProps.children);
-  var children = mergeChildMappings(prevChildMapping, nextChildMapping);
-  Object.keys(children).forEach(function (key) {
-    var child = children[key];
-    if (!(0, _react.isValidElement)(child)) return;
-    var hasPrev = key in prevChildMapping;
-    var hasNext = key in nextChildMapping;
-    var prevChild = prevChildMapping[key];
-    var isLeaving = (0, _react.isValidElement)(prevChild) && !prevChild.props.in; // item is new (entering)
-
-    if (hasNext && (!hasPrev || isLeaving)) {
-      // console.log('entering', key)
-      children[key] = (0, _react.cloneElement)(child, {
-        onExited: onExited.bind(null, child),
-        in: true,
-        exit: getProp(child, 'exit', nextProps),
-        enter: getProp(child, 'enter', nextProps)
-      });
-    } else if (!hasNext && hasPrev && !isLeaving) {
-      // item is old (exiting)
-      // console.log('leaving', key)
-      children[key] = (0, _react.cloneElement)(child, {
-        in: false
-      });
-    } else if (hasNext && hasPrev && (0, _react.isValidElement)(prevChild)) {
-      // item hasn't changed transition states
-      // copy over the last transition props;
-      // console.log('unchanged', key)
-      children[key] = (0, _react.cloneElement)(child, {
-        onExited: onExited.bind(null, child),
-        in: prevChild.props.in,
-        exit: getProp(child, 'exit', nextProps),
-        enter: getProp(child, 'enter', nextProps)
-      });
-    }
-  });
-  return children;
-}
-
-/***/ }),
-
-/***/ "./node_modules/react-transition-group/utils/PropTypes.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/react-transition-group/utils/PropTypes.js ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-exports.classNamesShape = exports.timeoutsShape = void 0;
-
-var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var timeoutsShape =  true ? _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.shape({
-  enter: _propTypes.default.number,
-  exit: _propTypes.default.number,
-  appear: _propTypes.default.number
-}).isRequired]) : undefined;
-exports.timeoutsShape = timeoutsShape;
-var classNamesShape =  true ? _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.shape({
-  enter: _propTypes.default.string,
-  exit: _propTypes.default.string,
-  active: _propTypes.default.string
-}), _propTypes.default.shape({
-  enter: _propTypes.default.string,
-  enterDone: _propTypes.default.string,
-  enterActive: _propTypes.default.string,
-  exit: _propTypes.default.string,
-  exitDone: _propTypes.default.string,
-  exitActive: _propTypes.default.string
-})]) : undefined;
-exports.classNamesShape = classNamesShape;
 
 /***/ }),
 
@@ -56698,33 +53779,34 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./pages/blogEditor.js":
-/*!*****************************!*\
-  !*** ./pages/blogEditor.js ***!
-  \*****************************/
+/***/ "./pages/userPosts.js":
+/*!****************************!*\
+  !*** ./pages/userPosts.js ***!
+  \****************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _components_layouts_BaseLayout__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/layouts/BaseLayout */ "./components/layouts/BaseLayout.js");
-/* harmony import */ var _components_BasePage__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/BasePage */ "./components/BasePage.js");
-/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! next/dynamic */ "./node_modules/next-server/dist/lib/dynamic.js");
-/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(next_dynamic__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _components_hoc_withAuth__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/hoc/withAuth */ "./components/hoc/withAuth.js");
-/* harmony import */ var _components_SaveDraft__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/SaveDraft */ "./components/SaveDraft.js");
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../actions */ "./actions/index.js");
-/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/lib/index.js");
-/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(react_toastify__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
+/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/asyncToGenerator */ "./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _components_layouts_BaseLayout__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/layouts/BaseLayout */ "./components/layouts/BaseLayout.js");
+/* harmony import */ var _components_BasePage__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/BasePage */ "./components/BasePage.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/dist/reactstrap.es.js");
+/* harmony import */ var _components_ButtonDropdown__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/ButtonDropdown */ "./components/ButtonDropdown.js");
+/* harmony import */ var _components_hoc_withAuth__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/hoc/withAuth */ "./components/hoc/withAuth.js");
+/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../routes */ "./routes.js");
+/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_routes__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../actions */ "./actions/index.js");
 
 
 
@@ -56736,149 +53818,181 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var ClassicEditor = next_dynamic__WEBPACK_IMPORTED_MODULE_10___default()(function () {
-  return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.t.bind(null, /*! @ckeditor/ckeditor5-build-classic */ "./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js", 7));
-}, {
-  ssr: false,
-  loadableGenerated: {
-    webpack: function webpack() {
-      return [/*require.resolve*/(/*! @ckeditor/ckeditor5-build-classic */ "./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js")];
-    },
-    modules: ['@ckeditor/ckeditor5-build-classic']
-  }
-});
-var CKEditor = next_dynamic__WEBPACK_IMPORTED_MODULE_10___default()(function () {
-  return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ../components/CKEditor */ "./components/CKEditor.js"));
-}, {
-  ssr: false,
-  loadableGenerated: {
-    webpack: function webpack() {
-      return [/*require.resolve*/(/*! ../components/CKEditor */ "./components/CKEditor.js")];
-    },
-    modules: ['../components/CKEditor']
-  }
-});
 
 
 
 
 
-var BlogEditor =
+
+var UserPosts =
 /*#__PURE__*/
 function (_React$Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__["default"])(BlogEditor, _React$Component);
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_7__["default"])(UserPosts, _React$Component);
 
-  function BlogEditor(props) {
-    var _this;
+  function UserPosts() {
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_3__["default"])(this, UserPosts);
 
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, BlogEditor);
-
-    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(BlogEditor).call(this, props));
-
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "state", {
-      title: '',
-      subtitle: '',
-      story: '' // author: ''
-      // isSaving: false,
-      // lockId: Math.floor(1000 + Math.random() * 9000)
-
-    });
-
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "handletitle", function (evt) {
-      return _this.setState({
-        title: evt.target.value
-      });
-    });
-
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "handleSubtitle", function (evt) {
-      return _this.setState({
-        subtitle: evt.target.value
-      });
-    });
-
-    _this.saveBlog = _this.saveBlog.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this));
-    return _this;
+    return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__["default"])(UserPosts).apply(this, arguments));
   }
 
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(BlogEditor, [{
-    key: "saveBlog",
-    value: function saveBlog(story) {
-      event.preventDefault();
-      var post = {}; // post.author = this.props.user.name;
-
-      post.title = this.state.title;
-      post.subTitle = this.state.subtitle;
-      post.story = this.state.story;
-      console.log("saved");
-      console.log(post.story); // debugger;
-
-      Object(_actions__WEBPACK_IMPORTED_MODULE_13__["createPost"])(post).then(function (data) {
-        // debugger;
-        console.log(data); // this.setState({isSaving: false});
-        // toast.success('Blog Saved Succesfuly!');
-        // Router.pushRoute(`/blogs/${createdPost._id}/edit`);
-      }).catch(function (err) {
-        // this.setState({isSaving: false});
-        // toast.error('Unexpected Error, Copy your progress and refresh browser please.');
-        var message = err.message || 'Server Error!';
-        console.error(message);
-      });
-    }
-  }, {
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_4__["default"])(UserPosts, [{
     key: "render",
+    // changePostStatus(status, postId) {
+    //   updatePost({ status }, postId)
+    //     .then(() => {
+    //       Router.pushRoute('/userPosts');
+    //     })
+    //     .catch(err => {
+    //       console.error(err.message);
+    //     })
+    // }
+    // deletePostWarning(postId) {
+    //   const res = confirm('Are you sure you want to delete this blog post?');
+    //   if (res) {
+    //     this.deletePost(postId);
+    //   }
+    // }
+    // deletePost(postId) {
+    //   deletePost(postId)
+    //     .then(status => {
+    //       Router.pushRoute('/userPosts');
+    //     })
+    //     .catch(err => console.error(err.message)
+    //     )
+    // }
+    // separatePosts(posts) {
+    //   const published = [];
+    //   const drafts = [];
+    //   posts.forEach((post) => {
+    //     post.status === 'draft' ? drafts.push(post) : published.push(post);
+    //   });
+    //   return { published, drafts };
+    // }
+    // createStatus(status) {
+    //   return status === 'draft' ? { view: 'Publish Story', value: 'published' }
+    //     : { view: 'Make a Draft', value: 'draft' };
+    // }
+    // dropdownOptions = (post) => {
+    //   const status = this.createStatus(post.status);
+    //   return [
+    //     { text: status.view, handlers: { onClick: () => this.changePostStatus(status.value, post._id) } },
+    //     { text: 'Delete', handlers: { onClick: () => this.deletePostWarning(post._id) } }
+    //   ]
+    // }
+    // renderPosts(posts) {
+    //   console.log(posts)
+    //   return (
+    //     <ul className="user-blogs-list">
+    //       {
+    //         posts.map((post, index) => (
+    //           <li key={index}>
+    //             <Link route={`/posts/${post._id}/edit`}>
+    //               <a>{post.title}</a>
+    //             </Link>
+    //             <PortButtonDropdown items={this.dropdownOptions(post)} />
+    //           </li>
+    //         )
+    //         )
+    //       }
+    //     </ul>
+    //   )
+    // }
     value: function render() {
-      var _this2 = this;
+      var posts = this.props.posts;
+      console.log(posts); // const {published, drafts} = this.separatePosts(posts);
 
-      var _this$props$auth = this.props.auth,
-          isAuthenticated = _this$props$auth.isAuthenticated,
-          user = _this$props$auth.user;
-      console.log({
-        user: user
-      });
-      console.log("".concat(user.name));
-      console.log({
-        isAuthenticated: isAuthenticated
-      });
-      return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_layouts_BaseLayout__WEBPACK_IMPORTED_MODULE_8__["default"], this.props.auth, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_BasePage__WEBPACK_IMPORTED_MODULE_9__["default"], {
-        containerClass: "editor-wrapper",
-        className: "blog-editor-page"
-      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("label", null, "Title"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("input", {
-        value: this.state.title,
-        onChange: this.handletitle
-      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("label", null, "Subtitle"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("input", {
-        value: this.state.subtitle,
-        onChange: this.handleSubtitle
-      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(CKEditor // data="<p>Hello from CKEditor 5!</p>"
-      , {
-        save: this.saveBlog,
-        onInit: function onInit(editor) {
-          // You can store the "editor" and use when it is needed.
-          console.log('Editor is ready to use!', editor);
-        },
-        onChange: function onChange(event, editor) {
-          var data = editor.getData();
-
-          _this2.setState({
-            story: data
-          }); // console.log({ event, editor, data });
-
-        },
-        onBlur: function onBlur(editor) {
-          console.log('Blur.', editor);
-        },
-        onFocus: function onFocus(editor) {
-          console.log('Focus.', editor);
+      return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_layouts_BaseLayout__WEBPACK_IMPORTED_MODULE_9__["default"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])({}, this.props.auth, {
+        headerType: 'landing'
+      }), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        className: "masthead",
+        style: {
+          "backgroundImage": "url('/static/images/home-bg.jpg')"
         }
-      })), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_SaveDraft__WEBPACK_IMPORTED_MODULE_12__["default"], {
-        onClick: this.saveBlog
-      }, "Save Draft")));
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        className: "overlay"
+      }), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Container"], null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        className: "col-lg-8 col-md-10 mx-auto"
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        className: "site-heading"
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h1", null, "Posts Dashboard"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("span", {
+        className: "subheading"
+      }, "Let's write some nice blog today", ' ', react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_routes__WEBPACK_IMPORTED_MODULE_14__["Link"], {
+        route: "/blogs/new"
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Button"], {
+        color: "primary"
+      }, "Create a new Post")))))))), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_BasePage__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        className: "blog-user-page"
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Row"], null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Col"], {
+        md: "12",
+        className: "mx-auto text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h2", {
+        className: "blog-status-title"
+      }, "Posts")))));
     }
+  }], [{
+    key: "getInitialProps",
+    // state = {
+    //   posts: []
+    // }
+    // componentDidMount() {
+    //   getUserPosts.then(res => {
+    //     this.setState({
+    //         posts: res.data
+    //     });
+    // });
+    // }
+    value: function () {
+      var _getInitialProps = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
+      /*#__PURE__*/
+      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(_ref) {
+        var req, posts;
+        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                req = _ref.req;
+                posts = [];
+                _context.prev = 2;
+                _context.next = 5;
+                return Object(_actions__WEBPACK_IMPORTED_MODULE_15__["getUserPosts"])(req);
+
+              case 5:
+                posts = _context.sent;
+                _context.next = 11;
+                break;
+
+              case 8:
+                _context.prev = 8;
+                _context.t0 = _context["catch"](2);
+                console.error(_context.t0);
+
+              case 11:
+                return _context.abrupt("return", {
+                  posts: posts
+                });
+
+              case 12:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[2, 8]]);
+      }));
+
+      function getInitialProps(_x) {
+        return _getInitialProps.apply(this, arguments);
+      }
+
+      return getInitialProps;
+    }()
   }]);
 
-  return BlogEditor;
-}(react__WEBPACK_IMPORTED_MODULE_7___default.a.Component);
+  return UserPosts;
+}(react__WEBPACK_IMPORTED_MODULE_8___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(_components_hoc_withAuth__WEBPACK_IMPORTED_MODULE_11__["default"])(BlogEditor));
+/* harmony default export */ __webpack_exports__["default"] = (Object(_components_hoc_withAuth__WEBPACK_IMPORTED_MODULE_13__["default"])(UserPosts));
 
 /***/ }),
 
@@ -57336,13 +54450,13 @@ var auth0client = new Auth();
 /***/ }),
 
 /***/ 6:
-/*!******************************************************************************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2FblogEditor&absolutePagePath=%2FUsers%2Fcarlyseitz%2FDocuments%2FHomework%20Assignments%2Fssr-react-blog%2Fpages%2FblogEditor.js ***!
-  \******************************************************************************************************************************************************************************/
+/*!****************************************************************************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2FuserPosts&absolutePagePath=%2FUsers%2Fcarlyseitz%2FDocuments%2FHomework%20Assignments%2Fssr-react-blog%2Fpages%2FuserPosts.js ***!
+  \****************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2FblogEditor&absolutePagePath=%2FUsers%2Fcarlyseitz%2FDocuments%2FHomework%20Assignments%2Fssr-react-blog%2Fpages%2FblogEditor.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2FblogEditor&absolutePagePath=%2FUsers%2Fcarlyseitz%2FDocuments%2FHomework%20Assignments%2Fssr-react-blog%2Fpages%2FblogEditor.js!./");
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2FuserPosts&absolutePagePath=%2FUsers%2Fcarlyseitz%2FDocuments%2FHomework%20Assignments%2Fssr-react-blog%2Fpages%2FuserPosts.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2FuserPosts&absolutePagePath=%2FUsers%2Fcarlyseitz%2FDocuments%2FHomework%20Assignments%2Fssr-react-blog%2Fpages%2FuserPosts.js!./");
 
 
 /***/ }),
@@ -57359,4 +54473,4 @@ module.exports = dll_829b10deddf10e1653a8;
 /***/ })
 
 },[[6,"static/runtime/webpack.js"]]]);
-//# sourceMappingURL=blogEditor.js.map
+//# sourceMappingURL=userPosts.js.map

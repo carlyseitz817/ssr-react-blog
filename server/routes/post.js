@@ -14,5 +14,10 @@ router.get('',
   authService.checkJWT,
   // authService.checkRole('siteOwner'),
   postCtrl.getPosts);
+
+router.get('/me',
+  authService.checkJWT,
+  // authService.checkRole('siteOwner'),
+  postCtrl.getUserPosts);
 module.exports = router;
 

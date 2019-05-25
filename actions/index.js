@@ -43,16 +43,16 @@ export const getSecretData = async (req) => {
 // ------------ BLOG ACTIONS --------------
 
 export const getPosts = async (req) => {
-  return await axiosInstance.get('/posts').then(response => response.data);
+  return await axios.get('/api/v1/posts').then(response => response.data);
 }
 
 // export const getPostBySlug = async (slug) => {
 //   return await axiosInstance.get(`/posts/s/${slug}`).then(response => response.data);
 // }
 
-// export const getUserPosts = async (req) => {
-//   return await axiosInstance.get('/posts/me', setAuthHeader(req)).then(response => response.data);
-// }
+export const getUserPosts = async (req) => {
+  return await axios.get('http://localhost:3000/api/v1/posts/me', setAuthHeader(req)).then(response => response.data);
+}
 
 // export const createPost = (postData) => {
 //   return axios.post('/api/v1/posts', postData)
@@ -61,7 +61,7 @@ export const getPosts = async (req) => {
 // }
 
 export const createPost = (postData) => {
-  return axios.post('/api/v1/posts', postData, setAuthHeader())
+  return axios.post('/api/v1/posts', postData, setAuthHeader(req))
           .then(response => response.data)
           .catch(err => rejectPromise(err))
 }

@@ -38,7 +38,6 @@ class BlogEditor extends React.Component {
 
     const post = {};
 
-    // post.author = this.props.user.name;
     post.title = this.state.title;
     post.subTitle = this.state.subtitle;
     post.story = this.state.story;

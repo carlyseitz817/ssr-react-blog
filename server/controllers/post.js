@@ -28,6 +28,18 @@ exports.createPost = (req, res) => {
   });
 }
 
+exports.getUserPosts = (req, res) => {
+  const userId = req.user.sub;
+
+  Post.find({ userId }, function (err, userPosts) {
+    if (err) {
+      return res.status(422).send(err);
+    }
+
+    return res.json(userPosts);
+  });
+}
+
 exports.getPosts = (req, res) => {
   Post.find()
       .sort({'createdAt': -1})
