@@ -46,9 +46,9 @@ class BlogEditor extends React.Component {
 
     // debugger;
 
-    createPost(post).then(data => {
+    createPost(post).then(createdPost => {
       // debugger;
-      console.log(data);
+      console.log("createdPost: " + createdPost);
       // this.setState({isSaving: false});
       // toast.success('Blog Saved Succesfuly!');
       Router.pushRoute(`/posts/${createdPost._id}/edit`);
