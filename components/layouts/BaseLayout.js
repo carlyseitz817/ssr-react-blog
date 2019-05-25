@@ -4,7 +4,7 @@ import Head from 'next/head';
 
 const BaseLayout = (props) => {
     const { className, children, isAuthenticated, user } = props;
-    const headerType = props.headerType || 'deafult';
+    const headerType = props.headerType || 'default';
 
     return (
         <div>

@@ -17,11 +17,11 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/index": [
+    "/blogEditor": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/secret": [
+    "/index": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

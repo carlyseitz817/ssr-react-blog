@@ -71,9 +71,9 @@ class BlogEditor extends React.Component {
       <BaseLayout {...this.props.auth}>
         <BasePage containerClass="editor-wrapper" className="blog-editor-page">
           <label>Title</label>
-          <input value={this.state.title} onChange={this.handletitle} />
+          <input value={this.state.title} className="titlez" onChange={this.handletitle} />
           <label>Subtitle</label>
-          <input value={this.state.subtitle} onChange={this.handleSubtitle} />
+          <input value={this.state.subtitle} className="titlez" onChange={this.handleSubtitle} />
           <div>
             <CKEditor
               // data="<p>Hello from CKEditor 5!</p>"

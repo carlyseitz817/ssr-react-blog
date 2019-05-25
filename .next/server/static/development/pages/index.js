@@ -218,7 +218,7 @@ var BaseLayout = function BaseLayout(props) {
       children = props.children,
       isAuthenticated = props.isAuthenticated,
       user = props.user;
-  var headerType = props.headerType || 'deafult';
+  var headerType = props.headerType || 'default';
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_head__WEBPACK_IMPORTED_MODULE_2___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("title", null, "SSR Next.js Blog"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("link", {
     rel: "stylesheet",
     href: "https://use.fontawesome.com/releases/v5.8.2/css/all.css",

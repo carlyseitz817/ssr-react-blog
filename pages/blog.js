@@ -141,7 +141,7 @@ class Blog extends React.Component {
                       </a>
                     </li>
                   </ul>
-                  <p className="copyright text-muted">Copyright &copy; Carly Seitz & Danielle Lycea 2019</p>
+                  <p className="copyright text-muted">Copyright &copy; Carly Seitz & Danielle Licea 2019</p>
                 </div>
               </Row>
             </Container>

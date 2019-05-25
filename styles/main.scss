@@ -28,6 +28,20 @@ body {
   font-family: "Montserrat", "Helvetica";
 }
 
+//blog editor title + subtitle
+
+label {
+
+color: blue;
+
+}
+
+.titlez {
+
+ padding: 150px 0 100px 0;
+
+}
+
 .clickable {
   cursor: pointer;
 }
@@ -47,6 +61,8 @@ body {
   font-weight: 700;
   color: red;
 }
+
+// main bg 
 
 .base-page {
   padding: 150px 0 100px 0;

@@ -257,6 +257,12 @@ body {
   width: 100%;
   font-family: "Montserrat", "Helvetica"; }
 
+label {
+  color: blue; }
+
+.titlez {
+  padding: 150px 0 100px 0; }
+
 .clickable {
   cursor: pointer; }
 
