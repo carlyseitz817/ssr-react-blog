@@ -13,11 +13,11 @@ const authService = require('./services/auth');
 const secretData = [
   {
     title: 'SecretData 1',
-    description: 'Plans how to build spaceship'
+    description: 'This is a secret'
   },
   {
     title: 'SecretData 2',
-    description: 'My secret passwords'
+    description: 'These are more of my secret'
   }
 ]
 
@@ -38,6 +38,10 @@ app
     server.use(bodyParser.json());
 
     server.get('/api/v1/secret', authService.checkJWT, (req, res) => {
+      return res.json(secretData);
+    })
+
+    server.get('/api/v1/secret/onlysiteowner', authService.checkJWT, authService.checkRole('siteOwner'), (req, res) => {
       return res.json(secretData);
     })
 

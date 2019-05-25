@@ -2,8 +2,13 @@ import React from 'react';
 import BaseLayout from '../layouts/BaseLayout';
 import BasePage from '../BasePage';
 
-export default function (Component) {
+
+// export default role => Component =>
+//   class withAuth extends React.Component {
+    
+export default function (Component, role) {
     return class withAuth extends React.Component {
+
         static async getInitialProps(args) {
             const pageProps = await Component.getInitialProps && await Component.getInitialProps(args);
 
@@ -11,22 +16,36 @@ export default function (Component) {
         }
 
         renderProtectedPage() {
-            const { isAuthenticated } = this.props.auth;
+            const { isAuthenticated, user } = this.props.auth;
+            const userRole = user && user[`${process.env.NAMESPACE}/role`];
+            let isAuthorized = false;
 
-            if (isAuthenticated) {
+            if (role) {
+                if (userRole && userRole === role) { isAuthorized = true };
+              } else {
+                isAuthorized = true;
+              }
+          
+              if (!isAuthenticated) {
                 return (
-                    <Component {...this.props} />
+                  <BaseLayout {...this.props.auth}>
+                    <BasePage>
+                      <h1> You are not authenticated. Please Login to access this page. </h1>
+                    </BasePage>
+                  </BaseLayout>
                 )
-            } else {
+              } else if (!isAuthorized) {
                 return (
-                    <BaseLayout {...this.props.auth}>
-                        <BasePage>
-                            <h1>You must log in to view this page.</h1>
-                        </BasePage>
-                    </BaseLayout>
+                  <BaseLayout {...this.props.auth}>
+                    <BasePage>
+                      <h1> You are not authorized. You do not have permission to visit this page. </h1>
+                    </BasePage>
+                  </BaseLayout>
                 )
+              } else {
+                return ( <Component {...this.props} />)
+              }
             }
-        }
 
         render() {
             return this.renderProtectedPage();
