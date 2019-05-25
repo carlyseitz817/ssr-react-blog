@@ -17,14 +17,14 @@ export default function (Component, role) {
 
         renderProtectedPage() {
             const { isAuthenticated, user } = this.props.auth;
-            const userRole = user && user[`${process.env.NAMESPACE}/role`];
-            let isAuthorized = false;
+            // const userRole = user && user[`${process.env.NAMESPACE}/role`];
+            // let isAuthorized = false;
 
-            if (role) {
-                if (userRole && userRole === role) { isAuthorized = true };
-              } else {
-                isAuthorized = true;
-              }
+            // if (role) {
+            //     if (userRole && userRole === role) { isAuthorized = true };
+            //   } else {
+            //     isAuthorized = true;
+            //   }
           
               if (!isAuthenticated) {
                 return (
@@ -34,14 +34,14 @@ export default function (Component, role) {
                     </BasePage>
                   </BaseLayout>
                 )
-              } else if (!isAuthorized) {
-                return (
-                  <BaseLayout {...this.props.auth}>
-                    <BasePage>
-                      <h1> You are not authorized. You do not have permission to visit this page. </h1>
-                    </BasePage>
-                  </BaseLayout>
-                )
+              // } else if (!isAuthorized) {
+              //   return (
+              //     <BaseLayout {...this.props.auth}>
+              //       <BasePage>
+              //         <h1> You are not authorized. You do not have permission to visit this page. </h1>
+              //       </BasePage>
+              //     </BaseLayout>
+              // )
               } else {
                 return ( <Component {...this.props} />)
               }
