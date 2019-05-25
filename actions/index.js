@@ -4,8 +4,7 @@ import Cookies from 'js-cookie';
 import { getCookieFromReq } from '../helpers/utils';
 
 const axiosInstance = axios.create({
-  baseURL: `${process.env.BASE_URL}/api/v1`,
-  // baseURL: "/api/v1",
+  baseURL: `http://localhost:3000/api/v1`,
 
   timeout: 3000
 });
@@ -43,22 +42,16 @@ export const getSecretData = async (req) => {
 // ------------ BLOG ACTIONS --------------
 
 export const getPosts = async (req) => {
-  return await axiosInstance.get('/posts').then(response => response.data);
+  return await axiosInstance.get('/api/v1/posts').then(response => response.data);
 }
 
 // export const getPostBySlug = async (slug) => {
 //   return await axiosInstance.get(`/posts/s/${slug}`).then(response => response.data);
 // }
 
-// export const getUserPosts = async (req) => {
-//   return await axiosInstance.get('/posts/me', setAuthHeader(req)).then(response => response.data);
-// }
-
-// export const createPost = (postData) => {
-//   return axios.post('/api/v1/posts', postData)
-//           .then(response => response.data)
-//           .catch(err => rejectPromise(err))
-// }
+export const getUserPosts = async (req) => {
+  return await axiosInstance.get('/posts/me', setAuthHeader(req)).then(response => response.data);
+}
 
 export const createPost = (postData) => {
   return axios.post('/api/v1/posts', postData, setAuthHeader())
@@ -66,21 +59,21 @@ export const createPost = (postData) => {
           .catch(err => rejectPromise(err))
 }
 
-// export const updatePost = (postData, postId) => {
-//   return axiosInstance.patch(`/posts/${postId}`, postData, setAuthHeader())
-//           .then(response => response.data)
-//           .catch(err => rejectPromise(err))
-// }
+export const updatePost = (postData, postId) => {
+  return axiosInstance.patch(`/posts/${postId}`, postData, setAuthHeader())
+          .then(response => response.data)
+          .catch(err => rejectPromise(err))
+}
 
-// export const getPostById = (postId) => {
-//   return axiosInstance.get(`/posts/${postId}`).then(response => response.data);
-// }
+export const getPostById = (postId) => {
+  return axiosInstance.get(`/posts/${postId}`).then(response => response.data);
+}
 
-// export const deletePost = (postId) => {
-//   return axiosInstance.delete(`/posts/${postId}`, setAuthHeader())
-//           .then(response => response.data)
-//           .catch(err => rejectPromise(err));
-// }
+export const deletePost = (postId) => {
+  return axiosInstance.delete(`/posts/${postId}`, setAuthHeader())
+          .then(response => response.data)
+          .catch(err => rejectPromise(err));
+}
 
 
 

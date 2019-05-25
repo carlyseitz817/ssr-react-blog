@@ -6,7 +6,7 @@ module.exports =
 /******/ 	// object to store loaded chunks
 /******/ 	// "0" means "already loaded"
 /******/ 	var installedChunks = {
-/******/ 		"static/development/pages/blogEditor.js": 0
+/******/ 		"static/development/pages/postEditor.js": 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -130,14 +130,18 @@ module.exports =
 /*!**************************!*\
   !*** ./actions/index.js ***!
   \**************************/
-/*! exports provided: getSecretData, getPosts, createPost */
+/*! exports provided: getSecretData, getPosts, getUserPosts, createPost, updatePost, getPostById, deletePost */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSecretData", function() { return getSecretData; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getPosts", function() { return getPosts; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getUserPosts", function() { return getUserPosts; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createPost", function() { return createPost; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updatePost", function() { return updatePost; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getPostById", function() { return getPostById; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deletePost", function() { return deletePost; });
 /* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
 /* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/asyncToGenerator */ "./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js");
@@ -155,8 +159,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var axiosInstance = axios__WEBPACK_IMPORTED_MODULE_3___default.a.create({
-  baseURL: "".concat(process.env.BASE_URL, "/api/v1"),
-  // baseURL: "/api/v1",
+  baseURL: "http://localhost:3000/api/v1",
   timeout: 3000
 });
 
@@ -230,7 +233,7 @@ function () {
         switch (_context2.prev = _context2.next) {
           case 0:
             _context2.next = 2;
-            return axiosInstance.get('/posts').then(function (response) {
+            return axiosInstance.get('/api/v1/posts').then(function (response) {
               return response.data;
             });
 
@@ -251,34 +254,63 @@ function () {
 }(); // export const getPostBySlug = async (slug) => {
 //   return await axiosInstance.get(`/posts/s/${slug}`).then(response => response.data);
 // }
-// export const getUserPosts = async (req) => {
-//   return await axiosInstance.get('/posts/me', setAuthHeader(req)).then(response => response.data);
-// }
-// export const createPost = (postData) => {
-//   return axios.post('/api/v1/posts', postData)
-//           .then(response => response.data)
-//           .catch(err => rejectPromise(err))
-// }
 
+var getUserPosts =
+/*#__PURE__*/
+function () {
+  var _ref3 = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  /*#__PURE__*/
+  _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(req) {
+    return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.next = 2;
+            return axiosInstance.get('/posts/me', setAuthHeader(req)).then(function (response) {
+              return response.data;
+            });
+
+          case 2:
+            return _context3.abrupt("return", _context3.sent);
+
+          case 3:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3);
+  }));
+
+  return function getUserPosts(_x3) {
+    return _ref3.apply(this, arguments);
+  };
+}();
 var createPost = function createPost(postData) {
   return axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('/api/v1/posts', postData, setAuthHeader()).then(function (response) {
     return response.data;
   }).catch(function (err) {
     return rejectPromise(err);
   });
-}; // export const updatePost = (postData, postId) => {
-//   return axiosInstance.patch(`/posts/${postId}`, postData, setAuthHeader())
-//           .then(response => response.data)
-//           .catch(err => rejectPromise(err))
-// }
-// export const getPostById = (postId) => {
-//   return axiosInstance.get(`/posts/${postId}`).then(response => response.data);
-// }
-// export const deletePost = (postId) => {
-//   return axiosInstance.delete(`/posts/${postId}`, setAuthHeader())
-//           .then(response => response.data)
-//           .catch(err => rejectPromise(err));
-// }
+};
+var updatePost = function updatePost(postData, postId) {
+  return axiosInstance.patch("/posts/".concat(postId), postData, setAuthHeader()).then(function (response) {
+    return response.data;
+  }).catch(function (err) {
+    return rejectPromise(err);
+  });
+};
+var getPostById = function getPostById(postId) {
+  return axiosInstance.get("/posts/".concat(postId)).then(function (response) {
+    return response.data;
+  });
+};
+var deletePost = function deletePost(postId) {
+  return axiosInstance.delete("/posts/".concat(postId), setAuthHeader()).then(function (response) {
+    return response.data;
+  }).catch(function (err) {
+    return rejectPromise(err);
+  });
+};
 
 /***/ }),
 
@@ -741,8 +773,8 @@ function (_React$Component) {
       })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["NavItem"], {
         className: "port-navbar-item"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
-        route: "/blogEditor",
-        title: "BLOG EDITOR"
+        route: "/postEditor",
+        title: "POST EDITOR"
       })), !isAuthenticated && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["NavItem"], {
         className: "port-navbar-item"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(Login, null)), isAuthenticated && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["NavItem"], {
@@ -1950,9 +1982,9 @@ module.exports = __webpack_require__(/*! ./dist/client/link */ "./node_modules/n
 
 /***/ }),
 
-/***/ "./pages/blogEditor.js":
+/***/ "./pages/postEditor.js":
 /*!*****************************!*\
-  !*** ./pages/blogEditor.js ***!
+  !*** ./pages/postEditor.js ***!
   \*****************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -1973,10 +2005,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! next/dynamic */ "next/dynamic");
 /* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(next_dynamic__WEBPACK_IMPORTED_MODULE_10__);
 /* harmony import */ var _components_hoc_withAuth__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/hoc/withAuth */ "./components/hoc/withAuth.js");
-/* harmony import */ var _components_SaveDraft__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/SaveDraft */ "./components/SaveDraft.js");
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../actions */ "./actions/index.js");
-/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-toastify */ "react-toastify");
-/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(react_toastify__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../routes */ "./routes.js");
+/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_routes__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _components_SaveDraft__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/SaveDraft */ "./components/SaveDraft.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../actions */ "./actions/index.js");
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-toastify */ "react-toastify");
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(react_toastify__WEBPACK_IMPORTED_MODULE_15__);
 
 
 
@@ -2015,6 +2049,7 @@ var CKEditor = next_dynamic__WEBPACK_IMPORTED_MODULE_10___default()(function () 
 
 
 
+
 var BlogEditor =
 /*#__PURE__*/
 function (_React$Component) {
@@ -2030,8 +2065,7 @@ function (_React$Component) {
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "state", {
       title: '',
       subtitle: '',
-      story: '' // author: ''
-      // isSaving: false,
+      story: '' // isSaving: false,
       // lockId: Math.floor(1000 + Math.random() * 9000)
 
     });
@@ -2056,19 +2090,19 @@ function (_React$Component) {
     key: "saveBlog",
     value: function saveBlog(story) {
       event.preventDefault();
-      var post = {}; // post.author = this.props.user.name;
-
+      var post = {};
       post.title = this.state.title;
       post.subTitle = this.state.subtitle;
       post.story = this.state.story;
       console.log("saved");
       console.log(post.story); // debugger;
 
-      Object(_actions__WEBPACK_IMPORTED_MODULE_13__["createPost"])(post).then(function (data) {
+      Object(_actions__WEBPACK_IMPORTED_MODULE_14__["createPost"])(post).then(function (createdPost) {
         // debugger;
-        console.log(data); // this.setState({isSaving: false});
+        console.log("createdPost: " + createdPost); // this.setState({isSaving: false});
         // toast.success('Blog Saved Succesfuly!');
-        // Router.pushRoute(`/blogs/${createdPost._id}/edit`);
+
+        _routes__WEBPACK_IMPORTED_MODULE_12__["Router"].pushRoute("/posts/".concat(createdPost._id, "/edit"));
       }).catch(function (err) {
         // this.setState({isSaving: false});
         // toast.error('Unexpected Error, Copy your progress and refresh browser please.');
@@ -2100,7 +2134,7 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("label", null, "Subtitle"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("input", {
         value: this.state.subtitle,
         onChange: this.handleSubtitle
-      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(CKEditor // data="<p>Hello from CKEditor 5!</p>"
+      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(CKEditor // data="<strong>Hello from CKEditor 5!</strong>"
       , {
         save: this.saveBlog,
         onInit: function onInit(editor) {
@@ -2115,13 +2149,11 @@ function (_React$Component) {
           }); // console.log({ event, editor, data });
 
         },
-        onBlur: function onBlur(editor) {
-          console.log('Blur.', editor);
+        onBlur: function onBlur(editor) {// console.log('Blur.', editor);
         },
-        onFocus: function onFocus(editor) {
-          console.log('Focus.', editor);
+        onFocus: function onFocus(editor) {// console.log('Focus.', editor);
         }
-      })), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_SaveDraft__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      })), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_SaveDraft__WEBPACK_IMPORTED_MODULE_13__["default"], {
         onClick: this.saveBlog
       }, "Save Draft")));
     }
@@ -2144,12 +2176,9 @@ function (_React$Component) {
 "use strict";
 
 
-var routes = __webpack_require__(/*! next-routes */ "next-routes"); // Name   Page      Pattern
+var routes = __webpack_require__(/*! next-routes */ "next-routes");
 
-
-module.exports = routes() // ----   ----      -----
-.add('about') // about  about     /about
-.add('blog', '/blog/:slug'); // blog   blog      /blog/:slug
+module.exports = routes().add('about').add('blog', '/blog/:slug').add('userPosts', '/posts/dashboard').add('postEditor', '/posts/new').add('postDetail', '/posts/:slug').add('postEditorUpdate', '/posts/:id/edit');
 
 /***/ }),
 
@@ -2546,12 +2575,12 @@ var auth0client = new Auth();
 
 /***/ 3:
 /*!***********************************!*\
-  !*** multi ./pages/blogEditor.js ***!
+  !*** multi ./pages/postEditor.js ***!
   \***********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/carlyseitz/Documents/Homework Assignments/ssr-react-blog/pages/blogEditor.js */"./pages/blogEditor.js");
+module.exports = __webpack_require__(/*! /Users/carlyseitz/Documents/Homework Assignments/ssr-react-blog/pages/postEditor.js */"./pages/postEditor.js");
 
 
 /***/ }),
@@ -2887,4 +2916,4 @@ module.exports = require("url");
 /***/ })
 
 /******/ });
-//# sourceMappingURL=blogEditor.js.map
+//# sourceMappingURL=postEditor.js.map

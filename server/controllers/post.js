@@ -3,6 +3,7 @@ const Post = require('../models/post');
 // const AsyncLock = require('async-lock');
 // const lock = new AsyncLock();
 
+// module.exports = {
 exports.createPost = (req, res) => {
   // const lockId = req.query.lockId;
 
@@ -28,17 +29,98 @@ exports.createPost = (req, res) => {
   });
 }
 
-exports.getPosts = (req, res) => {
-  Post.find()
-      .sort({'createdAt': -1})
-      .exec(function(err, publishedPosts) {
+exports.getUserPosts = (req, res) => {
+  const userId = req.user.sub;
+
+  Post.find({ userId }, function (err, userPosts) {
     if (err) {
       return res.status(422).send(err);
     }
 
-    return res.json(publishedPosts);
+    return res.json(userPosts);
   });
 }
+
+exports.getPosts = (req, res) => {
+  Post.find()
+    .sort({ 'createdAt': -1 })
+    .exec(function (err, publishedPosts) {
+      if (err) {
+        return res.status(422).send(err);
+      }
+
+      return res.json(publishedPosts);
+    });
+}
+
+exports.getPostBySlug = (req, res) => {
+  const slug = req.params.slug;
+
+  Post.findOne({ slug }, function (err, foundPost) {
+    if (err) {
+      return res.status(422).send(err);
+    }
+
+    return res.json(foundPost);
+  });
+}
+
+exports.getPostById = (req, res) => {
+  const postId = req.params.id;
+
+  Post.findById(postId, (err, foundPost) => {
+    if (err) {
+      return res.status(422).send(err);
+    }
+
+    return res.json(foundPost);
+  });
+}
+
+exports.updatePost = (req, res) => {
+  const postId = req.params.id;
+  const postData = req.body;
+
+  Post.findById(postId, function (err, foundPost) {
+    if (err) {
+      return res.status(422).send(err);
+    }
+
+    if (postData.status && postData.status === 'published' && !foundPost.slug) {
+
+      foundPost.slug = slugify(foundPost.title, {
+        replacement: '-',    // replace spaces with replacement
+        remove: null,        // regex to remove characters
+        lower: true          // result in lower case
+      });
+
+    }
+
+    foundPost.set(postData);
+    foundPost.updatedAt = new Date();
+    foundPost.save(function (err, foundPost) {
+      if (err) {
+        return res.status(422).send(err);
+      }
+
+      return res.json(foundPost);
+    });
+  });
+}
+
+exports.deletePost = (req, res) => {
+  const postId = req.params.id;
+
+  Post.deleteOne({ _id: postId }, function (err) {
+    if (err) {
+      return res.status(422).send(err);
+    }
+
+    res.json({ status: 'deleted' });
+  });
+}
+
+// }
 // }, function (err, ret) {
 //   err && console.error(err)
 // });

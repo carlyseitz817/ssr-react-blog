@@ -121,8 +121,8 @@ class Auth {
     const verifiedToken = await this.verifyToken(token);
 
     return verifiedToken;
-    // return this.isAuthenticated();
   }
+  
   //   async serverAuth(req) {
   //     if (req.headers.cookie) {
   //       const tokenCookie = req.headers.cookie.split(";").find(c => c.trim().startsWith("jwt="));

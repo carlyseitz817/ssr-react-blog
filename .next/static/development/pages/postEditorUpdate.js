@@ -1,17 +1,21 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/blogEditor.js"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/postEditorUpdate.js"],{
 
 /***/ "./actions/index.js":
 /*!**************************!*\
   !*** ./actions/index.js ***!
   \**************************/
-/*! exports provided: getSecretData, getPosts, createPost */
+/*! exports provided: getSecretData, getPosts, getUserPosts, createPost, updatePost, getPostById, deletePost */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function(process) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSecretData", function() { return getSecretData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSecretData", function() { return getSecretData; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getPosts", function() { return getPosts; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getUserPosts", function() { return getUserPosts; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createPost", function() { return createPost; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updatePost", function() { return updatePost; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getPostById", function() { return getPostById; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deletePost", function() { return deletePost; });
 /* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
 /* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/asyncToGenerator */ "./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js");
@@ -29,8 +33,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var axiosInstance = axios__WEBPACK_IMPORTED_MODULE_3___default.a.create({
-  baseURL: "".concat(process.env.BASE_URL, "/api/v1"),
-  // baseURL: "/api/v1",
+  baseURL: "http://localhost:3000/api/v1",
   timeout: 3000
 });
 
@@ -104,7 +107,7 @@ function () {
         switch (_context2.prev = _context2.next) {
           case 0:
             _context2.next = 2;
-            return axiosInstance.get('/posts').then(function (response) {
+            return axiosInstance.get('/api/v1/posts').then(function (response) {
               return response.data;
             });
 
@@ -125,35 +128,63 @@ function () {
 }(); // export const getPostBySlug = async (slug) => {
 //   return await axiosInstance.get(`/posts/s/${slug}`).then(response => response.data);
 // }
-// export const getUserPosts = async (req) => {
-//   return await axiosInstance.get('/posts/me', setAuthHeader(req)).then(response => response.data);
-// }
-// export const createPost = (postData) => {
-//   return axios.post('/api/v1/posts', postData)
-//           .then(response => response.data)
-//           .catch(err => rejectPromise(err))
-// }
 
+var getUserPosts =
+/*#__PURE__*/
+function () {
+  var _ref3 = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  /*#__PURE__*/
+  _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(req) {
+    return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.next = 2;
+            return axiosInstance.get('/posts/me', setAuthHeader(req)).then(function (response) {
+              return response.data;
+            });
+
+          case 2:
+            return _context3.abrupt("return", _context3.sent);
+
+          case 3:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3);
+  }));
+
+  return function getUserPosts(_x3) {
+    return _ref3.apply(this, arguments);
+  };
+}();
 var createPost = function createPost(postData) {
   return axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('/api/v1/posts', postData, setAuthHeader()).then(function (response) {
     return response.data;
   }).catch(function (err) {
     return rejectPromise(err);
   });
-}; // export const updatePost = (postData, postId) => {
-//   return axiosInstance.patch(`/posts/${postId}`, postData, setAuthHeader())
-//           .then(response => response.data)
-//           .catch(err => rejectPromise(err))
-// }
-// export const getPostById = (postId) => {
-//   return axiosInstance.get(`/posts/${postId}`).then(response => response.data);
-// }
-// export const deletePost = (postId) => {
-//   return axiosInstance.delete(`/posts/${postId}`, setAuthHeader())
-//           .then(response => response.data)
-//           .catch(err => rejectPromise(err));
-// }
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node_modules/process/browser.js */ "./node_modules/process/browser.js")))
+};
+var updatePost = function updatePost(postData, postId) {
+  return axiosInstance.patch("/posts/".concat(postId), postData, setAuthHeader()).then(function (response) {
+    return response.data;
+  }).catch(function (err) {
+    return rejectPromise(err);
+  });
+};
+var getPostById = function getPostById(postId) {
+  return axiosInstance.get("/posts/".concat(postId)).then(function (response) {
+    return response.data;
+  });
+};
+var deletePost = function deletePost(postId) {
+  return axiosInstance.delete("/posts/".concat(postId), setAuthHeader()).then(function (response) {
+    return response.data;
+  }).catch(function (err) {
+    return rejectPromise(err);
+  });
+};
 
 /***/ }),
 
@@ -614,8 +645,8 @@ function (_React$Component) {
       })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["NavItem"], {
         className: "port-navbar-item"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
-        route: "/blogEditor",
-        title: "BLOG EDITOR"
+        route: "/postEditor",
+        title: "POST EDITOR"
       })), !isAuthenticated && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["NavItem"], {
         className: "port-navbar-item"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(Login, null)), isAuthenticated && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["NavItem"], {
@@ -32536,21 +32567,21 @@ exports.formatWithValidation = formatWithValidation;
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2FblogEditor&absolutePagePath=%2FUsers%2Fcarlyseitz%2FDocuments%2FHomework%20Assignments%2Fssr-react-blog%2Fpages%2FblogEditor.js!./":
-/*!**************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2FblogEditor&absolutePagePath=%2FUsers%2Fcarlyseitz%2FDocuments%2FHomework%20Assignments%2Fssr-react-blog%2Fpages%2FblogEditor.js ***!
-  \**************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2FpostEditorUpdate&absolutePagePath=%2FUsers%2Fcarlyseitz%2FDocuments%2FHomework%20Assignments%2Fssr-react-blog%2Fpages%2FpostEditorUpdate.js!./":
+/*!**************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2FpostEditorUpdate&absolutePagePath=%2FUsers%2Fcarlyseitz%2FDocuments%2FHomework%20Assignments%2Fssr-react-blog%2Fpages%2FpostEditorUpdate.js ***!
+  \**************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-    (window.__NEXT_P=window.__NEXT_P||[]).push(["/blogEditor", function() {
-      var page = __webpack_require__(/*! ./pages/blogEditor.js */ "./pages/blogEditor.js")
+    (window.__NEXT_P=window.__NEXT_P||[]).push(["/postEditorUpdate", function() {
+      var page = __webpack_require__(/*! ./pages/postEditorUpdate.js */ "./pages/postEditorUpdate.js")
       if(true) {
-        module.hot.accept(/*! ./pages/blogEditor.js */ "./pages/blogEditor.js", function() {
-          if(!next.router.components["/blogEditor"]) return
-          var updatedPage = __webpack_require__(/*! ./pages/blogEditor.js */ "./pages/blogEditor.js")
-          next.router.update("/blogEditor", updatedPage.default || updatedPage)
+        module.hot.accept(/*! ./pages/postEditorUpdate.js */ "./pages/postEditorUpdate.js", function() {
+          if(!next.router.components["/postEditorUpdate"]) return
+          var updatedPage = __webpack_require__(/*! ./pages/postEditorUpdate.js */ "./pages/postEditorUpdate.js")
+          next.router.update("/postEditorUpdate", updatedPage.default || updatedPage)
         })
       }
       return { page: page.default || page }
@@ -56698,33 +56729,36 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./pages/blogEditor.js":
-/*!*****************************!*\
-  !*** ./pages/blogEditor.js ***!
-  \*****************************/
+/***/ "./pages/postEditorUpdate.js":
+/*!***********************************!*\
+  !*** ./pages/postEditorUpdate.js ***!
+  \***********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _components_layouts_BaseLayout__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/layouts/BaseLayout */ "./components/layouts/BaseLayout.js");
-/* harmony import */ var _components_BasePage__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/BasePage */ "./components/BasePage.js");
-/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! next/dynamic */ "./node_modules/next-server/dist/lib/dynamic.js");
-/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(next_dynamic__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _components_hoc_withAuth__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/hoc/withAuth */ "./components/hoc/withAuth.js");
-/* harmony import */ var _components_SaveDraft__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/SaveDraft */ "./components/SaveDraft.js");
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../actions */ "./actions/index.js");
+/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
+/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/asyncToGenerator */ "./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _components_layouts_BaseLayout__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/layouts/BaseLayout */ "./components/layouts/BaseLayout.js");
+/* harmony import */ var _components_BasePage__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/BasePage */ "./components/BasePage.js");
+/* harmony import */ var _components_hoc_withAuth__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/hoc/withAuth */ "./components/hoc/withAuth.js");
+/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! next/dynamic */ "./node_modules/next-server/dist/lib/dynamic.js");
+/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(next_dynamic__WEBPACK_IMPORTED_MODULE_13__);
 /* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/lib/index.js");
 /* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(react_toastify__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var _components_SaveDraft__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../components/SaveDraft */ "./components/SaveDraft.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../actions */ "./actions/index.js");
 
 
 
@@ -56736,18 +56770,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var ClassicEditor = next_dynamic__WEBPACK_IMPORTED_MODULE_10___default()(function () {
-  return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.t.bind(null, /*! @ckeditor/ckeditor5-build-classic */ "./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js", 7));
-}, {
-  ssr: false,
-  loadableGenerated: {
-    webpack: function webpack() {
-      return [/*require.resolve*/(/*! @ckeditor/ckeditor5-build-classic */ "./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js")];
-    },
-    modules: ['@ckeditor/ckeditor5-build-classic']
-  }
-});
-var CKEditor = next_dynamic__WEBPACK_IMPORTED_MODULE_10___default()(function () {
+
+
+
+var CKEditor = next_dynamic__WEBPACK_IMPORTED_MODULE_13___default()(function () {
   return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ../components/CKEditor */ "./components/CKEditor.js"));
 }, {
   ssr: false,
@@ -56762,65 +56788,106 @@ var CKEditor = next_dynamic__WEBPACK_IMPORTED_MODULE_10___default()(function () 
 
 
 
-
-var BlogEditor =
+var PostEditorUpdate =
 /*#__PURE__*/
 function (_React$Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__["default"])(BlogEditor, _React$Component);
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_7__["default"])(PostEditorUpdate, _React$Component);
 
-  function BlogEditor(props) {
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_6__["default"])(PostEditorUpdate, null, [{
+    key: "getInitialProps",
+    value: function () {
+      var _getInitialProps = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
+      /*#__PURE__*/
+      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(_ref) {
+        var query, postId, post;
+        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                query = _ref.query;
+                postId = query.id;
+                post = {};
+                _context.prev = 3;
+                _context.next = 6;
+                return Object(_actions__WEBPACK_IMPORTED_MODULE_16__["getPostById"])(postId);
+
+              case 6:
+                post = _context.sent;
+                return _context.abrupt("return", {
+                  post: post
+                });
+
+              case 10:
+                _context.prev = 10;
+                _context.t0 = _context["catch"](3);
+                console.error(_context.t0);
+
+              case 13:
+                return _context.abrupt("return", {
+                  post: post
+                });
+
+              case 14:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[3, 10]]);
+      }));
+
+      function getInitialProps(_x) {
+        return _getInitialProps.apply(this, arguments);
+      }
+
+      return getInitialProps;
+    }()
+  }]);
+
+  function PostEditorUpdate(props) {
     var _this;
 
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, BlogEditor);
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__["default"])(this, PostEditorUpdate);
 
-    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(BlogEditor).call(this, props));
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__["default"])(PostEditorUpdate).call(this, props));
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "state", {
-      title: '',
-      subtitle: '',
-      story: '' // author: ''
-      // isSaving: false,
-      // lockId: Math.floor(1000 + Math.random() * 9000)
-
-    });
-
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "handletitle", function (evt) {
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "handletitle", function (evt) {
       return _this.setState({
         title: evt.target.value
       });
     });
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "handleSubtitle", function (evt) {
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "handleSubtitle", function (evt) {
       return _this.setState({
         subtitle: evt.target.value
       });
     });
 
-    _this.saveBlog = _this.saveBlog.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this));
+    _this.state = {
+      title: _this.props.post.title,
+      subtitle: _this.props.post.subTitle,
+      story: _this.props.post.story // isSaving: false,
+      // lockId: Math.floor(1000 + Math.random() * 9000)
+
+    };
+    _this.updatePost = _this.updatePost.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this));
     return _this;
   }
 
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(BlogEditor, [{
-    key: "saveBlog",
-    value: function saveBlog(story) {
-      event.preventDefault();
-      var post = {}; // post.author = this.props.user.name;
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_6__["default"])(PostEditorUpdate, [{
+    key: "updatePost",
+    value: function updatePost(story) {
+      var post = this.props.post;
+      var updatedPost = {};
+      updatedPost.title = this.state.title;
+      updatedPost.subTitle = this.state.subtitle;
+      updatedPost.story = this.state.story; // this.setState({isSaving: true});
 
-      post.title = this.state.title;
-      post.subTitle = this.state.subtitle;
-      post.story = this.state.story;
-      console.log("saved");
-      console.log(post.story); // debugger;
-
-      Object(_actions__WEBPACK_IMPORTED_MODULE_13__["createPost"])(post).then(function (data) {
-        // debugger;
-        console.log(data); // this.setState({isSaving: false});
-        // toast.success('Blog Saved Succesfuly!');
-        // Router.pushRoute(`/blogs/${createdPost._id}/edit`);
+      Object(_actions__WEBPACK_IMPORTED_MODULE_16__["updatePost"])(updatedPost, post._id).then(function (updatedPost) {
+        react_toastify__WEBPACK_IMPORTED_MODULE_14__["toast"].success('Post Saved Succesfuly!'); // this.setState({isSaving: false});
       }).catch(function (err) {
         // this.setState({isSaving: false});
-        // toast.error('Unexpected Error, Copy your progress and refresh browser please.');
         var message = err.message || 'Server Error!';
+        react_toastify__WEBPACK_IMPORTED_MODULE_14__["toast"].error('Unexpected Error, Copy your progress and refresh browser please.');
         console.error(message);
       });
     }
@@ -56829,31 +56896,22 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      var _this$props$auth = this.props.auth,
-          isAuthenticated = _this$props$auth.isAuthenticated,
-          user = _this$props$auth.user;
-      console.log({
-        user: user
-      });
-      console.log("".concat(user.name));
-      console.log({
-        isAuthenticated: isAuthenticated
-      });
-      return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_layouts_BaseLayout__WEBPACK_IMPORTED_MODULE_8__["default"], this.props.auth, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_BasePage__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      var post = this.props.post; // const { isSaving } = this.state;
+
+      return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_layouts_BaseLayout__WEBPACK_IMPORTED_MODULE_10__["default"], this.props.auth, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_BasePage__WEBPACK_IMPORTED_MODULE_11__["default"], {
         containerClass: "editor-wrapper",
         className: "blog-editor-page"
-      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("label", null, "Title"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("label", null, "Title"), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
         value: this.state.title,
         onChange: this.handletitle
-      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("label", null, "Subtitle"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("input", {
-        value: this.state.subtitle,
+      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("label", null, "Subtitle"), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
+        value: post.subTitle,
         onChange: this.handleSubtitle
-      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(CKEditor // data="<p>Hello from CKEditor 5!</p>"
-      , {
+      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(CKEditor, {
+        data: post.story,
         save: this.saveBlog,
-        onInit: function onInit(editor) {
-          // You can store the "editor" and use when it is needed.
-          console.log('Editor is ready to use!', editor);
+        onInit: function onInit(editor) {// You can store the "editor" and use when it is needed.
+          // console.log('Editor is ready to use!', editor);
         },
         onChange: function onChange(event, editor) {
           var data = editor.getData();
@@ -56863,22 +56921,20 @@ function (_React$Component) {
           }); // console.log({ event, editor, data });
 
         },
-        onBlur: function onBlur(editor) {
-          console.log('Blur.', editor);
+        onBlur: function onBlur(editor) {// console.log('Blur.', editor);
         },
-        onFocus: function onFocus(editor) {
-          console.log('Focus.', editor);
+        onFocus: function onFocus(editor) {// console.log('Focus.', editor);
         }
-      })), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_SaveDraft__WEBPACK_IMPORTED_MODULE_12__["default"], {
-        onClick: this.saveBlog
+      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_SaveDraft__WEBPACK_IMPORTED_MODULE_15__["default"], {
+        onClick: this.updatePost
       }, "Save Draft")));
     }
   }]);
 
-  return BlogEditor;
-}(react__WEBPACK_IMPORTED_MODULE_7___default.a.Component);
+  return PostEditorUpdate;
+}(react__WEBPACK_IMPORTED_MODULE_9___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(_components_hoc_withAuth__WEBPACK_IMPORTED_MODULE_11__["default"])(BlogEditor));
+/* harmony default export */ __webpack_exports__["default"] = (Object(_components_hoc_withAuth__WEBPACK_IMPORTED_MODULE_12__["default"])(PostEditorUpdate));
 
 /***/ }),
 
@@ -56892,12 +56948,9 @@ function (_React$Component) {
 "use strict";
 
 
-var routes = __webpack_require__(/*! next-routes */ "./node_modules/next-routes/dist/index.js"); // Name   Page      Pattern
+var routes = __webpack_require__(/*! next-routes */ "./node_modules/next-routes/dist/index.js");
 
-
-module.exports = routes() // ----   ----      -----
-.add('about') // about  about     /about
-.add('blog', '/blog/:slug'); // blog   blog      /blog/:slug
+module.exports = routes().add('about').add('blog', '/blog/:slug').add('userPosts', '/posts/dashboard').add('postEditor', '/posts/new').add('postDetail', '/posts/:slug').add('postEditorUpdate', '/posts/:id/edit');
 
 /***/ }),
 
@@ -57335,14 +57388,14 @@ var auth0client = new Auth();
 
 /***/ }),
 
-/***/ 6:
-/*!******************************************************************************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2FblogEditor&absolutePagePath=%2FUsers%2Fcarlyseitz%2FDocuments%2FHomework%20Assignments%2Fssr-react-blog%2Fpages%2FblogEditor.js ***!
-  \******************************************************************************************************************************************************************************/
+/***/ 8:
+/*!******************************************************************************************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2FpostEditorUpdate&absolutePagePath=%2FUsers%2Fcarlyseitz%2FDocuments%2FHomework%20Assignments%2Fssr-react-blog%2Fpages%2FpostEditorUpdate.js ***!
+  \******************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2FblogEditor&absolutePagePath=%2FUsers%2Fcarlyseitz%2FDocuments%2FHomework%20Assignments%2Fssr-react-blog%2Fpages%2FblogEditor.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2FblogEditor&absolutePagePath=%2FUsers%2Fcarlyseitz%2FDocuments%2FHomework%20Assignments%2Fssr-react-blog%2Fpages%2FblogEditor.js!./");
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2FpostEditorUpdate&absolutePagePath=%2FUsers%2Fcarlyseitz%2FDocuments%2FHomework%20Assignments%2Fssr-react-blog%2Fpages%2FpostEditorUpdate.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2FpostEditorUpdate&absolutePagePath=%2FUsers%2Fcarlyseitz%2FDocuments%2FHomework%20Assignments%2Fssr-react-blog%2Fpages%2FpostEditorUpdate.js!./");
 
 
 /***/ }),
@@ -57358,5 +57411,5 @@ module.exports = dll_829b10deddf10e1653a8;
 
 /***/ })
 
-},[[6,"static/runtime/webpack.js"]]]);
-//# sourceMappingURL=blogEditor.js.map
+},[[8,"static/runtime/webpack.js"]]]);
+//# sourceMappingURL=postEditorUpdate.js.map
