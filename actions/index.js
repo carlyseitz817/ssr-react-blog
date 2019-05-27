@@ -14,7 +14,7 @@ const setAuthHeader = (req) => {
   const token = req ? getCookieFromReq(req, 'jwt') : Cookies.getJSON('jwt');
 
   if (token) {
-    return { headers: {'authorization': `Bearer ${token}`}};
+    return { headers: { 'authorization': `Bearer ${token}` } };
   }
 
   return undefined;
@@ -42,37 +42,43 @@ export const getSecretData = async (req) => {
 // ------------ BLOG ACTIONS --------------
 
 export const getPosts = async (req) => {
-  return await axiosInstance.get('/api/v1/posts').then(response => response.data);
+  return await axiosInstance.get('/api/v1/blog').then(response => response.data);
 }
 
-// export const getPostBySlug = async (slug) => {
-//   return await axiosInstance.get(`/posts/s/${slug}`).then(response => response.data);
-// }
+export const getPostBySlug = async (slug) => {
+  return await axiosInstance.get(`/blog/s/${slug}`).then(response => response.data);
+}
 
 export const getUserPosts = async (req) => {
-  return await axiosInstance.get('/posts/me', setAuthHeader(req)).then(response => response.data);
+  return await axiosInstance.get('/blog/me', setAuthHeader(req)).then(response => response.data);
 }
 
 export const createPost = (postData) => {
-  return axios.post('/api/v1/posts', postData, setAuthHeader())
-          .then(response => response.data)
-          .catch(err => rejectPromise(err))
+  return axiosInstance.post('/blog', postData, setAuthHeader())
+    .then(response => response.data)
+    .catch(err => rejectPromise(err))
 }
 
 export const updatePost = (postData, postId) => {
-  return axiosInstance.patch(`/posts/${postId}`, postData, setAuthHeader())
-          .then(response => response.data)
-          .catch(err => rejectPromise(err))
+  return axiosInstance.patch(`/blog/${postId}`, postData, setAuthHeader())
+    .then(response => response.data)
+    .catch(err => rejectPromise(err))
+}
+
+export const publishPost = (postData, postId) => {
+  return axiosInstance.patch(`/blog/${postId}`, postData, setAuthHeader())
+    .then(response => response.data)
+    .catch(err => rejectPromise(err))
 }
 
 export const getPostById = (postId) => {
-  return axiosInstance.get(`/posts/${postId}`).then(response => response.data);
+  return axiosInstance.get(`/blog/${postId}`).then(response => response.data);
 }
 
 export const deletePost = (postId) => {
-  return axiosInstance.delete(`/posts/${postId}`, setAuthHeader())
-          .then(response => response.data)
-          .catch(err => rejectPromise(err));
+  return axiosInstance.delete(`/blog/${postId}`, setAuthHeader())
+    .then(response => response.data)
+    .catch(err => rejectPromise(err));
 }
 
 

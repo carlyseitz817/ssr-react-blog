@@ -7,30 +7,6 @@ import BasePage from '../components/BasePage';
 import moment from 'moment';
 
 class Blog extends React.Component {
-  static async getInitialProps() {
-    // let posts = [];
-
-    // try {
-    //     const response = await axios.get("https://jsonplaceholder.typicode.com/posts");
-    //     posts = response.data;
-    // } catch (err) {
-    //     console.log(err);
-    // }
-
-    // return { posts: posts.splice(0, 10) };
-  }
-
-  // renderPosts(posts) {
-  //     return posts.map((post) => {
-  //         return (
-  //             <li key={post.id}>
-  //                 <Link href={`/post?title=${post.title}`} as={`/blog/${post.title}`.replace(/ /g, "-")}>
-  //                     <a> KEY: {post.id}{post.title} </a>
-  //                 </Link>
-  //             </li>
-  //         )
-  //     })
-  // };
 
   render() {
     const { posts, route } = this.props;

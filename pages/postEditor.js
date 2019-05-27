@@ -2,13 +2,10 @@ import React from 'react';
 import BaseLayout from '../components/layouts/BaseLayout';
 import BasePage from '../components/BasePage';
 import dynamic from 'next/dynamic';
-const ClassicEditor = dynamic(() => import('@ckeditor/ckeditor5-build-classic'), {
-  ssr: false
-});
-
 const CKEditor = dynamic(() => import('../components/CKEditor'), {
   ssr: false
-})
+});
+import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote';
 import withAuth from '../components/hoc/withAuth';
 import {Router} from '../routes';
 import SaveDraft from '../components/SaveDraft';
@@ -44,14 +41,11 @@ class BlogEditor extends React.Component {
     console.log("saved");
     console.log(post.story);
 
-    // debugger;
-
     createPost(post).then(createdPost => {
-      // debugger;
       console.log("createdPost: " + createdPost);
       // this.setState({isSaving: false});
       // toast.success('Blog Saved Succesfuly!');
-      Router.pushRoute(`/posts/${createdPost._id}/edit`);
+      Router.pushRoute(`/blog/${createdPost._id}/edit`);
     }).catch(err => {
       // this.setState({isSaving: false});
       // toast.error('Unexpected Error, Copy your progress and refresh browser please.');
@@ -60,12 +54,7 @@ class BlogEditor extends React.Component {
     })
   };
 
-  render() {
-    const { isAuthenticated, user } = this.props.auth;
-    console.log({ user });
-    console.log(`${user.name}`);
-    console.log({ isAuthenticated });
-    
+  render() {    
     return (
       <BaseLayout {...this.props.auth}>
         <BasePage containerClass="editor-wrapper" className="blog-editor-page">
@@ -75,7 +64,9 @@ class BlogEditor extends React.Component {
           <input value={this.state.subtitle} onChange={this.handleSubtitle} />
           <div>
             <CKEditor
-              // data="<strong>Hello from CKEditor 5!</strong>"
+              config={{
+                extraPlugins: [ BlockQuote ]
+              }}
               save={this.saveBlog}
               onInit={editor => {
                 // You can store the "editor" and use when it is needed.

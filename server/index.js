@@ -4,10 +4,11 @@ const routes = require('../routes');
 const bodyParser = require('body-parser');
 const compression = require('compression');
 const mongoose = require('mongoose');
+const postRoutes = require('./routes/post');
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
-const handle = app.getRequestHandler();
+const handle = routes.getRequestHandler(app);
 const authService = require('./services/auth');
 
 const secretData = [
@@ -39,18 +40,7 @@ app
       return res.json(secretData);
     })
 
-    const postRoutes = require('./routes/post');
-
-    server.use('/api/v1/posts', postRoutes);
-
-
-    server.get('/blog/:title'.replace(/ /g, "-"), (req, res) => {
-      const actualPage = '/post'
-      const queryParams = { title: req.params.title }
-      app.render(req, res, actualPage, queryParams)
-    })
-
-    ////
+    server.use('/api/v1/blog', postRoutes);
 
     server.get('*', (req, res) => {
       return handle(req, res)

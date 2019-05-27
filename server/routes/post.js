@@ -4,13 +4,11 @@ const router = express.Router();
 const postCtrl = require('../controllers/post');
 const authService = require('../services/auth');
 
-
 router.post('',
   authService.checkJWT,
   postCtrl.createPost);
 
 router.get('',
-  authService.checkJWT,
   postCtrl.getPosts);
 
 router.get('/me',
@@ -30,6 +28,6 @@ router.patch('/:id',
 router.delete('/:id',
   authService.checkJWT,
   postCtrl.deletePost);
-  
+
 module.exports = router;
 

@@ -1,7 +1,22 @@
-// next.config.js
+// // next.config.js
+// const withSass = require('@zeit/next-sass');
+// const withCSS = require('@zeit/next-css');
+// const withFonts = require('next-fonts');
+
+// module.exports = withCSS(withSass(withFonts()));
+
+
 const withSass = require('@zeit/next-sass');
 const withCSS = require('@zeit/next-css');
-const withFonts = require('next-fonts');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
-module.exports = withCSS(withSass(withFonts()));
-
+module.exports = withCSS(withSass({
+  webpack(config, {dev}) {
+    if (config.mode === 'production') {
+      if (Array.isArray(config.optimization.minimizer)) {
+        config.optimization.minimizer.push(new OptimizeCSSAssetsPlugin({}));
+      }
+    }
+    return config;
+  }
+}));
