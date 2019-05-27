@@ -1,5 +1,5 @@
 const Post = require('../models/post');
-// const slugify = require('slugify');
+const slugify = require('slugify');
 // const AsyncLock = require('async-lock');
 // const lock = new AsyncLock();
 
@@ -87,13 +87,11 @@ exports.updatePost = (req, res) => {
     }
 
     if (postData.status && postData.status === 'published' && !foundPost.slug) {
-
       foundPost.slug = slugify(foundPost.title, {
         replacement: '-',    // replace spaces with replacement
         remove: null,        // regex to remove characters
         lower: true          // result in lower case
       });
-
     }
 
     foundPost.set(postData);

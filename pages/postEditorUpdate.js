@@ -3,6 +3,7 @@ import BaseLayout from '../components/layouts/BaseLayout';
 import BasePage from '../components/BasePage';
 import withAuth from '../components/hoc/withAuth';
 import dynamic from 'next/dynamic';
+import {Router} from '../routes';
 
 const CKEditor = dynamic(() => import('../components/CKEditor'), {
   ssr: false
@@ -11,6 +12,7 @@ const CKEditor = dynamic(() => import('../components/CKEditor'), {
 import { toast } from 'react-toastify';
 
 import SaveDraft from '../components/SaveDraft';
+import StatusButton from '../components/StatusButton';
 import { getPostById, updatePost } from '../actions';
 
 class PostEditorUpdate extends React.Component {
@@ -36,6 +38,7 @@ class PostEditorUpdate extends React.Component {
       title: this.props.post.title,
       subtitle: this.props.post.subTitle,
       story: this.props.post.story,
+      // status: this.props.post.status
       // isSaving: false,
       // lockId: Math.floor(1000 + Math.random() * 9000)
     }
@@ -67,6 +70,35 @@ class PostEditorUpdate extends React.Component {
     })
   }
 
+  changeStatus(status, postId) {
+    console.log("status as retrieved in changedStatus(): " + status)
+    updatePost({ status }, postId)
+      .then(() => {
+        Router.pushRoute(`/blog/${postId}/edit`)
+        toast.success('Post status updated');
+      })
+      .catch(err => {
+        toast.error('Unexpected Error, Copy your progress and refresh browser please.');
+        console.error(err.message);
+      })
+  }
+
+  createStatus(status) {
+    return status === 'draft' ? { view: 'Publish', value: 'published' }
+      : { view: 'Switch to Draft', value: 'draft' };
+  }
+
+  statusOption = (post) => {
+    const status = this.createStatus(post.status)
+
+    return (
+      { 
+        text: status.view, 
+        handlers: 
+          { onClick: () => this.changeStatus(status.value, post._id)}
+      }
+    )
+  }
 
   render() {
     const { post } = this.props;
@@ -97,6 +129,7 @@ class PostEditorUpdate extends React.Component {
               // console.log('Focus.', editor);
             }}
           />
+          <StatusButton item={this.statusOption(post)} />          
           <SaveDraft
             onClick={this.updatePost}
           >

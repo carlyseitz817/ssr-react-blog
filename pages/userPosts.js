@@ -84,7 +84,7 @@ class UserPosts extends React.Component {
         {
           posts.map((post, index) => (
             <li key={index}>
-              <Link route={`/posts/${post._id}/edit`}>
+              <Link route={`/blog/${post._id}/edit`}>
                 <a>{post.title}</a>
               </Link>
               <PortButtonDropdown items={this.dropdownOptions(post)} />
@@ -121,13 +121,6 @@ class UserPosts extends React.Component {
           </Container>
         </div>
         <BasePage className="blog-user-page">
-          <Row>
-            <Col md="12" className="mx-auto text-center">
-              <h2 className="blog-status-title">Posts</h2>
-              {this.renderPosts(posts)}
-            </Col>
-
-          </Row>
           <Row>
             <Col md="6" className="mx-auto text-center">
               <h2 className="blog-status-title"> Published Posts </h2>

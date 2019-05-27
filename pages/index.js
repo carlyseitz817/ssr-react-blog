@@ -19,90 +19,90 @@ import Typed from 'react-typed'
 
 class Index extends React.Component {
 
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.features = [
-            "Server-side rendering for SEO",
-            "Rich text editor",
-            "Save blog posts",
-            "View user-specific blogs"
-        ]
-    };
+    this.features = [
+      "Server-side rendering for SEO",
+      "Rich text editor",
+      "Save blog posts",
+      "View user-specific blogs"
+    ]
+  };
 
 
-    render() {
-        const { isAuthenticated, user } = this.props.auth;
-        console.log({user});
-        console.log(`${isAuthenticated && `${user.name}`}`)
-        console.log({isAuthenticated})
-        return (
-            <BaseLayout {...this.props.auth} className="cover">
-                <div className="main-section">
-                    <div className="background-image">
-                        <img src="/static/images/background-indexx.png" />
-                    </div>
+  render() {
+    const { isAuthenticated, user } = this.props.auth;
+    console.log({ user });
+    console.log(`${isAuthenticated && `${user.name}`}`)
+    console.log({ isAuthenticated })
+    return (
+      <BaseLayout {...this.props.auth} className="cover">
+        <div className="main-section">
+          <div className="background-image">
+            <img src="/static/images/background-indexx.png" />
+          </div>
 
-                    <Container>
-                        {/* <Row>
+          <Container>
+            {/* <Row>
                             <Col md="12">
                                 <h1>
                                     Hello, {isAuthenticated && <span>{user.name}</span>}!
                                 </h1>
                             </Col>
                         </Row> */}
-                        <Row>
-                            <Col md="6">
-                                <div className="hero-section">
-                                    <div className={`flipper`}>
-                                        <div className="back">
-                                            <div className="hero-section-content">
-                                                <h2> test test test</h2>
-                                                <div className="hero-section-content-intro">
-                                                    test test test
+            <Row>
+              <Col md="6">
+                <div className="hero-section">
+                  <div className={`flipper`}>
+                    <div className="back">
+                      <div className="hero-section-content">
+                        <h2> test test test</h2>
+                        <div className="hero-section-content-intro">
+                          test test test
                   </div>
-                                            </div>
-                                            <img className="image" src="/static/images/section-3.png" />
-                                            {/* <div className="shadow-custom">
+                      </div>
+                      <img className="image" src="/static/images/section-3.png" />
+                      {/* <div className="shadow-custom">
                                                 <div className="shadow-inner"> </div>
                                             </div> */}
-                                        </div>
-                                    </div>
-                                </div>
-                            </Col>
-                            <Col md="6" className="hero-welcome-wrapper">
-                                <div className="hero-welcome-text">
-                                    <h1>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                                    sed do eiusmod tempor incididunt ut 
-                                    labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </h1>
-                                </div>
-                                <Typed
-                                    loop
-                                    typeSpeed={80}
-                                    backSpeed={60}
-                                    strings={this.features}
-                                    backDelay={1000}
-                                    loopCount={0}
-                                    showCursor
-                                    className='self-typed'
-                                    cursorChar="|"
-                                />
-                                <div className="hero-welcome-bio">
-                                    <h1>
-                                        Time to make your mark.
-            </h1>
-                                </div>
-                            </Col>
-                        </Row>
-                    </Container>
+                    </div>
+                  </div>
                 </div>
-            </BaseLayout>
+              </Col>
+              <Col md="6" className="hero-welcome-wrapper">
+                <div className="hero-welcome-text">
+                  <h1>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut
+                    labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </h1>
+                </div>
+                <Typed
+                  loop
+                  typeSpeed={80}
+                  backSpeed={60}
+                  strings={this.features}
+                  backDelay={1000}
+                  loopCount={0}
+                  showCursor
+                  className='self-typed'
+                  cursorChar="|"
+                />
+                <div className="hero-welcome-bio">
+                  <h1>
+                    Time to make your mark.
+            </h1>
+                </div>
+              </Col>
+            </Row>
+          </Container>
+        </div>
+      </BaseLayout>
 
-        )
-    }
+    )
+  }
 }
 
 export default Index
