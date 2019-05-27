@@ -13,11 +13,7 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/postDetail": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
-    "/postEditorUpdate": [
+    "/blog": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

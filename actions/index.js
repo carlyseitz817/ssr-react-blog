@@ -42,7 +42,7 @@ export const getSecretData = async (req) => {
 // ------------ BLOG ACTIONS --------------
 
 export const getPosts = async (req) => {
-  return await axiosInstance.get('/api/v1/blog').then(response => response.data);
+  return await axiosInstance.get('/blog').then(response => response.data);
 }
 
 export const getPostBySlug = async (slug) => {
