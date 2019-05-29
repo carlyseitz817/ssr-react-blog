@@ -5,7 +5,9 @@ import dynamic from 'next/dynamic';
 const CKEditor = dynamic(() => import('../components/CKEditor'), {
   ssr: false
 });
-import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote';
+// const BlockQuote = dynamic(() => import('@ckeditor/ckeditor5-block-quote/src/blockquote'), {
+//   ssr: false
+// });;
 import withAuth from '../components/hoc/withAuth';
 import {Router} from '../routes';
 import SaveDraft from '../components/SaveDraft';
@@ -64,9 +66,10 @@ class BlogEditor extends React.Component {
           <input value={this.state.subtitle} onChange={this.handleSubtitle} />
           <div>
             <CKEditor
-              config={{
-                extraPlugins: [ BlockQuote ]
-              }}
+            // Went ahead and just styled blockquote element
+              // config={{
+              //   extraPlugins: [ BlockQuote ]
+              // }}
               save={this.saveBlog}
               onInit={editor => {
                 // You can store the "editor" and use when it is needed.
