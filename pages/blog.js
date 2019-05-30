@@ -62,7 +62,7 @@ class Posts extends React.Component {
             <div className="row">
               <div className="col-lg-8 col-md-10 mx-auto">
                 <div className="site-heading">
-                  <h1><normaltext>Fresh Blogs</normaltext></h1>
+                  <h1>Fresh Blogs</h1>
                 </div>
               </div>
             </div>

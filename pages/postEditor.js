@@ -60,7 +60,7 @@ class BlogEditor extends React.Component {
     return (
       <BaseLayout {...this.props.auth}>
         <BasePage containerClass="editor-wrapper" className="blog-editor-page">
-          <label>Title</label>
+          <label><h1>Title</h1></label>
           <input value={this.state.title} className="titlez" onChange={this.handletitle} />
           <br></br>
           <label>Subtitle</label>

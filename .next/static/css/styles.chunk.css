@@ -174,10 +174,6 @@
     .blog-listing-page .post-preview > a > .post-title {
       font-size: 36px; } }
   .blog-listing-page footer {
-    width: 100%;
-    border-top-color: #E0BC77;
-    border-top-style: dotted;
-    border-width: 5px;
     padding: 50px 0 65px; }
     .blog-listing-page footer .list-inline {
       margin: 0;
