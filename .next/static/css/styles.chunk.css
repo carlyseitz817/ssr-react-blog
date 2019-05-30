@@ -30,7 +30,7 @@
   font-style: italic; }
 
 .cover {
-  background-image: linear-gradient(45deg, #889acc 0%, #000508 100%);
+  background-color: #2E1314;
   overflow: hidden;
   position: relative; }
 
@@ -47,11 +47,11 @@
 
 .hero-section {
   perspective: 1000px;
-  color: white;
+  color: #E0BC77;
   width: 400px;
   position: relative; }
   .hero-section h2 {
-    color: white;
+    color: #E0BC77;
     font-weight: bold;
     margin-bottom: 10px; }
   .hero-section-content {
@@ -68,14 +68,14 @@
   max-width: 100%; }
 
 .hero-welcome-text > h1 {
-  color: white;
+  color: #E0BC77;
   text-transform: uppercase;
   font-size: 27px;
   margin-top: 80px; }
 
 .hero-welcome-bio {
   margin-top: 20px;
-  color: white; }
+  color: #E0BC77; }
   .hero-welcome-bio .fa-stack {
     font-size: 28px; }
   .hero-welcome-bio .list-inline-item > a {
