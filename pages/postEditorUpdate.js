@@ -107,9 +107,11 @@ class PostEditorUpdate extends React.Component {
       <BaseLayout {...this.props.auth}>
         <BasePage containerClass="editor-wrapper" className="blog-editor-page">
           <label>Title</label>
-          <input value={this.state.title} onChange={this.handletitle} />
+          <input value={this.state.title} className="titlez" onChange={this.handletitle} />
+          <br></br>
           <label>Subtitle</label>
-          <input value={post.subTitle} onChange={this.handleSubtitle} />
+          <input value={post.subTitle} className="subtitlez" onChange={this.handleSubtitle} />
+          <br></br><br></br>
 
           <CKEditor className= "blogtext"
             data={post.story}
@@ -131,6 +133,7 @@ class PostEditorUpdate extends React.Component {
             }}
           />
 
+          <br></br>
           <StatusButton item={this.statusOption(post)} />          
           <SaveDraft
             onClick={this.updatePost}
