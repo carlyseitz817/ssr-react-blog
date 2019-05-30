@@ -116,7 +116,10 @@
 .port-navbar.port-default {
   width: 100%;
   z-index: 15;
-  padding: 40px; }
+  padding: 40px;
+  border-bottom-color: #E0BC77;
+  border-bottom-style: dotted;
+  border-width: 5px; }
   .port-navbar.port-default .port-navbar-brand {
     color: #00f5ac !important;
     font-size: 24px;
@@ -171,14 +174,20 @@
     .blog-listing-page .post-preview > a > .post-title {
       font-size: 36px; } }
   .blog-listing-page footer {
+    width: 100%;
+    border-top-color: #E0BC77;
+    border-top-style: dotted;
+    border-width: 5px;
     padding: 50px 0 65px; }
     .blog-listing-page footer .list-inline {
       margin: 0;
       padding: 0; }
     .blog-listing-page footer .copyright {
       font-size: 14px;
+      margin-top: 20px;
       margin-bottom: 0;
-      text-align: center; }
+      text-align: center;
+      color: #E0BC77 !important; }
 
 .masthead {
   background: no-repeat center center;
@@ -283,6 +292,9 @@
   position: absolute !important;
   top: 0px; }
 
+.titlez {
+  color: black !important; }
+
 blockquote {
   background: #ecedee;
   border-left: 10px solid #ccc;
@@ -321,6 +333,12 @@ body {
 .error {
   font-weight: 700;
   color: red; }
+
+normaltext {
+  color: #E0BC77; }
+
+label {
+  color: #E0BC77; }
 
 .base-page {
   padding: 150px 0 100px 0;

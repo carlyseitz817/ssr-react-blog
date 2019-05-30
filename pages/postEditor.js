@@ -61,11 +61,13 @@ class BlogEditor extends React.Component {
       <BaseLayout {...this.props.auth}>
         <BasePage containerClass="editor-wrapper" className="blog-editor-page">
           <label>Title</label>
-          <input value={this.state.title} onChange={this.handletitle} />
+          <input value={this.state.title} className="titlez" onChange={this.handletitle} />
+          <br></br>
           <label>Subtitle</label>
-          <input value={this.state.subtitle} onChange={this.handleSubtitle} />
+          <input value={this.state.subtitle} className="titlez" onChange={this.handleSubtitle} />
+          <br></br><br></br>
           <div>
-            <CKEditor
+            <CKEditor className= "blogtext"
             // Went ahead and just styled blockquote element
               // config={{
               //   extraPlugins: [ BlockQuote ]
@@ -88,6 +90,7 @@ class BlogEditor extends React.Component {
               }}
             />
           </div>
+          <br></br>
           <SaveDraft
             onClick={this.saveBlog}
           >

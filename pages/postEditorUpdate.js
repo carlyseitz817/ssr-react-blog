@@ -110,7 +110,8 @@ class PostEditorUpdate extends React.Component {
           <input value={this.state.title} onChange={this.handletitle} />
           <label>Subtitle</label>
           <input value={post.subTitle} onChange={this.handleSubtitle} />
-          <CKEditor
+
+          <CKEditor className= "blogtext"
             data={post.story}
             save={this.saveBlog}
             onInit={editor => {
@@ -129,6 +130,7 @@ class PostEditorUpdate extends React.Component {
               // console.log('Focus.', editor);
             }}
           />
+
           <StatusButton item={this.statusOption(post)} />          
           <SaveDraft
             onClick={this.updatePost}

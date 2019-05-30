@@ -60087,15 +60087,18 @@ function (_React$Component) {
         className: "blog-editor-page"
       }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("label", null, "Title"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("input", {
         value: this.state.title,
+        className: "titlez",
         onChange: this.handletitle
-      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("label", null, "Subtitle"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("input", {
+      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("label", null, "Subtitle"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("input", {
         value: this.state.subtitle,
+        className: "titlez",
         onChange: this.handleSubtitle
-      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(CKEditor // Went ahead and just styled blockquote element
-      // config={{
-      //   extraPlugins: [ BlockQuote ]
-      // }}
-      , {
+      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(CKEditor, {
+        className: "blogtext" // Went ahead and just styled blockquote element
+        // config={{
+        //   extraPlugins: [ BlockQuote ]
+        // }}
+        ,
         save: this.saveBlog,
         onInit: function onInit(editor) {
           // You can store the "editor" and use when it is needed.
@@ -60113,7 +60116,7 @@ function (_React$Component) {
         },
         onFocus: function onFocus(editor) {// console.log('Focus.', editor);
         }
-      })), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_SaveDraft__WEBPACK_IMPORTED_MODULE_13__["default"], {
+      })), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_SaveDraft__WEBPACK_IMPORTED_MODULE_13__["default"], {
         onClick: this.saveBlog
       }, "Save Draft")));
     }

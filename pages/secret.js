@@ -67,13 +67,17 @@ class Secret extends React.Component {
 
         <BasePage title="Secret" className="secretpage">
 
-        <h1>I am a secret page.</h1>
+        <normaltext>
 
-        <p> Secret content will go here...</p>
+        <h1>Woah!</h1>
+
+        <p>Congratulations! You found the secret page!</p>
 
         <h2> {superSecretData} </h2>
 
         { this.displaySecretData() }
+
+        </normaltext>
       
         </BasePage>
 

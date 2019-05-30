@@ -217,16 +217,26 @@
   }
 
   // Styling for the footer
+
   footer {
+
+    width: 100%;
+    border-top-color: #E0BC77;
+    border-top-style: dotted;
+    border-width: 5px; 
+
     padding: 50px 0 65px;
+
     .list-inline {
       margin: 0;
       padding: 0;
     }
     .copyright {
       font-size: 14px;
+      margin-top: 20px;
       margin-bottom: 0;
       text-align: center;
+      color: #E0BC77 !important;
     }
   }
 }
@@ -314,7 +324,10 @@
 
 // BLOG EDITOR PAGE
 
+
 .blog-editor-page, .blog-detail-page {
+
+  
 
   @media only screen and (min-width: 991px) {
     .editor-wrapper {
@@ -324,6 +337,9 @@
 
   p {
     font-size: 20px;
+
+
+  
   }
 
   blockquote {
