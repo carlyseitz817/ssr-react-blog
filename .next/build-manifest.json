@@ -21,7 +21,15 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
+    "/blog": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
     "/index": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/postEditor": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]
