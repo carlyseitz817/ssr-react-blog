@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 function SaveDraft(props) {
 
   return (
-    <button {...props} style={{ float: "right", marginBottom: 10 }} className="btn btn-success">
+    <button {...props} style={{ float: "right", marginBottom: 10 }} className="btn btn-primary">
       {props.children}
     </button>
   )

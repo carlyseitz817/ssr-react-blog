@@ -9,6 +9,7 @@ import { getPosts } from '../actions';
 import { shortenText } from '../helpers/utils';
 
 import moment from 'moment';
+import { normalize } from 'path';
 
 
 class Posts extends React.Component {
