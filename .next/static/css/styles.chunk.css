@@ -289,7 +289,12 @@
   top: 0px; }
 
 .titlez {
-  color: black !important; }
+  color: black !important;
+  margin-left: 100px; }
+
+.subtitlez {
+  color: black !important;
+  margin-left: 77px; }
 
 blockquote {
   background: #ecedee;
