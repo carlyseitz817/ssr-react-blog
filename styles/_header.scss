@@ -6,7 +6,7 @@
 
   .port-navbar {
     &-brand {
-      color: white !important;
+      color: #E0BC77 !important;
       font-size: 24px;
       text-transform: uppercase;
       letter-spacing: 1px;
@@ -19,19 +19,19 @@
     }
 
     &-link {
-      color: white !important;
+      color: #b9828c !important;
       font-weight: bold;
       letter-spacing: 0.8px;
       font-size: 18px;
       text-transform: uppercase;
 
       &.active {
-        color: #dba919 !important;
+        color: #7e3b56 !important;
       }
 
       &:hover,
       &:focus {
-        color: #dba919 !important; 
+        color: #7e3b56 !important; 
       }
     }
   }

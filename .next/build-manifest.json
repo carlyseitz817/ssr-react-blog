@@ -17,11 +17,11 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/index": [
+    "/about": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/postEditor": [
+    "/index": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]
