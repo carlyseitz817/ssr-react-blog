@@ -112,7 +112,7 @@ export default class Header extends React.Component {
     return (
       <div>
         <Navbar className="port-navbar port-default absolute" color="transparent" dark expand="md">
-          <NavbarBrand className="port-navbar-brand" href="/">SSR Next.js Blog</NavbarBrand>
+          <NavbarBrand className="port-navbar-brand" href="/">Woodbern Blogs</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
@@ -120,7 +120,7 @@ export default class Header extends React.Component {
                 <BsNavLink route="/about" title="ABOUT" />
               </NavItem>
               <NavItem className="port-navbar-item">
-                <BsNavLink route="/blog" title="BLOG" />
+                <BsNavLink route="/blog" title="BLOG POSTS" />
               </NavItem>
               <NavItem className="port-navbar-item">
                 <BsNavLink route="/postEditor" title="POST EDITOR" />

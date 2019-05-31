@@ -1,4 +1,12 @@
 {
+  "../components/CKEditor": [
+    {
+      "id": "./components/CKEditor.js",
+      "name": "./components/CKEditor.js",
+      "file": "static/chunks/1.js",
+      "publicPath": "static/chunks/1.js"
+    }
+  ],
   "./noop": [
     {
       "id": "./node_modules/next/dist/client/noop.js",

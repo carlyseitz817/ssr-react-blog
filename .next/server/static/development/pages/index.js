@@ -392,7 +392,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["NavbarBrand"], {
         className: "port-navbar-brand",
         href: "/"
-      }, "SSR Next.js Blog"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["NavbarToggler"], {
+      }, "Woodbern Blogs"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["NavbarToggler"], {
         onClick: this.toggle
       }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Collapse"], {
         isOpen: this.state.isOpen,
@@ -409,7 +409,7 @@ function (_React$Component) {
         className: "port-navbar-item"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
         route: "/blog",
-        title: "BLOG"
+        title: "BLOG POSTS"
       })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["NavItem"], {
         className: "port-navbar-item"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
