@@ -73,7 +73,7 @@ class Posts extends React.Component {
             <Col md="10" lg="8" className="mx-auto">
               {this.renderPosts(posts)}
               <div className="clearfix">
-                <a className="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+                <a className="mybutton btn btn-primary float-right" href="#">Older Posts &rarr;</a>
               </div>
             </Col>
           </Row>

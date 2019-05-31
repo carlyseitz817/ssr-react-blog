@@ -313,7 +313,7 @@ function SaveDraft(props) {
       float: "right",
       marginBottom: 10
     },
-    className: "btn btn-primary"
+    className: "btn btn-primary mybutton"
   }), props.children);
 } // class SaveDraft extends Component {
 // constructor(props) {
