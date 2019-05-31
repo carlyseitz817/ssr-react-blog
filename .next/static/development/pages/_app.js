@@ -1,16 +1,20 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static\\development\\pages\\_app.js"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/_app.js"],{
 
 /***/ "./helpers/utils.js":
 /*!**************************!*\
   !*** ./helpers/utils.js ***!
   \**************************/
-/*! exports provided: getCookieFromReq, shortenText */
+/*! exports provided: getCookieFromReq, shortenText, imagePluginFactory */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCookieFromReq", function() { return getCookieFromReq; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "shortenText", function() { return shortenText; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "imagePluginFactory", function() { return imagePluginFactory; });
+/* harmony import */ var ckeditor_cloudinary_uploader_adapter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ckeditor-cloudinary-uploader-adapter */ "./node_modules/ckeditor-cloudinary-uploader-adapter/dist/index.js");
+/* harmony import */ var ckeditor_cloudinary_uploader_adapter__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(ckeditor_cloudinary_uploader_adapter__WEBPACK_IMPORTED_MODULE_0__);
+
 var getCookieFromReq = function getCookieFromReq(req, cookieKey) {
   var cookie = req.headers.cookie.split(';').find(function (c) {
     return c.trim().startsWith("".concat(cookieKey, "="));
@@ -31,6 +35,11 @@ var shortenText = function shortenText(text) {
   }
 
   return text;
+};
+var imagePluginFactory = function imagePluginFactory(editor) {
+  editor.plugins.get('FileRepository').createUploadAdapter = function (loader) {
+    return new ckeditor_cloudinary_uploader_adapter__WEBPACK_IMPORTED_MODULE_0__["CloudinaryImageUploadAdapter"](loader, 'ssr-react-blog-files', 'ckeditor-upload'[(160, 500, 1000, 1052)]);
+  };
 };
 
 /***/ }),
@@ -16151,6 +16160,137 @@ module.exports = CipherBase
 
 /***/ }),
 
+/***/ "./node_modules/ckeditor-cloudinary-uploader-adapter/dist/CloudinaryImageUploadAdapter/CloudinaryImageUploadAdapter.js":
+/*!*****************************************************************************************************************************!*\
+  !*** ./node_modules/ckeditor-cloudinary-uploader-adapter/dist/CloudinaryImageUploadAdapter/CloudinaryImageUploadAdapter.js ***!
+  \*****************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var CloudinaryImageUploadAdapter = /** @class */ (function () {
+    function CloudinaryImageUploadAdapter(loader, cloudName, unsignedUploadPreset, sizes) {
+        this.loader = loader;
+        this.xhr = new XMLHttpRequest();
+        this.cloudName = cloudName;
+        this.unsignedUploadPreset = unsignedUploadPreset;
+        if (sizes) {
+            this.sizes = sizes;
+        }
+    }
+    CloudinaryImageUploadAdapter.prototype.upload = function () {
+        var _this = this;
+        return this.loader.file.then(function (file) {
+            return new Promise(function (resolve, reject) {
+                var fd = new FormData();
+                var url = "https://api.cloudinary.com/v1_1/" + _this.cloudName + "/upload";
+                _this.xhr.open('POST', url, true);
+                _this.xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+                // Hookup an event listener to update the upload progress bar
+                _this.xhr.upload.addEventListener('progress', function (e) {
+                    _this.loader.uploadTotal = 100;
+                    _this.loader.uploaded = Math.round((e.loaded * 100) / e.total);
+                });
+                // Hookup a listener to listen for when the request state changes
+                _this.xhr.onreadystatechange = function () {
+                    if (_this.xhr.readyState === 4 && _this.xhr.status === 200) {
+                        // Successful upload, resolve the promise with the new image
+                        var response = JSON.parse(_this.xhr.responseText);
+                        var images = void 0;
+                        if (_this.sizes) {
+                            images = __assign({ default: response.secure_url }, _this.getImageSizes(response.secure_url));
+                        }
+                        else {
+                            images = {
+                                default: response.secure_url,
+                            };
+                        }
+                        resolve(images);
+                    }
+                    else if (_this.xhr.status !== 200) {
+                        // Unsuccessful request, reject the promise
+                        reject('Upload failed');
+                    }
+                };
+                // Setup the form data to be sent in the request
+                fd.append('upload_preset', _this.unsignedUploadPreset);
+                fd.append('tags', 'browser_upload');
+                fd.append('file', file);
+                _this.xhr.send(fd);
+            });
+        });
+    };
+    CloudinaryImageUploadAdapter.prototype.abort = function () {
+        // This function is called to abort the request if an error occurs
+        if (this.xhr) {
+            this.xhr.abort();
+        }
+    };
+    CloudinaryImageUploadAdapter.prototype.getImageSizes = function (defaultImageUrl) {
+        var imageObject = {};
+        // Split url in two
+        var splitUrl = this.splitUrl(defaultImageUrl);
+        if (this.sizes) {
+            var len_1 = this.sizes.length;
+            this.sizes.forEach(function (size, index) {
+                if (index !== len_1 - 1) {
+                    imageObject[size.toString()] = splitUrl.firstHalf + "w_" + size + "%2Cc_scale" + splitUrl.secondHalf;
+                }
+                else {
+                    imageObject[size.toString()] = defaultImageUrl;
+                }
+            });
+        }
+        return imageObject;
+    };
+    CloudinaryImageUploadAdapter.prototype.splitUrl = function (url) {
+        // This function splits the image url in two.
+        var firstHalfLength = 41 + this.cloudName.length;
+        var firstHalf = url.substr(0, firstHalfLength);
+        var secondHalf = url.substr(firstHalfLength - 1, url.length - firstHalfLength + 1);
+        return {
+            firstHalf: firstHalf,
+            secondHalf: secondHalf,
+        };
+    };
+    return CloudinaryImageUploadAdapter;
+}());
+exports.CloudinaryImageUploadAdapter = CloudinaryImageUploadAdapter;
+
+
+/***/ }),
+
+/***/ "./node_modules/ckeditor-cloudinary-uploader-adapter/dist/index.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/ckeditor-cloudinary-uploader-adapter/dist/index.js ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__(/*! ./CloudinaryImageUploadAdapter/CloudinaryImageUploadAdapter */ "./node_modules/ckeditor-cloudinary-uploader-adapter/dist/CloudinaryImageUploadAdapter/CloudinaryImageUploadAdapter.js"));
+
+
+/***/ }),
+
 /***/ "./node_modules/classnames/index.js":
 /*!******************************************!*\
   !*** ./node_modules/classnames/index.js ***!
@@ -22108,7 +22248,7 @@ utils.intFromLE = intFromLE;
 /*! exports provided: _args, _from, _id, _inBundle, _integrity, _location, _phantomChildren, _requested, _requiredBy, _resolved, _spec, _where, author, bugs, dependencies, description, devDependencies, files, homepage, keywords, license, main, name, repository, scripts, version, default */
 /***/ (function(module) {
 
-module.exports = {"_args":[["elliptic@6.4.1","C:\\Users\\Danielle\\Desktop\\Project3\\ssr-react-blog"]],"_from":"elliptic@6.4.1","_id":"elliptic@6.4.1","_inBundle":false,"_integrity":"sha512-BsXLz5sqX8OHcsh7CqBMztyXARmGQ3LWPtGjJi6DiJHq5C/qvi9P3OqgswKSDftbu8+IoI/QDTAm2fFnQ9SZSQ==","_location":"/elliptic","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"elliptic@6.4.1","name":"elliptic","escapedName":"elliptic","rawSpec":"6.4.1","saveSpec":null,"fetchSpec":"6.4.1"},"_requiredBy":["/browserify-sign","/create-ecdh"],"_resolved":"https://registry.npmjs.org/elliptic/-/elliptic-6.4.1.tgz","_spec":"6.4.1","_where":"C:\\Users\\Danielle\\Desktop\\Project3\\ssr-react-blog","author":{"name":"Fedor Indutny","email":"fedor@indutny.com"},"bugs":{"url":"https://github.com/indutny/elliptic/issues"},"dependencies":{"bn.js":"^4.4.0","brorand":"^1.0.1","hash.js":"^1.0.0","hmac-drbg":"^1.0.0","inherits":"^2.0.1","minimalistic-assert":"^1.0.0","minimalistic-crypto-utils":"^1.0.0"},"description":"EC cryptography","devDependencies":{"brfs":"^1.4.3","coveralls":"^2.11.3","grunt":"^0.4.5","grunt-browserify":"^5.0.0","grunt-cli":"^1.2.0","grunt-contrib-connect":"^1.0.0","grunt-contrib-copy":"^1.0.0","grunt-contrib-uglify":"^1.0.1","grunt-mocha-istanbul":"^3.0.1","grunt-saucelabs":"^8.6.2","istanbul":"^0.4.2","jscs":"^2.9.0","jshint":"^2.6.0","mocha":"^2.1.0"},"files":["lib"],"homepage":"https://github.com/indutny/elliptic","keywords":["EC","Elliptic","curve","Cryptography"],"license":"MIT","main":"lib/elliptic.js","name":"elliptic","repository":{"type":"git","url":"git+ssh://git@github.com/indutny/elliptic.git"},"scripts":{"jscs":"jscs benchmarks/*.js lib/*.js lib/**/*.js lib/**/**/*.js test/index.js","jshint":"jscs benchmarks/*.js lib/*.js lib/**/*.js lib/**/**/*.js test/index.js","lint":"npm run jscs && npm run jshint","test":"npm run lint && npm run unit","unit":"istanbul test _mocha --reporter=spec test/index.js","version":"grunt dist && git add dist/"},"version":"6.4.1"};
+module.exports = {"_args":[["elliptic@6.4.1","/Users/carlyseitz/Documents/Homework Assignments/ssr-react-blog"]],"_from":"elliptic@6.4.1","_id":"elliptic@6.4.1","_inBundle":false,"_integrity":"sha512-BsXLz5sqX8OHcsh7CqBMztyXARmGQ3LWPtGjJi6DiJHq5C/qvi9P3OqgswKSDftbu8+IoI/QDTAm2fFnQ9SZSQ==","_location":"/elliptic","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"elliptic@6.4.1","name":"elliptic","escapedName":"elliptic","rawSpec":"6.4.1","saveSpec":null,"fetchSpec":"6.4.1"},"_requiredBy":["/browserify-sign","/create-ecdh"],"_resolved":"https://registry.npmjs.org/elliptic/-/elliptic-6.4.1.tgz","_spec":"6.4.1","_where":"/Users/carlyseitz/Documents/Homework Assignments/ssr-react-blog","author":{"name":"Fedor Indutny","email":"fedor@indutny.com"},"bugs":{"url":"https://github.com/indutny/elliptic/issues"},"dependencies":{"bn.js":"^4.4.0","brorand":"^1.0.1","hash.js":"^1.0.0","hmac-drbg":"^1.0.0","inherits":"^2.0.1","minimalistic-assert":"^1.0.0","minimalistic-crypto-utils":"^1.0.0"},"description":"EC cryptography","devDependencies":{"brfs":"^1.4.3","coveralls":"^2.11.3","grunt":"^0.4.5","grunt-browserify":"^5.0.0","grunt-cli":"^1.2.0","grunt-contrib-connect":"^1.0.0","grunt-contrib-copy":"^1.0.0","grunt-contrib-uglify":"^1.0.1","grunt-mocha-istanbul":"^3.0.1","grunt-saucelabs":"^8.6.2","istanbul":"^0.4.2","jscs":"^2.9.0","jshint":"^2.6.0","mocha":"^2.1.0"},"files":["lib"],"homepage":"https://github.com/indutny/elliptic","keywords":["EC","Elliptic","curve","Cryptography"],"license":"MIT","main":"lib/elliptic.js","name":"elliptic","repository":{"type":"git","url":"git+ssh://git@github.com/indutny/elliptic.git"},"scripts":{"jscs":"jscs benchmarks/*.js lib/*.js lib/**/*.js lib/**/**/*.js test/index.js","jshint":"jscs benchmarks/*.js lib/*.js lib/**/*.js lib/**/**/*.js test/index.js","lint":"npm run jscs && npm run jshint","test":"npm run lint && npm run unit","unit":"istanbul test _mocha --reporter=spec test/index.js","version":"grunt dist && git add dist/"},"version":"6.4.1"};
 
 /***/ }),
 
@@ -30912,12 +31052,12 @@ module.exports = ReactPropTypesSecret;
 
 /***/ "./node_modules/object-assign/index.js":
 /*!***************************************************************************************************!*\
-  !*** delegated ./node_modules/object-assign/index.js from dll-reference dll_7aff549c98b978433226 ***!
+  !*** delegated ./node_modules/object-assign/index.js from dll-reference dll_829b10deddf10e1653a8 ***!
   \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_7aff549c98b978433226 */ "dll-reference dll_7aff549c98b978433226"))("./node_modules/object-assign/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_829b10deddf10e1653a8 */ "dll-reference dll_829b10deddf10e1653a8"))("./node_modules/object-assign/index.js");
 
 /***/ }),
 
@@ -31878,12 +32018,12 @@ process.umask = function() { return 0; };
 
 /***/ "./node_modules/prop-types/checkPropTypes.js":
 /*!*********************************************************************************************************!*\
-  !*** delegated ./node_modules/prop-types/checkPropTypes.js from dll-reference dll_7aff549c98b978433226 ***!
+  !*** delegated ./node_modules/prop-types/checkPropTypes.js from dll-reference dll_829b10deddf10e1653a8 ***!
   \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_7aff549c98b978433226 */ "dll-reference dll_7aff549c98b978433226"))("./node_modules/prop-types/checkPropTypes.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_829b10deddf10e1653a8 */ "dll-reference dll_829b10deddf10e1653a8"))("./node_modules/prop-types/checkPropTypes.js");
 
 /***/ }),
 
@@ -32518,12 +32658,12 @@ if (true) {
 
 /***/ "./node_modules/prop-types/lib/ReactPropTypesSecret.js":
 /*!*******************************************************************************************************************!*\
-  !*** delegated ./node_modules/prop-types/lib/ReactPropTypesSecret.js from dll-reference dll_7aff549c98b978433226 ***!
+  !*** delegated ./node_modules/prop-types/lib/ReactPropTypesSecret.js from dll-reference dll_829b10deddf10e1653a8 ***!
   \*******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_7aff549c98b978433226 */ "dll-reference dll_7aff549c98b978433226"))("./node_modules/prop-types/lib/ReactPropTypesSecret.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_829b10deddf10e1653a8 */ "dll-reference dll_829b10deddf10e1653a8"))("./node_modules/prop-types/lib/ReactPropTypesSecret.js");
 
 /***/ }),
 
@@ -33230,12 +33370,12 @@ function randomFillSync (buf, offset, size) {
 
 /***/ "./node_modules/react-dom/index.js":
 /*!***********************************************************************************************!*\
-  !*** delegated ./node_modules/react-dom/index.js from dll-reference dll_7aff549c98b978433226 ***!
+  !*** delegated ./node_modules/react-dom/index.js from dll-reference dll_829b10deddf10e1653a8 ***!
   \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_7aff549c98b978433226 */ "dll-reference dll_7aff549c98b978433226"))("./node_modules/react-dom/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_829b10deddf10e1653a8 */ "dll-reference dll_829b10deddf10e1653a8"))("./node_modules/react-dom/index.js");
 
 /***/ }),
 
@@ -35914,12 +36054,12 @@ exports.classNamesShape = classNamesShape;
 
 /***/ "./node_modules/react/index.js":
 /*!*******************************************************************************************!*\
-  !*** delegated ./node_modules/react/index.js from dll-reference dll_7aff549c98b978433226 ***!
+  !*** delegated ./node_modules/react/index.js from dll-reference dll_829b10deddf10e1653a8 ***!
   \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_7aff549c98b978433226 */ "dll-reference dll_7aff549c98b978433226"))("./node_modules/react/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_829b10deddf10e1653a8 */ "dll-reference dll_829b10deddf10e1653a8"))("./node_modules/react/index.js");
 
 /***/ }),
 
@@ -43134,12 +43274,12 @@ exports.createContext = Script.createContext = function (context) {
 
 /***/ "./node_modules/webpack/buildin/global.js":
 /*!******************************************************************************************************!*\
-  !*** delegated ./node_modules/webpack/buildin/global.js from dll-reference dll_7aff549c98b978433226 ***!
+  !*** delegated ./node_modules/webpack/buildin/global.js from dll-reference dll_829b10deddf10e1653a8 ***!
   \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_7aff549c98b978433226 */ "dll-reference dll_7aff549c98b978433226"))("./node_modules/webpack/buildin/global.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_829b10deddf10e1653a8 */ "dll-reference dll_829b10deddf10e1653a8"))("./node_modules/webpack/buildin/global.js");
 
 /***/ }),
 
@@ -43757,14 +43897,14 @@ var auth0client = new Auth();
 
 /***/ }),
 
-/***/ "dll-reference dll_7aff549c98b978433226":
+/***/ "dll-reference dll_829b10deddf10e1653a8":
 /*!*******************************************!*\
-  !*** external "dll_7aff549c98b978433226" ***!
+  !*** external "dll_829b10deddf10e1653a8" ***!
   \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = dll_7aff549c98b978433226;
+module.exports = dll_829b10deddf10e1653a8;
 
 /***/ })
 

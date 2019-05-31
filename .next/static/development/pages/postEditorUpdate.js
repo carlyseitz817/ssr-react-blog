@@ -313,9 +313,36 @@ function SaveDraft(props) {
       float: "right",
       marginBottom: 10
     },
-    className: "btn btn-success"
+    className: "btn btn-primary"
   }), props.children);
-}
+} // class SaveDraft extends Component {
+// constructor(props) {
+//     super(props)
+//     this.savePost = this.savePost.bind(this)
+// }
+// savePost = event => {
+//     event.preventDefault();
+//     const postId = this.props.id;
+//     const postData = {
+//         userId: this.props.userId,
+//         slug: this.props.slug,
+//         title: this.props.title,
+//         subTitle: this.props.subTitle,
+//         story: this.props.story,
+//         // createdAt: this.props.createdAt,
+//         // updatedAt: this.props.updatedAt,
+//         // status: this.props.status,
+//         // author: user.name
+//     }
+//     API.savePost(postData)
+//         .then(this.props.handleSaveReRender(postId));
+// }
+// render() {
+//     return (
+//         <button className='btn btn-primary' onClick={this.savePost}>Save Draft</button>
+//     )
+// }
+
 
 /* harmony default export */ __webpack_exports__["default"] = (SaveDraft);
 
@@ -404,6 +431,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _layouts_BaseLayout__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../layouts/BaseLayout */ "./components/layouts/BaseLayout.js");
 /* harmony import */ var _BasePage__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../BasePage */ "./components/BasePage.js");
+/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! path */ "./node_modules/path-browserify/index.js");
+/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(path__WEBPACK_IMPORTED_MODULE_11__);
+
 
 
 
@@ -435,7 +465,7 @@ __webpack_require__.r(__webpack_exports__);
           if (isAuthenticated) {
             return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(Component, this.props);
           } else {
-            return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_layouts_BaseLayout__WEBPACK_IMPORTED_MODULE_9__["default"], this.props.auth, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_BasePage__WEBPACK_IMPORTED_MODULE_10__["default"], null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h1", null, "You must log in to view this page.")));
+            return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_layouts_BaseLayout__WEBPACK_IMPORTED_MODULE_9__["default"], this.props.auth, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_BasePage__WEBPACK_IMPORTED_MODULE_10__["default"], null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("normaltext", null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h1", null, "You must log in to view this page."))));
           }
         }
       }, {
@@ -836,13 +866,17 @@ function (_React$Component) {
 /*!**************************!*\
   !*** ./helpers/utils.js ***!
   \**************************/
-/*! exports provided: getCookieFromReq, shortenText */
+/*! exports provided: getCookieFromReq, shortenText, imagePluginFactory */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCookieFromReq", function() { return getCookieFromReq; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "shortenText", function() { return shortenText; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "imagePluginFactory", function() { return imagePluginFactory; });
+/* harmony import */ var ckeditor_cloudinary_uploader_adapter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ckeditor-cloudinary-uploader-adapter */ "./node_modules/ckeditor-cloudinary-uploader-adapter/dist/index.js");
+/* harmony import */ var ckeditor_cloudinary_uploader_adapter__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(ckeditor_cloudinary_uploader_adapter__WEBPACK_IMPORTED_MODULE_0__);
+
 var getCookieFromReq = function getCookieFromReq(req, cookieKey) {
   var cookie = req.headers.cookie.split(';').find(function (c) {
     return c.trim().startsWith("".concat(cookieKey, "="));
@@ -863,6 +897,11 @@ var shortenText = function shortenText(text) {
   }
 
   return text;
+};
+var imagePluginFactory = function imagePluginFactory(editor) {
+  editor.plugins.get('FileRepository').createUploadAdapter = function (loader) {
+    return new ckeditor_cloudinary_uploader_adapter__WEBPACK_IMPORTED_MODULE_0__["CloudinaryImageUploadAdapter"](loader, 'ssr-react-blog-files', 'ckeditor-upload'[(160, 500, 1000, 1052)]);
+  };
 };
 
 /***/ }),
@@ -17657,6 +17696,137 @@ CipherBase.prototype._toString = function (value, enc, fin) {
 }
 
 module.exports = CipherBase
+
+
+/***/ }),
+
+/***/ "./node_modules/ckeditor-cloudinary-uploader-adapter/dist/CloudinaryImageUploadAdapter/CloudinaryImageUploadAdapter.js":
+/*!*****************************************************************************************************************************!*\
+  !*** ./node_modules/ckeditor-cloudinary-uploader-adapter/dist/CloudinaryImageUploadAdapter/CloudinaryImageUploadAdapter.js ***!
+  \*****************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var CloudinaryImageUploadAdapter = /** @class */ (function () {
+    function CloudinaryImageUploadAdapter(loader, cloudName, unsignedUploadPreset, sizes) {
+        this.loader = loader;
+        this.xhr = new XMLHttpRequest();
+        this.cloudName = cloudName;
+        this.unsignedUploadPreset = unsignedUploadPreset;
+        if (sizes) {
+            this.sizes = sizes;
+        }
+    }
+    CloudinaryImageUploadAdapter.prototype.upload = function () {
+        var _this = this;
+        return this.loader.file.then(function (file) {
+            return new Promise(function (resolve, reject) {
+                var fd = new FormData();
+                var url = "https://api.cloudinary.com/v1_1/" + _this.cloudName + "/upload";
+                _this.xhr.open('POST', url, true);
+                _this.xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+                // Hookup an event listener to update the upload progress bar
+                _this.xhr.upload.addEventListener('progress', function (e) {
+                    _this.loader.uploadTotal = 100;
+                    _this.loader.uploaded = Math.round((e.loaded * 100) / e.total);
+                });
+                // Hookup a listener to listen for when the request state changes
+                _this.xhr.onreadystatechange = function () {
+                    if (_this.xhr.readyState === 4 && _this.xhr.status === 200) {
+                        // Successful upload, resolve the promise with the new image
+                        var response = JSON.parse(_this.xhr.responseText);
+                        var images = void 0;
+                        if (_this.sizes) {
+                            images = __assign({ default: response.secure_url }, _this.getImageSizes(response.secure_url));
+                        }
+                        else {
+                            images = {
+                                default: response.secure_url,
+                            };
+                        }
+                        resolve(images);
+                    }
+                    else if (_this.xhr.status !== 200) {
+                        // Unsuccessful request, reject the promise
+                        reject('Upload failed');
+                    }
+                };
+                // Setup the form data to be sent in the request
+                fd.append('upload_preset', _this.unsignedUploadPreset);
+                fd.append('tags', 'browser_upload');
+                fd.append('file', file);
+                _this.xhr.send(fd);
+            });
+        });
+    };
+    CloudinaryImageUploadAdapter.prototype.abort = function () {
+        // This function is called to abort the request if an error occurs
+        if (this.xhr) {
+            this.xhr.abort();
+        }
+    };
+    CloudinaryImageUploadAdapter.prototype.getImageSizes = function (defaultImageUrl) {
+        var imageObject = {};
+        // Split url in two
+        var splitUrl = this.splitUrl(defaultImageUrl);
+        if (this.sizes) {
+            var len_1 = this.sizes.length;
+            this.sizes.forEach(function (size, index) {
+                if (index !== len_1 - 1) {
+                    imageObject[size.toString()] = splitUrl.firstHalf + "w_" + size + "%2Cc_scale" + splitUrl.secondHalf;
+                }
+                else {
+                    imageObject[size.toString()] = defaultImageUrl;
+                }
+            });
+        }
+        return imageObject;
+    };
+    CloudinaryImageUploadAdapter.prototype.splitUrl = function (url) {
+        // This function splits the image url in two.
+        var firstHalfLength = 41 + this.cloudName.length;
+        var firstHalf = url.substr(0, firstHalfLength);
+        var secondHalf = url.substr(firstHalfLength - 1, url.length - firstHalfLength + 1);
+        return {
+            firstHalf: firstHalf,
+            secondHalf: secondHalf,
+        };
+    };
+    return CloudinaryImageUploadAdapter;
+}());
+exports.CloudinaryImageUploadAdapter = CloudinaryImageUploadAdapter;
+
+
+/***/ }),
+
+/***/ "./node_modules/ckeditor-cloudinary-uploader-adapter/dist/index.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/ckeditor-cloudinary-uploader-adapter/dist/index.js ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__(/*! ./CloudinaryImageUploadAdapter/CloudinaryImageUploadAdapter */ "./node_modules/ckeditor-cloudinary-uploader-adapter/dist/CloudinaryImageUploadAdapter/CloudinaryImageUploadAdapter.js"));
 
 
 /***/ }),
@@ -35739,6 +35909,242 @@ function decrypt (data, password) {
   return Buffer.concat(out)
 }
 
+
+/***/ }),
+
+/***/ "./node_modules/path-browserify/index.js":
+/*!***********************************************!*\
+  !*** ./node_modules/path-browserify/index.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(process) {// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+// resolves . and .. elements in a path array with directory names there
+// must be no slashes, empty elements, or device names (c:\) in the array
+// (so also no leading and trailing slashes - it does not distinguish
+// relative and absolute paths)
+function normalizeArray(parts, allowAboveRoot) {
+  // if the path tries to go above the root, `up` ends up > 0
+  var up = 0;
+  for (var i = parts.length - 1; i >= 0; i--) {
+    var last = parts[i];
+    if (last === '.') {
+      parts.splice(i, 1);
+    } else if (last === '..') {
+      parts.splice(i, 1);
+      up++;
+    } else if (up) {
+      parts.splice(i, 1);
+      up--;
+    }
+  }
+
+  // if the path is allowed to go above the root, restore leading ..s
+  if (allowAboveRoot) {
+    for (; up--; up) {
+      parts.unshift('..');
+    }
+  }
+
+  return parts;
+}
+
+// Split a filename into [root, dir, basename, ext], unix version
+// 'root' is just a slash, or nothing.
+var splitPathRe =
+    /^(\/?|)([\s\S]*?)((?:\.{1,2}|[^\/]+?|)(\.[^.\/]*|))(?:[\/]*)$/;
+var splitPath = function(filename) {
+  return splitPathRe.exec(filename).slice(1);
+};
+
+// path.resolve([from ...], to)
+// posix version
+exports.resolve = function() {
+  var resolvedPath = '',
+      resolvedAbsolute = false;
+
+  for (var i = arguments.length - 1; i >= -1 && !resolvedAbsolute; i--) {
+    var path = (i >= 0) ? arguments[i] : process.cwd();
+
+    // Skip empty and invalid entries
+    if (typeof path !== 'string') {
+      throw new TypeError('Arguments to path.resolve must be strings');
+    } else if (!path) {
+      continue;
+    }
+
+    resolvedPath = path + '/' + resolvedPath;
+    resolvedAbsolute = path.charAt(0) === '/';
+  }
+
+  // At this point the path should be resolved to a full absolute path, but
+  // handle relative paths to be safe (might happen when process.cwd() fails)
+
+  // Normalize the path
+  resolvedPath = normalizeArray(filter(resolvedPath.split('/'), function(p) {
+    return !!p;
+  }), !resolvedAbsolute).join('/');
+
+  return ((resolvedAbsolute ? '/' : '') + resolvedPath) || '.';
+};
+
+// path.normalize(path)
+// posix version
+exports.normalize = function(path) {
+  var isAbsolute = exports.isAbsolute(path),
+      trailingSlash = substr(path, -1) === '/';
+
+  // Normalize the path
+  path = normalizeArray(filter(path.split('/'), function(p) {
+    return !!p;
+  }), !isAbsolute).join('/');
+
+  if (!path && !isAbsolute) {
+    path = '.';
+  }
+  if (path && trailingSlash) {
+    path += '/';
+  }
+
+  return (isAbsolute ? '/' : '') + path;
+};
+
+// posix version
+exports.isAbsolute = function(path) {
+  return path.charAt(0) === '/';
+};
+
+// posix version
+exports.join = function() {
+  var paths = Array.prototype.slice.call(arguments, 0);
+  return exports.normalize(filter(paths, function(p, index) {
+    if (typeof p !== 'string') {
+      throw new TypeError('Arguments to path.join must be strings');
+    }
+    return p;
+  }).join('/'));
+};
+
+
+// path.relative(from, to)
+// posix version
+exports.relative = function(from, to) {
+  from = exports.resolve(from).substr(1);
+  to = exports.resolve(to).substr(1);
+
+  function trim(arr) {
+    var start = 0;
+    for (; start < arr.length; start++) {
+      if (arr[start] !== '') break;
+    }
+
+    var end = arr.length - 1;
+    for (; end >= 0; end--) {
+      if (arr[end] !== '') break;
+    }
+
+    if (start > end) return [];
+    return arr.slice(start, end - start + 1);
+  }
+
+  var fromParts = trim(from.split('/'));
+  var toParts = trim(to.split('/'));
+
+  var length = Math.min(fromParts.length, toParts.length);
+  var samePartsLength = length;
+  for (var i = 0; i < length; i++) {
+    if (fromParts[i] !== toParts[i]) {
+      samePartsLength = i;
+      break;
+    }
+  }
+
+  var outputParts = [];
+  for (var i = samePartsLength; i < fromParts.length; i++) {
+    outputParts.push('..');
+  }
+
+  outputParts = outputParts.concat(toParts.slice(samePartsLength));
+
+  return outputParts.join('/');
+};
+
+exports.sep = '/';
+exports.delimiter = ':';
+
+exports.dirname = function(path) {
+  var result = splitPath(path),
+      root = result[0],
+      dir = result[1];
+
+  if (!root && !dir) {
+    // No dirname whatsoever
+    return '.';
+  }
+
+  if (dir) {
+    // It has a dirname, strip trailing slash
+    dir = dir.substr(0, dir.length - 1);
+  }
+
+  return root + dir;
+};
+
+
+exports.basename = function(path, ext) {
+  var f = splitPath(path)[2];
+  // TODO: make this comparison case-insensitive on windows?
+  if (ext && f.substr(-1 * ext.length) === ext) {
+    f = f.substr(0, f.length - ext.length);
+  }
+  return f;
+};
+
+
+exports.extname = function(path) {
+  return splitPath(path)[3];
+};
+
+function filter (xs, f) {
+    if (xs.filter) return xs.filter(f);
+    var res = [];
+    for (var i = 0; i < xs.length; i++) {
+        if (f(xs[i], i, xs)) res.push(xs[i]);
+    }
+    return res;
+}
+
+// String.prototype.substr - negative index don't work in IE8
+var substr = 'ab'.substr(-1) === 'b'
+    ? function (str, start, len) { return str.substr(start, len) }
+    : function (str, start, len) {
+        if (start < 0) start = str.length + start;
+        return str.substr(start, len);
+    }
+;
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
 
@@ -60022,10 +60428,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(next_dynamic__WEBPACK_IMPORTED_MODULE_13__);
 /* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../routes */ "./routes.js");
 /* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_routes__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/esm/react-toastify.js");
-/* harmony import */ var _components_SaveDraft__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../components/SaveDraft */ "./components/SaveDraft.js");
-/* harmony import */ var _components_StatusButton__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../components/StatusButton */ "./components/StatusButton.js");
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../actions */ "./actions/index.js");
+/* harmony import */ var _helpers_utils__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../helpers/utils */ "./helpers/utils.js");
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/esm/react-toastify.js");
+/* harmony import */ var _components_SaveDraft__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../components/SaveDraft */ "./components/SaveDraft.js");
+/* harmony import */ var _components_StatusButton__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../components/StatusButton */ "./components/StatusButton.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../actions */ "./actions/index.js");
 
 
 
@@ -60057,6 +60464,7 @@ var CKEditor = next_dynamic__WEBPACK_IMPORTED_MODULE_13___default()(function () 
 
 
 
+
 var PostEditorUpdate =
 /*#__PURE__*/
 function (_React$Component) {
@@ -60078,7 +60486,7 @@ function (_React$Component) {
                 post = {};
                 _context.prev = 3;
                 _context.next = 6;
-                return Object(_actions__WEBPACK_IMPORTED_MODULE_18__["getPostById"])(postId);
+                return Object(_actions__WEBPACK_IMPORTED_MODULE_19__["getPostById"])(postId);
 
               case 6:
                 post = _context.sent;
@@ -60165,12 +60573,12 @@ function (_React$Component) {
       updatedPost.subTitle = this.state.subtitle;
       updatedPost.story = this.state.story; // this.setState({isSaving: true});
 
-      Object(_actions__WEBPACK_IMPORTED_MODULE_18__["updatePost"])(updatedPost, post._id).then(function (updatedPost) {
-        react_toastify__WEBPACK_IMPORTED_MODULE_15__["toast"].success('Post Saved Succesfuly!'); // this.setState({isSaving: false});
+      Object(_actions__WEBPACK_IMPORTED_MODULE_19__["updatePost"])(updatedPost, post._id).then(function (updatedPost) {
+        react_toastify__WEBPACK_IMPORTED_MODULE_16__["toast"].success('Post Saved Succesfuly!'); // this.setState({isSaving: false});
       }).catch(function (err) {
         // this.setState({isSaving: false});
         var message = err.message || 'Server Error!';
-        react_toastify__WEBPACK_IMPORTED_MODULE_15__["toast"].error('Unexpected Error, Copy your progress and refresh browser please.');
+        react_toastify__WEBPACK_IMPORTED_MODULE_16__["toast"].error('Unexpected Error, Copy your progress and refresh browser please.');
         console.error(message);
       });
     }
@@ -60179,13 +60587,13 @@ function (_React$Component) {
     value: function changeStatus(status, postId) {
       console.log("status as retrieved in changedStatus(): " + status);
 
-      Object(_actions__WEBPACK_IMPORTED_MODULE_18__["updatePost"])({
+      Object(_actions__WEBPACK_IMPORTED_MODULE_19__["updatePost"])({
         status: status
       }, postId).then(function () {
         _routes__WEBPACK_IMPORTED_MODULE_14__["Router"].pushRoute("/blog/".concat(postId, "/edit"));
-        react_toastify__WEBPACK_IMPORTED_MODULE_15__["toast"].success('Post status updated');
+        react_toastify__WEBPACK_IMPORTED_MODULE_16__["toast"].success('Post status updated');
       }).catch(function (err) {
-        react_toastify__WEBPACK_IMPORTED_MODULE_15__["toast"].error('Unexpected Error, Copy your progress and refresh browser please.');
+        react_toastify__WEBPACK_IMPORTED_MODULE_16__["toast"].error('Unexpected Error, Copy your progress and refresh browser please.');
         console.error(err.message);
       });
     }
@@ -60212,11 +60620,17 @@ function (_React$Component) {
         className: "blog-editor-page"
       }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("label", null, "Title"), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
         value: this.state.title,
+        className: "titlez",
         onChange: this.handletitle
-      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("label", null, "Subtitle"), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
+      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("label", null, "Subtitle"), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
         value: post.subTitle,
+        className: "subtitlez",
         onChange: this.handleSubtitle
-      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(CKEditor, {
+      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(CKEditor, {
+        className: "blogtext",
+        config: {
+          extraPlugins: [_helpers_utils__WEBPACK_IMPORTED_MODULE_15__["imagePluginFactory"]]
+        },
         data: post.story,
         save: this.saveBlog,
         onInit: function onInit(editor) {// You can store the "editor" and use when it is needed.
@@ -60234,9 +60648,9 @@ function (_React$Component) {
         },
         onFocus: function onFocus(editor) {// console.log('Focus.', editor);
         }
-      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_StatusButton__WEBPACK_IMPORTED_MODULE_17__["default"], {
+      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_StatusButton__WEBPACK_IMPORTED_MODULE_18__["default"], {
         item: this.statusOption(post)
-      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_SaveDraft__WEBPACK_IMPORTED_MODULE_16__["default"], {
+      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_SaveDraft__WEBPACK_IMPORTED_MODULE_17__["default"], {
         onClick: this.updatePost
       }, "Save Draft")));
     }
@@ -60677,6 +61091,18 @@ var auth0client = new Auth();
 
 /***/ }),
 
+/***/ 11:
+/*!******************************************************************************************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2FpostEditorUpdate&absolutePagePath=%2FUsers%2Fcarlyseitz%2FDocuments%2FHomework%20Assignments%2Fssr-react-blog%2Fpages%2FpostEditorUpdate.js ***!
+  \******************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2FpostEditorUpdate&absolutePagePath=%2FUsers%2Fcarlyseitz%2FDocuments%2FHomework%20Assignments%2Fssr-react-blog%2Fpages%2FpostEditorUpdate.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2FpostEditorUpdate&absolutePagePath=%2FUsers%2Fcarlyseitz%2FDocuments%2FHomework%20Assignments%2Fssr-react-blog%2Fpages%2FpostEditorUpdate.js!./");
+
+
+/***/ }),
+
 /***/ 2:
 /*!************************!*\
   !*** buffer (ignored) ***!
@@ -60699,18 +61125,6 @@ var auth0client = new Auth();
 
 /***/ }),
 
-/***/ 9:
-/*!******************************************************************************************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2FpostEditorUpdate&absolutePagePath=%2FUsers%2Fcarlyseitz%2FDocuments%2FHomework%20Assignments%2Fssr-react-blog%2Fpages%2FpostEditorUpdate.js ***!
-  \******************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2FpostEditorUpdate&absolutePagePath=%2FUsers%2Fcarlyseitz%2FDocuments%2FHomework%20Assignments%2Fssr-react-blog%2Fpages%2FpostEditorUpdate.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2FpostEditorUpdate&absolutePagePath=%2FUsers%2Fcarlyseitz%2FDocuments%2FHomework%20Assignments%2Fssr-react-blog%2Fpages%2FpostEditorUpdate.js!./");
-
-
-/***/ }),
-
 /***/ "dll-reference dll_829b10deddf10e1653a8":
 /*!*******************************************!*\
   !*** external "dll_829b10deddf10e1653a8" ***!
@@ -60722,5 +61136,5 @@ module.exports = dll_829b10deddf10e1653a8;
 
 /***/ })
 
-},[[9,"static/runtime/webpack.js"]]]);
+},[[11,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=postEditorUpdate.js.map

@@ -5,13 +5,11 @@ import dynamic from 'next/dynamic';
 const CKEditor = dynamic(() => import('../components/CKEditor'), {
   ssr: false
 });
-// const BlockQuote = dynamic(() => import('@ckeditor/ckeditor5-block-quote/src/blockquote'), {
-//   ssr: false
-// });;
+import { imagePluginFactory } from '../helpers/utils';
 import withAuth from '../components/hoc/withAuth';
-import {Router} from '../routes';
+import { Router } from '../routes';
 import SaveDraft from '../components/SaveDraft';
-import { createPost } from '../actions'
+import { createPost } from '../actions';
 import { toast } from 'react-toastify';
 
 class BlogEditor extends React.Component {
@@ -19,7 +17,6 @@ class BlogEditor extends React.Component {
     super(props);
     this.saveBlog = this.saveBlog.bind(this);
   };
-
 
   state = {
     title: '',
@@ -56,7 +53,7 @@ class BlogEditor extends React.Component {
     })
   };
 
-  render() {    
+  render() {
     return (
       <BaseLayout {...this.props.auth}>
         <BasePage containerClass="editor-wrapper" className="blog-editor-page">
@@ -67,11 +64,10 @@ class BlogEditor extends React.Component {
           <input value={this.state.subtitle} className="subtitlez" onChange={this.handleSubtitle} />
           <br></br><br></br>
           <div>
-            <CKEditor className= "blogtext"
-            // Went ahead and just styled blockquote element
-              // config={{
-              //   extraPlugins: [ BlockQuote ]
-              // }}
+            <CKEditor className="blogtext"
+              config={{
+                extraPlugins: [imagePluginFactory]
+              }}
               save={this.saveBlog}
               onInit={editor => {
                 // You can store the "editor" and use when it is needed.

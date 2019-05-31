@@ -34,9 +34,6 @@ class PostDetail extends React.Component {
                 <h1>test</h1>
               </div>
               <div dangerouslySetInnerHTML={{__html: post.story}}></div>
-              {/* <div>
-                {post.story}
-              </div> */}
             </Col>
           </Row>
         </BasePage>

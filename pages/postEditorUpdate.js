@@ -3,11 +3,12 @@ import BaseLayout from '../components/layouts/BaseLayout';
 import BasePage from '../components/BasePage';
 import withAuth from '../components/hoc/withAuth';
 import dynamic from 'next/dynamic';
-import {Router} from '../routes';
+import { Router } from '../routes';
 
 const CKEditor = dynamic(() => import('../components/CKEditor'), {
   ssr: false
 });
+import { imagePluginFactory } from '../helpers/utils';
 
 import { toast } from 'react-toastify';
 
@@ -92,10 +93,10 @@ class PostEditorUpdate extends React.Component {
     const status = this.createStatus(post.status)
 
     return (
-      { 
-        text: status.view, 
-        handlers: 
-          { onClick: () => this.changeStatus(status.value, post._id)}
+      {
+        text: status.view,
+        handlers:
+          { onClick: () => this.changeStatus(status.value, post._id) }
       }
     )
   }
@@ -113,7 +114,10 @@ class PostEditorUpdate extends React.Component {
           <input value={post.subTitle} className="subtitlez" onChange={this.handleSubtitle} />
           <br></br><br></br>
 
-          <CKEditor className= "blogtext"
+          <CKEditor className="blogtext"
+            config={{
+              extraPlugins: [imagePluginFactory]
+            }}
             data={post.story}
             save={this.saveBlog}
             onInit={editor => {
@@ -134,7 +138,7 @@ class PostEditorUpdate extends React.Component {
           />
 
           <br></br>
-          <StatusButton item={this.statusOption(post)} />          
+          <StatusButton item={this.statusOption(post)} />
           <SaveDraft
             onClick={this.updatePost}
           >

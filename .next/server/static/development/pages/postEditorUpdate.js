@@ -121,7 +121,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -440,9 +440,36 @@ function SaveDraft(props) {
       float: "right",
       marginBottom: 10
     },
-    className: "btn btn-success"
+    className: "btn btn-primary"
   }), props.children);
-}
+} // class SaveDraft extends Component {
+// constructor(props) {
+//     super(props)
+//     this.savePost = this.savePost.bind(this)
+// }
+// savePost = event => {
+//     event.preventDefault();
+//     const postId = this.props.id;
+//     const postData = {
+//         userId: this.props.userId,
+//         slug: this.props.slug,
+//         title: this.props.title,
+//         subTitle: this.props.subTitle,
+//         story: this.props.story,
+//         // createdAt: this.props.createdAt,
+//         // updatedAt: this.props.updatedAt,
+//         // status: this.props.status,
+//         // author: user.name
+//     }
+//     API.savePost(postData)
+//         .then(this.props.handleSaveReRender(postId));
+// }
+// render() {
+//     return (
+//         <button className='btn btn-primary' onClick={this.savePost}>Save Draft</button>
+//     )
+// }
+
 
 /* harmony default export */ __webpack_exports__["default"] = (SaveDraft);
 
@@ -532,6 +559,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _layouts_BaseLayout__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../layouts/BaseLayout */ "./components/layouts/BaseLayout.js");
 /* harmony import */ var _BasePage__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../BasePage */ "./components/BasePage.js");
+/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! path */ "path");
+/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(path__WEBPACK_IMPORTED_MODULE_11__);
+
 
 
 
@@ -563,7 +593,7 @@ __webpack_require__.r(__webpack_exports__);
           if (isAuthenticated) {
             return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(Component, this.props);
           } else {
-            return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_layouts_BaseLayout__WEBPACK_IMPORTED_MODULE_9__["default"], this.props.auth, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_BasePage__WEBPACK_IMPORTED_MODULE_10__["default"], null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h1", null, "You must log in to view this page.")));
+            return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_layouts_BaseLayout__WEBPACK_IMPORTED_MODULE_9__["default"], this.props.auth, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_BasePage__WEBPACK_IMPORTED_MODULE_10__["default"], null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("normaltext", null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h1", null, "You must log in to view this page."))));
           }
         }
       }, {
@@ -965,13 +995,17 @@ function (_React$Component) {
 /*!**************************!*\
   !*** ./helpers/utils.js ***!
   \**************************/
-/*! exports provided: getCookieFromReq, shortenText */
+/*! exports provided: getCookieFromReq, shortenText, imagePluginFactory */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCookieFromReq", function() { return getCookieFromReq; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "shortenText", function() { return shortenText; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "imagePluginFactory", function() { return imagePluginFactory; });
+/* harmony import */ var ckeditor_cloudinary_uploader_adapter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ckeditor-cloudinary-uploader-adapter */ "ckeditor-cloudinary-uploader-adapter");
+/* harmony import */ var ckeditor_cloudinary_uploader_adapter__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(ckeditor_cloudinary_uploader_adapter__WEBPACK_IMPORTED_MODULE_0__);
+
 var getCookieFromReq = function getCookieFromReq(req, cookieKey) {
   var cookie = req.headers.cookie.split(';').find(function (c) {
     return c.trim().startsWith("".concat(cookieKey, "="));
@@ -992,6 +1026,11 @@ var shortenText = function shortenText(text) {
   }
 
   return text;
+};
+var imagePluginFactory = function imagePluginFactory(editor) {
+  editor.plugins.get('FileRepository').createUploadAdapter = function (loader) {
+    return new ckeditor_cloudinary_uploader_adapter__WEBPACK_IMPORTED_MODULE_0__["CloudinaryImageUploadAdapter"](loader, 'ssr-react-blog-files', 'ckeditor-upload'[(160, 500, 1000, 1052)]);
+  };
 };
 
 /***/ }),
@@ -2081,11 +2120,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(next_dynamic__WEBPACK_IMPORTED_MODULE_13__);
 /* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../routes */ "./routes.js");
 /* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_routes__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-toastify */ "react-toastify");
-/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(react_toastify__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var _components_SaveDraft__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../components/SaveDraft */ "./components/SaveDraft.js");
-/* harmony import */ var _components_StatusButton__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../components/StatusButton */ "./components/StatusButton.js");
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../actions */ "./actions/index.js");
+/* harmony import */ var _helpers_utils__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../helpers/utils */ "./helpers/utils.js");
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! react-toastify */ "react-toastify");
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(react_toastify__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var _components_SaveDraft__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../components/SaveDraft */ "./components/SaveDraft.js");
+/* harmony import */ var _components_StatusButton__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../components/StatusButton */ "./components/StatusButton.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../actions */ "./actions/index.js");
 
 
 
@@ -2117,6 +2157,7 @@ var CKEditor = next_dynamic__WEBPACK_IMPORTED_MODULE_13___default()(function () 
 
 
 
+
 var PostEditorUpdate =
 /*#__PURE__*/
 function (_React$Component) {
@@ -2138,7 +2179,7 @@ function (_React$Component) {
                 post = {};
                 _context.prev = 3;
                 _context.next = 6;
-                return Object(_actions__WEBPACK_IMPORTED_MODULE_18__["getPostById"])(postId);
+                return Object(_actions__WEBPACK_IMPORTED_MODULE_19__["getPostById"])(postId);
 
               case 6:
                 post = _context.sent;
@@ -2225,12 +2266,12 @@ function (_React$Component) {
       updatedPost.subTitle = this.state.subtitle;
       updatedPost.story = this.state.story; // this.setState({isSaving: true});
 
-      Object(_actions__WEBPACK_IMPORTED_MODULE_18__["updatePost"])(updatedPost, post._id).then(function (updatedPost) {
-        react_toastify__WEBPACK_IMPORTED_MODULE_15__["toast"].success('Post Saved Succesfuly!'); // this.setState({isSaving: false});
+      Object(_actions__WEBPACK_IMPORTED_MODULE_19__["updatePost"])(updatedPost, post._id).then(function (updatedPost) {
+        react_toastify__WEBPACK_IMPORTED_MODULE_16__["toast"].success('Post Saved Succesfuly!'); // this.setState({isSaving: false});
       }).catch(function (err) {
         // this.setState({isSaving: false});
         var message = err.message || 'Server Error!';
-        react_toastify__WEBPACK_IMPORTED_MODULE_15__["toast"].error('Unexpected Error, Copy your progress and refresh browser please.');
+        react_toastify__WEBPACK_IMPORTED_MODULE_16__["toast"].error('Unexpected Error, Copy your progress and refresh browser please.');
         console.error(message);
       });
     }
@@ -2239,13 +2280,13 @@ function (_React$Component) {
     value: function changeStatus(status, postId) {
       console.log("status as retrieved in changedStatus(): " + status);
 
-      Object(_actions__WEBPACK_IMPORTED_MODULE_18__["updatePost"])({
+      Object(_actions__WEBPACK_IMPORTED_MODULE_19__["updatePost"])({
         status: status
       }, postId).then(function () {
         _routes__WEBPACK_IMPORTED_MODULE_14__["Router"].pushRoute("/blog/".concat(postId, "/edit"));
-        react_toastify__WEBPACK_IMPORTED_MODULE_15__["toast"].success('Post status updated');
+        react_toastify__WEBPACK_IMPORTED_MODULE_16__["toast"].success('Post status updated');
       }).catch(function (err) {
-        react_toastify__WEBPACK_IMPORTED_MODULE_15__["toast"].error('Unexpected Error, Copy your progress and refresh browser please.');
+        react_toastify__WEBPACK_IMPORTED_MODULE_16__["toast"].error('Unexpected Error, Copy your progress and refresh browser please.');
         console.error(err.message);
       });
     }
@@ -2272,11 +2313,17 @@ function (_React$Component) {
         className: "blog-editor-page"
       }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("label", null, "Title"), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
         value: this.state.title,
+        className: "titlez",
         onChange: this.handletitle
-      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("label", null, "Subtitle"), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
+      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("label", null, "Subtitle"), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
         value: post.subTitle,
+        className: "subtitlez",
         onChange: this.handleSubtitle
-      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(CKEditor, {
+      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(CKEditor, {
+        className: "blogtext",
+        config: {
+          extraPlugins: [_helpers_utils__WEBPACK_IMPORTED_MODULE_15__["imagePluginFactory"]]
+        },
         data: post.story,
         save: this.saveBlog,
         onInit: function onInit(editor) {// You can store the "editor" and use when it is needed.
@@ -2294,9 +2341,9 @@ function (_React$Component) {
         },
         onFocus: function onFocus(editor) {// console.log('Focus.', editor);
         }
-      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_StatusButton__WEBPACK_IMPORTED_MODULE_17__["default"], {
+      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_StatusButton__WEBPACK_IMPORTED_MODULE_18__["default"], {
         item: this.statusOption(post)
-      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_SaveDraft__WEBPACK_IMPORTED_MODULE_16__["default"], {
+      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_SaveDraft__WEBPACK_IMPORTED_MODULE_17__["default"], {
         onClick: this.updatePost
       }, "Save Draft")));
     }
@@ -2716,7 +2763,7 @@ var auth0client = new Auth();
 
 /***/ }),
 
-/***/ 5:
+/***/ 7:
 /*!*****************************************!*\
   !*** multi ./pages/postEditorUpdate.js ***!
   \*****************************************/
@@ -2769,6 +2816,17 @@ module.exports = require("auth0-js");
 /***/ (function(module, exports) {
 
 module.exports = require("axios");
+
+/***/ }),
+
+/***/ "ckeditor-cloudinary-uploader-adapter":
+/*!*******************************************************!*\
+  !*** external "ckeditor-cloudinary-uploader-adapter" ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("ckeditor-cloudinary-uploader-adapter");
 
 /***/ }),
 
@@ -2978,6 +3036,17 @@ module.exports = require("next/head");
 /***/ (function(module, exports) {
 
 module.exports = require("next/router");
+
+/***/ }),
+
+/***/ "path":
+/*!***********************!*\
+  !*** external "path" ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("path");
 
 /***/ }),
 

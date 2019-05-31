@@ -97,13 +97,17 @@ module.exports =
 /*!**************************!*\
   !*** ./helpers/utils.js ***!
   \**************************/
-/*! exports provided: getCookieFromReq, shortenText */
+/*! exports provided: getCookieFromReq, shortenText, imagePluginFactory */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCookieFromReq", function() { return getCookieFromReq; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "shortenText", function() { return shortenText; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "imagePluginFactory", function() { return imagePluginFactory; });
+/* harmony import */ var ckeditor_cloudinary_uploader_adapter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ckeditor-cloudinary-uploader-adapter */ "ckeditor-cloudinary-uploader-adapter");
+/* harmony import */ var ckeditor_cloudinary_uploader_adapter__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(ckeditor_cloudinary_uploader_adapter__WEBPACK_IMPORTED_MODULE_0__);
+
 var getCookieFromReq = function getCookieFromReq(req, cookieKey) {
   var cookie = req.headers.cookie.split(';').find(function (c) {
     return c.trim().startsWith("".concat(cookieKey, "="));
@@ -124,6 +128,11 @@ var shortenText = function shortenText(text) {
   }
 
   return text;
+};
+var imagePluginFactory = function imagePluginFactory(editor) {
+  editor.plugins.get('FileRepository').createUploadAdapter = function (loader) {
+    return new ckeditor_cloudinary_uploader_adapter__WEBPACK_IMPORTED_MODULE_0__["CloudinaryImageUploadAdapter"](loader, 'ssr-react-blog-files', 'ckeditor-upload'[(160, 500, 1000, 1052)]);
+  };
 };
 
 /***/ }),
@@ -1571,6 +1580,17 @@ module.exports = require("auth0-js");
 /***/ (function(module, exports) {
 
 module.exports = require("axios");
+
+/***/ }),
+
+/***/ "ckeditor-cloudinary-uploader-adapter":
+/*!*******************************************************!*\
+  !*** external "ckeditor-cloudinary-uploader-adapter" ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("ckeditor-cloudinary-uploader-adapter");
 
 /***/ }),
 
