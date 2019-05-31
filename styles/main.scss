@@ -21,6 +21,20 @@
   top: 0px;
 }
 
+.titlez {
+
+  color: black !important;
+  margin-left: 100px;
+
+  }
+
+.subtitlez {
+
+    color: black !important;
+    margin-left: 77px;
+  
+    }
+
 blockquote {
   background: #ecedee;
   border-left: 10px solid #ccc;
@@ -66,11 +80,22 @@ body {
   color: red;
 }
 
+normaltext {
+
+  color: #E0BC77;
+}
+
+label {
+
+color: #E0BC77;
+}
+
+//color for all the main pages
 .base-page {
   padding: 150px 0 100px 0;
-  color: black;
+  color: rgb(0, 0, 0);
   min-height: 100vh;
-  background-color: #ecedee;
+  background-color: #12282a;
 
 
   .page-header {
