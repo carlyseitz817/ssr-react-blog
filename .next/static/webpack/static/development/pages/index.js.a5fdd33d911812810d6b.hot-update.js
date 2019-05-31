@@ -96,13 +96,13 @@ function (_React$Component) {
         className: "hero-section-content-intro"
       })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
         className: "image",
-        src: "/static/images/section-3.png"
+        src: "/static/images/project3a.png"
       }))))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Col"], {
         md: "6",
         className: "hero-welcome-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "hero-welcome-text"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h1", null, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react_typed__WEBPACK_IMPORTED_MODULE_11___default.a, {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h1", null, "Lorem ipsum, etc etc. Some things, like super-old Latin placeholder text, are so good no one's ever bothered reinventing it. Other things are not super-old Latin placeholder text.")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react_typed__WEBPACK_IMPORTED_MODULE_11___default.a, {
         loop: true,
         typeSpeed: 80,
         backSpeed: 60,
@@ -126,4 +126,4 @@ function (_React$Component) {
 /***/ })
 
 })
-//# sourceMappingURL=index.js.0f9b4c109d19c7025a23.hot-update.js.map
+//# sourceMappingURL=index.js.a5fdd33d911812810d6b.hot-update.js.map

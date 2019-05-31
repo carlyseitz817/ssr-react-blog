@@ -102,7 +102,7 @@ function (_React$Component) {
         className: "hero-welcome-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "hero-welcome-text"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h1", null, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react_typed__WEBPACK_IMPORTED_MODULE_11___default.a, {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h1", null, "Lorem ipsum, etc etc. Some things, like super-old Latin placeholder text, are so good no one's ever bothered reinventing it. Other things are not super-old Latin placeholder text. The world is changing, but fortunately, technology is also changing. Anyone can leave their mark if they have the right platform, the right site. Welcome to the right site.")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react_typed__WEBPACK_IMPORTED_MODULE_11___default.a, {
         loop: true,
         typeSpeed: 80,
         backSpeed: 60,
@@ -126,4 +126,4 @@ function (_React$Component) {
 /***/ })
 
 })
-//# sourceMappingURL=index.js.59a8ddd507cfd8e6213f.hot-update.js.map
+//# sourceMappingURL=index.js.06ea02938905c2888bc5.hot-update.js.map

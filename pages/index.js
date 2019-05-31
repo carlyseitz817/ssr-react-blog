@@ -73,10 +73,10 @@ class Index extends React.Component {
               <Col md="6" className="hero-welcome-wrapper">
                 <div className="hero-welcome-text">
                   <h1>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut
-                    labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Lorem ipsum, etc etc. Some things, like super-old Latin placeholder text, 
+                    are so good no one's ever bothered reinventing it. Other things are not super-old Latin placeholder text.
+                    The world is changing, but fortunately, technology is also changing. Anyone can leave their mark if they have the right platform,
+                    the right site. Welcome to the right site.
             </h1>
                 </div>
                 <Typed
