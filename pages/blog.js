@@ -57,7 +57,7 @@ class Posts extends React.Component {
         className="blog-listing-page"
         title="SSR Next.js Blog">
         <div className="masthead" style={{ "backgroundImage": "url('/static/images/home-bg.jpg')" }}>
-          <div className="overlay"></div>
+          {/* <div className="overlay"></div> */}
           <Container>
             <div className="row">
               <div className="col-lg-8 col-md-10 mx-auto">

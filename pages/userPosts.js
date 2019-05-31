@@ -111,7 +111,7 @@ class UserPosts extends React.Component {
                 <div className="site-heading">
                   <h1>Posts Dashboard</h1>
                   <span className="subheading">
-                    Let's write some nice blog today{' '}
+                    Let's write something nice today{' '}
                     <Link route='/blogs/new'>
                       <Button color="primary">Create a new Post</Button>
                     </Link></span>
