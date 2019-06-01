@@ -8,6 +8,33 @@
   border-bottom-style: double;
   border-width: 5px; 
 
+  .port-dropdown-toggle {
+
+    color: #00b8ae;
+
+
+
+    &:hover,
+      &:focus {
+        color: #E0BC77; 
+      }
+
+  }
+
+
+
+  .dropdowndowndown {
+
+    background-color: #c4ffe8;
+    border-color: #00b8ae;
+    border-bottom-style: bold;
+    border-width: 5px; 
+
+    &.active {
+      color: #030d0e;
+    }
+  }
+
   .port-navbar {
     &-brand {
       color: #00b8ae;
@@ -38,6 +65,13 @@
       &:focus {
         color: #E0BC77; 
       }
+    }
+  }
+
+  .port-dropdown-item {
+
+    &.active {
+      color: #030d0e;
     }
   }
 }

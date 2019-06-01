@@ -9,7 +9,7 @@ import {
   Nav,
   NavItem,
   NavLink,
-  Dropdown,
+  UncontrolledDropdown,
   DropdownItem,
   DropdownToggle,
   DropdownMenu
@@ -65,48 +65,9 @@ export default class Header extends React.Component {
     });
   }
 
-  renderBlogMenu() {
-    const { user } = this.props;
-
-    if (user) {
-      return (
-        <Dropdown className="port-navbar-link port-dropdown-menu" nav isOpen={this.state.dropdownOpen} toggle={this.toggleDropdown}>
-          <DropdownToggle className="port-dropdown-toggle" nav caret>
-            Blog
-          </DropdownToggle>
-          <DropdownMenu>
-            <DropdownItem>
-              <BsNavLink className="port-dropdown-item"
-                route="/blogs"
-                title="Blogs" />
-            </DropdownItem>
-            <DropdownItem>
-              <BsNavLink className="port-dropdown-item"
-                route="/blogs/new"
-                title="Create a Blog" />
-            </DropdownItem>
-            <DropdownItem>
-              <BsNavLink className="port-dropdown-item"
-                route="/blogs/dashboard"
-                title="Blogs Dashboard" />
-            </DropdownItem>
-          </DropdownMenu>
-        </Dropdown>
-      )
-    }
-
-    return (
-      <NavItem className="port-navbar-item">
-        <BsNavLink route="/blogs" title="Blog" />
-      </NavItem>
-    )
-  }
-
   render() {
-    const { isAuthenticated, user, className } = this.props;
-    const { isOpen } = this.state;
+    const { isAuthenticated } = this.props;
 
-    const menuOpenClass = isOpen ? 'menu-open' : 'menu-close';
 
     return (
       <div>
@@ -121,13 +82,9 @@ export default class Header extends React.Component {
               <NavItem className="port-navbar-item">
                 <BsNavLink route="/blog" title="BLOG POSTS" />
               </NavItem>
-              <NavItem className="port-navbar-item">
-                <BsNavLink route="/blog/new" title="POST EDITOR" />
-              </NavItem>
 
               {
                 !isAuthenticated &&
-
                 <NavItem className="port-navbar-item">
                   <Login />
                 </NavItem>
@@ -135,29 +92,31 @@ export default class Header extends React.Component {
 
               {
                 isAuthenticated &&
-
                 <NavItem className="port-navbar-item">
                   <Logout />
                 </NavItem>
               }
+              <UncontrolledDropdown className="port-navbar-link port-dropdown-menu" nav isOpen={this.state.dropdownOpen} toggle={this.toggleDropdown}>
+                {
+                  isAuthenticated &&
+                  <DropdownToggle className="port-dropdown-toggle" nav caret>
+                    My Account
+                  </DropdownToggle>
 
-              {/* <UncontrolledDropdown nav inNavbar>
-                            <DropdownToggle nav caret>
-                                Options
-            </DropdownToggle>
-                            <DropdownMenu right>
-                                <DropdownItem>
-                                    Option 1
-              </DropdownItem>
-                                <DropdownItem>
-                                    Option 2
-              </DropdownItem>
-                                <DropdownItem divider />
-                                <DropdownItem>
-                                    Reset
-              </DropdownItem>
-                            </DropdownMenu>
-                        </UncontrolledDropdown> */}
+                }
+                <DropdownMenu className="dropdowndowndown" right>
+                  <DropdownItem>
+                    <BsNavLink className="port-dropdown-item"
+                      route="/dashboard"
+                      title="DASHBOARD" />
+                  </DropdownItem>
+                  <DropdownItem>
+                    <BsNavLink className="port-dropdown-item"
+                      route="/postEditor"
+                      title="NEW POST" />
+                  </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
             </Nav>
           </Collapse>
         </Navbar>

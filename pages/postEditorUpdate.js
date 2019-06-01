@@ -111,7 +111,7 @@ class PostEditorUpdate extends React.Component {
           <input value={this.state.title} className="titlez" onChange={this.handletitle} />
           <br></br>
           <label>Subtitle</label>
-          <input value={post.subTitle} className="subtitlez" onChange={this.handleSubtitle} />
+          <input value={this.state.subtitle} className="subtitlez" onChange={this.handleSubtitle} />
           <br></br><br></br>
 
           <CKEditor className="blogtext"

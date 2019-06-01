@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -338,51 +338,9 @@ function (_React$Component) {
       });
     }
   }, {
-    key: "renderBlogMenu",
-    value: function renderBlogMenu() {
-      var user = this.props.user;
-
-      if (user) {
-        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Dropdown"], {
-          className: "port-navbar-link port-dropdown-menu",
-          nav: true,
-          isOpen: this.state.dropdownOpen,
-          toggle: this.toggleDropdown
-        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownToggle"], {
-          className: "port-dropdown-toggle",
-          nav: true,
-          caret: true
-        }, "Blog"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownMenu"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownItem"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
-          className: "port-dropdown-item",
-          route: "/blogs",
-          title: "Blogs"
-        })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownItem"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
-          className: "port-dropdown-item",
-          route: "/blogs/new",
-          title: "Create a Blog"
-        })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownItem"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
-          className: "port-dropdown-item",
-          route: "/blogs/dashboard",
-          title: "Blogs Dashboard"
-        }))));
-      }
-
-      return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["NavItem"], {
-        className: "port-navbar-item"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
-        route: "/blogs",
-        title: "Blog"
-      }));
-    }
-  }, {
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          isAuthenticated = _this$props.isAuthenticated,
-          user = _this$props.user,
-          className = _this$props.className;
-      var isOpen = this.state.isOpen;
-      var menuOpenClass = isOpen ? 'menu-open' : 'menu-close';
+      var isAuthenticated = this.props.isAuthenticated;
       return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Navbar"], {
         className: "port-navbar port-default absolute",
         color: "transparent",
@@ -409,16 +367,31 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
         route: "/blog",
         title: "BLOG POSTS"
-      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["NavItem"], {
-        className: "port-navbar-item"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
-        route: "/blog/new",
-        title: "POST EDITOR"
       })), !isAuthenticated && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["NavItem"], {
         className: "port-navbar-item"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(Login, null)), isAuthenticated && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["NavItem"], {
         className: "port-navbar-item"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(Logout, null))))));
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(Logout, null)), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["UncontrolledDropdown"], {
+        className: "port-navbar-link port-dropdown-menu",
+        nav: true,
+        isOpen: this.state.dropdownOpen,
+        toggle: this.toggleDropdown
+      }, isAuthenticated && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownToggle"], {
+        className: "port-dropdown-toggle",
+        nav: true,
+        caret: true
+      }, "My Account"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownMenu"], {
+        className: "dropdowndowndown",
+        right: true
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownItem"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
+        className: "port-dropdown-item",
+        route: "/dashboard",
+        title: "DASHBOARD"
+      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownItem"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
+        className: "port-dropdown-item",
+        route: "/postEditor",
+        title: "NEW POST"
+      }))))))));
     }
   }]);
 
@@ -467,7 +440,8 @@ var shortenText = function shortenText(text) {
 };
 var imagePluginFactory = function imagePluginFactory(editor) {
   editor.plugins.get('FileRepository').createUploadAdapter = function (loader) {
-    return new ckeditor_cloudinary_uploader_adapter__WEBPACK_IMPORTED_MODULE_0__["CloudinaryImageUploadAdapter"](loader, 'ssr-react-blog-files', 'ckeditor-upload'[(160, 500, 1000, 1052)]);
+    return new ckeditor_cloudinary_uploader_adapter__WEBPACK_IMPORTED_MODULE_0__["CloudinaryImageUploadAdapter"](loader, 'ssr-react-blog-files', 'ckeditor-upload' // [ 160, 500, 1000, 1052 ]
+    );
   };
 };
 
@@ -1504,7 +1478,7 @@ function (_React$Component) {
     Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, Index);
 
     _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__["default"])(Index).call(this, props));
-    _this.features = ["Server-side rendering for SEO", "Rich text editor", "Save blog posts", "View user-specific blogs"];
+    _this.features = ["Server-side rendering for SEO", "Rich text editor", "Save drafts"];
     return _this;
   }
 
@@ -1876,7 +1850,7 @@ var auth0client = new Auth();
 
 /***/ }),
 
-/***/ 3:
+/***/ 7:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/

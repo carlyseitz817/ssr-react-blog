@@ -30,8 +30,11 @@ class Auth {
           resolve();
         }
         else if (err) {
+
           reject(err);
+
           console.log(err);
+
           alert('Whoops! Something went wrong! Error: ${err.error}. Check the console for further details.');
         }
       });
@@ -39,6 +42,7 @@ class Auth {
   }
 
   setSession(authResult) {
+
     localStorage.setItem('isLoggedIn', 'true');
 
     const expiresAt = (authResult.expiresIn * 1000) + new Date().getTime();

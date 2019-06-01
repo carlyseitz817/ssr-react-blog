@@ -23,7 +23,7 @@ export const imagePluginFactory = (editor) => {
       loader,
       'ssr-react-blog-files',
       'ckeditor-upload'
-      [ 160, 500, 1000, 1052 ]
+      // [ 160, 500, 1000, 1052 ]
     );
   };
 }

@@ -38,7 +38,8 @@ var shortenText = function shortenText(text) {
 };
 var imagePluginFactory = function imagePluginFactory(editor) {
   editor.plugins.get('FileRepository').createUploadAdapter = function (loader) {
-    return new ckeditor_cloudinary_uploader_adapter__WEBPACK_IMPORTED_MODULE_0__["CloudinaryImageUploadAdapter"](loader, 'ssr-react-blog-files', 'ckeditor-upload'[(160, 500, 1000, 1052)]);
+    return new ckeditor_cloudinary_uploader_adapter__WEBPACK_IMPORTED_MODULE_0__["CloudinaryImageUploadAdapter"](loader, 'ssr-react-blog-files', 'ckeditor-upload' // [ 160, 500, 1000, 1052 ]
+    );
   };
 };
 

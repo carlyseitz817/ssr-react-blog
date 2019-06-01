@@ -25,9 +25,7 @@ class Index extends React.Component {
     this.features = [
       "Server-side rendering for SEO",
       "Rich text editor",
-      "Save blog posts",
-      "View user-specific blogs"
-    ]
+      "Save drafts"    ]
   };
 
 

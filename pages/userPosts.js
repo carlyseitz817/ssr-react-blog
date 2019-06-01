@@ -99,7 +99,7 @@ class UserPosts extends React.Component {
   render() {
     const { posts } = this.props;
     console.log(posts);
-    const {published, drafts} = this.separatePosts(posts);
+    const { published, drafts } = this.separatePosts(posts);
 
     return (
       <BaseLayout {...this.props.auth} headerType={'landing'}>
@@ -111,9 +111,9 @@ class UserPosts extends React.Component {
                 <div className="site-heading">
                   <h1>Posts Dashboard</h1>
                   <span className="subheading">
-                    Let's write something nice today{' '}
-                    <Link route='/blogs/new'>
-                      <Button color="primary">Create a new Post</Button>
+                    Let's write something nice today!{' '}
+                    <Link route='/blog/new'>
+                      <Button color="primary mybutton">Create a new Post</Button>
                     </Link></span>
                 </div>
               </div>
@@ -121,16 +121,18 @@ class UserPosts extends React.Component {
           </Container>
         </div>
         <BasePage className="blog-user-page">
-          <Row>
-            <Col md="6" className="mx-auto text-center">
-              <h2 className="blog-status-title"> Published Posts </h2>
-              {this.renderPosts(published)}
-            </Col>
-            <Col md="6" className="mx-auto text-center">
-              <h2 className="blog-status-title"> Draft Posts </h2>
-              {this.renderPosts(drafts)}
-            </Col>
-          </Row>
+          <normaltext>
+            <Row>
+              <Col md="6" className="mx-auto text-center">
+                <h2 className="blog-status-title"> Published Posts </h2>
+                {this.renderPosts(published)}
+              </Col>
+              <Col md="6" className="mx-auto text-center">
+                <h2 className="blog-status-title"> Draft Posts </h2>
+                {this.renderPosts(drafts)}
+              </Col>
+            </Row>
+          </normaltext>
         </BasePage>
       </BaseLayout>
     )

@@ -31,6 +31,3 @@ exports.checkRole = role => (req, res, next) => {
     return res.status(401).send({ title: 'Not Authorized', detail: 'You are not authorized to access this data' })
   }
 }
-
-
-

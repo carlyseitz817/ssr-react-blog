@@ -17,6 +17,14 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
+    "/about": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/blog": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
     "/callback": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
@@ -25,7 +33,7 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/postEditor": [
+    "/next/dist/pages/_error": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],

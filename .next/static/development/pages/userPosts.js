@@ -639,51 +639,9 @@ function (_React$Component) {
       });
     }
   }, {
-    key: "renderBlogMenu",
-    value: function renderBlogMenu() {
-      var user = this.props.user;
-
-      if (user) {
-        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Dropdown"], {
-          className: "port-navbar-link port-dropdown-menu",
-          nav: true,
-          isOpen: this.state.dropdownOpen,
-          toggle: this.toggleDropdown
-        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownToggle"], {
-          className: "port-dropdown-toggle",
-          nav: true,
-          caret: true
-        }, "Blog"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownMenu"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownItem"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
-          className: "port-dropdown-item",
-          route: "/blogs",
-          title: "Blogs"
-        })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownItem"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
-          className: "port-dropdown-item",
-          route: "/blogs/new",
-          title: "Create a Blog"
-        })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownItem"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
-          className: "port-dropdown-item",
-          route: "/blogs/dashboard",
-          title: "Blogs Dashboard"
-        }))));
-      }
-
-      return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["NavItem"], {
-        className: "port-navbar-item"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
-        route: "/blogs",
-        title: "Blog"
-      }));
-    }
-  }, {
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          isAuthenticated = _this$props.isAuthenticated,
-          user = _this$props.user,
-          className = _this$props.className;
-      var isOpen = this.state.isOpen;
-      var menuOpenClass = isOpen ? 'menu-open' : 'menu-close';
+      var isAuthenticated = this.props.isAuthenticated;
       return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Navbar"], {
         className: "port-navbar port-default absolute",
         color: "transparent",
@@ -710,16 +668,31 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
         route: "/blog",
         title: "BLOG POSTS"
-      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["NavItem"], {
-        className: "port-navbar-item"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
-        route: "/blog/new",
-        title: "POST EDITOR"
       })), !isAuthenticated && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["NavItem"], {
         className: "port-navbar-item"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(Login, null)), isAuthenticated && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["NavItem"], {
         className: "port-navbar-item"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(Logout, null))))));
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(Logout, null)), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["UncontrolledDropdown"], {
+        className: "port-navbar-link port-dropdown-menu",
+        nav: true,
+        isOpen: this.state.dropdownOpen,
+        toggle: this.toggleDropdown
+      }, isAuthenticated && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownToggle"], {
+        className: "port-dropdown-toggle",
+        nav: true,
+        caret: true
+      }, "My Account"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownMenu"], {
+        className: "dropdowndowndown",
+        right: true
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownItem"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
+        className: "port-dropdown-item",
+        route: "/dashboard",
+        title: "DASHBOARD"
+      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownItem"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
+        className: "port-dropdown-item",
+        route: "/postEditor",
+        title: "NEW POST"
+      }))))))));
     }
   }]);
 
@@ -768,7 +741,8 @@ var shortenText = function shortenText(text) {
 };
 var imagePluginFactory = function imagePluginFactory(editor) {
   editor.plugins.get('FileRepository').createUploadAdapter = function (loader) {
-    return new ckeditor_cloudinary_uploader_adapter__WEBPACK_IMPORTED_MODULE_0__["CloudinaryImageUploadAdapter"](loader, 'ssr-react-blog-files', 'ckeditor-upload'[(160, 500, 1000, 1052)]);
+    return new ckeditor_cloudinary_uploader_adapter__WEBPACK_IMPORTED_MODULE_0__["CloudinaryImageUploadAdapter"](loader, 'ssr-react-blog-files', 'ckeditor-upload' // [ 160, 500, 1000, 1052 ]
+    );
   };
 };
 
@@ -58679,13 +58653,13 @@ function (_React$Component) {
         className: "site-heading"
       }, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("h1", null, "Posts Dashboard"), react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("span", {
         className: "subheading"
-      }, "Let's write something nice today", ' ', react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(_routes__WEBPACK_IMPORTED_MODULE_16__["Link"], {
-        route: "/blogs/new"
+      }, "Let's write something nice today!", ' ', react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(_routes__WEBPACK_IMPORTED_MODULE_16__["Link"], {
+        route: "/blog/new"
       }, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_13__["Button"], {
-        color: "primary"
+        color: "primary mybutton"
       }, "Create a new Post")))))))), react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(_components_BasePage__WEBPACK_IMPORTED_MODULE_12__["default"], {
         className: "blog-user-page"
-      }, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_13__["Row"], null, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_13__["Col"], {
+      }, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("normaltext", null, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_13__["Row"], null, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_13__["Col"], {
         md: "6",
         className: "mx-auto text-center"
       }, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("h2", {
@@ -58695,7 +58669,7 @@ function (_React$Component) {
         className: "mx-auto text-center"
       }, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("h2", {
         className: "blog-status-title"
-      }, " Draft Posts "), this.renderPosts(drafts)))));
+      }, " Draft Posts "), this.renderPosts(drafts))))));
     }
   }], [{
     key: "getInitialProps",
@@ -59099,7 +59073,7 @@ var auth0client = new Auth();
 
 /***/ }),
 
-/***/ 8:
+/***/ 7:
 /*!****************************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2FuserPosts&absolutePagePath=%2FUsers%2Fcarlyseitz%2FDocuments%2FHomework%20Assignments%2Fssr-react-blog%2Fpages%2FuserPosts.js ***!
   \****************************************************************************************************************************************************************************/
@@ -59122,5 +59096,5 @@ module.exports = dll_829b10deddf10e1653a8;
 
 /***/ })
 
-},[[8,"static/runtime/webpack.js"]]]);
+},[[7,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=userPosts.js.map
