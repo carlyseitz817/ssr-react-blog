@@ -12,7 +12,7 @@ class Auth {
       {
         domain: 'dev-ofwx6q85.auth0.com',
         clientID: '7ZE6aNVCenqc2Ghy21fA7VcWbzcgPEWz',
-        redirectUri: 'http://localhost:3000/callback',
+        redirectUri: 'https://ssr-nextjs-react-blog-cms.herokuapp.com/callback',
         responseType: 'token id_token',
         scope: 'openid profile',
       });
@@ -60,7 +60,7 @@ class Auth {
     Cookies.remove('expiresAt');
 
     this.auth0.logout({
-      returnTo: 'http://localhost:3000',
+      returnTo: 'https://ssr-nextjs-react-blog-cms.herokuapp.com/',
       clientID: '7ZE6aNVCenqc2Ghy21fA7VcWbzcgPEWz'
     })
 

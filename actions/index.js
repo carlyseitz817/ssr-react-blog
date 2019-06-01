@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';
 import { getCookieFromReq } from '../helpers/utils';
 
 const axiosInstance = axios.create({
-  baseURL: `http://localhost:3000/api/v1`,
+  baseURL: `https://ssr-nextjs-react-blog-cms.herokuapp.com/api/v1`,
 
   timeout: 3000
 });
