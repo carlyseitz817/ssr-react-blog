@@ -12,6 +12,18 @@
 
     color: #00b8ae;
 
+
+
+    &:hover,
+      &:focus {
+        color: #E0BC77; 
+      }
+
+  }
+
+  .dropdowndowndown {
+
+    background-color: #c4ffe8;
   }
 
   .port-navbar {
@@ -37,7 +49,7 @@
       text-transform: uppercase;
 
       &.active {
-        color: #c4ffe8;
+        color: #030d0e;
       }
 
       &:hover,

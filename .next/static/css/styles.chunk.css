@@ -123,6 +123,10 @@
   border-width: 5px; }
   .port-navbar.port-default .port-dropdown-toggle {
     color: #00b8ae; }
+    .port-navbar.port-default .port-dropdown-toggle:hover, .port-navbar.port-default .port-dropdown-toggle:focus {
+      color: #E0BC77; }
+  .port-navbar.port-default .dropdowndowndown {
+    background-color: #c4ffe8; }
   .port-navbar.port-default .port-navbar-brand {
     color: #00b8ae;
     font-size: 34px;
@@ -140,7 +144,7 @@
     font-size: 18px;
     text-transform: uppercase; }
     .port-navbar.port-default .port-navbar-link.active {
-      color: #c4ffe8; }
+      color: #030d0e; }
     .port-navbar.port-default .port-navbar-link:hover, .port-navbar.port-default .port-navbar-link:focus {
       color: #E0BC77; }
 

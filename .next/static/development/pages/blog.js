@@ -463,6 +463,7 @@ function (_React$Component) {
         nav: true,
         caret: true
       }, "Menu"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownMenu"], {
+        className: "dropdowndowndown",
         right: true
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownItem"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
         className: "port-dropdown-item",
