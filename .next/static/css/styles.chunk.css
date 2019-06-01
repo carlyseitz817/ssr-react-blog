@@ -66,7 +66,7 @@
 .hero-welcome-text > h1 {
   color: #E0BC77;
   text-transform: uppercase;
-  font-size: 27px;
+  font-size: 20px;
   margin-top: 80px; }
 
 .hero-welcome-bio {
@@ -112,29 +112,31 @@
 .port-navbar.port-default {
   width: 100%;
   z-index: 15;
-  padding: 40px;
+  padding: 30px;
+  background-color: #030d0e !important;
   border-bottom-color: #E0BC77;
-  border-bottom-style: dotted;
+  border-bottom-style: double;
   border-width: 5px; }
   .port-navbar.port-default .port-navbar-brand {
-    color: #00f5ac !important;
-    font-size: 24px;
+    color: #00b8ae;
+    font-size: 34px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    font-weight: bold; }
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; }
   .port-navbar.port-default .port-navbar-item {
     margin-left: 10px;
     margin-right: 10px; }
   .port-navbar.port-default .port-navbar-link {
-    color: #0ba4eb !important;
+    color: #0ba4eb;
     font-weight: bold;
     letter-spacing: 0.8px;
     font-size: 18px;
     text-transform: uppercase; }
     .port-navbar.port-default .port-navbar-link.active {
-      color: #c4ffe8 !important; }
+      color: #c4ffe8; }
     .port-navbar.port-default .port-navbar-link:hover, .port-navbar.port-default .port-navbar-link:focus {
-      color: #E0BC77 !important; }
+      color: #E0BC77; }
 
 .blog-listing-page {
   min-height: 100vh;
@@ -296,7 +298,7 @@
 
 .subtitlez {
   color: black !important;
-  margin-left: 77px; }
+  margin-left: 76px; }
 
 blockquote {
   background: #ecedee;
@@ -328,7 +330,7 @@ body {
   font-size: 31px;
   font-weight: bold;
   letter-spacing: 2px;
-  color: white; }
+  color: #0ba4eb; }
 
 .absolute {
   position: absolute; }
@@ -341,7 +343,16 @@ normaltext {
   color: #E0BC77; }
 
 label {
-  color: #E0BC77; }
+  color: #E0BC77;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; }
+
+.mybutton {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background-color: #030d0e;
+  border-color: #030d0e; }
+
+h1 {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; }
 
 .base-page {
   padding: 150px 0 100px 0;

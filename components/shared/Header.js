@@ -66,7 +66,6 @@ export default class Header extends React.Component {
   }
 
   renderBlogMenu() {
-    const { isSiteOwner } = this.props;
     const { user } = this.props;
 
     if (user) {
@@ -112,7 +111,7 @@ export default class Header extends React.Component {
     return (
       <div>
         <Navbar className="port-navbar port-default absolute" color="transparent" dark expand="md">
-          <NavbarBrand className="port-navbar-brand" href="/">SSR Next.js Blog</NavbarBrand>
+          <NavbarBrand className="port-navbar-brand" href="/">Woodbern Blogs</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
@@ -120,10 +119,10 @@ export default class Header extends React.Component {
                 <BsNavLink route="/about" title="ABOUT" />
               </NavItem>
               <NavItem className="port-navbar-item">
-                <BsNavLink route="/blog" title="BLOG" />
+                <BsNavLink route="/blog" title="BLOG POSTS" />
               </NavItem>
               <NavItem className="port-navbar-item">
-                <BsNavLink route="/postEditor" title="POST EDITOR" />
+                <BsNavLink route="/blog/new" title="POST EDITOR" />
               </NavItem>
 
               {
@@ -166,125 +165,3 @@ export default class Header extends React.Component {
     );
   }
 }
-
-
-
-
-
-
-// import React from 'react';
-// import Link from 'next/link';
-// import {
-//     Collapse,
-//     Navbar,
-//     NavbarToggler,
-//     NavbarBrand,
-//     Nav,
-//     NavItem,
-//     NavLink,
-//     UncontrolledDropdown,
-//     DropdownToggle,
-//     DropdownMenu,
-//     DropdownItem
-// } from 'reactstrap';
-
-// import auth0 from '../../services/auth0';
-
-// const BsNavLink = (props) => {
-//     const { route, title } = props;
-
-//     return (
-//         <Link href={route}>
-//             <a className="nav-link port-navbar-link">{title}</a>
-//         </Link>
-//     );
-// };
-
-// const Login = () => {
-//     return (
-//         <span onClick={auth0.login} className="nav-link port-navbar-link">Login</span>
-//     )
-// }
-
-// const Logout = () => {
-//     return (
-//         <span onClick={auth0.logout} className="nav-link port-navbar-link">Logout</span>
-//     )
-// }
-
-// export default class Example extends React.Component {
-//     constructor(props) {
-//         super(props);
-
-//         this.toggle = this.toggle.bind(this);
-//         this.state = {
-//             isOpen: false
-//         };
-//     }
-//     toggle() {
-//         this.setState({
-//             isOpen: !this.state.isOpen
-//         });
-//     }
-//     render() {
-//         const { isAuthenticated, user, className } = this.props;
-//         const { isOpen } = this.state;
-
-//         const menuOpenClass = isOpen ? 'menu-open' : 'menu-close';
-
-
-//         return (
-//             <div>
-//                 <Navbar className="port-navbar port-default absolute" color="transparent" dark expand="md">
-//                     <NavbarBrand className="port-navbar-brand" href="/">SSR Next.js Blog</NavbarBrand>
-//                     <NavbarToggler onClick={this.toggle} />
-//                     <Collapse isOpen={this.state.isOpen} navbar>
-//                         <Nav className="ml-auto" navbar>
-//                             <NavItem className="port-navbar-item">
-//                                 <BsNavLink route="/about" title="ABOUT" />
-//                             </NavItem>
-//                             <NavItem className="port-navbar-item">
-//                                 <BsNavLink route="/blog" title="BLOG" />
-//                             </NavItem>
-
-//                             {
-//                                 !auth0.isAuthenticated() &&
-
-//                                 <NavItem className="port-navbar-item">
-//                                     <Login />
-//                                 </NavItem>
-//                             }
-
-//                             {
-//                                 auth0.isAuthenticated() &&
-
-//                                 <NavItem className="port-navbar-item">
-//                                     <Logout />
-//                                 </NavItem>
-//                             }
-
-//                             {/* <UncontrolledDropdown nav inNavbar>
-//                                 <DropdownToggle nav caret>
-//                                     Options
-//                 </DropdownToggle>
-//                                 <DropdownMenu right>
-//                                     <DropdownItem>
-//                                         Option 1
-//                   </DropdownItem>
-//                                     <DropdownItem>
-//                                         Option 2
-//                   </DropdownItem>
-//                                     <DropdownItem divider />
-//                                     <DropdownItem>
-//                                         Reset
-//                   </DropdownItem>
-//                                 </DropdownMenu>
-//                             </UncontrolledDropdown> */}
-//                         </Nav>
-//                     </Collapse>
-//                 </Navbar>
-//             </div>
-//         );
-//     }
-// }
-

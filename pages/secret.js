@@ -6,14 +6,14 @@ import BasePage from '../components/BasePage';
 import withAuth from '../components/hoc/withAuth';
 import axios from 'axios';
 
-// import { getSecretData, getSecretDataServer } from '../actions';
+import { getSecretData } from '../actions';
 
 
 class Secret extends React.Component {
     
   static async getInitialProps({req}) {
 
-    const superSecretData =  "super secret data"
+    const superSecretData =  getSecretData;
 
     return { superSecretData };
   }
@@ -71,7 +71,9 @@ class Secret extends React.Component {
 
         <h1>Woah!</h1>
 
-        <p>Congratulations! You found the secret page!</p>
+        <p>Congratulations! You found the secret page! Your prize is:</p>
+
+        <h1>~NOTHING~</h1>
 
         <h2> {superSecretData} </h2>
 

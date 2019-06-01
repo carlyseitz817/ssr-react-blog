@@ -2,18 +2,20 @@
 .port-navbar.port-default {
   width: 100%;
   z-index: 15;
-  padding: 40px;
+  padding: 30px;
+  background-color: #030d0e !important;
   border-bottom-color: #E0BC77;
-  border-bottom-style: dotted;
+  border-bottom-style: double;
   border-width: 5px; 
 
   .port-navbar {
     &-brand {
-      color: #00f5ac !important;
-      font-size: 24px;
+      color: #00b8ae;
+      font-size: 34px;
       text-transform: uppercase;
       letter-spacing: 1px;
       font-weight: bold;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     }
 
     &-item {
@@ -22,19 +24,19 @@
     }
 
     &-link {
-      color: #0ba4eb !important;
+      color: #0ba4eb;
       font-weight: bold;
       letter-spacing: 0.8px;
       font-size: 18px;
       text-transform: uppercase;
 
       &.active {
-        color: #c4ffe8 !important;
+        color: #c4ffe8;
       }
 
       &:hover,
       &:focus {
-        color: #E0BC77 !important; 
+        color: #E0BC77; 
       }
     }
   }
