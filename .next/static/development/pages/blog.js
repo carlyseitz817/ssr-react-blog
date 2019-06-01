@@ -77077,7 +77077,7 @@ var auth0client = new Auth();
 
 /***/ }),
 
-/***/ 9:
+/***/ 8:
 /*!******************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fblog&absolutePagePath=%2FUsers%2Fcarlyseitz%2FDocuments%2FHomework%20Assignments%2Fssr-react-blog%2Fpages%2Fblog.js ***!
   \******************************************************************************************************************************************************************/
@@ -77100,5 +77100,5 @@ module.exports = dll_829b10deddf10e1653a8;
 
 /***/ })
 
-},[[9,"static/runtime/webpack.js"]]]);
+},[[8,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=blog.js.map
