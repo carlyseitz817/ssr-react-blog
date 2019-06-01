@@ -121,6 +121,8 @@
   border-bottom-color: #E0BC77;
   border-bottom-style: double;
   border-width: 5px; }
+  .port-navbar.port-default .port-dropdown-toggle {
+    color: #00b8ae; }
   .port-navbar.port-default .port-navbar-brand {
     color: #00b8ae;
     font-size: 34px;

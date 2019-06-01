@@ -210,52 +210,9 @@ function (_React$Component) {
       });
     }
   }, {
-    key: "renderBlogMenu",
-    value: function renderBlogMenu() {
-      var isSiteOwner = this.props.isSiteOwner;
-      var user = this.props.user;
-
-      if (user) {
-        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Dropdown"], {
-          className: "port-navbar-link port-dropdown-menu",
-          nav: true,
-          isOpen: this.state.dropdownOpen,
-          toggle: this.toggleDropdown
-        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownToggle"], {
-          className: "port-dropdown-toggle",
-          nav: true,
-          caret: true
-        }, "Blog"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownMenu"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownItem"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
-          className: "port-dropdown-item",
-          route: "/blogs",
-          title: "Blogs"
-        })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownItem"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
-          className: "port-dropdown-item",
-          route: "/blogs/new",
-          title: "Create a Blog"
-        })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownItem"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
-          className: "port-dropdown-item",
-          route: "/blogs/dashboard",
-          title: "Blogs Dashboard"
-        }))));
-      }
-
-      return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["NavItem"], {
-        className: "port-navbar-item"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
-        route: "/blogs",
-        title: "Blog"
-      }));
-    }
-  }, {
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          isAuthenticated = _this$props.isAuthenticated,
-          user = _this$props.user,
-          className = _this$props.className;
-      var isOpen = this.state.isOpen;
-      var menuOpenClass = isOpen ? 'menu-open' : 'menu-close';
+      var isAuthenticated = this.props.isAuthenticated;
       return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Navbar"], {
         className: "port-navbar port-default absolute",
         color: "transparent",
@@ -272,131 +229,41 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Nav"], {
         className: "ml-auto",
         navbar: true
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["NavItem"], {
-        className: "port-navbar-item"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["UncontrolledDropdown"], {
+        className: "port-navbar-link port-dropdown-menu",
+        nav: true,
+        isOpen: this.state.dropdownOpen,
+        toggle: this.toggleDropdown
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownToggle"], {
+        className: "port-dropdown-toggle",
+        nav: true,
+        caret: true
+      }, "Menu"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownMenu"], {
+        right: true
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownItem"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
+        className: "port-dropdown-item",
         route: "/about",
-        title: "ABOUT"
-      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["NavItem"], {
-        className: "port-navbar-item"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
+        title: "About"
+      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownItem"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
+        className: "port-dropdown-item",
         route: "/blog",
         title: "BLOG POSTS"
-      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["NavItem"], {
-        className: "port-navbar-item"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
+      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownItem"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
+        className: "port-dropdown-item",
         route: "/postEditor",
         title: "POST EDITOR"
-      })), !isAuthenticated && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["NavItem"], {
-        className: "port-navbar-item"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(Login, null)), isAuthenticated && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["NavItem"], {
-        className: "port-navbar-item"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(Logout, null))))));
+      })), !isAuthenticated && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownItem"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(Login, {
+        className: "port-navbar-item",
+        title: "LOGIN"
+      })), isAuthenticated && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownItem"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(Logout, {
+        className: "port-dropdown-item",
+        title: "LOGOUT"
+      }))))))));
     }
   }]);
 
   return Header;
-}(react__WEBPACK_IMPORTED_MODULE_6___default.a.Component); // import React from 'react';
-// import Link from 'next/link';
-// import {
-//     Collapse,
-//     Navbar,
-//     NavbarToggler,
-//     NavbarBrand,
-//     Nav,
-//     NavItem,
-//     NavLink,
-//     UncontrolledDropdown,
-//     DropdownToggle,
-//     DropdownMenu,
-//     DropdownItem
-// } from 'reactstrap';
-// import auth0 from '../../services/auth0';
-// const BsNavLink = (props) => {
-//     const { route, title } = props;
-//     return (
-//         <Link href={route}>
-//             <a className="nav-link port-navbar-link">{title}</a>
-//         </Link>
-//     );
-// };
-// const Login = () => {
-//     return (
-//         <span onClick={auth0.login} className="nav-link port-navbar-link">Login</span>
-//     )
-// }
-// const Logout = () => {
-//     return (
-//         <span onClick={auth0.logout} className="nav-link port-navbar-link">Logout</span>
-//     )
-// }
-// export default class Example extends React.Component {
-//     constructor(props) {
-//         super(props);
-//         this.toggle = this.toggle.bind(this);
-//         this.state = {
-//             isOpen: false
-//         };
-//     }
-//     toggle() {
-//         this.setState({
-//             isOpen: !this.state.isOpen
-//         });
-//     }
-//     render() {
-//         const { isAuthenticated, user, className } = this.props;
-//         const { isOpen } = this.state;
-//         const menuOpenClass = isOpen ? 'menu-open' : 'menu-close';
-//         return (
-//             <div>
-//                 <Navbar className="port-navbar port-default absolute" color="transparent" dark expand="md">
-//                     <NavbarBrand className="port-navbar-brand" href="/">SSR Next.js Blog</NavbarBrand>
-//                     <NavbarToggler onClick={this.toggle} />
-//                     <Collapse isOpen={this.state.isOpen} navbar>
-//                         <Nav className="ml-auto" navbar>
-//                             <NavItem className="port-navbar-item">
-//                                 <BsNavLink route="/about" title="ABOUT" />
-//                             </NavItem>
-//                             <NavItem className="port-navbar-item">
-//                                 <BsNavLink route="/blog" title="BLOG" />
-//                             </NavItem>
-//                             {
-//                                 !auth0.isAuthenticated() &&
-//                                 <NavItem className="port-navbar-item">
-//                                     <Login />
-//                                 </NavItem>
-//                             }
-//                             {
-//                                 auth0.isAuthenticated() &&
-//                                 <NavItem className="port-navbar-item">
-//                                     <Logout />
-//                                 </NavItem>
-//                             }
-//                             {/* <UncontrolledDropdown nav inNavbar>
-//                                 <DropdownToggle nav caret>
-//                                     Options
-//                 </DropdownToggle>
-//                                 <DropdownMenu right>
-//                                     <DropdownItem>
-//                                         Option 1
-//                   </DropdownItem>
-//                                     <DropdownItem>
-//                                         Option 2
-//                   </DropdownItem>
-//                                     <DropdownItem divider />
-//                                     <DropdownItem>
-//                                         Reset
-//                   </DropdownItem>
-//                                 </DropdownMenu>
-//                             </UncontrolledDropdown> */}
-//                         </Nav>
-//                     </Collapse>
-//                 </Navbar>
-//             </div>
-//         );
-//     }
-// }
-
+}(react__WEBPACK_IMPORTED_MODULE_6___default.a.Component);
 
 
 
@@ -58136,7 +58003,7 @@ var auth0client = new Auth();
 
 /***/ }),
 
-/***/ 8:
+/***/ 9:
 /*!******************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fabout&absolutePagePath=C%3A%5CUsers%5CDanielle%5CDesktop%5CProject3%5Cssr-react-blog%5Cpages%5Cabout.js ***!
   \******************************************************************************************************************************************************/
@@ -58159,5 +58026,5 @@ module.exports = dll_7aff549c98b978433226;
 
 /***/ })
 
-},[[8,"static/runtime/webpack.js"]]]);
+},[[9,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=about.js.map

@@ -9,7 +9,7 @@ import {
   Nav,
   NavItem,
   NavLink,
-  Dropdown,
+  UncontrolledDropdown,
   DropdownItem,
   DropdownToggle,
   DropdownMenu
@@ -65,49 +65,9 @@ export default class Header extends React.Component {
     });
   }
 
-  renderBlogMenu() {
-    const { isSiteOwner } = this.props;
-    const { user } = this.props;
-
-    if (user) {
-      return (
-        <Dropdown className="port-navbar-link port-dropdown-menu" nav isOpen={this.state.dropdownOpen} toggle={this.toggleDropdown}>
-          <DropdownToggle className="port-dropdown-toggle" nav caret>
-            Blog
-          </DropdownToggle>
-          <DropdownMenu>
-            <DropdownItem>
-              <BsNavLink className="port-dropdown-item"
-                route="/blogs"
-                title="Blogs" />
-            </DropdownItem>
-            <DropdownItem>
-              <BsNavLink className="port-dropdown-item"
-                route="/blogs/new"
-                title="Create a Blog" />
-            </DropdownItem>
-            <DropdownItem>
-              <BsNavLink className="port-dropdown-item"
-                route="/blogs/dashboard"
-                title="Blogs Dashboard" />
-            </DropdownItem>
-          </DropdownMenu>
-        </Dropdown>
-      )
-    }
-
-    return (
-      <NavItem className="port-navbar-item">
-        <BsNavLink route="/blogs" title="Blog" />
-      </NavItem>
-    )
-  }
-
   render() {
-    const { isAuthenticated, user, className } = this.props;
-    const { isOpen } = this.state;
+    const { isAuthenticated } = this.props;
 
-    const menuOpenClass = isOpen ? 'menu-open' : 'menu-close';
 
     return (
       <div>
@@ -116,7 +76,73 @@ export default class Header extends React.Component {
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-              <NavItem className="port-navbar-item">
+            <UncontrolledDropdown className="port-navbar-link port-dropdown-menu" nav isOpen={this.state.dropdownOpen} toggle={this.toggleDropdown}>
+          
+          <DropdownToggle className="port-dropdown-toggle" nav caret>
+            
+            Menu
+          
+          </DropdownToggle>
+          
+          <DropdownMenu right>
+            
+            <DropdownItem>
+              
+              <BsNavLink className="port-dropdown-item"
+                
+                route="/about"
+                
+                title="About" />
+            
+            </DropdownItem>
+
+            <DropdownItem>
+              
+              <BsNavLink className="port-dropdown-item"
+                
+                route="/blog"
+                
+                title="BLOG POSTS" />
+            
+            </DropdownItem>
+
+            <DropdownItem>
+              
+              <BsNavLink className="port-dropdown-item"
+                
+                route="/postEditor"
+                
+                title="POST EDITOR" />
+            
+            </DropdownItem>
+
+            {
+                !isAuthenticated &&
+
+                <DropdownItem>
+                
+                <Login className="port-navbar-item"
+
+                title= "LOGIN" />
+
+
+                </DropdownItem>
+              }
+
+            {
+                isAuthenticated &&
+
+                <DropdownItem>
+
+                <Logout className="port-dropdown-item"
+                
+                title="LOGOUT" />
+                
+                </DropdownItem>
+              }
+          </DropdownMenu>
+        </UncontrolledDropdown>
+              {/* <NavItem className="port-navbar-item">
                 <BsNavLink route="/about" title="ABOUT" />
               </NavItem>
               <NavItem className="port-navbar-item">
@@ -140,25 +166,8 @@ export default class Header extends React.Component {
                 <NavItem className="port-navbar-item">
                   <Logout />
                 </NavItem>
-              }
+              } */}
 
-              {/* <UncontrolledDropdown nav inNavbar>
-                            <DropdownToggle nav caret>
-                                Options
-            </DropdownToggle>
-                            <DropdownMenu right>
-                                <DropdownItem>
-                                    Option 1
-              </DropdownItem>
-                                <DropdownItem>
-                                    Option 2
-              </DropdownItem>
-                                <DropdownItem divider />
-                                <DropdownItem>
-                                    Reset
-              </DropdownItem>
-                            </DropdownMenu>
-                        </UncontrolledDropdown> */}
             </Nav>
           </Collapse>
         </Navbar>
@@ -166,125 +175,3 @@ export default class Header extends React.Component {
     );
   }
 }
-
-
-
-
-
-
-// import React from 'react';
-// import Link from 'next/link';
-// import {
-//     Collapse,
-//     Navbar,
-//     NavbarToggler,
-//     NavbarBrand,
-//     Nav,
-//     NavItem,
-//     NavLink,
-//     UncontrolledDropdown,
-//     DropdownToggle,
-//     DropdownMenu,
-//     DropdownItem
-// } from 'reactstrap';
-
-// import auth0 from '../../services/auth0';
-
-// const BsNavLink = (props) => {
-//     const { route, title } = props;
-
-//     return (
-//         <Link href={route}>
-//             <a className="nav-link port-navbar-link">{title}</a>
-//         </Link>
-//     );
-// };
-
-// const Login = () => {
-//     return (
-//         <span onClick={auth0.login} className="nav-link port-navbar-link">Login</span>
-//     )
-// }
-
-// const Logout = () => {
-//     return (
-//         <span onClick={auth0.logout} className="nav-link port-navbar-link">Logout</span>
-//     )
-// }
-
-// export default class Example extends React.Component {
-//     constructor(props) {
-//         super(props);
-
-//         this.toggle = this.toggle.bind(this);
-//         this.state = {
-//             isOpen: false
-//         };
-//     }
-//     toggle() {
-//         this.setState({
-//             isOpen: !this.state.isOpen
-//         });
-//     }
-//     render() {
-//         const { isAuthenticated, user, className } = this.props;
-//         const { isOpen } = this.state;
-
-//         const menuOpenClass = isOpen ? 'menu-open' : 'menu-close';
-
-
-//         return (
-//             <div>
-//                 <Navbar className="port-navbar port-default absolute" color="transparent" dark expand="md">
-//                     <NavbarBrand className="port-navbar-brand" href="/">SSR Next.js Blog</NavbarBrand>
-//                     <NavbarToggler onClick={this.toggle} />
-//                     <Collapse isOpen={this.state.isOpen} navbar>
-//                         <Nav className="ml-auto" navbar>
-//                             <NavItem className="port-navbar-item">
-//                                 <BsNavLink route="/about" title="ABOUT" />
-//                             </NavItem>
-//                             <NavItem className="port-navbar-item">
-//                                 <BsNavLink route="/blog" title="BLOG" />
-//                             </NavItem>
-
-//                             {
-//                                 !auth0.isAuthenticated() &&
-
-//                                 <NavItem className="port-navbar-item">
-//                                     <Login />
-//                                 </NavItem>
-//                             }
-
-//                             {
-//                                 auth0.isAuthenticated() &&
-
-//                                 <NavItem className="port-navbar-item">
-//                                     <Logout />
-//                                 </NavItem>
-//                             }
-
-//                             {/* <UncontrolledDropdown nav inNavbar>
-//                                 <DropdownToggle nav caret>
-//                                     Options
-//                 </DropdownToggle>
-//                                 <DropdownMenu right>
-//                                     <DropdownItem>
-//                                         Option 1
-//                   </DropdownItem>
-//                                     <DropdownItem>
-//                                         Option 2
-//                   </DropdownItem>
-//                                     <DropdownItem divider />
-//                                     <DropdownItem>
-//                                         Reset
-//                   </DropdownItem>
-//                                 </DropdownMenu>
-//                             </UncontrolledDropdown> */}
-//                         </Nav>
-//                     </Collapse>
-//                 </Navbar>
-//             </div>
-//         );
-//     }
-// }
-
