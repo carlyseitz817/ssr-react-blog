@@ -111,9 +111,9 @@ class UserPosts extends React.Component {
                 <div className="site-heading">
                   <h1>Posts Dashboard</h1>
                   <span className="subheading">
-                    Let's write something nice today{' '}
+                    Let's write something nice today!{' '}
                     <Link route='/blogs/new'>
-                      <Button color="primary">Create a new Post</Button>
+                      <Button color="primary mybutton">Create a new Post</Button>
                     </Link></span>
                 </div>
               </div>
@@ -121,6 +121,7 @@ class UserPosts extends React.Component {
           </Container>
         </div>
         <BasePage className="blog-user-page">
+        <normaltext>
           <Row>
             <Col md="6" className="mx-auto text-center">
               <h2 className="blog-status-title"> Published Posts </h2>
@@ -131,6 +132,7 @@ class UserPosts extends React.Component {
               {this.renderPosts(drafts)}
             </Col>
           </Row>
+          </normaltext>
         </BasePage>
       </BaseLayout>
     )

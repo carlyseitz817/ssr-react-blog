@@ -3,10 +3,6 @@
     "static/development/dll/dll_aa8f31c0c93a8f34edc5.js"
   ],
   "pages": {
-    "/": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
     "/_app": [
       "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
@@ -17,11 +13,15 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/callback": [
+    "/next/dist/pages/_error": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/index": [
+    "/postEditor": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/userPosts": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]
