@@ -126,7 +126,12 @@
     .port-navbar.port-default .port-dropdown-toggle:hover, .port-navbar.port-default .port-dropdown-toggle:focus {
       color: #E0BC77; }
   .port-navbar.port-default .dropdowndowndown {
-    background-color: #c4ffe8; }
+    background-color: #c4ffe8;
+    border-color: #00b8ae;
+    border-bottom-style: bold;
+    border-width: 5px; }
+    .port-navbar.port-default .dropdowndowndown.active {
+      color: #030d0e; }
   .port-navbar.port-default .port-navbar-brand {
     color: #00b8ae;
     font-size: 34px;
@@ -144,9 +149,11 @@
     font-size: 18px;
     text-transform: uppercase; }
     .port-navbar.port-default .port-navbar-link.active {
-      color: #030d0e; }
+      color: #c4ffe8; }
     .port-navbar.port-default .port-navbar-link:hover, .port-navbar.port-default .port-navbar-link:focus {
       color: #E0BC77; }
+  .port-navbar.port-default .port-dropdown-item.active {
+    color: #030d0e; }
 
 .blog-listing-page {
   min-height: 100vh;

@@ -78,33 +78,29 @@ export default class Header extends React.Component {
             <Nav className="ml-auto" navbar>
             <UncontrolledDropdown className="port-navbar-link port-dropdown-menu" nav isOpen={this.state.dropdownOpen} toggle={this.toggleDropdown}>
           
-          <DropdownToggle className="port-dropdown-toggle" nav caret>
+            {
+                isAuthenticated &&
+
+                  <DropdownToggle className="port-dropdown-toggle" nav caret>
             
-            Menu
+                    My Account
           
-          </DropdownToggle>
+                  </DropdownToggle>
+
+            }
           
           <DropdownMenu className="dropdowndowndown" right>
-            
-            <DropdownItem>
-              
-              <BsNavLink className="port-dropdown-item"
-                
-                route="/about"
-                
-                title="About" />
-            
-            </DropdownItem>
 
             <DropdownItem>
               
               <BsNavLink className="port-dropdown-item"
                 
-                route="/blog"
+                route="/dashboard"
                 
-                title="BLOG POSTS" />
+                title="DASHBOARD" />
             
             </DropdownItem>
+
 
             <DropdownItem>
               
@@ -112,44 +108,18 @@ export default class Header extends React.Component {
                 
                 route="/postEditor"
                 
-                title="POST EDITOR" />
+                title="NEW POST" />
             
             </DropdownItem>
 
-            {
-                !isAuthenticated &&
-
-                <DropdownItem>
-                
-                <Login className="port-navbar-item"
-
-                title= "LOGIN" />
-
-
-                </DropdownItem>
-              }
-
-            {
-                isAuthenticated &&
-
-                <DropdownItem>
-
-                <Logout className="port-dropdown-item"
-                
-                title="LOGOUT" />
-                
-                </DropdownItem>
-              }
           </DropdownMenu>
         </UncontrolledDropdown>
-              {/* <NavItem className="port-navbar-item">
+              
+              <NavItem className="port-navbar-item">
                 <BsNavLink route="/about" title="ABOUT" />
               </NavItem>
               <NavItem className="port-navbar-item">
                 <BsNavLink route="/blog" title="BLOG POSTS" />
-              </NavItem>
-              <NavItem className="port-navbar-item">
-                <BsNavLink route="/postEditor" title="POST EDITOR" />
               </NavItem>
 
               {
@@ -166,7 +136,7 @@ export default class Header extends React.Component {
                 <NavItem className="port-navbar-item">
                   <Logout />
                 </NavItem>
-              } */}
+              } 
 
             </Nav>
           </Collapse>

@@ -362,32 +362,36 @@ function (_React$Component) {
         nav: true,
         isOpen: this.state.dropdownOpen,
         toggle: this.toggleDropdown
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownToggle"], {
+      }, isAuthenticated && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownToggle"], {
         className: "port-dropdown-toggle",
         nav: true,
         caret: true
-      }, "Menu"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownMenu"], {
+      }, "My Account"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownMenu"], {
         className: "dropdowndowndown",
         right: true
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownItem"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
         className: "port-dropdown-item",
-        route: "/about",
-        title: "About"
-      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownItem"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
-        className: "port-dropdown-item",
-        route: "/blog",
-        title: "BLOG POSTS"
+        route: "/dashboard",
+        title: "DASHBOARD"
       })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownItem"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
         className: "port-dropdown-item",
         route: "/postEditor",
-        title: "POST EDITOR"
-      })), !isAuthenticated && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownItem"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(Login, {
-        className: "port-navbar-item",
-        title: "LOGIN"
-      })), isAuthenticated && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["DropdownItem"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(Logout, {
-        className: "port-dropdown-item",
-        title: "LOGOUT"
-      }))))))));
+        title: "NEW POST"
+      })))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["NavItem"], {
+        className: "port-navbar-item"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
+        route: "/about",
+        title: "ABOUT"
+      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["NavItem"], {
+        className: "port-navbar-item"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(BsNavLink, {
+        route: "/blog",
+        title: "BLOG POSTS"
+      })), !isAuthenticated && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["NavItem"], {
+        className: "port-navbar-item"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(Login, null)), isAuthenticated && react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["NavItem"], {
+        className: "port-navbar-item"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(Logout, null))))));
     }
   }]);
 
