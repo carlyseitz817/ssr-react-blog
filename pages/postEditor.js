@@ -90,7 +90,7 @@ class BlogEditor extends React.Component {
           <SaveDraft
             onClick={this.saveBlog}
           >
-            Save Draft
+            Save
           </SaveDraft>
         </BasePage>
       </BaseLayout>

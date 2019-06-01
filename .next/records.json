@@ -1,0 +1,66 @@
+{
+  "mini-css-extract-plugin ../../Homework Assignments/ssr-react-blog/node_modules/css-loader/index.js??ref--6-1!../../Homework Assignments/ssr-react-blog/node_modules/sass-loader/lib/loader.js??ref--6-2!../../Homework Assignments/ssr-react-blog/styles/main.scss": [
+    {
+      "modules": {
+        "byIdentifier": {},
+        "usedIds": {}
+      },
+      "chunks": {
+        "byName": {},
+        "bySource": {},
+        "usedIds": []
+      }
+    }
+  ],
+  "mini-css-extract-plugin ../../Homework Assignments/ssr-react-blog/node_modules/css-loader/index.js??ref--5-1!../../Homework Assignments/ssr-react-blog/node_modules/react-toastify/dist/ReactToastify.css": [
+    {
+      "modules": {
+        "byIdentifier": {},
+        "usedIds": {}
+      },
+      "chunks": {
+        "byName": {},
+        "bySource": {},
+        "usedIds": []
+      }
+    }
+  ],
+  "mini-css-extract-plugin ../../Homework Assignments/ssr-react-blog/node_modules/css-loader/index.js??ref--5-1!../../Homework Assignments/ssr-react-blog/node_modules/bootstrap/dist/css/bootstrap.min.css": [
+    {
+      "modules": {
+        "byIdentifier": {},
+        "usedIds": {}
+      },
+      "chunks": {
+        "byName": {},
+        "bySource": {},
+        "usedIds": []
+      }
+    }
+  ],
+  "modules": {
+    "byIdentifier": {
+      "ignored ../../Homework Assignments/ssr-react-blog/node_modules/readable-stream/lib util": 0,
+      "ignored ../../Homework Assignments/ssr-react-blog/node_modules/readable-stream/lib/internal/streams util": 1,
+      "ignored ../../Homework Assignments/ssr-react-blog/node_modules/bn.js/lib buffer": 2,
+      "ignored ../../Homework Assignments/ssr-react-blog/node_modules/brorand crypto": 3,
+      "css ../../Homework Assignments/ssr-react-blog/node_modules/css-loader/index.js??ref--5-1!../../Homework Assignments/ssr-react-blog/node_modules/bootstrap/dist/css/bootstrap.min.css 0": 4,
+      "css ../../Homework Assignments/ssr-react-blog/node_modules/css-loader/index.js??ref--6-1!../../Homework Assignments/ssr-react-blog/node_modules/sass-loader/lib/loader.js??ref--6-2!../../Homework Assignments/ssr-react-blog/styles/main.scss 0": 5,
+      "css ../../Homework Assignments/ssr-react-blog/node_modules/css-loader/index.js??ref--5-1!../../Homework Assignments/ssr-react-blog/node_modules/react-toastify/dist/ReactToastify.css 0": 6
+    },
+    "usedIds": {
+      "0": 0,
+      "1": 1,
+      "2": 2,
+      "3": 3,
+      "4": 4,
+      "5": 5,
+      "6": 6
+    }
+  },
+  "chunks": {
+    "byName": {},
+    "bySource": {},
+    "usedIds": []
+  }
+}

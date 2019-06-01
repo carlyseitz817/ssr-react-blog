@@ -142,7 +142,7 @@ class PostEditorUpdate extends React.Component {
           <SaveDraft
             onClick={this.updatePost}
           >
-            Save Draft
+            Save
           </SaveDraft>
         </BasePage>
       </BaseLayout>
