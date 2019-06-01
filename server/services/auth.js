@@ -11,7 +11,7 @@ exports.checkJWT = jwt({
 
     cache: true,
     rateLimit: true,
-    jwksRequestsPerMinute: 15,
+    jwksRequestsPerMinute: 50,
     jwksUri: 'https://dev-ofwx6q85.auth0.com/.well-known/jwks.json'
 
   }),
