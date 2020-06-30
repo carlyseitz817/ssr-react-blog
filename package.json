@@ -30,7 +30,7 @@
         "compression": "^1.7.4",
         "emotion": "^10.0.9",
         "express": "^4.17.0",
-        "express-jwt": "^5.3.1",
+        "express-jwt": "^6.0.0",
         "fontfaceobserver": "^2.1.0",
         "immutable": "^4.0.0-rc.12",
         "js-cookie": "^2.2.0",
